@@ -11,22 +11,24 @@ This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
 */
 
-@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,500italic,400italic,700,700italic);
+/* @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,500italic,400italic,700,700italic);
 @import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic);
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
-
+@import url(http://fonts.googleapis.com/css?family=Open+Sans); */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,700italic,300italic);
+@import url(https://fonts.googleapis.com/css?family=Muli:400,300,400italic,300italic);
+/* font-family: 'Muli', sans-serif; */
 /*
  * RESET
  * @define stylesheet for basic element,
  * @use for over site
  */
 body{
-	font-family: 'Lora', 'Arial', sans-serif;
+	font-family: 'Lato', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 1.45em;
-	color: #555;
-	background: #040730;
+	color: #000;
+	background: #fff;
 }
 
 p, ul, ol{
@@ -44,12 +46,16 @@ a:link, a:active, a:visited , a:focus{
 	-moz-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
-	color: #90c7f5;
+	color: #000;
 	text-decoration: none;
 	outline: none;
 	outline-width: 0;
 }
-a:hover { text-decoration: underline; }
+a:hover {
+	text-decoration: none;
+	opacity: 0.7;
+	color: #2482c9;
+}
 
 img{
 	max-width: 100%;
@@ -107,31 +113,37 @@ blockquote:after{
 }
 
 button, a.btn, input.btn, .btn{
-	background: #f5d210;
+	background: #0b9347;
 	border: none;
 	text-align: center;
+	padding: 6px 30px;
 	transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-webkit-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
-	font-size: 16px;
-	color: #f26c51;
-	background: #fee34e;
+	font-size: 15px;
+	color: #fff;
 	text-transform: uppercase;
-	padding: 8px 20px;
-	font-weight: normal;
-	font-family: 'Roboto Slab', serif;
-	box-shadow: 0px 2px 0px 0px #D1B103;
-	-webkit-box-shadow: 0px 2px 0px 0px #D1B103;
-	-moz-box-shadow: 0px 2px 0px 0px #D1B103;
-	-o-box-shadow: 0px 2px 0px 0px #D1B103;
-	border-radius: 4px;
-	-moz-border-radius: 4px;
-	-webkit-border-radius: 4px;
+	font-weight: 700;
+	font-family: 'Lato', sans-serif;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+
+}
+.btn-radius {
+		border-radius: 50px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+}
+.btn-lg {
+	padding: 10px 30px !important;
 }
 .btn:active, .btn:focus, .btn:hover{
 	outline-width: 0 !important;
-	color: #f00;
+	opacity: 0.7;
+	color: #fff;
 }
 
 input[type="text"],
@@ -150,6 +162,47 @@ textarea,
 	border-radius: 2px;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
+}
+
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+	position: fixed;
+	margin: auto;
+	width: auto;
+	height: 100%;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+	height: 100%;
+	overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+	padding: 15px 15px 80px;
+}
+
+/*Left*/
+.modal.left.fade .modal-dialog{
+	left: -320px;
+	-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+	        transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog{
+	left: 0;
 }
 
 /* input[type=search] {
@@ -177,9 +230,6 @@ input.date{
  */
 #wrapper{
 	overflow: hidden;
-}
-.container{
-	max-width: 990px;
 }
 .fullscreen{
 	margin-left: -2000em;
@@ -273,41 +323,36 @@ a.social i{
 header{
 
 }
-.top-bar {
-	font-family: 'Roboto', sans-serif;
-	font-size: 10px;
-	font-weight: 500;
-	color: #7d7d7d;
+header a.menu-toggle {
+	color: #000;
+	line-height: 35px;
+	font-size: 15px;
 	text-transform: uppercase;
-	line-height: 18px;
-	text-align: right;
-	background: #fff;
-	border-bottom: solid 1px #e3e3e3;
-	letter-spacing: 0.75px;
-}
-.top-bar a {
-	color: inherit;
-	display: inline-block;
-	border-right: solid 1px #e3e3e3;
-	padding: 5px 10px;
-}
-.top-bar a:first-child{
-	border-left: solid 1px #e3e3e3;
-}
-.top-bar a:hover{
-	opacity: 0.7;
-}
-.top-bar a.cart-link{
-	background: url(images/cart.png) right 10px center no-repeat;
-	background: url(images/cart.png) -webkit-calc(100% - 10px) center no-repeat;
-	padding-right: 45px;
+	cursor: pointer;
+	text-decoration: none;
+	padding: 0 15px;
 }
 .logo{
-	margin-top: 25px;
-	margin-bottom: 25px;
+	margin: 8px 0px;
 }
 .logo a:hover{
 	opacity: 0.7;
+}
+.header-right {
+	text-align: right;
+	min-height: 75px;
+}
+.header-right .language-toggle {
+	color: #5a5959;
+	line-height: 35px;
+	font-size: 12px;
+	text-transform: uppercase;
+	cursor: pointer;
+	text-decoration: none;
+	padding: 0 15px;
+}
+.header-right .btn-login {
+	margin: 20px 15px;
 }
 header .socials{
 	text-align: right;
@@ -336,31 +381,28 @@ header .socials .social.facebook{ background-color: #2f5aa3; }
 	z-index: 99;
 	min-height: 35px;
 }
-#main-navigation{
-	border-top: solid 1px #e3e3e3;
-	border-bottom: solid 1px #e3e3e3;
-}
+
 #main-navigation > ul{
 	float: none;
 	display: table;
 	margin: auto;
 }
 #main-navigation > ul > li{
-	padding: 0 15px;
+	padding: 5px 10px;
 }
 #main-navigation > ul > li > a{
-	color: #313061;
+	color: #000;
 	line-height: 35px;
 	display: block;
-	padding: 0 15px;
-	font-size: 12px;
+	font-size: 15px;
 	text-shadow: none;
 	text-transform: uppercase;
+	font-family: 'Lato', sans-serif;
 }
 #main-navigation > ul > li > a:hover,
 #main-navigation > ul > li > a:focus,
 #main-navigation > ul > li > a:active{
-	color: #90c7f5;
+	color: #2482c9;
 	background: transparent;
 }
 
@@ -402,6 +444,35 @@ header .socials .social.facebook{ background-color: #2f5aa3; }
 	color: #313061;
 }
 
+#left-navigation > ul{
+	float: none;
+	display: block;
+	margin: auto;
+	margin-top: -15px;
+}
+#left-navigation > ul > li{
+    float: none;
+    margin: 0px -15px;
+    padding: 10px 15px;
+    border-bottom: 1px dashed  #ccc;
+}
+#left-navigation > ul > li > a{
+	text-align: left;
+	color: #000;
+	line-height: 35px;
+	display: block;
+	padding: 0;
+	font-size: 14px;
+	text-shadow: none;
+	text-transform: uppercase;
+}
+#left-navigation > ul > li > a:hover,
+#left-navigation > ul > li > a:focus,
+#left-navigation > ul > li > a:active{
+	color: #2482c9;
+	background: transparent;
+}
+
 
 
 /*
@@ -409,11 +480,8 @@ header .socials .social.facebook{ background-color: #2f5aa3; }
  * @page templates stylesheet,
  */
 main {
-	background: #fff;
+	background: #eceff1;
 }
-
-
-
 
 /*
  * SIDEBAR
@@ -478,7 +546,7 @@ main {
 footer{
 	padding-top: 10px;
 	padding-bottom: 10px;
-	background: #090e46;
+	background: #fafafa;
 }
 footer .logo{
 	text-align: center;
@@ -486,43 +554,22 @@ footer .logo{
 footer .socials{
 	color: #090e46;
 }
-#footer-navigation > ul{
-	float: none;
-	display: table;
-	margin: auto;
+
+#copyright {
+	font-size: 14px;
+	color: #333333;
+	line-height: 30px;
 }
-#footer-navigation > ul > li{
-	padding: 0 10px;
-	text-align: center;
+#copyright p {
+	margin: 20px 0px;
 }
-#footer-navigation > ul > li > a{
-	color: #fff;
-	line-height: 35px;
-	display: block;
-	padding: 0 15px;
-	font-size: 12px;
-	text-shadow: none;
-	text-transform: uppercase;
-}
-#footer-navigation > ul > li > a:hover,
-#footer-navigation > ul > li > a:focus,
-#footer-navigation > ul > li > a:active{
-	color: #90c7f5;
-	background: transparent;
-}
-#copyright, #designed{
-	font-family: 'Open Sans', 'Arial', sans-serif;
-	font-size: 11px;
-	color: #fff;
-	letter-spacing: 1px;
-}
-#designed{
+.bottom-bar .app-store{
 	text-align: right;
 }
-#copyright p, #designed p{
-	margin-bottom: 1em;
-}
 .bottom-bar{
-	background: #040730;
+	background: #cad3d7;
 }
 
+.bottom-bar .app-store img {
+	margin: 15px 2px;
+}

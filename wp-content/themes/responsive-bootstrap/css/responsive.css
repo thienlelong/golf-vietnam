@@ -1,13 +1,13 @@
-@media (min-width: 768px){	
-	
+@media (min-width: 768px){
+
 }
 
 
 
-@media (max-width: 767px){	
-	
+@media (max-width: 767px){
+
 	#main-navigation{
-		border-top: none;		
+		border-top: none;
 	}
 	#main-navigation > ul{
 		margin-left: 0;
@@ -19,8 +19,8 @@
 		padding: 0;
 		line-height: 24px;
 	}
-	
-	#copyright, #designed{
+
+	#copyright, .bottom-bar .app-store{
 		text-align: center;
-	}	
+	}
 }

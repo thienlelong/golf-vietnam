@@ -14,64 +14,68 @@
 <body <?php body_class(); ?>>
 
 <div id="wrapper">
-
-	<div id="top-bar" class="top-bar">
-		<div class="container">
-			<a class="wholesale-login-link" href="">Wholesale Login</a>
-			<a class="cart-link" href="">Cart (2)</a>
-		</div>
-	</div>
-
-	<main>
-
-		<header>
-			<div class="container">
-				<div class="row">
-
-					<div id="logo" class="logo col-sm-6">
-					<!-- 	<a href="<?php echo site_url(); ?>" title="<?php echo bloginfo( 'name' ); ?>">
-						<?php if( get_theme_mod( 'logo' )) : ?>
-							<img src="<?php echo get_theme_mod( 'logo' )?>" alt="logo" width="250" height="60" />
-						<?php endif; ?>
-
-					</a> -->
-						<a href="<?php echo site_url(); ?>">
-							<?php
-								if(function_exists( 'ot_get_option' )) : echo '<img src="'. ot_get_option('logo', get_bloginfo('template_directory') . '/images/logo.png') .'" alt="" />'; endif;?>
-							</a>
-					</div>
-
-					<div class="socials col-sm-6">
+	<header>
+		<div class="container-fluid">
+			<div class="row">
+				<div id="logo" class="logo col-md-3">
+					<a type="button" class="menu-toggle" data-toggle="modal" data-target="#myModal">
+						MENU <span class="caret"></span>
+					</a>
+					<!-- Modal -->
+					<div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									<a href="#" class="btn  btn-radius btn-lg"><span class="glyphicon glyphicon-search"></span> Find a Course</a>
+								</div>
+								<div class="modal-body">
+									<nav id="left-navigation" class="navbar-modern navbar-footer" role="navigation">
+										<?php wp_nav_menu(array(
+											'theme_location' => 'left-navigation',
+											'container' => 'ul',
+											'menu_class' => 'nav navbar-nav',
+											'fallback_cb' => false,
+										)); ?>
+									</nav>
+								</div>
+							</div><!-- modal-content -->
+						</div><!-- modal-dialog -->
+					</div><!-- modal -->
+					<a href="<?php echo site_url(); ?>" title="<?php echo bloginfo( 'name' ); ?>">
 						<?php
-							if(ot_get_option('sc_facebook')) : echo '<a target="_blank" href="' . ot_get_option('sc_facebook') . '" class="social facebook"><i class="genericon genericon-facebook-alt"></i></a>'; endif;
-							if(ot_get_option('sc_pinterest')) : echo '<a target="_blank" href="' . ot_get_option('sc_pinterest') . '" class="social pinterest"><i class="genericon genericon-pinterest"></i></a>'; endif;
-							if(ot_get_option('sc_instagram')) : echo '<a target="_blank" href="' . ot_get_option('sc_instagram') . '" class="social instagram"><i class="genericon genericon-instagram"></i></a>'; endif;
+						if(function_exists( 'ot_get_option' )) : echo '<img src="'. ot_get_option('logo', get_bloginfo('template_directory') . '/images/logo.png') .'" alt="" />'; endif;
 						?>
-					</div>
-
+					</a>
+				</div>
+				<div class="col-md-6">
+					<nav class="navbar navbar-modern" role="navigation">
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+								<span class="sr-only">Menu</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+						<div class="collapse navbar-collapse" id="main-navigation">
+							<?php wp_nav_menu(array(
+								'theme_location' => 'main-navigation',
+								'container' => 'ul',
+								'menu_class' => 'nav navbar-nav',
+								'fallback_cb' => false,
+							)); ?>
+						</div>
+					</nav><!--end nav-->
+				</div>
+				<div class="header-right col-md-3">
+					<a type="button" class="language-toggle">
+						ENGLISH <span class="caret"></span>
+					</a>
+					<a href="#" class="btn btn-login btn-radius">Log in</a>
 				</div>
 			</div>
-		</header><!--end header-->
-
-		<nav class="navbar navbar-modern" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
-						<span class="sr-only">Menu</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="main-navigation">
-					<?php wp_nav_menu(array(
-						'theme_location' => 'main-navigation',
-						'container' => 'ul',
-						'menu_class' => 'nav navbar-nav',
-						'fallback_cb' => false,
-					)); ?>
-				</div>
-			</div>
-		</nav><!--end nav-->
-
+		</div>
+	</header><!--end header-->
+	<main>
 		<div class="container">

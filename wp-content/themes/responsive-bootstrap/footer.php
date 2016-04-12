@@ -3,24 +3,24 @@
 
 	<footer>
 		<div class="container">
-			<div class="logo footer-logo">
-				<a href="<?php echo site_url(); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo-footer.png" alt="" width="250" height="62" /></a>
-			</div><!--end logo-->
+		<!-- 	<div class="logo footer-logo">
+			<a href="<?php echo site_url(); ?>"><img src="<?php bloginfo('template_directory'); ?>/images/logo-footer.png" alt="" width="250" height="62" /></a>
+		</div>end logo
 
-			<nav id="footer-navigation" class="navbar-modern navbar-footer" role="navigation">
-				<?php wp_nav_menu(array(
-					'theme_location' => 'footer-navigation',
-					'container' => 'ul',
-					'menu_class' => 'nav navbar-nav',
-					'fallback_cb' => false,
-				)); ?>
-			</nav>
+		<nav id="footer-navigation" class="navbar-modern navbar-footer" role="navigation">
+			<?php wp_nav_menu(array(
+				'theme_location' => 'footer-navigation',
+				'container' => 'ul',
+				'menu_class' => 'nav navbar-nav',
+				'fallback_cb' => false,
+			)); ?>
+		</nav>
 
-			<div class="socials">
-				<a href="" class="social twitter" target="_blank"><i class="genericon genericon-twitter"></i></a>
-				<a href="" class="social pinterest" target="_blank"><i class="genericon genericon-pinterest"></i></a>
-				<a href="" class="social facebook" target="_blank"><i class="genericon genericon-facebook-alt"></i></a>
-			</div>
+		<div class="socials">
+			<a href="" class="social twitter" target="_blank"><i class="genericon genericon-twitter"></i></a>
+			<a href="" class="social pinterest" target="_blank"><i class="genericon genericon-pinterest"></i></a>
+			<a href="" class="social facebook" target="_blank"><i class="genericon genericon-facebook-alt"></i></a>
+		</div> -->
 		</div>
 	</footer><!--end footer-->
 
@@ -35,8 +35,9 @@
 					?>
 				</div>
 
-				<div id="designed" class="col-sm-6">
-					<p class="designed">Web Design by <a href="www.creativehaus.com" target="_blank">Creative Haus</a></p>
+				<div  class="col-sm-6 app-store">
+					<a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/logo-google-play.png" alt="" /></a>
+					<a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/logo-app-store.png" alt="" /></a>
 				</div>
 			</div>
 		</div>
