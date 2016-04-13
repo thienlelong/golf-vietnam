@@ -25,17 +25,17 @@ Database name: sql5114853
 Database user: sql5114853
 Database password: ITlc3gFkMy
 Port number: 3306*/
-define('DB_NAME', 'sql5114853');
+define('DB_NAME', 'u512183349_golf');
 
 /** MySQL database username */
-define('DB_USER', 'sql5114853');
+define('DB_USER', 'root');
 
 /** MySQL database password */
-define('DB_PASSWORD', 'ITlc3gFkMy');
+define('DB_PASSWORD', '');
 //u512183349_golf	u512183349_nham/OPTQB8DVGU	mysql.hostinger.vn
 
 /** MySQL hostname */
-define('DB_HOST', 'sql5.freemysqlhosting.net');
+define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');

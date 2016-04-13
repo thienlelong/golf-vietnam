@@ -69,9 +69,14 @@
 					</nav><!--end nav-->
 				</div>
 				<div class="header-right col-md-3">
-					<a type="button" class="language-toggle">
+					<!-- <a type="button" class="language-toggle">
 						ENGLISH <span class="caret"></span>
-					</a>
+					</a> -->
+					<?php pll_the_languages( array(
+					   'dropdown' => 1,
+					   'show_flags' => 1,
+					   'hide_if_empty' => 0
+					)); ?>
 					<a href="#" class="btn btn-login btn-radius">Log in</a>
 				</div>
 			</div>
