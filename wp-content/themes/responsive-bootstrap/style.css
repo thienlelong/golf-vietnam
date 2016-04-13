@@ -130,6 +130,7 @@ button, a.btn, input.btn, .btn{
 	-webkit-box-shadow: none;
 	-moz-box-shadow: none;
 	-o-box-shadow: none;
+	white-space: normal;
 
 }
 .btn-radius {
