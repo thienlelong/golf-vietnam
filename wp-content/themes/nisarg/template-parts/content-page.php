@@ -15,7 +15,7 @@
 		<span class="screen-reader-text"><?php the_title();?> ?></span>
 		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 
-		<div class="entry-meta"><?php _e('Comments are closed.','nisarg'); ?></div><!-- .entry-meta -->
+		<div class="entry-meta"></div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
 

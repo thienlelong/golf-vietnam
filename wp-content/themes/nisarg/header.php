@@ -42,7 +42,7 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <a href="#" class="btn  btn-radius btn-lg"><span class="glyphicon glyphicon-search"></span> Find a Course</a>
+                <a href="#" class="btn  btn-radius btn-lg"><i class="fa fa-search cl-white" aria-hidden="true"></i> Find a Course</a>
               </div>
               <div class="modal-body">
                 <nav id="left-navigation" class="navbar-modern navbar-footer" role="navigation">
@@ -89,7 +89,8 @@
         <?php pll_the_languages( array(
            'dropdown' => 1,
            'show_flags' => 1,
-           'hide_if_empty' => 0
+           'hide_if_empty' => 0,
+           'display_names_as' => 1
         )); ?>
         <a href="#" class="btn btn-login btn-radius"><?php _e( 'Log in', 'nisarg' ); ?></a>
       </div>
@@ -98,19 +99,32 @@
  <!--  <div id="cc_spacer"></div> --><!-- used to clear fixed navigation by the themes js -->
   <div class="site-header">
     <div class="container">
-      <div class="row site-header-info">
-        <div class="col-md-6 text-right"><a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vietcap.png" alt="" /></a>
-          <a href="" class="btn btn-vietcap">
-            <h3><?php _e( 'VietCap', 'nisarg' ); ?></h3>
-            <h4><?php _e( 'VietNam National Handicap System', 'nisarg' ); ?></h4>
-          </a>
+        <?php if(is_front_page()): ?>
+        <div class="row site-header-info">
+          <div class="col-md-6 text-right"><a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vietcap.png" alt="" /></a>
+            <a href="" class="btn btn-vietcap">
+              <h3><?php _e( 'VietCap', 'nisarg' ); ?></h3>
+              <h4><?php _e( 'VietNam National Handicap System', 'nisarg' ); ?></h4>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="" class="btn btn-golf-better">
+              <h3><?php _e( 'Making Vietnam', 'nisarg' ); ?></h3>
+              <h3><?php _e( 'Golf Better', 'nisarg' ); ?></h3>
+            </a>
+            <a href=""><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vga.png" alt="" /></a>
+          </div>
         </div>
-        <div class="col-md-6">
-          <a href="" class="btn btn-golf-better">
-            <h3><?php _e( 'Making Vietnam', 'nisarg' ); ?></h3>
-            <h3><?php _e( 'Golf Better', 'nisarg' ); ?></h3>
+      <?php elseif(is_page('join-now') || is_page('dang-ky')): ?>
+        <div class="site-join-now text-center">
+          <a href="<?php echo site_url(); ?>" title="<?php echo bloginfo( 'name' ); ?>">
+            <?php
+            if(function_exists( 'ot_get_option' )) : echo '<img src="'. ot_get_option('logo', get_bloginfo('template_directory') . '/images/headers/logo.png') .'" alt="" />'; endif;
+            ?>
           </a>
-          <a href=""><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vga.png" alt="" /></a></div>
+          <h2 class="display-inline"><?php _e('HELP GROW THE GAME IN VIETNAM', 'nisarg'); ?></h2>
+        </div>
+      <?php endif; ?>
       </div>
     </div><!--.site-branding-->
   </div><!--.site-header-->

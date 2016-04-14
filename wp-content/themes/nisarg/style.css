@@ -24,11 +24,13 @@ This theme is licensed under the GPL.
  *     3.1 Site Navigation Bar
  *     3.2 Site Header
  * 4.0 Content
+ *
  *     4.1 Post-Content
  *     4.2 Page and Post Navigation links
  *     4.3 Post Formats
  *     4.4 Gallery
  *     4.5 Post-Comments
+ *     4.6 Homepage
  * 5.0 Sidebar - Widgets
  * 6.0 Site Footer
  * 7.0 Media Queries
@@ -78,17 +80,19 @@ a{
 }
 
 a:visited {
-    color: #78909c;
+    color: #000;
     text-decoration: underline;
 }
 
 a:hover,
 a:active { /* Improves readability when focused and also mouse hovered in all browsers people.opera.com/patrickl/experiments/keyboard/test */
     outline: 0;
+    color: #0b9347;
 }
 
 a:hover{
     text-decoration: none;
+    color: #0b9347;
 }
 
 a img {
@@ -169,6 +173,7 @@ object {
 iframe{
     width: 100%;
 }
+
 
 /*******************************
 * MODAL AS LEFT/RIGHT SIDEBAR
@@ -363,9 +368,8 @@ input[type="search"].search-field {
     width: 42px;
 }
 
-
 img{
-    margin-bottom: 1em;
+    max-width: 100%;
 }
 
 .alignnone {
@@ -382,10 +386,16 @@ div.aligncenter {
     float:right;
     margin: 5px 0 20px 20px;
 }
-
+.text-right {
+    text-align: right;
+}
 .alignleft {
     float: left;
     margin: 5px 20px 20px 0;
+}
+
+.display-inline {
+    display: inline-block;
 }
 
 a img.alignright {
@@ -506,6 +516,7 @@ img.wp-post-image{
     margin:0 auto 15px;
 }
 
+
 button, a.btn, input.btn, .btn{
     background: #0b9347;
     border: none;
@@ -541,7 +552,24 @@ button, a.btn, input.btn, .btn{
     color: #fff;
 }
 
+.bg-red {
+    background: #eb3d37 !important;
+}
 
+.bg-yellow {
+    background: #ffdf59 !important;
+}
+
+.cl-red {
+    color: #eb3d37 !important;
+}
+
+.cl-yellow {
+    color: #ffdf59 !important;
+}
+.cl-white {
+    color: #fff !important;
+}
 
 /**
  * 3.0 Header
@@ -626,7 +654,7 @@ header a.menu-toggle {
 #left-navigation > ul > li > a:hover,
 #left-navigation > ul > li > a:focus,
 #left-navigation > ul > li > a:active{
-    color: #2482c9;
+    color: #0b9347;
     background: transparent;
 }
 
@@ -793,7 +821,7 @@ color: #000000;
     background: #fafafa;
     position: relative;
     width: 100%;
-    margin-bottom: 3em;
+    /* margin-bottom: 3em; */
     overflow: hidden;
     -webkit-box-shadow: inset 0px 9px 15px -2px rgba(236,239,241,1);
     -moz-box-shadow: inset 0px 9px 15px -2px rgba(236,239,241,1);
@@ -982,9 +1010,12 @@ color: #000000;
     letter-spacing: 2px;
 }
 
-.entry-title{
-    margin-bottom: 14px;
+.page-title,
+.entry-title {
+    font-size: 32px;
+    font-weight: 700;
 }
+
 
 .entry-header .entry-title a{
     color: #212121;
@@ -1113,7 +1144,9 @@ color: #000000;
 * --------------------------------------------------------------
 */
 
-
+.page-header {
+    margin: 55px 0px;
+}
 .page-links {
     clear: both;
     margin: 0 0 1.5em;
@@ -1153,6 +1186,15 @@ color: #000000;
     font-size: 14px;
 }
 
+.site-join-now img {
+    margin: 10px 15px;
+}
+
+.site-join-now h2{
+    font-size: 32px;
+    vertical-align: middle;
+    margin: 10px 0px;
+}
 
 /*
 * 4.3 Post Formats
@@ -1311,6 +1353,51 @@ color: #000000;
 .bypostauthor {
 
 }
+
+/*
+* 4.6 Homepage
+* ------------------------------
+**/
+
+.home-box {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.home-box .box{
+    background: #fff;
+    text-align: center;
+    overflow: hidden;
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+    -moz-box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+    box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+}
+
+.home-box .box .box-title h3{
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.home-action {
+    text-align: center;
+    background: url(images/bg-home-action.png) center center no-repeat;
+    background-size: cover;
+    min-height: 112px;
+}
+.home-action .btn {
+    padding: 15px 20px;
+    font-size: 16px;
+    min-width: 230px;
+    margin: 30px 15px;
+}
+.home-action .btn i{
+    font-weight: 400;
+    font-size: 22px;
+    margin-right: 5px;
+}
+.home-action .btn img {
+    margin-top: -3px;
+    margin-right: 5px;
+}
 /**
  * 5.0 Sidebar - Widgets
  * ----------------------------------------------------------------------------
@@ -1448,7 +1535,60 @@ color: #000000;
 * 6.0 Site Footer
 * --------------------------------------------------------------------
 */
+.section-title {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+.section-title::after {
+    content: "";
+    height: 3px;
+    display: block;
+    width: 90px;
+    margin: 10px auto;
+    background: #0b9347;
+}
+hr.line-title {
+    border-top: 3px solid #0b9347;
+    width: 90px;
+}
+.section-partners {
+    background: #fafafa;
+    padding: 15px 0px;
+}
+#owl-partners {
+    margin: 10px 0px;
+}
+.section-partners .item {
+    margin: 0px 10px;
+    text-align: center;
+}
+.section-partners .item img {
+    max-width: 100%;
+    height: 100%;
+    margin-bottom: 0px;
+}
+.section-partners .owl-wrapper-outer {
+    padding: 10px 0px;
+}
 
+.owl-theme .owl-controls .owl-buttons div {
+    position: absolute;
+    border-radius: 0px;
+    margin: 0px;
+    width: 20px;
+    height: 20px;
+    top: 35%;
+}
+.owl-theme .owl-controls .owl-buttons .owl-prev {
+    left: -35px;
+    background: url(images/arrow-slider-left.png) no-repeat;
+}
+.owl-theme .owl-controls .owl-buttons .owl-next {
+    right: -35px;
+    background: url(images/arrow-slider-right.png) no-repeat;
+
+}
 .site-footer{
     letter-spacing: 1px;
     font-size: 14px;
@@ -1487,6 +1627,12 @@ color: #000000;
     }
     .site-header .btn-golf-better {
         margin-right: 15px;
+    }
+    .header-right .btn-login {
+        margin: 20px 0;
+    }
+    header a.menu-toggle {
+        padding-left: 0px;
     }
 }
 
@@ -1592,6 +1738,7 @@ color: #000000;
         text-align: center;
     }
 
+
   }
 @media (max-width: 767px) {
     body{
@@ -1601,7 +1748,7 @@ color: #000000;
         position: relative;
         width: 100%;
         min-height: 170px;
-        margin-bottom: 2em;
+       /*  margin-bottom: 2em; */
     }
 
     .site-title {
@@ -1633,8 +1780,16 @@ color: #000000;
     .site-footer .site-info {
         padding-bottom: 0px;
     }
+    .site-header .btn {
+        width: 100%;
+        margin: 15px 0;
+    }
     .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
         border-top: none;
+    }
+    .page-header {
+        text-align: center;
+        margin: 15px 0px;
     }
 }
 @media (max-width: 359px) {
@@ -1642,7 +1797,7 @@ color: #000000;
         position: relative;
         width: 100%;
         min-height: 100px;
-        margin-bottom: 1.5em;
+/*         margin-bottom: 1.5em; */
     }
 
     .site-title {
