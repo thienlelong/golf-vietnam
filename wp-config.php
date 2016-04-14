@@ -25,17 +25,22 @@ Database name: sql5114853
 Database user: sql5114853
 Database password: ITlc3gFkMy
 Port number: 3306*/
-define('DB_NAME', 'u512183349_golf');
+/*define('DB_NAME', 'u512183349_golf');
 
-/** MySQL database username */
 define('DB_USER', 'root');
 
-/** MySQL database password */
 define('DB_PASSWORD', '');
+
+define('DB_HOST', 'localhost');*/
 //u512183349_golf	u512183349_nham/OPTQB8DVGU	mysql.hostinger.vn
 
-/** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_NAME', 'u449267025_golf');
+
+define('DB_USER', 'u449267025_nham');
+
+define('DB_PASSWORD', 'arV9oR6EyL');
+
+define('DB_HOST', 'mysql.hostinger.vn');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -43,7 +48,6 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
-define ('WPLANG', 'vi_VI');
 
 /**#@+
  * Authentication Unique Keys and Salts.
