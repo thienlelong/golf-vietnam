@@ -40,10 +40,10 @@
 			    </div>
 
 			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-callaway.png" alt=""></a>
+			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-callaway-1.png" alt=""></a>
 			    </div>
 			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-rolex.png" alt="">
+			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-callaway.png" alt="">
 			    	</a>
 			    </div>
 			</div>
