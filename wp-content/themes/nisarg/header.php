@@ -41,7 +41,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+               <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
                 <a href="#" class="btn  btn-radius btn-lg"><i class="fa fa-search cl-white" aria-hidden="true"></i> Find a Course</a>
               </div>
               <div class="modal-body">
@@ -82,7 +82,7 @@
                 nisarg_header_menu(); // main navigation
               }
             ?>
-        </div>#container
+        </div>
       </nav>
       </div>
       <div class="header-right col-md-3">
