@@ -12,24 +12,22 @@
 
 get_header(); ?>
 <div class="container">
-    <div class="row">
-		<div id="primary" class="col-sx-12 content-area">
-			<main id="main" class="site-main" role="main">
-				<?php while ( have_posts() ) : the_post(); ?>
-					<div class="page-header">
-						<div class="row">
-							<div class="col-sm-3"><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?></div>
-							<div class="col-sm-9 text-right">
-								<img src="<?php bloginfo('template_directory'); ?>/images/page-banner.png" alt="">
-							</div>
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main" role="main">
+			<?php while ( have_posts() ) : the_post(); ?>
+				<div class="page-header">
+					<div class="row">
+						<div class="col-sm-3"><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?></div>
+						<div class="col-sm-9 text-right">
+							<img src="<?php bloginfo('template_directory'); ?>/images/page-banner.png" alt="">
 						</div>
 					</div>
-					<?php get_template_part( 'template-parts/content', 'page' ); ?>
+				</div>
+				<?php get_template_part( 'template-parts/content', 'page' ); ?>
 
-				<?php endwhile; // End of the loop. ?>
+			<?php endwhile; // End of the loop. ?>
 
-			</main><!-- #main -->
-		</div><!-- #primary -->
-	</div> <!--.row-->
+		</main><!-- #main -->
+	</div><!-- #primary -->
 </div><!--.container-->
 <?php get_footer(); ?>
