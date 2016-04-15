@@ -19,7 +19,7 @@
 
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
@@ -82,7 +82,7 @@
                 nisarg_header_menu(); // main navigation
               }
             ?>
-        </div><!--#container-->
+        </div>#container
       </nav>
       </div>
       <div class="header-right col-md-3">
@@ -95,7 +95,7 @@
         <a href="#" class="btn btn-login btn-radius"><?php _e( 'Log in', 'nisarg' ); ?></a>
       </div>
     </div>
-  </div>
+  </div> <!-- end .container-fluid -->
  <!--  <div id="cc_spacer"></div> --><!-- used to clear fixed navigation by the themes js -->
   <div class="site-header">
     <div class="container">
@@ -125,7 +125,6 @@
           <h2 class="display-inline"><?php _e('HELP GROW THE GAME IN VIETNAM', 'nisarg'); ?></h2>
         </div>
       <?php endif; ?>
-      </div>
     </div><!--.site-branding-->
   </div><!--.site-header-->
 </header>
