@@ -1,0 +1,590 @@
+/*
+Theme Name: Responsive Bootstrap
+Author: Moon - Creative Haus
+Author URI: https://wordpress.org/
+Description: Custom responsive theme using Bootstrap
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+/* @import url(http://fonts.googleapis.com/css?family=Roboto:400,500,500italic,400italic,700,700italic);
+@import url(http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans); */
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,700,400italic,700italic,300italic);
+@import url(https://fonts.googleapis.com/css?family=Muli:400,300,400italic,300italic);
+/* font-family: 'Muli', sans-serif; */
+/*
+ * RESET
+ * @define stylesheet for basic element,
+ * @use for over site
+ */
+body{
+	font-family: 'Lato', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 1.45em;
+	color: #000;
+	background: #fff;
+}
+
+p, ul, ol{
+	margin: 1em 0 2em;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-weight: bold;
+}
+
+iframe{max-width: 100%;}
+
+a:link, a:active, a:visited , a:focus{
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	color: #000;
+	text-decoration: none;
+	outline: none;
+	outline-width: 0;
+}
+a:hover {
+	text-decoration: none;
+	opacity: 0.7;
+	color: #2482c9;
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+}
+.display-inline {
+	display: inline-block;
+}
+.aligncenter{
+	text-align: center;
+}
+.alignleft{
+	text-align: left;
+}
+.alignright{
+	text-align: right;
+}
+img.aligncenter{
+	display: block;
+	margin: auto;
+}
+img.alignleft{
+	float: left;
+	margin: 0 30px 10px 0;
+}
+img.alignright{
+	float: right;
+	margin: 0 0 30px 10px;
+}
+
+hr{
+	border-color: #e4e4e4;
+	margin: 25px 0;
+}
+
+blockquote{
+	position: relative;
+	border: none;
+	padding: 20px 42px;
+	margin: 10px 0;
+	font-size: inherit;
+}
+blockquote:before{
+	font-family: 'Buenard';
+	font-size: 60px;
+	position: absolute;
+	top: 26px;
+	left: 0;
+	content: "\201C";
+}
+blockquote:after{
+	font-family: 'Buenard';
+	font-size: 60px;
+	position: absolute;
+	bottom: 26px;
+	right: 0;
+	content: "\201E";
+}
+
+button, a.btn, input.btn, .btn{
+	background: #0b9347;
+	border: none;
+	text-align: center;
+	padding: 6px 30px;
+	transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-webkit-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	font-size: 15px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-family: 'Lato', sans-serif;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+	white-space: normal;
+
+}
+.btn-radius {
+		border-radius: 50px;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+}
+.btn-lg {
+	padding: 10px 30px !important;
+}
+.btn:active, .btn:focus, .btn:hover{
+	outline-width: 0 !important;
+	opacity: 0.7;
+	color: #fff;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+textarea,
+.form-control{
+	background: #fff;
+	border: solid 1px #f0f0f0;
+	font-size: 15px;
+	line-height: 1.25em;
+	padding: 3px 10px;
+	color: #4d4d4d;
+	height: auto;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+}
+
+/*******************************
+* MODAL AS LEFT/RIGHT SIDEBAR
+* Add "left" or "right" in modal parent div, after class="modal".
+* Get free snippets on bootpen.com
+*******************************/
+.modal.left .modal-dialog,
+.modal.right .modal-dialog {
+	position: fixed;
+	margin: auto;
+	width: auto;
+	height: 100%;
+	-webkit-transform: translate3d(0%, 0, 0);
+	    -ms-transform: translate3d(0%, 0, 0);
+	     -o-transform: translate3d(0%, 0, 0);
+	        transform: translate3d(0%, 0, 0);
+}
+
+.modal.left .modal-content,
+.modal.right .modal-content {
+	height: 100%;
+	overflow-y: auto;
+}
+
+.modal.left .modal-body,
+.modal.right .modal-body {
+	padding: 15px 15px 80px;
+}
+
+/*Left*/
+.modal.left.fade .modal-dialog{
+	left: -320px;
+	-webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+	   -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+	     -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+	        transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.modal.left.fade.in .modal-dialog{
+	left: 0;
+}
+
+/* input[type=search] {
+	background: url(images/icon-search.png) right 5px center no-repeat;
+	background: url(images/icon-search.png) -webkit-calc(100% - 5px) center no-repeat;
+	padding-right: 40px;
+}
+
+input.date{
+	background: url(images/icon-calenda.png) right 4px center no-repeat;
+	background: url(images/icon-calenda.png) -webkit-calc(100% - 4px) center no-repeat;
+	padding-right: 40px;
+} */
+
+
+/*
+ * BASIC CUSTOMS
+ * @custom stylesheet for normal elements,
+ */
+
+
+/*
+ * CUSTOM WIDTH
+ * @define width for some special elements,
+ */
+#wrapper{
+	overflow: hidden;
+}
+.fullscreen{
+	margin-left: -2000em;
+	margin-right: -2000em;
+	padding-left: 2000em;
+	padding-right: 2000em;
+}
+
+
+/*
+ * BACKGROUNDS
+ * @define some special backgrounds
+ */
+.bg-light-grey{
+	background: #f5f5f5;
+}
+.bg-yellow{
+	background: #fee34e;
+}
+.bg-grey {
+	background: url(images/bg-grey.jpg);
+}
+.bg-brown{
+	background: url(images/bg-brown.jpg);
+}
+
+
+/*
+ * SOCIALS
+ * @custom stylesheet for social icons,
+ */
+.socials{
+	overflow: hidden;
+	display: table;
+	margin: 20px auto;
+}
+a.social{
+	margin-left: 10px;
+	display: inline-block;
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-o-border-radius: 50%;
+	color: inherit;
+	background: #fff;
+	text-align: center;
+	height: 26px;
+	width: 26px;
+	text-decoration: none;
+}
+a.social:hover{
+	opacity: .7;
+}
+a.social:first-child{
+	margin-left: 0;
+}
+a.social i{
+	line-height: 26px;
+}
+
+
+/*
+ * ARTICLES
+ * @define style for normal article
+ */
+.paginate, .paginate a{
+	text-transform: uppercase;
+	color: #a1a1a1;
+}
+.paginate .page-numbers:after{
+	content: ',';
+}
+.paginate .page-numbers:last-child:after{
+	display: none;
+}
+.page-numbers.current{
+	color: #010101;
+}
+
+
+/*
+ * SPECIFIC STYLESHEET
+ * @custom stylesheet for specific elements,
+ */
+
+
+/*
+ * HEADER
+ * @header stylesheet,
+ */
+header{
+
+}
+header a.menu-toggle {
+	color: #000;
+	line-height: 35px;
+	font-size: 15px;
+	text-transform: uppercase;
+	cursor: pointer;
+	text-decoration: none;
+	padding: 0 15px;
+}
+.logo{
+	margin: 8px 0px;
+}
+.logo a:hover{
+	opacity: 0.7;
+}
+.header-right {
+	text-align: right;
+	min-height: 75px;
+}
+
+.header-right select {
+	border: 0px;
+	color: #5a5959;
+	line-height: 35px;
+	font-size: 12px;
+	text-transform: uppercase;
+	cursor: pointer;
+	text-decoration: none;
+	outline: none;
+}
+.header-right .language-toggle {
+	color: #5a5959;
+	line-height: 35px;
+	font-size: 12px;
+	text-transform: uppercase;
+	cursor: pointer;
+	text-decoration: none;
+	padding: 0 15px;
+}
+.header-right .btn-login {
+	margin: 20px 15px;
+}
+header .socials{
+	text-align: right;
+	margin-top: 40px;
+	margin-bottom: 25px;
+	color: #fff;
+}
+header .socials .social.twitter{ background-color: #06aae5; }
+header .socials .social.pinterest{ background-color: #e10001; }
+header .socials .social.facebook{ background-color: #2f5aa3; }
+
+
+/*
+ * NAVIGATION
+ * @navigation stylesheet,
+ */
+.navbar-modern{
+	background: transparent;
+	box-shadow: none;
+	border: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+	margin-bottom: 0;
+	padding: 0;
+	z-index: 99;
+	min-height: 35px;
+}
+
+#main-navigation > ul{
+	float: none;
+	display: table;
+	margin: auto;
+}
+#main-navigation > ul > li{
+	padding: 5px 10px;
+}
+#main-navigation > ul > li > a{
+	color: #000;
+	line-height: 35px;
+	display: block;
+	font-size: 15px;
+	text-shadow: none;
+	text-transform: uppercase;
+	font-family: 'Lato', sans-serif;
+}
+#main-navigation > ul > li > a:hover,
+#main-navigation > ul > li > a:focus,
+#main-navigation > ul > li > a:active{
+	color: #2482c9;
+	background: transparent;
+}
+
+
+.navbar-header{
+	border-top: solid 1px #e3e3e3;
+	border-bottom: solid 1px #e3e3e3;
+}
+.navbar-toggle,
+.navbar-toggle:focus{
+	border: none;
+	border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	padding: 10px;
+	margin: 0;
+	background: transparent;
+	border-left: solid 1px #e3e3e3;
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.navbar-toggle:hover{
+	background: transparent;
+}
+.navbar-toggle .icon-bar{
+	background-color: #313061;
+	width: 15px;
+}
+.navbar-toggle .icon-bar+.icon-bar{
+	margin-top: 3px;
+}
+.sr-only{
+	width: auto;
+	height: auto;
+	clip: auto;
+	right: 45px;
+	line-height: 1em;
+	color: #313061;
+}
+
+#left-navigation > ul{
+	float: none;
+	display: block;
+	margin: auto;
+	margin-top: -15px;
+}
+#left-navigation > ul > li{
+    float: none;
+    margin: 0px -15px;
+    padding: 10px 15px;
+    border-bottom: 1px dashed  #ccc;
+}
+#left-navigation > ul > li > a{
+	text-align: left;
+	color: #000;
+	line-height: 35px;
+	display: block;
+	padding: 0;
+	font-size: 14px;
+	text-shadow: none;
+	text-transform: uppercase;
+}
+#left-navigation > ul > li > a:hover,
+#left-navigation > ul > li > a:focus,
+#left-navigation > ul > li > a:active{
+	color: #2482c9;
+	background: transparent;
+}
+
+
+
+/*
+ * PAGE TEMPLATES
+ * @page templates stylesheet,
+ */
+main {
+	background: #eceff1;
+}
+
+/*
+ * SIDEBAR
+ * @sidebars stylesheet,
+ */
+.widget .widget-title{
+	text-transform: uppercase;
+	font-size: 15px;
+	font-family: 'Oswald';
+}
+.widget ul{
+	list-style: none;
+	padding-left: 0;
+}
+.widget ul li{
+	line-height: 18px;
+	font-size: 12px;
+	color: #464849;
+	padding: 3px 0;
+}
+.widget ul li a{
+	font-size: 12px;
+	color: #464849;
+	text-decoration: none;
+}
+.widget ul li a:hover{
+	color: #000;
+}
+.widget-title .c2{color: #fee34e}
+.widget-title .c3{color: #f4cac9}
+.widget-title .c4{color: #b3e6fc}
+
+
+
+.sidebar.left .widget,
+.sidebar.right .widget{
+	font-size: 12px;
+	font-family: 'Roboto Slab', serif;
+	font-weight: 300px;
+	color: #949494;
+}
+.sidebar.left .widget-title,
+.sidebar.right .widget-title{
+	color: #70aa99;
+	margin: 0px;
+	font-family: 'Roboto Slab', serif;
+	font-size: 19px;
+	font-weight: 400;
+	padding: 20px 15px;
+}
+.sidebar.left ul li,
+.sidebar.right ul li{
+	border-bottom: 1px solid #dedede;
+}
+
+
+
+/*
+ * FOOTER
+ * @footer stylesheet,
+ */
+footer{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #fafafa;
+}
+footer .logo{
+	text-align: center;
+}
+footer .socials{
+	color: #090e46;
+}
+
+#copyright {
+	font-size: 14px;
+	color: #333333;
+	line-height: 30px;
+}
+#copyright p {
+	margin: 20px 0px;
+}
+.bottom-bar .app-store{
+	text-align: right;
+}
+.bottom-bar{
+	background: #cad3d7;
+}
+
+.bottom-bar .app-store img {
+	margin: 15px 2px;
+}
