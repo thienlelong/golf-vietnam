@@ -160,6 +160,13 @@ function nisarg_scripts() {
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
+    wp_register_script('vb_reg_script', get_template_directory_uri() . '/js/custom.js', array('jquery'), null, false);
+    wp_enqueue_script('vb_reg_script');
+
+  wp_localize_script( 'vb_reg_script', 'vb_reg_vars', array(
+        'vb_ajax_url' => admin_url( 'admin-ajax.php' ),
+      )
+  );
 }
 add_action( 'wp_enqueue_scripts', 'nisarg_scripts' );
 
@@ -234,3 +241,170 @@ function nisarg_get_link_url() {
 }
 
 
+/*
+Plugin Name: Register Helper Example
+Plugin URI: http://www.paidmembershipspro.com/wp/pmpro-customizations/
+Description: Register Helper Initialization Example
+Version: .1
+Author: Stranger Studios
+Author URI: http://www.strangerstudios.com
+*/
+//we have to put everything in a function called on init, so we are sure Register Helper is loaded
+function my_pmprorh_init()
+{
+    //don't break if Register Helper is not loaded
+    if(!function_exists("pmprorh_add_registration_field"))
+    {
+        return false;
+    }
+    //define the fields
+    $fields = array();
+    $fields[] = new PMProRH_Field(
+        "company",              // input name, will also be used as meta key
+        "text",                 // type of field
+        array(
+            "size"=>40,         // input size
+            "class"=>"company", // custom class
+            "profile"=>true,    // show in user profile
+            "required"=>true    // make this field required
+        ));
+    $fields[] = new PMProRH_Field(
+        "referral",                     // input name, will also be used as meta key
+        "text",                         // type of field
+        array(
+            "label"=>"Referral Code",   // custom field label
+            "profile"=>"admins"         // only show in profile for admins
+        ));
+    $fields[] = new PMProRH_Field(
+        "gender",                   // input name, will also be used as meta key
+        "radio",
+       	array("options"=>array("male"=>"Male", "female"=>"Female"))
+    	);
+
+   	 $fields[] = new PMProRH_Field(
+        "languages",                   // input name, will also be used as meta key
+        "checkbox",
+       	array("profile"=>true)
+    	);
+   	$fields[] = new PMProRH_Field("avatar", "file", array("profile"=>true, "options"=>array()));
+    //add the fields into a new checkout_boxes are of the checkout page
+    foreach($fields as $field)
+        pmprorh_add_registration_field(
+            "checkout_boxes", // location on checkout page
+            $field            // PMProRH_Field object
+        );
+    //that's it. see the PMPro Register Helper readme for more information and examples.
+}
+/*add_action("init", "my_pmprorh_init");*/
+
+/*// define the pmpro_required_billing_fields callback
+function filter_pmpro_required_billing_fields( $array ) {
+    // make filter magic happen here...
+    print_r($array);
+    return $array;
+};
+
+// add the filter
+add_filter( 'pmpro_required_billing_fields', 'filter_pmpro_required_billing_fields', 10, 1 );*/
+
+/*add_filter('pmpro_required_billing_fields', 'pmpro_required_billing_fields_ow',1,1);
+function pmpro_required_billing_fields_ow(){
+	 global $bfirstname, $blastname, $baddress1, $bcity, $bstate, $bzipcode, $bcountry, $bphone, $bemail;
+		//require fields
+	$pmpro_required_billing_fields = array(
+		"bcity" => $bcity,
+		"bstate" => $bstate,
+		"bzipcode" => $bzipcode,
+		"bphone" => $bphone,
+		"bemail" => $bemail,
+
+	);
+	return $pmpro_required_billing_fields;
+}
+
+add_filter('pmpro_required_user_fields', 'pmpro_required_user_fields_ow',1,1);
+function pmpro_required_user_fields_ow(){
+	 global $username, $bemail, $password2, $bconfirmemail;
+		//require fields
+	$pmpro_required_user_fields = array(
+
+		"password2" => $password2,
+		"bemail" => $bemail,
+		"bconfirmemail" => $bconfirmemail
+
+	);
+	return $pmpro_required_user_fields;
+}*/
+
+/**
+ * New User registration
+ *
+ */
+function vb_reg_new_user() {
+
+  // Verify nonce
+  if( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'vb_new_user' ) )
+    die( 'Ooops, something went wrong, please try again later.' );
+  // Post values
+    $first_name = $_POST['first_name'];
+    $middle_name = $_POST['middle_name'];
+    $user_login = $_POST['user_login'];
+    $last_name = $_POST['last_name'];
+    $user_email = $_POST['user_email'];
+    $password = $_POST['password'];
+    $club_member = $_POST['club_member'];
+    $public_member = $_POST['public_member'];
+    $association_member = $_POST['association_member'];
+    $district = $_POST['district'];
+    $province = $_POST['province'];
+    $city = $_POST['city'];
+    $langguage = $_POST['langguage'];
+    $gender = $_POST['gender'];   /**
+     * IMPORTANT: You should make server side validation here!
+     *
+     */
+
+    $userdata = array(
+        'user_login' => $user_login,
+        'user_pass'  => $password,
+        'user_email' => $user_email,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+    );
+
+    $user_id = wp_insert_user( $userdata ) ;
+
+    $meta_keys = array("middle_name", "club_member", "public_member", "association_member", "district", "province", "city", "langguage", "gender");
+    $meta_values = array($middle_name, $club_member, $public_member, $association_member, $district, $province, $city, $langguage, $gender);
+    addUserMeta($user_id, $meta_keys, $meta_values);
+    // Return
+    if( !is_wp_error($user_id) ) {
+        echo '1';
+    } else {
+        echo $user_id->get_error_message();
+    }
+  die();
+
+}
+
+function addUserMeta($user_id, $meta_keys, $meta_values, $prev_values = NULL)
+{
+    //expects all arrays for last 3 params or all strings
+    if(!is_array($meta_keys))
+    {
+        $meta_keys = array($meta_keys);
+        $meta_values = array($meta_values);
+        $prev_values = array($prev_values);
+    }
+
+    for($i = 0; $i < count($meta_values); $i++)
+    {
+
+        update_user_meta($user_id, $meta_keys[$i], $meta_values[$i], $prev_values[$i]);
+
+    }
+
+    return $i;
+}
+add_action('wp_ajax_register_user', 'vb_reg_new_user');
+add_action('wp_ajax_nopriv_register_user', 'vb_reg_new_user');

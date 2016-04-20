@@ -399,3 +399,33 @@ msgstr ""
 #: template-parts/content.php:14
 msgid "Featured"
 msgstr ""
+
+#: header.php:12
+msgid "Find a Course"
+msgstr ""
+
+#: header.php:13
+msgid "VietNam National Handicap System"
+msgstr ""
+
+#: header.php:15
+msgid "Making Vietnam"
+msgstr ""
+
+#: header.php:16
+msgid "Golf Better"
+msgstr ""
+
+#: header.php:17
+msgid "HELP GROW THE GAME IN VIETNAM"
+msgstr ""
+
+#: footer.php:2
+msgid "Proud Partners"
+msgstr ""
+
+#: footer.php:3
+msgid "VietCap. Designed with"
+msgstr ""
+
+

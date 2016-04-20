@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nisarg\n"
-"POT-Creation-Date: 2016-04-14 00:12+0700\n"
-"PO-Revision-Date: 2016-04-14 00:13+0700\n"
+"POT-Creation-Date: 2016-04-15 20:28+0700\n"
+"PO-Revision-Date: 2016-04-15 20:30+0700\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_nx;_x;esc_html_x;esc_html__;esc_html_e\n"
 "Last-Translator: \n"
-"Language: vi\n"
+"Language: vi_VN\n"
 "X-Poedit-SearchPath-0: .\n"
 
 #: 404.php:16
@@ -155,7 +155,7 @@ msgstr ""
 
 #: inc/customizer.php:28
 msgid "Log in"
-msgstr "Đăng nhập"
+msgstr ""
 
 #: inc/customizer.php:29
 msgid "Applied to header background."
@@ -398,3 +398,31 @@ msgstr ""
 #: template-parts/content.php:14
 msgid "Featured"
 msgstr ""
+
+#: header.php:12
+msgid "Find a Course"
+msgstr ""
+
+#: header.php:13
+msgid "VietNam National Handicap System"
+msgstr ""
+
+#: header.php:15
+msgid "Making Vietnam"
+msgstr "Làm cho Việt Nam"
+
+#: header.php:16
+msgid "Golf Better"
+msgstr "Sân tốt hơn"
+
+#: header.php:17
+msgid "HELP GROW THE GAME IN VIETNAM"
+msgstr "GIÚP PHÁT TRIỂN CÁC TRÒ CHƠI TẠI VIỆT NAM"
+
+#: footer.php:2
+msgid "Proud Partners"
+msgstr "Đối tác"
+
+#: footer.php:3
+msgid "VietCap. Designed with"
+msgstr "VietCap. Được thiết kế với"

@@ -42,7 +42,7 @@
             <div class="modal-content">
               <div class="modal-header">
                <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
-                <a href="#" class="btn  btn-radius btn-lg"><i class="fa fa-search cl-white" aria-hidden="true"></i> Find a Course</a>
+                <a href="#" class="btn  btn-radius btn-lg"><i class="fa fa-search cl-white" aria-hidden="true"></i> <?php _e('Find a Course', 'nisarg'); ?></a>
               </div>
               <div class="modal-body">
                 <nav id="left-navigation" class="navbar-modern navbar-footer" role="navigation">
@@ -92,7 +92,7 @@
            'hide_if_empty' => 0,
            'display_names_as' => 1
         )); ?>
-        <a href="#" class="btn btn-login btn-radius"><?php _e( 'Log in', 'nisarg' ); ?></a>
+        <a href="<?php echo get_site_url(); ?>/login" class="btn btn-login btn-radius"><?php _e( 'Log in', 'nisarg' ); ?></a>
       </div>
     </div>
   </div> <!-- end .container-fluid -->

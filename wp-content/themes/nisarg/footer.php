@@ -56,7 +56,7 @@
 					<?php echo '&copy; '.date("Y"); ?>
 					<span class="sep"> | </span>
 					<?php printf( esc_html__( 'VietCap. Designed with ','nisargf')); ?>
-					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'nisarg' ) ); ?>">WordPress</a>
+					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'nisarg' ) ); ?>">Thien LL</a>
 				</div><!-- .site-info -->
 				<div  class="col-sm-6 app-store">
 					<a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/footers/logo-google-play.png" alt="" /></a>
