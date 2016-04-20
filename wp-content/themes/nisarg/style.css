@@ -53,7 +53,7 @@ button,
 input,
 select,
 textarea {
-    color: #424242;
+    color: #000;
     font-size: 14px;
     font-weight: 400;
     font-family: 'Lato', sans-serif;
@@ -277,7 +277,7 @@ textarea:hover {
 	outline: 0;
 }
 
-button,
+/* button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -318,7 +318,7 @@ input[type="submit"]:active {
     background:    -webkit-linear-gradient(#607d8b, #455a64);
     background:    linear-gradient(#607d8b, #455a64);
     color:#fff;
-}
+} */
 
 input[type=text],
 input[type=email],
@@ -517,7 +517,10 @@ img.wp-post-image{
 }
 
 
-button, a.btn, input.btn, .btn{
+button, a.btn, input.btn, .btn,
+input[type="button"],
+input[type="reset"],
+input[type="submit"]{
     background: #0b9347;
     border: none;
     text-align: center;
@@ -560,6 +563,10 @@ button, a.btn, input.btn, .btn{
     background: #ffdf59 !important;
 }
 
+.bg-blue {
+    background: #367aad !important;
+}
+
 .cl-red {
     color: #eb3d37 !important;
 }
@@ -569,6 +576,10 @@ button, a.btn, input.btn, .btn{
 }
 .cl-white {
     color: #fff !important;
+}
+
+.cl-green {
+    color: #0b9347 !important;
 }
 
 /**
@@ -1196,6 +1207,19 @@ color: #000000;
     margin: 10px 0px;
 }
 
+#page-join-now .join-now-header {
+    padding: 0px 15px;
+}
+#page-join-now .join-now-title {
+    font-size: 24px;
+    color: #333333;
+    text-align: center;
+    font-weight: bold;
+    text-transform: none;
+    border-bottom: 1px solid #dadada;
+    padding: 15px 15px;
+}
+
 /*
 * 4.3 Post Formats
 * -------------------------------------
@@ -1386,7 +1410,7 @@ color: #000000;
 }
 .home-action .btn {
     padding: 15px 20px;
-    font-size: 16px;
+    font-size: 18px;
     min-width: 230px;
     margin: 30px 15px;
 }
@@ -1395,9 +1419,21 @@ color: #000000;
     font-size: 22px;
     margin-right: 5px;
 }
+.home-action .btn span {
+    display: inline-block;
+}
 .home-action .btn img {
-    margin-top: -3px;
-    margin-right: 5px;
+    margin-top: -5px;
+    margin-right: 10px;
+}
+.home-action .btn.btn-download img {
+    margin: -28px 10px 0 10px;
+}
+.home-action .btn-download {
+   padding: 2px 20px;
+   min-height: 55px;
+   background: #f4f4f4;
+   color: #333333;
 }
 /**
  * 5.0 Sidebar - Widgets

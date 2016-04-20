@@ -41,7 +41,6 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-               <!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> -->
                 <a href="#" class="btn  btn-radius btn-lg"><i class="fa fa-search cl-white" aria-hidden="true"></i> <?php _e('Find a Course', 'nisarg'); ?></a>
               </div>
               <div class="modal-body">
@@ -101,18 +100,18 @@
     <div class="container">
         <?php if(is_front_page()): ?>
         <div class="row site-header-info">
-          <div class="col-md-6 text-right"><a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vietcap.png" alt="" /></a>
-            <a href="" class="btn btn-vietcap">
+          <div class="col-md-6 text-right"><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vietcap.png" alt="" />
+            <span class="btn btn-vietcap">
               <h3><?php _e( 'VietCap', 'nisarg' ); ?></h3>
               <h4><?php _e( 'VietNam National Handicap System', 'nisarg' ); ?></h4>
-            </a>
+            </span>
           </div>
           <div class="col-md-6">
-            <a href="" class="btn btn-golf-better">
+            <span class="btn btn-golf-better">
               <h3><?php _e( 'Making Vietnam', 'nisarg' ); ?></h3>
               <h3><?php _e( 'Golf Better', 'nisarg' ); ?></h3>
-            </a>
-            <a href=""><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vga.png" alt="" /></a>
+            </span>
+            <span href=""><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vga.png" alt="" /></span>
           </div>
         </div>
       <?php elseif(is_page('join-now') || is_page('dang-ky')): ?>

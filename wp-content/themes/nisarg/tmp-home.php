@@ -9,8 +9,10 @@
     <div class="section-homepage">
         <div class="home-action">
             <div class="container">
-                <a href="" class="btn btn-radius bg-red"><img src="<?php bloginfo('template_directory'); ?>/images/icon-download.png" alt=""> <?php _e('Download Now', 'nisarg') ?></a>
-                <a href="" class="btn btn-radius bg-yellow"><i class="fa fa-search cl-white" aria-hidden="true"></i> <?php _e('Find a Course', 'nisarg') ?></a>
+                <a href="" class="btn btn-radius btn-download"><img src="<?php bloginfo('template_directory'); ?>/images/icon-vietcap.png" alt=""> <span> <?php _e('Download', 'nisarg');?><br><?php _e('Application For Free', 'nisarg') ?></span>
+                    <img src="<?php bloginfo('template_directory'); ?>/images/icon-download.png" alt="">
+                </a>
+                <a href="" class="btn btn-radius bg-red"><img src="<?php bloginfo('template_directory'); ?>/images/icon-search.png" alt=""> <?php _e('Find a Course', 'nisarg') ?></a>
             </div>
         </div>
         <div class="container">

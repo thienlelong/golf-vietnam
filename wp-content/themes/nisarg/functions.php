@@ -141,11 +141,11 @@ add_action( 'widgets_init', 'nisarg_widgets_init' );
 function nisarg_scripts() {
 	wp_enqueue_style( 'bootstrap', get_template_directory_uri().'/css/bootstrap.css' );
 
-	wp_enqueue_style( 'nisarg-style', get_stylesheet_uri() );
 
-	wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/font-awesome/css/font-awesome.min.css' );
-	wp_enqueue_style( 'owl-carousel', get_template_directory_uri().'/owl-carousel/assets/owl.carousel.css' );
-	wp_enqueue_style( 'owl-carousel-themes', get_template_directory_uri().'/owl-carousel/assets/owl.theme.css' );
+    wp_enqueue_style( 'font-awesome', get_template_directory_uri().'/font-awesome/css/font-awesome.min.css' );
+    wp_enqueue_style( 'owl-carousel', get_template_directory_uri().'/owl-carousel/assets/owl.carousel.css' );
+    wp_enqueue_style( 'owl-carousel-themes', get_template_directory_uri().'/owl-carousel/assets/owl.theme.css' );
+	wp_enqueue_style( 'nisarg-style', get_stylesheet_uri() );
 
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.js',array('jquery'),'',true);
 

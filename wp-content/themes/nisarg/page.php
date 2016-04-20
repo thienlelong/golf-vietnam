@@ -23,7 +23,7 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
-				<?php get_template_part( 'template-parts/content', 'page' ); ?>
+				<?php get_template_part( 'template-parts/content', 'joinnow' ); ?>
 
 			<?php endwhile; // End of the loop. ?>
 
