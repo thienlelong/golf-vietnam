@@ -54,7 +54,7 @@ input,
 select,
 textarea {
     color: #000;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
     font-family: 'Lato', sans-serif;
 }
@@ -69,8 +69,8 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p{
-    margin-bottom: 1.5em;
-    line-height: 1.7em;
+    margin-bottom: 10em;
+    /* line-height: 1.7em; */
 }
 
 
@@ -582,6 +582,10 @@ input[type="submit"]{
     color: #0b9347 !important;
 }
 
+.cl-blue {
+    color: #367aad !important;
+}
+
 /**
  * 3.0 Header
  * ----------------------------------------------------------------------------
@@ -951,14 +955,14 @@ color: #000000;
 }
 
 .post-content,.single-post-content,.post-comments,.comments-area{
-    background-color: white;
+    /* background-color: white; */
     clear: both;
     margin-bottom: 2em;
 
-    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-    -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
-    -o-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+   /*  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.15);
+   -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+   -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+   -o-box-shadow: 0 0 1px rgba(0, 0, 0, 0.15); */
 }
 
 .entry-header,.entry-content,.entry-summary,.entry-footer{
@@ -1209,6 +1213,10 @@ color: #000000;
 
 #page-join-now .join-now-header {
     padding: 0px 15px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+    -moz-box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+    box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
 }
 #page-join-now .join-now-title {
     font-size: 24px;
@@ -1220,6 +1228,57 @@ color: #000000;
     padding: 15px 15px;
 }
 
+.btn-join-club {
+    font-size: 24px;
+    text-transform: none;
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+}
+.btn-join-club p {
+    margin-bottom: 0px;
+    line-height: 24px;
+}
+
+.btn-join-club p:last-child {
+    font-size: 13px;
+    font-weight: 300;
+}
+.join-club .club-title {
+    margin: 25px 0;
+}
+
+.btn-large {
+    font-size: 25px !important;
+    text-transform: capitalize !important;
+}
+.section-membership .price {
+    font-size: 30px;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-right: 30px;
+}
+.section-membership .price .units {
+    font-size: 20px;
+}
+
+.membership-info {
+    font-size: 30px;
+}
+
+.membership-info p {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.membership-info p:last-child {
+    font-size: 15px;
+
+}
+.section-membership .alert-danger {
+    margin-top: 25px;
+}
 /*
 * 4.3 Post Formats
 * -------------------------------------
