@@ -11,6 +11,7 @@ add_filter( 'ot_show_pages', '__return_false' );
 require_once(OPT . '/ot-loader.php');
 include(TEMPLATEPATH.'/theme-options.php');
 include(TEMPLATEPATH.'/functions/post-type-clubs.php');
+include(TEMPLATEPATH.'/functions/post-type-events.php');
 include(TEMPLATEPATH.'/functions/metaboxes.php');
 if ( ! function_exists( 'nisarg_setup' ) ) :
 /**

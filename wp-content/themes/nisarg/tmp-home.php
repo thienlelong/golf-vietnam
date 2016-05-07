@@ -17,22 +17,39 @@
         </div>
         <div class="container">
             <div class="row home-box">
-                <div class="col-sm-4">
+                <?php
+                    $args = array(
+                        'type'                     => 'golf_events',
+                        'child_of'                 => 0,
+                        'parent'                   => '',
+                        'orderby'                  => 'id',
+                        'order'                    => 'DESC',
+                        'hide_empty'               => 1,
+                        'hierarchical'             => 1,
+                        'exclude'                  => '',
+                        'include'                  => '',
+                        'number'                   => 2,
+                        'taxonomy'                 => 'events-category',
+                        'pad_counts'               => false );
+                    $categories = get_categories($args);
+                    $i=0;
+                ?>
+
+                <?php foreach ($categories as $category) {
+                    $slug = 'golf-events?category='.$category->slug;
+                    $name = $category->name;
+                    $i++;
+                    ?>
+                    <div class="col-sm-4">
                     <div class="box">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/national-event.png" alt="">
+                        <img src="<?php bloginfo('template_directory'); ?>/images/event-<?php echo $i; ?>.png" alt="">
                         <div class="box-title">
-                            <h3><a href=""> <?php _e('National Events 2016', 'nisarg') ?></a></h3>
+                            <h3><a href="<?php echo site_url($slug)?>"><?php _e($name, 'nisarg') ?></a></h3>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-4">
-                    <div class="box">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/junior-golf.png" alt="">
-                        <div class="box-title">
-                            <h3><a href="<?php echo site_url('golf-club-listings')?>"><?php _e('Junior Golf 2016', 'nisarg') ?></a></h3>
-                        </div>
-                    </div>
-                </div>
+                <?php
+                } ?>
                 <div class="col-sm-4">
                     <div class="box">
                         <ul id="portfolio" class="clearfix">

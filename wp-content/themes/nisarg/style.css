@@ -1448,7 +1448,7 @@ color: #000000;
 .page-amateur-status {
     background: url(images/bg-amateur-status.jpg) no-repeat bottom;
 }
-/* page list clube */
+/* page list  */
 .list-search {
     position: relative;
     margin: 30px auto;
@@ -1511,6 +1511,67 @@ color: #000000;
 .list-clubs .club-detail a:hover{
    color: #0b9347;
 }
+
+/* page events */
+
+.page-events .event-title {
+    color: #333333;
+    font-size: 25px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+.page-events .event-club {
+    color: #8a8a8a;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 15px;
+}
+.page-events .event-club a{
+    color: #1a7dc8;
+}
+.page-events .event-club a:hover{
+    color: #0b9347;
+}
+.page-events .event-address img{
+    margin: -2px 10px 0 0;
+}
+.page-events .event-address {
+    color: #525252;
+    line-height: 17px;
+}
+.page-events .meta-dates span{
+    font-size: 15px;
+    color: #8a8a8a;
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+.page-events .meta-dates p{
+    font-size: 20px;
+    color: #000;
+}
+a.btn-border {
+    width: 100%;
+    border: 1px solid #0b9347;
+    color: #0b9347;
+    background: #fff;
+    font-size: 13px;
+    padding: 6px 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;
+    text-align: center;
+    margin-top: 5px;
+}
+.btn-border:hover,
+.btn-border:focus {
+    background: #0b9347;
+    color: #fff;
+    text-decoration: none;
+}
+
 /*
 * 4.3 Post Formats
 * -------------------------------------
