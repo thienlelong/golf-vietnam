@@ -25,7 +25,7 @@ get_header(); ?>
 				</div>
 				<?php if(is_page('join-now')) {
 						get_template_part( 'template-parts/content', 'joinnow' );
-					} elseif(is_page('golf-club-listings')) {
+					} elseif(is_page('golf-club-listings') || is_page('danh-sach-golf-club')) {
 						get_template_part( 'template-parts/content', 'golf-club-listings' );
 					}else {
 						get_template_part( 'template-parts/content', 'page' );

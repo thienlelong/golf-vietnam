@@ -87,4 +87,31 @@ jQuery(document).ready(function($) {
         }
       }, 1000);
   });
+
+  $('.page-static a[href*=#]:not([href=#])').click(function () {
+      if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          if (target.length) {
+              $('html,body').animate({
+                  scrollTop: target.offset().top - 50
+              }, 1000);
+              return false;
+          }
+      }
+  });
+
+  $('#portfolio').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    image: {
+      cursor: null,
+      titleSrc: 'title'
+    },
+    gallery: {
+      enabled: true,
+      preload: [0,1], // Will preload 0 - before current, and 1 after the current image
+      navigateByImgClick: true
+    }
+  });
 });

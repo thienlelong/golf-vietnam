@@ -17,7 +17,8 @@
 		<div class="entry-meta"></div>.entry-meta
 	</header> --><!-- .entry-header -->
 	<div class="entry-content page-content">
-		<?php the_content(); ?>
+		<?php the_content();
+		?>
 		<?php
 			wp_link_pages( array(
 				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'nisarg' ),

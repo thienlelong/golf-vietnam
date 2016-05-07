@@ -29,15 +29,19 @@
                     <div class="box">
                         <img src="<?php bloginfo('template_directory'); ?>/images/junior-golf.png" alt="">
                         <div class="box-title">
-                            <h3><a href=""><?php _e('Junior Golf 2016', 'nisarg') ?></a></h3>
+                            <h3><a href="<?php echo site_url('golf-club-listings')?>"><?php _e('Junior Golf 2016', 'nisarg') ?></a></h3>
                         </div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="box">
-                        <img src="<?php bloginfo('template_directory'); ?>/images/members.png" alt="">
+                        <ul id="portfolio" class="clearfix">
+                            <li><a href="<?php bloginfo('template_directory'); ?>/images/members.png" title=""><img src="<?php bloginfo('template_directory'); ?>/images/members.png" alt=""></a>
+                            </li>
+                            <li><a href="<?php bloginfo('template_directory'); ?>/images/junior-golf.png" title=""></a></li>
+                        </ul>
                         <div class="box-title">
-                            <h3><a href=""><?php _e('20,000th Member', 'nisarg') ?></a></h3>
+                            <h3><?php _e('20,000th Member', 'nisarg') ?></h3>
                         </div>
                     </div>
                 </div>

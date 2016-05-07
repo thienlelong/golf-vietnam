@@ -591,7 +591,10 @@ input[type="submit"]{
 }
 
 .inner-70 {
-    padding: 15px 70px;
+    padding: 15px 70px !important;
+}
+.inner-100 {
+    padding: 15px 100px !important;
 }
 /**
  * 3.0 Header
@@ -637,6 +640,7 @@ header a.menu-toggle {
     cursor: pointer;
     text-decoration: none;
     outline: none;
+    /* width: 120px; */
 }
 .header-right .language-toggle {
     color: #5a5959;
@@ -647,6 +651,10 @@ header a.menu-toggle {
     text-decoration: none;
     padding: 0 15px;
 }
+/* .header-right select option {
+    background: url(images/headers/icon-vietnam.png) no-repeat 0 0;
+
+} */
 .header-right .btn-login {
     margin: 20px 15px;
 }
@@ -732,8 +740,8 @@ header a.menu-toggle {
     display: table;
 }
 .navbar-nav > li > a {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     color: #000;
     line-height: 35px;
     display: block;
@@ -742,6 +750,17 @@ header a.menu-toggle {
     text-transform: uppercase;
     font-family: 'Lato', sans-serif;
 }
+#navigation_menu .navbar-nav > li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#navigation_menu .navbar-nav > li > a:hover,
+#navigation_menu .navbar-nav > .active > a {
+    color: #fff;
+    background: #0b9347;
+    border-radius: 50px;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
 }
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
     background-color: #fff;
@@ -760,10 +779,10 @@ header a.menu-toggle {
 .navbar-default .navbar-text {
     color: #333333;
 }
-.navbar-default .navbar-nav > li > a {
+/* .navbar-default .navbar-nav > li > a {
     border-top: 4px solid #fff;
     border-bottom: 4px solid #fff;
-}
+} */
 .navbar-default .navbar-nav > li > a {
     color: #000;
 }
@@ -775,13 +794,15 @@ color: #333333;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-color: #fff;
+    color: #fff;
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
 background-color: #ffffff;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-background: #fff;
+    background: #0b9347;
+    border-top: 0px !important;
+    color: #fff !important;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
 background: #fff;
@@ -1127,7 +1148,7 @@ color: #000000;
 }
 
 .entry-summary,.entry-content{
-    text-align: justify;
+    text-align: left;
 }
 
 .read-more{
@@ -1166,9 +1187,29 @@ color: #000000;
 * --------------------------------------------------------------
 */
 
+.page-content .pagination li a {
+    font-size: 13px;
+    font-family: 'Open Sans';
+    color: #8a8a8a;
+}
+.page-content .pagination li span.current {
+    background: #0b9347;
+    color: #fff;
+    font-weight: bold;
+    font-size: 13px;
+    margin: -1px 0px;
+    padding: 11px 16px;
+}
+.page-content .pagination > li > a, .page-content .pagination > li > span {
+    padding: 10px 16px;
+}
+
 .page-header {
     margin: 55px 0px;
     margin-bottom: 45px;
+}
+.page-header .entry-title {
+    font-size: 32px;
 }
 .page-links {
     clear: both;
@@ -1336,7 +1377,8 @@ color: #000000;
 }
 
 .page-static {
-    padding: 15px 100px;
+    padding: 15px 0;
+    background: url(images/bg-amateur-status.jpg) no-repeat bottom;
 }
 
 .page-static h2 {
@@ -1349,11 +1391,63 @@ color: #000000;
     font-weight: bold;
     margin-bottom: 15px;
 }
-
+.page-static h4.meta {
+    color: #5e5e5e;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 20px 0;
+}
 .page-static img {
     margin: 30px auto;
 }
+.page-static .list-dot {
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+.page-static .list-dot li{
+    margin-bottom: 7px;
+    padding-left: 5px;
+}
+.page-static p {
+    margin-bottom: 20px;
+}
+.page-static a {
+    color: #1871b4;
+    font-weight: 700;
+    cursor: pointer;
+}
+.sidemenulist {
+    list-style: none;
+    padding-left: 0px;
+    margin-top: 15px;
+    width: 100%;
+    list-style-position: inside;
+    list-style-image: url(images/sidemenucarret.png);
+    font-weight: bold;
+}
+.sidemenulist li {
+    width: 100%;
+}
+.sidemenulist>li a {
+    color: inherit;
+    display: inline-block;
+    line-height: 40px;
+    width: 92%;
+    border-bottom: solid 1px #ebebeb;
+    text-decoration: none;
+}
+.sidemenulist>li>ul a {
+    font-weight: 400;
+}
+.sidemenulist>li>ul {
+    padding-left: 15px;
+    font-weight: normal;
+}
 
+.page-amateur-status {
+    background: url(images/bg-amateur-status.jpg) no-repeat bottom;
+}
 /* page list clube */
 .list-search {
     position: relative;
@@ -1593,7 +1687,10 @@ color: #000000;
     box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
     margin: 15px 0px;
 }
-
+.home-box .box #portfolio {
+    list-style: none;
+    padding-left: 0px;
+}
 .home-box .box .box-title h3{
     font-size: 22px;
     font-weight: bold;
@@ -1995,7 +2092,13 @@ hr.line-title {
         font-size: 16px
     }
     .inner-70 {
-        padding: 15px 0px;
+        padding: 15px 0px !important;
+    }
+    .inner-100 {
+        padding: 15px 0px !important;
+    }
+    #navigation_menu .navbar-nav > li {
+        padding: 5px;
     }
     .site-header{
         position: relative;
