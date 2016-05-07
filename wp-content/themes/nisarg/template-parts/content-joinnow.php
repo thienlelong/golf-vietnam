@@ -47,15 +47,38 @@
             </div>
             <div class="col-sm-6 text-right">
                 <span class="price">888,888 <span class="units">VND</span></span>
-                <a href="#" class="btn btn-radius bg-red btn-lg btn-large">Click Here</a>
+                <a href="#" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a>
             </div>
         </div>
         <div class="alert alert-danger" role="alert"><?php _e('<strong>Note:</strong>  When making payment click the “Automatically Renew” function which will keep your existing account active yearly.', 'nisarg'); ?></div>
     </div>
-
-
-    <div class="entry-content">
-
+    <div class="join-now-content">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="join-now-membership">
+                    <h3 class="memba">Membership Benefits Include:</h3>
+                    <ul class="list-membership">
+                        <li>On-line FREE VietCap application</li>
+                        <li>Official Golf Vietnam Handicap Factor</li>
+                        <li>Internationally recognized membership card</li>
+                        <li>Access to official Handicap Rules</li>
+                        <li>Access to official Amateur Status rules</li>
+                        <li>Access to play in Club and National Events</li>
+                        <li>“Peer Review” allows all players access to each other’s scores and trends</li>
+                        <li>Record own scores on same day</li>
+                        <li>Receive daily updated handicaps</li>
+                        <li>Access to authorized Clubs Handicap charts to adjust handicaps accordingly</li>
+                        <li>Shop On-line for golf products and high end luxury products</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-6 join-now-banner">
+                <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/baner-myjoys.png" alt="" /></a>
+                <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/baner-result.png" alt="" /></a>
+                <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/baner-shopall.png" alt="" /></a>
+                <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/baner-buma.png" alt="" /></a>
+            </div>
+        </div>
     </div><!-- .entry-content -->
 </article><!-- #post-## -->
 

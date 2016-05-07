@@ -10,6 +10,8 @@ add_filter( 'ot_theme_mode', '__return_true' );
 add_filter( 'ot_show_pages', '__return_false' );
 require_once(OPT . '/ot-loader.php');
 include(TEMPLATEPATH.'/theme-options.php');
+include(TEMPLATEPATH.'/functions/post-type-clubs.php');
+include(TEMPLATEPATH.'/functions/metaboxes.php');
 if ( ! function_exists( 'nisarg_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

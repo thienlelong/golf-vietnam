@@ -57,6 +57,10 @@ textarea {
     font-size: 15px;
     font-weight: 400;
     font-family: 'Lato', sans-serif;
+
+}
+body {
+     line-height: 1.6em;
 }
 
 
@@ -69,7 +73,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 p{
-    margin-bottom: 10em;
+    /* margin-bottom: 10em; */
     /* line-height: 1.7em; */
 }
 
@@ -586,6 +590,9 @@ input[type="submit"]{
     color: #367aad !important;
 }
 
+.inner-70 {
+    padding: 15px 70px;
+}
 /**
  * 3.0 Header
  * ----------------------------------------------------------------------------
@@ -966,7 +973,7 @@ color: #000000;
 }
 
 .entry-header,.entry-content,.entry-summary,.entry-footer{
-    padding: 0 4em;
+    padding: 0 15px;
 }
 
 .featured-image{
@@ -1000,8 +1007,8 @@ color: #000000;
 .post-content hr{
     margin-top: 20px;
     margin-bottom: 20px;
-    border-color: #B6B6B6;
-    border-style: dotted;
+    border-color: #eaeaea;
+    border-style: dashed;
     width: 100%;
 }
 
@@ -1027,7 +1034,7 @@ color: #000000;
 
 .page-title,
 .entry-title {
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 700;
 }
 
@@ -1161,12 +1168,20 @@ color: #000000;
 
 .page-header {
     margin: 55px 0px;
+    margin-bottom: 45px;
 }
 .page-links {
     clear: both;
     margin: 0 0 1.5em;
 }
 
+.page-content {
+    background: #fff;
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+    -moz-box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+    box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+
+}
 .nav-links{
     background: #fff;
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.15);
@@ -1278,6 +1293,129 @@ color: #000000;
 }
 .section-membership .alert-danger {
     margin-top: 25px;
+    margin-bottom: 30px;
+}
+
+.join-now-membership {
+    padding: 10px 15px ;
+    background: white;
+    -webkit-box-shadow: 2px 4px 5px 0px rgba(200,202,204,1);
+    -moz-box-shadow: 2px 4px 5px 0px rgba(200,202,204,1);
+    box-shadow: 2px 4px 5px 0px rgba(200,202,204,1);
+}
+
+.join-now-membership .memba{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.join-now-membership .list-membership {
+    list-style: none;
+    padding: 8px 0px;
+    margin: 0px;
+}
+.join-now-membership .list-membership li{
+    width: 100%;
+    padding-left: 20px;
+    background: url(images/list-item.png) no-repeat center left 5px;
+    color: #2482c9;
+    margin-bottom: 3px;
+    font-size: 14px;
+
+}
+.join-now-banner {
+    padding-left: 30px;
+}
+.join-now-banner a{
+    display: inline-block;
+    width: 48.2%;
+    margin-bottom: 15px;
+}
+.join-now-banner a:nth-child(2n+1){
+    margin-right: 15px;
+}
+
+.page-static {
+    padding: 15px 100px;
+}
+
+.page-static h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.page-static h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.page-static img {
+    margin: 30px auto;
+}
+
+/* page list clube */
+.list-search {
+    position: relative;
+    margin: 30px auto;
+    max-width: 500px;
+}
+.list-search input[type=text]{
+    width: 100%;
+    height: 40px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    padding-left: 25px;
+    padding-right: 120px;
+    line-height: 40px;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    font-size: 14px;
+}
+.list-search input[type=submit]{
+    height: 40px;
+    width: 135px;
+    position: absolute;
+    color: white;
+    padding: 0 20px 0 50px;
+    background: url(images/icon-search-list.png) no-repeat center left 19px #0b9347;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    border: 1px solid #0b9347;
+    font-size: 16px;
+}
+
+.list-clubs .club-item {
+    margin: 15px 0px 30px;
+}
+.list-clubs .club-logo {
+    width: 30%;
+    float: left;
+    border: 1px solid #ebebeb;
+    margin-right: 5%;
+}
+.list-clubs .club-detail {
+    width: 65%;
+    float: left;
+}
+.list-clubs .club-detail .club-name {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 5px;
+}
+.list-clubs .club-detail a{
+   color: #4a89dc;
+}
+.list-clubs .club-detail a:hover{
+   color: #0b9347;
 }
 /*
 * 4.3 Post Formats
@@ -1468,7 +1606,7 @@ color: #000000;
     min-height: 112px;
 }
 .home-action .btn {
-    padding: 15px 20px;
+    padding: 10px 20px;
     font-size: 18px;
     min-width: 230px;
     margin: 30px 15px;
@@ -1485,14 +1623,23 @@ color: #000000;
     margin-top: -5px;
     margin-right: 10px;
 }
-.home-action .btn.btn-download img {
+.home-action .btn.btn-download img,
+.home-action .btn-associal img {
     margin: -28px 10px 0 10px;
 }
 .home-action .btn-download {
-   padding: 2px 20px;
+   padding: 10px 20px;
    min-height: 55px;
    background: #f4f4f4;
    color: #333333;
+   text-transform: none;
+}
+
+.home-action .btn-associal {
+    background: #34c1be;
+    color: #fff;
+    text-transform: none;
+    padding: 10px 40px;
 }
 /**
  * 5.0 Sidebar - Widgets
@@ -1730,6 +1877,13 @@ hr.line-title {
     header a.menu-toggle {
         padding-left: 0px;
     }
+
+    .join-now-banner a{
+        width: 47%;
+    }
+    .list-clubs .club-detail .club-name {
+        margin-top: 15px;
+    }
 }
 
 @media (max-width: 990px){
@@ -1840,6 +1994,9 @@ hr.line-title {
     body{
         font-size: 16px
     }
+    .inner-70 {
+        padding: 15px 0px;
+    }
     .site-header{
         position: relative;
         width: 100%;
@@ -1900,6 +2057,17 @@ hr.line-title {
     }
     .owl-theme .owl-controls .owl-buttons .owl-next {
         right: 0;
+    }
+    .join-now-banner {
+        margin-top: 15px;
+        text-align: center;
+        padding-left: 15px;
+    }
+    .join-now-banner img{
+        width: 100%;
+    }
+    .page-static {
+        padding: 15px;
     }
 }
 @media (max-width: 359px) {

@@ -17,14 +17,20 @@ get_header(); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<div class="page-header">
 					<div class="row">
-						<div class="col-sm-3"><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?></div>
-						<div class="col-sm-9 text-right">
+						<div class="col-md-4"><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?></div>
+						<div class="col-md-8 text-right">
 							<img src="<?php bloginfo('template_directory'); ?>/images/page-banner.png" alt="">
 						</div>
 					</div>
 				</div>
-				<?php get_template_part( 'template-parts/content', 'joinnow' ); ?>
-
+				<?php if(is_page('join-now')) {
+						get_template_part( 'template-parts/content', 'joinnow' );
+					} elseif(is_page('golf-club-listings')) {
+						get_template_part( 'template-parts/content', 'golf-club-listings' );
+					}else {
+						get_template_part( 'template-parts/content', 'page' );
+					}
+				?>
 			<?php endwhile; // End of the loop. ?>
 
 		</main><!-- #main -->
