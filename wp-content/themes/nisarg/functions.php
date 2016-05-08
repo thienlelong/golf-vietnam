@@ -300,46 +300,34 @@ function my_pmprorh_init()
         );
     //that's it. see the PMPro Register Helper readme for more information and examples.
 }
-/*add_action("init", "my_pmprorh_init");*/
 
-/*// define the pmpro_required_billing_fields callback
-function filter_pmpro_required_billing_fields( $array ) {
-    // make filter magic happen here...
-    print_r($array);
-    return $array;
-};
-
-// add the filter
-add_filter( 'pmpro_required_billing_fields', 'filter_pmpro_required_billing_fields', 10, 1 );*/
-
-/*add_filter('pmpro_required_billing_fields', 'pmpro_required_billing_fields_ow',1,1);
-function pmpro_required_billing_fields_ow(){
-	 global $bfirstname, $blastname, $baddress1, $bcity, $bstate, $bzipcode, $bcountry, $bphone, $bemail;
-		//require fields
-	$pmpro_required_billing_fields = array(
-		"bcity" => $bcity,
-		"bstate" => $bstate,
-		"bzipcode" => $bzipcode,
-		"bphone" => $bphone,
-		"bemail" => $bemail,
-
-	);
-	return $pmpro_required_billing_fields;
+function wc_custom_user_redirect( $redirect, $user ) {
+    // Get the first of all the roles assigned to the user
+    $role = $user->roles[0];
+    $dashboard = admin_url();
+    $home_page = get_home_url();
+    if( $role == 'administrator' ) {
+        //Redirect administrators to the dashboard
+        $redirect = $dashboard;
+    } elseif ( $role == 'shop-manager' ) {
+        //Redirect shop managers to the dashboard
+        $redirect = $dashboard;
+    } elseif ( $role == 'editor' ) {
+        //Redirect editors to the dashboard
+        $redirect = $dashboard;
+    } elseif ( $role == 'author' ) {
+        //Redirect authors to the dashboard
+        $redirect = $dashboard;
+    } elseif ( $role == 'customer' || $role == 'subscriber' ) {
+        //Redirect customers and subscribers to the "My Account" page
+        $redirect = $home_page;
+    } else {
+        //Redirect any other role to the previous visited page or, if not available, to the home
+        $redirect = wp_get_referer() ? wp_get_referer() : home_url();
+    }
+    return $redirect;
 }
-
-add_filter('pmpro_required_user_fields', 'pmpro_required_user_fields_ow',1,1);
-function pmpro_required_user_fields_ow(){
-	 global $username, $bemail, $password2, $bconfirmemail;
-		//require fields
-	$pmpro_required_user_fields = array(
-
-		"password2" => $password2,
-		"bemail" => $bemail,
-		"bconfirmemail" => $bconfirmemail
-
-	);
-	return $pmpro_required_user_fields;
-}*/
+add_filter( 'woocommerce_login_redirect', 'wc_custom_user_redirect', 10, 2 );
 
 /**
  * New User registration

@@ -33,16 +33,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 <?php endif; ?>
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-5">
 				<form method="post" class="login">
 
 					<?php do_action( 'woocommerce_login_form_start' ); ?>
 
 					<p class="form-row form-row-wide">
-						<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" />
+						<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Username', 'woocommerce' ); ?>" />
 					</p>
 					<p class="form-row form-row-wide">
-						<input class="input-text" type="password" name="password" id="password" />
+						<input class="input-text" type="password" name="password" id="password" placeholder="<?php _e( 'Password', 'woocommerce' ); ?>" />
 					</p>
 
 					<?php do_action( 'woocommerce_login_form' ); ?>
@@ -50,19 +50,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<p class="form-row">
 						<?php wp_nonce_field( 'woocommerce-login' ); ?>
 						<input type="submit" class="btn btn-radius btn-lg-13" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>" />
-						<label for="rememberme" class="inline">
+						<!-- <label for="rememberme" class="inline">
 							<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php _e( 'Remember me', 'woocommerce' ); ?>
-						</label>
+						</label> -->
 					</p>
 					<p class="lost_password">
-						<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Lost your password?', 'woocommerce' ); ?></a>
+						<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Forgot your password or username?', 'woocommerce' ); ?></a>
 					</p>
 
 					<?php do_action( 'woocommerce_login_form_end' ); ?>
 
 				</form>
+				<div class="member-card">
+					<img src="<?php bloginfo('template_directory'); ?>/images/member-card.png" alt="">
+				</div>
 			</div>
-			<div class="col-md-6"></div>
+			<div class="col-md-1"></div>
+			<div class="col-md-6">
+				<div class="join-now-banner">
+	                <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/baner-myjoys.png" alt="" /></a>
+	                <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/baner-result.png" alt="" /></a>
+	                <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/baner-shopall.png" alt="" /></a>
+	                <a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/baner-buma.png" alt="" /></a>
+	            </div>
+			</div>
 		</div>
 
 <?php if ( get_option( 'woocommerce_enable_myaccount_registration' ) === 'yes' ) : ?>
