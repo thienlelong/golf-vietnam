@@ -150,7 +150,7 @@ function nisarg_scripts() {
     wp_enqueue_style( 'owl-carousel-themes', get_template_directory_uri().'/owl-carousel/assets/owl.theme.css' );
     wp_enqueue_style( 'magnific-popup', get_template_directory_uri().'/css/magnific-popup.css' );
 	wp_enqueue_style( 'nisarg-style', get_stylesheet_uri() );
-
+    wp_enqueue_style( 'responsive', get_template_directory_uri().'/css/responsive.css' );
     wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/js/bootstrap.js',array('jquery'),'',true);
     wp_enqueue_script( 'jquery-validate', get_template_directory_uri() . '/js/jquery.validate.min.js',array('jquery'),'',true);
     wp_enqueue_script( 'owl-carousel', get_template_directory_uri() . '/owl-carousel/owl.carousel.min.js', array(),'',true);
@@ -421,7 +421,7 @@ function vb_reg_new_users() {
   /*  if( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'vb_new_user' ) )
          die( 'Ooops, something went wrong, please try again later.' );*/
      $response="";
-     $arrUserId =  array();    
+     $arrUserId =  array();
      $users=$_POST['users'];
      foreach ($users as $u) {
         $uId =  addUser($u);
