@@ -1,0 +1,26 @@
+@media (min-width: 768px){
+
+}
+
+
+
+@media (max-width: 767px){
+
+	#main-navigation{
+		border-top: none;
+	}
+	#main-navigation > ul{
+		margin-left: 0;
+		padding: 10px 0;
+		width: 100%;
+	}
+	#main-navigation > ul > li,
+	#main-navigation > ul > li > a{
+		padding: 0;
+		line-height: 24px;
+	}
+
+	#copyright, .bottom-bar .app-store{
+		text-align: center;
+	}
+}

@@ -1,0 +1,50 @@
+0905986933
+
+[2:03:54 PM] Moonlit Tran: subdomain thi lay site cua ho + moontran.com
+[2:04:09 PM] Moonlit Tran: vidu, brakeandrumble.moontran.com
+[2:04:21 PM] Moonlit Tran: DB thi lay site cua ho la db name
+[2:04:34 PM] Moonlit Tran: vidu DB name = brakeandrumble
+[2:04:49 PM] Moonlit Tran: DB user thi dung myownco1_vic
+[2:06:41 PM] Moonlit Tran: DB pass AK0*%4!)DD.Q
+[2:06:48 PM] Moonlit Tran: DB host : localhost
+
+[2:01:28 PM] Moonlit Tran: moontran.com/cpanel
+[2:02:06 PM] Moonlit Tran: myownco1
+[2:02:12 PM | Edited 2:02:31 PM] Moonlit Tran: Bluehost3009!(**
+[2:02:37 PM] Moonlit Tran: cho em vao cpanel luon
+
+Utz[VEw]zU;~
+
+HACKATHON CHALLENGE    TICKETS    SPONSORS    VOLUNTEERgenerationcitizen.org
+[9/10/2015 10:33:29 PM] Moonlit Tran: theydj.com
+[9/10/2015 10:33:34 PM] Moonlit Tran: pass: piN%outGOD3qde
+[9/10/2015 10:33:52 PM] Moonlit Tran: user theydj
+
+
+New pSsword   You Can Only Receive Unlimited Jobs & Download By Starting Your 3-Day Trial
+New*****
+Theydj.com/cpanel
+Username: theydj
+Password: xB^O_7{%]hGo
+
+bluehost
+theydjco/DJsavedmylife718!
+http://162.214.11.218/~theydjco/
+346449
+
+Info@theydj.com/Carrot2&^GODw3trust333!
+
+
+H)1oog!J0#BS
+
+	
+Type these commands :
+
+tar -zxvf file_name.tar.gz
+This will extract the file_name.gz to a particular directory. cd folder/
+
+This will change the directory to where you have extracted your tar.gz
+
+./configure
+make
+sudo make install
