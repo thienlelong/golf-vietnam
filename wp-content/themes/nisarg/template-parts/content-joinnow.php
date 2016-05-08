@@ -47,7 +47,7 @@
             </div>
             <div class="col-sm-6 text-right">
                 <span class="price">888,888 <span class="units">VND</span></span>
-                <a href="#" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a>
+                <a href="<?php echo site_url('register')?>" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a>
             </div>
         </div>
         <div class="alert alert-danger" role="alert"><?php _e('<strong>Note:</strong>  When making payment click the “Automatically Renew” function which will keep your existing account active yearly.', 'nisarg'); ?></div>

@@ -18,7 +18,7 @@
                 </div>
                 <article id="post-<?php the_ID(); ?>" <?php post_class('post-content'); ?>>
                     <div class="entry-content">
-                        <div class="payment-infor">
+                        <div class="payment-info">
                             <h2 class="titcontent">Items Details</h2>
                             <div class="pmitem">
                               <div class="pmorder row">

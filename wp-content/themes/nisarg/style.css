@@ -574,6 +574,9 @@ input[type="submit"]{
 .btn-lg {
     padding: 10px 30px !important;
 }
+.btn-lg-13 {
+    padding: 13px 30px !important;
+}
 .btn:active, .btn:focus, .btn:hover{
     outline-width: 0 !important;
     opacity: 0.7;
@@ -1579,7 +1582,9 @@ color: #000000;
     font-size: 20px;
     color: #000;
 }
-a.btn-border {
+a.btn-border,
+button.btn-border,
+input.btn-border {
     width: 100%;
     border: 1px solid #0b9347;
     color: #0b9347;
@@ -2090,259 +2095,191 @@ hr.line-title {
 }
 
 
-/* dung ga */
+
 /*dungdh*/
-.registerUserForm, .payment-infor{
 
-
-    padding: 15px 20px;
-    /*-webkit-box-shadow: 2px 4px 5px 0px rgba(200,202,204,1);
-    -moz-box-shadow: 2px 4px 5px 0px rgba(200,202,204,1);
-    box-shadow: 2px 4px 5px 0px rgba(200,202,204,1);*/
-}
-.form-user-info ,.form-user-address ,.payment-infor{
+.form-user-info,
+.form-user-address,
+.payment-info {
     background: #fff;
     font-family: 'Lato', sans-serif;
     color: #414b51;
-    box-shadow: 2px 4px 5px 0px rgba(200,202,204,1);
-    margin-bottom: 10px;
+    -webkit-box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+    -moz-box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+    box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
+    margin-bottom: 20px;
+    padding: 0 15px;
 }
-.form-user-address .btn-success{display: inline-block;
 
-    text-decoration: none;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    border-radius: 35px;
-    background: #0b9347;
+.form-user-info .form-header .step,
+.form-user-address .form-header .step {
+    background-color: #0b9347;
     color: #fff;
-    border: solid 1px #0b9347;
-    line-height: 45px;
-    font-size: 14px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
     text-align: center;
-    padding: 0 35px;
-    margin-left: 18px;
+    margin-right: 10px;
 }
-.form-user-address .btn-success:hover{
-    background: #fff;
-    color: #0b9347;
-}
-.registerUserForm .form-control {
-        font-size: 14px;
-        height: 38px;
-        margin-bottom: 5px;
-        font-size: 14px;
-}
-.registerUserForm .form-control .labelicon{
-    color: #414b51;
-    font-family: 'Lato', sans-serif;
-    font-weight: bold;
-}
-.registerUserForm .form-group .checkgroup {
-    text-align: center;
-    background-color: #327aad;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    border-radius: 35px;
-    line-height: 45px;
-    text-transform: uppercase;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-    position: relative;
-    padding: 0 5px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 92%;
-}
-.registerUserForm .form-group.checkgroup.active#clubm {
-    background-color: #73cd54;
-}
-.registerUserForm .form-group .checkgroup input[type='checkbox']{
-    display: none;
-}
-.registerUserForm .form-group.checkgroup.active#publicm {
-    background-color: #00b9cc;
-}
-.registerUserForm .form-group.checkgroup.active#associationm {
-    background-color: #1abc9c;
-}
-.registerUserForm .form-group .memoptlist{
-        position: absolute;
-    top: 100%;
-    left: 0;
+.form-user-info .form-header,
+.form-user-address .form-header {
     width: 100%;
-    text-align: left;
-    background-color: #fff;
-    -webkit-box-shadow: 0px 4px 5px 2px rgba(200,202,204,1);
-    -moz-box-shadow: 0px 4px 5px 2px rgba(200,202,204,1);
-    box-shadow: 0px 4px 5px 2px rgba(200,202,204,1);
-    display: none;
-    max-height: 410px;
-    overflow-y: auto;
-    z-index: 1;
-}
-.registerUserForm .form-group .error{
-    border: 1px solid #D3514F;
-}
-.registerUserForm .form-group label.error{
-display: none !important;
-}
-   .form-user-info .form-header .step,.form-user-address .form-header .step {
-        background-color: #0b9347;
-        color: #fff;
-        display: inline-block;
-        width: 40px;
-        height: 40px;
-        text-align: center;
-        margin-right: 10px;
-    }
-     .form-user-info .form-header,.form-user-address .form-header{
-            float: left;
-            width: 100%;
-            font-size: 14px;
-            line-height: 40px;
-            border-bottom: 1px solid #e1e1e1;
-            text-transform: uppercase;
-            font-weight: bold;
-            color: #636363;
-            background: #fff;
-     }
-     #wrapper-btn-signin{
-
-            background: transparent;
-            margin-bottom: 80px;
-            padding: 0px;
-     }
-      #wrapper-btn-signin .btnaddmore {
-        -webkit-border-radius: 35px;
-        -moz-border-radius: 35px;
-        border-radius: 35px;
-        padding: 0 60px;
-        font-family: 'Lato', sans-serif;
-        line-height: 55px;
-        text-decoration: none;
-        color: #587bf8;
-        border: 1px solid #587bf8;
-        font-size: 14px;
-        line-height: 45px;
-        background: transparent;
-        font-weight: normal;
-        margin-top: 5px;
-     }
-      #wrapper-btn-signin .btnpaynow {
-        -webkit-border-radius: 35px;
-        -moz-border-radius: 35px;
-        border-radius: 35px;
-        padding: 0 60px;
-        font-family: 'Lato', sans-serif;
-        line-height: 55px;
-        text-decoration: none;
-        color: #587bf8;
-        border: 1px solid #587bf8;
-        font-size: 14px;
-        line-height: 45px;
-
-        font-weight: normal;
-        margin-top: 5px;
-
-        background-color: #eb3d37;
-        border: 1px solid #eb3d37;
-        color: white;
-     }
-     /*pay ment form*/
-     .payment-infor{
-        margin-top: 10px;
-     }
-     .paymentForm .btnprocess{
-         display: inline-block;
-        background: #0b9347;
-        color: white;
-        text-decoration: none;
-        line-height: 40px;
-        padding: 0 55px;
-        -webkit-border-radius: 35px;
-        -moz-border-radius: 35px;
-        border-radius: 35px;
-        font-size: 16px;
-        font-weight: bold;
-        border: 1px solid #0b9347;
-        text-transform: uppercase;
-        margin-bottom: 3px;
-        overflow: hidden;
-        height: 40px;
-     }
-     .paymentForm .btnprocess:hover{
-         background: #fff;
-        color: #0b9347;
-     }
-     .paymentForm .btncancel {
-         display: inline-block;
-
-        color: white;
-        text-decoration: none;
-        line-height: 40px;
-        padding: 0 55px;
-        -webkit-border-radius: 35px;
-        -moz-border-radius: 35px;
-        border-radius: 35px;
-        font-size: 16px;
-        font-weight: bold;
-        border: 1px solid #0b9347;
-        text-transform: uppercase;
-        background: #e13939;
-        border-color: #e13939;
-        margin-bottom: 3px;
-         overflow: hidden;
-         height: 40px;
-     }
-     .paymentForm .btncancel:hover{
-         background: #fff;
-        color: #e13939;
-     }
-   .payment-infor  .ordertit {
-        color: #585858;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-        font-weight: bold;
-        line-height: 140%;
-       font-size: 18px;
-}
-.payment-infor .pmitem {
-
-
-    border-right: none;
-    border-left: none;
-
- }
- .payment-infor .titcontent {
-    font-size: 30px;
-    color: black;
-     font-weight: bold;;
-    line-height: 60px;
-}
- .payment-infor .pmorder div:not:first-child
-    {
-        border-left: solid 1px #e1e1e1;
-    }
- .payment-infor .pmorder  span,.payment-infor .pmorder  p{
-    color: #1072bc;
-    margin:auto;
- }
- .payment-infor .pmorder .labelcon{
-    font-size: 20px;
+    font-size: 15px;
     line-height: 40px;
-    font-weight: bold;
- }
-  .payment-infor .labelcon{
+    border-bottom: 1px solid #e1e1e1;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #636363;
+    background: #fff;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.wrapper-btn-signin {
+    margin-top: 30px;
+}
+.wrapper-btn-signin .btn {
+    min-width: 220px;
+}
+
+.form-user-address .used-for {
+    color: #587bf8;
     font-size: 14px;
-    line-height: 40px;
-    font-weight: bold;
- }
-  .payment-infor .req{
-    color: red;
-  }
-  /*dungdh*/
+    margin-left: 20px;
+    text-decoration: underline;
+}
 
+.form-user-address .radio-inline,
+.form-user-address .checkbox-inline {
+    padding-left: 0px;
+    margin-right: 15px;
+    padding-top: 0px;
+
+}
+.label-checkbox {
+    font-weight: 700;
+    color: #828181;
+    margin-top: -5px;
+}
+.wrapper-btn-signin .btn-addmore {
+    border: 1px solid #587bf8;
+    color: #587bf8;
+    font-size: 15px;
+    background: transparent;
+}
+.wrapper-btn-signin .btn-addmore i{
+    margin-right: 10px;
+    color:#587bf8
+}
+
+.checkbox-golf-club {
+    display: inline-block;
+    background: #327aad;
+    color: #fff;
+    padding: 13px 15px;
+    width: 100%;
+    text-align: center;
+    font-weight: 700;
+}
+.checkbox-golf-club.active {
+    background: #73cd54;
+}
+.checkbox-golf-club img {
+    display: none;
+}
+.checkbox-golf-club.active img{
+    display: inline-block;
+    margin-top: -5px;
+    margin-right: 5px;
+}
+.checkbox-golf-club input[type=radio].css-checkbox + label.css-label{
+    line-height: 15px;
+    padding-left: 0px;
+    margin-bottom: 0px;
+    background: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.checkbox-golf-club label.css-label {
+    background: transparent;
+}
+
+input[type=radio].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+input[type=radio].css-checkbox + label.css-label {
+    padding-left: 23px;
+    height: 18px;
+    display: inline-block;
+    line-height: 18px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 15px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+input[type=radio].css-checkbox:checked + label.css-label {
+    background-position: 0 -18px;
+}
+
+.gender label.css-label {
+    background-image: url(images/icon-checkbox.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+input[type=checkbox].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+input[type=checkbox].css-checkbox + label.css-label {
+    padding-left: 23px;
+    height: 19px;
+    display: inline-block;
+    line-height: 18px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 15px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-position: 0 -19px;
+}
+label.css-label {
+    background-image: url(images/icon-checkbox-1.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 /*
 * 7.0 Media Queries
 * --------------------------------------------------------------------
@@ -2471,7 +2408,9 @@ display: none !important;
         text-align: center;
     }
 
-
+    .inner-100 {
+        padding: 15px 0px !important;
+    }
   }
 @media (max-width: 767px) {
     body{
