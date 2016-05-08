@@ -413,3 +413,63 @@ function addUserMeta($user_id, $meta_keys, $meta_values, $prev_values = NULL)
 }
 add_action('wp_ajax_register_user', 'vb_reg_new_user');
 add_action('wp_ajax_nopriv_register_user', 'vb_reg_new_user');
+
+
+//dungdh
+function vb_reg_new_users() {
+    //var_dump($_POST);
+  /*  if( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'vb_new_user' ) )
+         die( 'Ooops, something went wrong, please try again later.' );*/
+     $response="";
+     $arrUserId =  array();    
+     $users=$_POST['users'];
+     foreach ($users as $u) {
+        $uId =  addUser($u);
+        if($uId!=0)
+          array_push($arrUserId, $uId) ;
+     }
+   if( count($arrUserId)!=0){
+        $response= "vl";
+   }else{
+        $response= 'Ngon'+count($arrUserId);
+   }
+   // $xmlResponse = new WP_Ajax_Response($response);
+    //$xmlResponse->send();
+   echo $response;
+}
+function addUser($user)
+{
+    $first_name = $user['first_name'];
+    $middle_name = $user['middle_name'];
+    $user_login = $user['user_email'];
+    $last_name = $user['last_name'];
+    $user_email = $user['user_email'];
+    $password = $user['password'];
+    $club_member = $user['club_member'];
+    $public_member = $user['public_member'];
+    $association_member = $user['association_member'];
+    $district = $user['district'];
+    $province = $user['province'];
+    $city = $user['city'];
+    $langguage = $_POST['langguage'];
+    $gender = $user['gender'];   /**
+     * IMPORTANT: You should make server side validation here!
+     *
+     */
+    $userdata = array(
+        'user_login' => $user_login,
+        'user_pass'  => $password,
+        'user_email' => $user_email,
+        'first_name' => $first_name,
+        'last_name' => $last_name,
+    );
+    $user_id = wp_create_user( $user_login, $password, $user_email) ;
+     if( !is_wp_error($user_id) ) {
+       return $user_id;
+        } else {
+            return 0;
+    }
+}
+add_action('wp_ajax_register_users', 'vb_reg_new_users');
+add_action('wp_ajax_nopriv_register_users', 'vb_reg_new_users');
+

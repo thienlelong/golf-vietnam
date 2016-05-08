@@ -72,9 +72,10 @@ jQuery(document).ready(function($) {
   $('#btn-addmore').click(function(e) {
     count++;
     var formHtml = $("#registerUserForm0").clone().prop('id', 'registerUserForm'+count ).insertBefore($("#wrapper-btn-signin"));
+   clearForm(formHtml);
   });
 
-  $('#btn-new-user').click(function(e) {
+  /*$('#btn-new-user').click(function(e) {
 
       for (var i = 0; i <  $(".registerUserForm").length; i++) {
         var formId = '#registerUserForm'+i;
@@ -86,7 +87,9 @@ jQuery(document).ready(function($) {
           alert("success");
         }
       }, 1000);
-  });
+  });*/
+ 
+
 
   $('.page-static a[href*=#]:not([href=#])').click(function () {
       if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -153,4 +156,69 @@ jQuery(document).ready(function($) {
     }
     var refresh=1000;
     setInterval(display_watch, refresh)
+
+//dungdh
+   jQuery('#btn-new-user').click(function(e) {
+        register_users();
+      });
+    
 });
+//dungdh
+    function arrayToObject(array) {
+      var result = { };
+      jQuery.each(array, function() {
+          result[this.name] = this.value;
+      });
+      return result;
+    }
+    function getFormsData(className)
+    {
+        var users = new Array();
+         jQuery(className).each( function(form) {
+               var user =arrayToObject(jQuery(this).serializeArray());
+               users.push(user);
+          });
+         return users;
+    }
+     function register_users(){
+         var ajax_url = vb_reg_vars.vb_ajax_url;
+         console.log(ajax_url);
+       
+      // Data to send
+        var data = {
+          action: 'register_users',
+          users: getFormsData('.registerUserForm')
+          };
+           jQuery.ajax({
+                url:ajax_url,
+                data:data,
+                type:'post',
+                success:function(response){
+                    alert(response);
+                },
+                error:function(){
+                  alert('loi');
+                }
+           });
+     }
+     function clearForm(form) {
+      // iterate over all of the inputs for the form
+      // element that was passed in
+      jQuery(':input', form).each(function() {
+        var type = this.type;
+        var tag = this.tagName.toLowerCase(); // normalize case
+        // it's ok to reset the value attr of text inputs,
+        // password inputs, and textareas
+        if (type == 'text' || type == 'password' || tag == 'textarea')
+          this.value = "";
+        // checkboxes and radios need to have their checked state cleared
+        // but should *not* have their 'value' changed
+        else if (type == 'checkbox' || type == 'radio')
+          this.checked = false;
+        // select elements need to have their 'selectedIndex' property set to -1
+        // (this works for both single and multiple select elements)
+        else if (tag == 'select')
+          this.selectedIndex = -1;
+  });
+};
+   
