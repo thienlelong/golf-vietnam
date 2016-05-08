@@ -114,4 +114,43 @@ jQuery(document).ready(function($) {
       navigateByImgClick: true
     }
   });
+
+  $('[data-toggle="tooltip"]').tooltip();
+
+    function display_watch() {
+      var date_format = '12'; /* FORMAT CAN BE 12 hour (12) OR 24 hour (24)*/
+      var d       = new Date();
+      var hour    = d.getHours();  /* Returns the hour (from 0-23) */
+      var minutes     = d.getMinutes();  /* Returns the minutes (from 0-59) */
+      var result  = hour;
+      var ext     = '';
+
+      if(date_format == '12'){
+          if(hour > 12){
+              ext = 'PM';
+              hour = (hour - 12);
+
+              if(hour < 10){
+                  result = "0" + hour;
+              }else if(hour == 12){
+                  hour = "00";
+                  ext = 'AM';
+              }
+          }
+          else if(hour < 12){
+              result = ((hour < 10) ? "0" + hour : hour);
+              ext = 'AM';
+          }else if(hour == 12){
+              ext = 'PM';
+          }
+      }
+
+      if(minutes < 10){
+          minutes = "0" + minutes;
+      }
+
+      $('.site-watch .watch').html(result + ":" + minutes  + '<span class="small"> '+ext+'</span>');
+    }
+    var refresh=1000;
+    setInterval(display_watch, refresh)
 });

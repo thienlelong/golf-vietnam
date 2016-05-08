@@ -59,8 +59,8 @@
 					<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'nisarg' ) ); ?>" class="cl-green">Thien LL</a>
 				</div><!-- .site-info -->
 				<div  class="col-sm-6 app-store">
-					<a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/footers/logo-google-play.png" alt="" /></a>
-					<a href="#"><img src="<?php bloginfo('template_directory'); ?>/images/footers/logo-app-store.png" alt="" /></a>
+					<a href="#" data-toggle="tooltip" data-placement="left" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/footers/logo-google-play.png" alt="" /></a>
+					<a href="#" data-toggle="tooltip" data-placement="right" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/footers/logo-app-store.png" alt="" /></a>
 				</div>
 			</div>
 		</div>

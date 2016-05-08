@@ -324,17 +324,38 @@ input[type="submit"]:active {
     color:#fff;
 } */
 
-input[type=text],
-input[type=email],
-textarea {
-    color: #727272
-}
 input[type=text]:focus,
 input[type=email]:focus,
 textarea:focus {
-    color: #727272;
+    color: #909090;
 }
 
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+input[type="date"],
+textarea,
+.form-control{
+    background: #fff;
+    /* border: solid 1px #f0f0f0; */
+    font-size: 15px;
+    line-height: 1.25em;
+    padding: 10px 15px;
+    color: #909090;
+    height: auto;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+
+}
+
+.wpcf7 input[type="date"] {
+    line-height: 21px;
+    padding: 7px 15px;
+}
 
 input[type="search"].search-field {
     border-radius: 2px 0 0 2px;
@@ -937,6 +958,11 @@ color: #000000;
     -moz-box-shadow: 0px 4px 0px 0px rgba(2,99,45,1);
     box-shadow: 0px 4px 0px 0px rgba(2,99,45,1);
 }
+.site-header .btn:hover {
+    cursor: default;
+    opacity: 1;
+}
+
 .site-header .btn-vietcap {
     margin-left: 30px;
 }
@@ -1409,7 +1435,8 @@ color: #000000;
     margin-bottom: 7px;
     padding-left: 5px;
 }
-.page-static p {
+.page-static p ,
+.page-content p{
     margin-bottom: 20px;
 }
 .page-static a {
@@ -1570,6 +1597,15 @@ a.btn-border {
     background: #0b9347;
     color: #fff;
     text-decoration: none;
+}
+
+/* page  waiver form*/
+.page-waiver-form .page-title {
+    line-height: 42px;
+}
+
+.waiver-form .btn{
+    padding: 12px 30px;
 }
 
 /*
@@ -1798,6 +1834,42 @@ a.btn-border {
     color: #fff;
     text-transform: none;
     padding: 10px 40px;
+}
+.section-homepage {
+    position: relative;
+}
+.site-info-box {
+    position: absolute;
+    right: 0;
+    bottom:85px;
+    width: 65px;
+    text-align: center;
+}
+.site-info-box .count-member,
+.site-info-box .count-login,
+.site-info-box .site-watch{
+    height: 80px;
+    background: #2482c9;
+    text-align: center;
+    padding: 15px 0;
+}
+.site-info-box .count-login{
+    background: #359deb;
+}
+.site-info-box .logo-rolex{
+    margin-bottom: 10px;
+}
+.site-info-box span {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    display: block;
+}
+
+.site-info-box span.small {
+    font-weight: 400;
+    display: inline;
+    font-size: 11px;
 }
 /**
  * 5.0 Sidebar - Widgets
