@@ -398,6 +398,8 @@ add_action('wp_ajax_nopriv_register_user', 'vb_reg_new_user');
 
 //dungdh
 function vb_reg_new_users() {
+    //var_dump($_POST);
+   // return;
       /*  if( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'vb_new_user' ) )
          die( 'Ooops, something went wrong, please try again later.' );*/
      $result=array ();
@@ -408,13 +410,16 @@ function vb_reg_new_users() {
      //validate before add user
     $err_array =array();
     foreach ($users as $user  ) {
-         array_push($err_array,validate_user($user));
+         $validate=validate_user($user);
+         if(count($validate)!=0)
+             array_push($err_array,$validate);
     }
     if(count($err_array)!=0){
-     $result['success']=false;
-     $result['error']=$err_array;
-     echo json_encode($result) ;
-     die();
+         $result['success']=false;
+         $result['message']="validate fail";
+         $result['error']=$err_array;
+         echo json_encode($result) ;
+         die();
     }
      //add users
      foreach ($users as $u) {
@@ -426,6 +431,7 @@ function vb_reg_new_users() {
          else
          {
             $result['success']=false;
+             $result['error']="error add user";
            //delete user when one of them die
             foreach ($arrUserId as  $value) {
                 delete_user($value);
@@ -454,7 +460,7 @@ function validate_user($user){
     }
     $err =   array();
     //check email existed
-    if( email_exists(  $user['user_email'] )) {
+    if( email_exists($user['user_email'])) {
       /* stuff to do when email address exists */
        $err['user_email']='email_exists';
     }
@@ -493,11 +499,7 @@ function add_member($user)
              $meta_values = array( $first_name,$last_name,$middle_name, $club_member, $public_member, $association_member, $district, $province, $city, $langguage, $gender);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
-     if( !is_wp_error($uId) ) {
-            return $uId;
-        } else {
-            return 0;
-    }
+    return $uId;  
 }
 add_action('wp_ajax_register_users', 'vb_reg_new_users');
 add_action('wp_ajax_nopriv_register_users', 'vb_reg_new_users');
