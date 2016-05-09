@@ -184,23 +184,23 @@
 </div><!--.container-->
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
-        $('input[name="golf_club"').click(function() {
-            $('.checkbox-golf-club').removeClass("active");
-            $('.golf-club-list').css("display", "none");
+        $('#registerUserForm0 input[name="golf_club"').click(function() {
+            $('#registerUserForm0 .checkbox-golf-club').removeClass("active");
+            $('#registerUserForm0 .golf-club-list').css("display", "none");
             $('#associationMember + label').html('Association Member');
             $('#publicMember + label').html('Public Member');
             $('#clubMember + label').html('Club Member');
 
             if(this.checked) {
                 $(this).parent().addClass("active");
-                $('.active + .golf-club-list').css("display", "block");
+                $('#registerUserForm0 .active + .golf-club-list').css("display", "block");
             }
         });
-        $(".golf-club-list li").on('click', function(event){
+        $("#registerUserForm0 .golf-club-list li").on('click', function(event){
             var clubId = $(this).attr("data-clubId");
-            $('.golf-club-list').css("display", "none");
-            $('input[name=golf_club]:checked').val(clubId);
-            $('input[name=golf_club]:checked + label').html($(this).html());
+            $('#registerUserForm0 .golf-club-list').css("display", "none");
+            $('#registerUserForm0 input[name=golf_club]:checked').val(clubId);
+            $('#registerUserForm0 input[name=golf_club]:checked + label').html($(this).html());
         });
     });
 </script>
