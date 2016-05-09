@@ -49,36 +49,57 @@
                                  <div class="form-group">
                                     <span class="col-sm-6 col-md-6 labelicon"><?php _e('Choose one of following:', 'nisarg')?></span>
                                  </div>
-                                <div class="form-group golf_club">
+                                <div class="form-group">
                                     <div class="col-sm-4">
-                                        <label class="club-member btn-radius checkbox-golf-club" >
-                                            <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                            <input type="radio" name="golf_club" value="" id="clubMember" class="css-checkbox" />
-                                            <label for="clubMember" class="css-label"><?php _e('CLUB MEMBER', 'nisarg') ?></label>
-                                        </label>
-                                        <ul class="golf-club-list">
-                                            <li data-valueId="1">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                            <li data-valueId="2">DANANG GOLF CLUB</li>
-                                            <li data-valueId="3">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                            <li data-valueId="4">DANANG GOLF CLUB</li>
-                                            <li data-valueId="5">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                            <li data-valueId="5">DANANG GOLF CLUB</li>
-
-                                        </ul>
+                                        <div class="golf_club">
+                                            <label class="club-member btn-radius checkbox-golf-club" >
+                                                <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
+                                                <input type="radio" name="golf_club" value="" id="clubMember" class="css-checkbox" />
+                                                <label for="clubMember" class="css-label"><?php _e('CLUB MEMBER', 'nisarg') ?></label>
+                                            </label>
+                                            <ul class="golf-club-list">
+                                                <li data-clubId="1">BRG KINGS’ ISLAND GOLF RESORT</li>
+                                                <li data-clubId="2">DANANG GOLF CLUB</li>
+                                                <li data-clubId="3">BRG KINGS’ ISLAND GOLF RESORT</li>
+                                                <li data-clubId="4">DANANG GOLF CLUB</li>
+                                                <li data-clubId="5">BRG KINGS’ ISLAND GOLF RESORT</li>
+                                                <li data-clubId="5">DANANG GOLF CLUB</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                     <div class="col-sm-4">
-                                        <label class="public-member btn-radius checkbox-golf-club">
-                                            <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                            <input type="radio" name="golf_club" value="" id="publicMember" class="css-checkbox" />
-                                            <label for="publicMember" class="css-label"><?php _e('PUBLIC MEMBER', 'nisarg') ?></label>
-                                        </label>
+                                        <div class="golf_club">
+                                            <label class="public-member btn-radius checkbox-golf-club">
+                                                <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
+                                                <input type="radio" name="golf_club" value="" id="publicMember" class="css-checkbox" />
+                                                <label for="publicMember" class="css-label"><?php _e('PUBLIC MEMBER', 'nisarg') ?></label>
+                                            </label>
+                                            <ul class="golf-club-list">
+                                                <li data-clubId="1">BRG KINGS’ ISLAND GOLF RESORT</li>
+                                                <li data-clubId="2">DANANG GOLF CLUB</li>
+                                                <li data-clubId="3">BRG KINGS’ ISLAND GOLF RESORT</li>
+                                                <li data-clubId="4">DANANG GOLF CLUB</li>
+                                                <li data-clubId="5">BRG KINGS’ ISLAND GOLF RESORT</li>
+                                                <li data-clubId="5">DANANG GOLF CLUB</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                     <div class="col-sm-4">
-                                        <label class="association-member btn-radius checkbox-golf-club">
-                                            <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                            <input type="radio" name="golf_club" value="" id="associationMember" class="css-checkbox" />
-                                            <label for="associationMember" class="css-label"><?php _e('ASSOCIATION MEMBER', 'nisarg') ?></label>
-                                        </label>
+                                        <div class="golf_club">
+                                            <label class="association-member btn-radius checkbox-golf-club">
+                                                <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
+                                                <input type="radio" name="golf_club" value="" id="associationMember" class="css-checkbox" />
+                                                <label for="associationMember" class="css-label"><?php _e('ASSOCIATION MEMBER', 'nisarg') ?></label>
+                                            </label>
+                                            <ul class="golf-club-list">
+                                                <li data-clubId="1">BRG KINGS’ ISLAND GOLF RESORT</li>
+                                                <li data-clubId="2">DANANG GOLF CLUB</li>
+                                                <li data-clubId="3">BRG KINGS’ ISLAND GOLF RESORT</li>
+                                                <li data-clubId="4">DANANG GOLF CLUB</li>
+                                                <li data-clubId="5">BRG KINGS’ ISLAND GOLF RESORT</li>
+                                                <li data-clubId="5">DANANG GOLF CLUB</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                                 </div>
@@ -163,11 +184,23 @@
 </div><!--.container-->
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
-        $('input[name="golf_club"').change(function() {
-             $('.checkbox-golf-club').removeClass("active");
+        $('input[name="golf_club"').click(function() {
+            $('.checkbox-golf-club').removeClass("active");
+            $('.golf-club-list').css("display", "none");
+            $('#associationMember + label').html('Association Member');
+            $('#publicMember + label').html('Public Member');
+            $('#clubMember + label').html('Club Member');
+
             if(this.checked) {
                 $(this).parent().addClass("active");
+                $('.active + .golf-club-list').css("display", "block");
             }
+        });
+        $(".golf-club-list li").on('click', function(event){
+            var clubId = $(this).attr("data-clubId");
+            $('.golf-club-list').css("display", "none");
+            $('input[name=golf_club]:checked').val(clubId);
+            $('input[name=golf_club]:checked + label').html($(this).html());
         });
     });
 </script>

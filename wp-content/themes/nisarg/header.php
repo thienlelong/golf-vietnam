@@ -40,9 +40,9 @@
         <div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header">
-                <a href="#" class="btn  btn-radius btn-lg"><i class="fa fa-search cl-white" aria-hidden="true"></i> <?php _e('Find a Course', 'nisarg'); ?></a>
-              </div>
+<!--               <div class="modal-header">
+  <a href="#" class="btn  btn-radius btn-lg"><i class="fa fa-search cl-white" aria-hidden="true"></i> <?php _e('Find a Course', 'nisarg'); ?></a>
+</div> -->
               <div class="modal-body">
                 <nav id="left-navigation" class="navbar-modern navbar-footer" role="navigation">
                   <?php wp_nav_menu(array(
@@ -91,7 +91,15 @@
            'hide_if_empty' => 0,
            'display_names_as' => 1
         )); ?>
-        <a href="<?php echo get_site_url(); ?>/login" class="btn btn-login btn-radius"><?php _e( 'Log in', 'nisarg' ); ?></a>
+        <?php if (is_user_logged_in()) {
+        ?>
+        <a href="<?php echo wp_logout_url( get_permalink() ); ?>" class="btn btn-login btn-radius"><?php _e( 'Log out', 'nisarg' ); ?></a>
+        <?php
+        } else { ?>
+          <a href="<?php echo site_url('login');?>" class="btn btn-login btn-radius">
+            <?php _e( 'Log in', 'nisarg' ); ?>
+          </a>
+        <?php } ?>
       </div>
     </div>
   </div> <!-- end .container-fluid -->
@@ -128,5 +136,3 @@
   </div><!--.site-header-->
 </header>
 <div id="content" class="site-content">
-
-

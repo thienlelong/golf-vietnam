@@ -88,7 +88,7 @@ jQuery(document).ready(function($) {
         }
       }, 1000);
   });*/
- 
+
 
 
   $('.page-static a[href*=#]:not([href=#])').click(function () {
@@ -120,48 +120,13 @@ jQuery(document).ready(function($) {
 
   $('[data-toggle="tooltip"]').tooltip();
 
-    function display_watch() {
-      var date_format = '12'; /* FORMAT CAN BE 12 hour (12) OR 24 hour (24)*/
-      var d       = new Date();
-      var hour    = d.getHours();  /* Returns the hour (from 0-23) */
-      var minutes     = d.getMinutes();  /* Returns the minutes (from 0-59) */
-      var result  = hour;
-      var ext     = '';
 
-      if(date_format == '12'){
-          if(hour > 12){
-              ext = 'PM';
-              hour = (hour - 12);
-
-              if(hour < 10){
-                  result = "0" + hour;
-              }else if(hour == 12){
-                  hour = "00";
-                  ext = 'AM';
-              }
-          }
-          else if(hour < 12){
-              result = ((hour < 10) ? "0" + hour : hour);
-              ext = 'AM';
-          }else if(hour == 12){
-              ext = 'PM';
-          }
-      }
-
-      if(minutes < 10){
-          minutes = "0" + minutes;
-      }
-
-      $('.site-watch .watch').html(result + ":" + minutes  + '<span class="small"> '+ext+'</span>');
-    }
-    var refresh=1000;
-    setInterval(display_watch, refresh)
 
 //dungdh
    jQuery('#btn-new-user').click(function(e) {
         register_users();
       });
-    
+
 });
 //dungdh
     function arrayToObject(array) {
@@ -180,6 +145,7 @@ jQuery(document).ready(function($) {
           });
          return users;
     }
+
    function register_users(){
        var ajax_url = vb_reg_vars.vb_ajax_url;
      //valid data before sending
@@ -205,10 +171,7 @@ jQuery(document).ready(function($) {
                  {
                   //code redirect
                     alert('ngon');
-                    foreach(err in result.error)
-                    {
-
-                    }
+                    
                  }
                  else
                  {
@@ -219,9 +182,9 @@ jQuery(document).ready(function($) {
               error:function(response){
                  result =jQuery.parseJSON(response);
               }
-           });
-      }
-     }
+     })
+   }
+ }
      function clearForm(form) {
       // iterate over all of the inputs for the form
       // element that was passed in
@@ -242,4 +205,4 @@ jQuery(document).ready(function($) {
           this.selectedIndex = -1;
   });
 };
-   
+
