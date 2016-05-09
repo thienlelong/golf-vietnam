@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <article id="post-<?php the_ID(); ?>" <?php post_class('post-content'); ?>>
-                    <div class="entry-content">
+                    <div class="entry-content page-content">
                         <div class="payment-info">
                             <h2 class="titcontent">Items Details</h2>
                             <div class="pmitem">
@@ -53,105 +53,7 @@
                             </div>
                             <div class="col-sm-12" style="font-style:italic;margin: 20px 0">Please complete the following details exactly as they appear on your card. Do not put spaces or hyphens in the card number.</div>
                         </div>
-                        <form class="form-horizontal paymentForm" id="paymentForm">
-                            <div class="form-group">
-                                <div class="col-sm-3">
-                                    <label class="labelcon">
-                                        <?php _e( 'Cardholder Name', 'nisarg') ?> <span class="req">*</span>:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="text" name="card_name" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3">
-                                    <label class="labelcon">
-                                        <?php _e( 'Card Number', 'nisarg') ?> <span class="req">*</span>:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="text" name="card_name" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3">
-                                    <label class="labelcon">
-                                        <?php _e( 'Expiry Date (MMYY)', 'nisarg') ?> <span class="req">*</span>:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="text" name="card_name" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3">
-                                    <label class="labelcon">
-                                        <?php _e( 'CSV', 'nisarg') ?> <span class="req">*</span>:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="text" name="card_name" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3">
-                                    <label class="labelcon">
-                                        <?php _e( 'Address', 'nisarg') ?> <span class="req">*</span>:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="text" name="card_name" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3">
-                                    <label class="labelcon">
-                                        <?php _e( 'Phone Number', 'nisarg') ?> <span class="req">*</span>:</label>
-                                </div>
-                                <div class="col-sm-9">
-                                    <input type="text" name="card_name" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="card_name" required>
-                                        <?php _e( 'Automatically renew my membership annually.', 'nisarg') ?>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="card_name" required>
-                                        <?php _e( 'Remind me 1 month in advance next year.', 'nisarg') ?>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9">
-                                    <label class="checkbox-inline">
-                                        <input type="checkbox" name="card_name" required>
-                                        <?php _e( 'By payment an account you agree to our Terms and Conditions and our Privacy Policy.', 'nisarg') ?>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9">
-                                    <div class="col-sm-6">
-                                        <button type="button" class="btn    btnprocess" id="btnprocess">
-                                            <?php _e( 'Process Transaction', 'nisarg') ?>
-                                        </button>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <button type="button" class="btn   btn-danger btncancel  " id="btncancel">
-                                            <?php _e( 'Cancel Transaction', 'nisarg') ?>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        <?php echo do_shortcode('[easy_payment item_name="Process Transaction" amount="9"]'); ?>
                     </div><!-- .entry-content -->
                 </article><!-- #post-## -->
             <?php endwhile; // End of the loop. ?>

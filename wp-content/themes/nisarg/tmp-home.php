@@ -133,7 +133,14 @@
         $('.site-watch .watch').html(result + ":" + minutes  + '<span class="small"> '+ext+'</span>');
         }
         var refresh=1000;
-        setInterval(display_watch, refresh)
+        setInterval(display_watch, refresh);
+        $('.site-info-box').css('top', $(window).height()/2 - 140);
+        var offset = $(".site-info-box").offset();
+        $(window).scroll(function() {
+            $(".site-info-box").stop().animate({
+              top: $(window).scrollTop() + offset.top
+            });
+        });
     });
 </script>
 <?php get_footer(); ?>

@@ -1841,13 +1841,16 @@ input.btn-border {
     text-transform: none;
     padding: 10px 40px;
 }
-.section-homepage {
+/* .section-homepage {
+    position: relative;
+} */
+body {
     position: relative;
 }
 .site-info-box {
     position: absolute;
     right: 0;
-    bottom:85px;
+    top: 300px;
     width: 65px;
     text-align: center;
 }
@@ -2100,8 +2103,7 @@ hr.line-title {
 /*dungdh*/
 
 .form-user-info,
-.form-user-address,
-.payment-info {
+.form-user-address{
     background: #fff;
     font-family: 'Lato', sans-serif;
     color: #414b51;
