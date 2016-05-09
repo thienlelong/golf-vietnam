@@ -71,7 +71,7 @@ jQuery(document).ready(function($) {
   var count = 0;
   $('#btn-addmore').click(function(e) {
     count++;
-    var formHtml = $("#registerUserForm0").clone().prop('id', 'registerUserForm'+count ).insertBefore($("#wrapper-btn-signin"));
+    var formHtml = $("#registerUserForm0").clone().prop('id', 'registerUserForm'+count ).insertBefore($(".wrapper-btn-signin"));
    clearForm(formHtml);
   });
 
@@ -145,27 +145,46 @@ jQuery(document).ready(function($) {
           });
          return users;
     }
-     function register_users(){
-         var ajax_url = vb_reg_vars.vb_ajax_url;
-         console.log(ajax_url);
 
-      // Data to send
-        var data = {
-          action: 'register_users',
-          users: getFormsData('.registerUserForm')
-          };
-           jQuery.ajax({
-                url:ajax_url,
-                data:data,
-                type:'post',
-                success:function(response){
-                    alert(response);
-                },
-                error:function(){
-                  alert('loi');
-                }
-           });
-     }
+   function register_users(){
+       var ajax_url = vb_reg_vars.vb_ajax_url;
+     //valid data before sending
+     var valid=false;
+     jQuery('.registerUserForm').each(function(){
+      // valid= jQuery(this).valid();
+     }); 
+    // Data to send
+    var data = {
+      action: 'register_users',
+      users: getFormsData('.registerUserForm')
+      };
+      valid=true;
+    if(valid){
+         jQuery.ajax({
+              url:ajax_url,
+              data:data,
+              type:'post',
+              datatype:'json',
+              success:function(response){
+                 result =jQuery.parseJSON(response);
+                 if(result.success)
+                 {
+                  //code redirect
+                    alert('ngon');
+                    
+                 }
+                 else
+                 {
+                  //code handle error
+                   alert ('vl');
+                 }
+              },
+              error:function(response){
+                 result =jQuery.parseJSON(response);
+              }
+     })
+   }
+ }
      function clearForm(form) {
       // iterate over all of the inputs for the form
       // element that was passed in

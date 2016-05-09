@@ -366,7 +366,6 @@ function vb_reg_new_user() {
     );
 
     $user_id = wp_insert_user( $userdata ) ;
-
     $meta_keys = array("middle_name", "club_member", "public_member", "association_member", "district", "province", "city", "langguage", "gender");
     $meta_values = array($middle_name, $club_member, $public_member, $association_member, $district, $province, $city, $langguage, $gender);
     addUserMeta($user_id, $meta_keys, $meta_values);
@@ -380,7 +379,7 @@ function vb_reg_new_user() {
 
 }
 
-function addUserMeta($user_id, $meta_keys, $meta_values, $prev_values = NULL)
+function add_user_metas($user_id, $meta_keys, $meta_values, $prev_values = NULL)
 {
     //expects all arrays for last 3 params or all strings
     if(!is_array($meta_keys))
@@ -389,43 +388,91 @@ function addUserMeta($user_id, $meta_keys, $meta_values, $prev_values = NULL)
         $meta_values = array($meta_values);
         $prev_values = array($prev_values);
     }
-
     for($i = 0; $i < count($meta_values); $i++)
     {
-
-        update_user_meta($user_id, $meta_keys[$i], $meta_values[$i], $prev_values[$i]);
-
+        update_user_meta($user_id, $meta_keys[$i], $meta_values[$i]);
     }
-
-    return $i;
 }
 add_action('wp_ajax_register_user', 'vb_reg_new_user');
 add_action('wp_ajax_nopriv_register_user', 'vb_reg_new_user');
 
-
 //dungdh
 function vb_reg_new_users() {
     //var_dump($_POST);
-  /*  if( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'vb_new_user' ) )
+   // return;
+      /*  if( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'vb_new_user' ) )
          die( 'Ooops, something went wrong, please try again later.' );*/
+     $result=array ();
+     $result["success"]=true;
      $response="";
      $arrUserId =  array();
      $users=$_POST['users'];
+     //validate before add user
+    $err_array =array();
+    foreach ($users as $user  ) {
+         $validate=validate_user($user);
+         if(count($validate)!=0)
+             array_push($err_array,$validate);
+    }
+    if(count($err_array)!=0){
+         $result['success']=false;
+         $result['message']="validate fail";
+         $result['error']=$err_array;
+         echo json_encode($result) ;
+         die();
+    }
+     //add users
      foreach ($users as $u) {
-        $uId =  addUser($u);
+        $uId =  add_member($u);
         if($uId!=0)
-          array_push($arrUserId, $uId) ;
-     }
-   if( count($arrUserId)!=0){
-        $response= "vl";
-   }else{
-        $response= 'Ngon'+count($arrUserId);
-   }
-   // $xmlResponse = new WP_Ajax_Response($response);
-    //$xmlResponse->send();
-   echo $response;
+         { 
+            array_push($arrUserId, $uId) ;
+         }
+         else
+         {
+            $result['success']=false;
+             $result['error']="error add user";
+           //delete user when one of them die
+            foreach ($arrUserId as  $value) {
+                delete_user($value);
+            }
+            die();
+         }
+       }
+    $result['users']=$arrUserId;
+    echo json_encode($result) ;
+    die();
 }
-function addUser($user)
+function delete_user_metas($user_id,$meta_keys){
+    foreach ($meta_keys as $key) {
+        delete_user_meta($user_id,$key);
+        }
+}
+function delete_user($user_id,$meta_keys){
+    //delete user
+    delete_user_metas($user_id,$meta_keys);
+    wp_delete_user($user_id);
+}
+function validate_user($user){
+    if(!isset($user))
+    {
+        return;
+    }
+    $err =   array();
+    //check email existed
+    if( email_exists($user['user_email'])) {
+      /* stuff to do when email address exists */
+       $err['user_email']='email_exists';
+    }
+
+    foreach ($user as $key => $value) {
+        if(is_null($value)||empty($value)){
+            $err[$key]="required";
+        }
+    }   
+    return $err;
+}
+function add_member($user)
 {
     $first_name = $user['first_name'];
     $middle_name = $user['middle_name'];
@@ -444,19 +491,15 @@ function addUser($user)
      * IMPORTANT: You should make server side validation here!
      *
      */
-    $userdata = array(
-        'user_login' => $user_login,
-        'user_pass'  => $password,
-        'user_email' => $user_email,
-        'first_name' => $first_name,
-        'last_name' => $last_name,
-    );
-    $user_id = wp_create_user( $user_login, $password, $user_email) ;
-     if( !is_wp_error($user_id) ) {
-       return $user_id;
-        } else {
-            return 0;
+    $uId = wp_create_user( $user_login, $password, $user_email) ;
+    //Add metatdata for user
+    if($uId!=0){
+         //add user metadata
+             $meta_keys = array("first_name","last_name","middle_name", "club_member", "public_member", "association_member", "district", "province", "city", "langguage", "gender");
+             $meta_values = array( $first_name,$last_name,$middle_name, $club_member, $public_member, $association_member, $district, $province, $city, $langguage, $gender);
+             add_user_metas($uId, $meta_keys, $meta_values);
     }
+    return $uId;  
 }
 add_action('wp_ajax_register_users', 'vb_reg_new_users');
 add_action('wp_ajax_nopriv_register_users', 'vb_reg_new_users');
