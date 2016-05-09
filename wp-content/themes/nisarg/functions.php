@@ -333,51 +333,6 @@ add_filter( 'woocommerce_login_redirect', 'wc_custom_user_redirect', 10, 2 );
  * New User registration
  *
  */
-function vb_reg_new_user() {
-
-  // Verify nonce
-  if( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'vb_new_user' ) )
-    die( 'Ooops, something went wrong, please try again later.' );
-  // Post values
-    $first_name = $_POST['first_name'];
-    $middle_name = $_POST['middle_name'];
-    $user_login = $_POST['user_login'];
-    $last_name = $_POST['last_name'];
-    $user_email = $_POST['user_email'];
-    $password = $_POST['password'];
-    $club_member = $_POST['club_member'];
-    $public_member = $_POST['public_member'];
-    $association_member = $_POST['association_member'];
-    $district = $_POST['district'];
-    $province = $_POST['province'];
-    $city = $_POST['city'];
-    $langguage = $_POST['langguage'];
-    $gender = $_POST['gender'];   /**
-     * IMPORTANT: You should make server side validation here!
-     *
-     */
-
-    $userdata = array(
-        'user_login' => $user_login,
-        'user_pass'  => $password,
-        'user_email' => $user_email,
-        'first_name' => $first_name,
-        'last_name' => $last_name,
-    );
-
-    $user_id = wp_insert_user( $userdata ) ;
-    $meta_keys = array("middle_name", "club_member", "public_member", "association_member", "district", "province", "city", "langguage", "gender");
-    $meta_values = array($middle_name, $club_member, $public_member, $association_member, $district, $province, $city, $langguage, $gender);
-    addUserMeta($user_id, $meta_keys, $meta_values);
-    // Return
-    if( !is_wp_error($user_id) ) {
-        echo '1';
-    } else {
-        echo $user_id->get_error_message();
-    }
-  die();
-
-}
 
 function add_user_metas($user_id, $meta_keys, $meta_values, $prev_values = NULL)
 {
@@ -393,8 +348,6 @@ function add_user_metas($user_id, $meta_keys, $meta_values, $prev_values = NULL)
         update_user_meta($user_id, $meta_keys[$i], $meta_values[$i]);
     }
 }
-add_action('wp_ajax_register_user', 'vb_reg_new_user');
-add_action('wp_ajax_nopriv_register_user', 'vb_reg_new_user');
 
 //dungdh
 function vb_reg_new_users() {
@@ -425,7 +378,7 @@ function vb_reg_new_users() {
      foreach ($users as $u) {
         $uId =  add_member($u);
         if($uId!=0)
-         { 
+         {
             array_push($arrUserId, $uId) ;
          }
          else
@@ -445,7 +398,7 @@ function vb_reg_new_users() {
 }
 function delete_user_metas($user_id,$meta_keys){
     foreach ($meta_keys as $key) {
-        delete_user_meta($user_id,$key);
+        delete_user_meta($user_id, $key);
         }
 }
 function delete_user($user_id,$meta_keys){
@@ -469,7 +422,7 @@ function validate_user($user){
         if(is_null($value)||empty($value)){
             $err[$key]="required";
         }
-    }   
+    }
     return $err;
 }
 function add_member($user)
@@ -480,13 +433,11 @@ function add_member($user)
     $last_name = $user['last_name'];
     $user_email = $user['user_email'];
     $password = $user['password'];
-    $club_member = $user['club_member'];
-    $public_member = $user['public_member'];
-    $association_member = $user['association_member'];
+    $golf_club = $user['golf_club'];
     $district = $user['district'];
     $province = $user['province'];
     $city = $user['city'];
-    $langguage = $_POST['langguage'];
+    $langguage = $user['langguage'];
     $gender = $user['gender'];   /**
      * IMPORTANT: You should make server side validation here!
      *
@@ -495,11 +446,11 @@ function add_member($user)
     //Add metatdata for user
     if($uId!=0){
          //add user metadata
-             $meta_keys = array("first_name","last_name","middle_name", "club_member", "public_member", "association_member", "district", "province", "city", "langguage", "gender");
-             $meta_values = array( $first_name,$last_name,$middle_name, $club_member, $public_member, $association_member, $district, $province, $city, $langguage, $gender);
+             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender");
+             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
-    return $uId;  
+    return $uId;
 }
 add_action('wp_ajax_register_users', 'vb_reg_new_users');
 add_action('wp_ajax_nopriv_register_users', 'vb_reg_new_users');
