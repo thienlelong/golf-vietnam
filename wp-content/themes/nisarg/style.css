@@ -2483,6 +2483,7 @@ p.pmitem-value {
 }
 .payment-form .btn {
     width: 100%;
+    margin-bottom: 15px;
 }
 #easy_paypal_form_div table {
     display: none;

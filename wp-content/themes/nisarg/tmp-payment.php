@@ -83,6 +83,7 @@
 </div><!--.container-->
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
+        var url_return = '<?php echo site_url('payment-success'); ?>'
         $('#number-user').val('2');
         $('#price').html('$49.95');
         $('#total-price').html('$72.45');
@@ -90,7 +91,7 @@
 
         $('#easy_paypal_form_div form').attr('target', '');
         $('#easy_paypal_form_div form input[name=amount]').val("72.45");
-        $('#easy_paypal_form_div form input[name=return]').val('http://golfvn.com/golf-vietnam/en/payment-success?uid=1');
+        $('#easy_paypal_form_div form input[name=return]').val(url_return + '?uid=1');
         $('#btn-process-transaction').click(function() {
             console.log("haha");
             $('#easy_paypal_form_div input[type=image]').trigger('click');
