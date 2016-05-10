@@ -4,6 +4,9 @@
  **/
  get_header();
 ?>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" /> 
+ 
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
 <div class="container">
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
@@ -109,27 +112,27 @@
                                 <div class="inner-100">
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                      <input type="text" name="address" class="form-control"  placeholder="<?php _e('Address / Unit', 'nisarg') ?>" required>
+                                      <input type="text" name="address" class="form-control"  placeholder="<?php _e('Address / Unit', 'nisarg') ?>"  >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                      <input type="text" name="district" class="form-control"  placeholder="<?php _e('District', 'nisarg') ?>" required>
+                                      <input type="text" name="district" class="form-control"  placeholder="<?php _e('District', 'nisarg') ?>"  >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                      <input type="text" name="province" class="form-control"  placeholder="<?php _e('Province', 'nisarg') ?>" required>
+                                      <input type="text" name="province" class="form-control"  placeholder="<?php _e('Province', 'nisarg') ?>"  >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                      <input type="text" name="city" class="form-control"  placeholder="<?php _e('City', 'nisarg') ?>" required>
+                                      <input type="text" name="city" class="form-control"  placeholder="<?php _e('City', 'nisarg') ?>"  >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-8">
-                                      <input type="text" name="date_of_birth" class="form-control"  placeholder="<?php _e('Date Of Birth', 'nisarg') ?>" required>
+                                      <input type="text" name="date_of_birth" class="date-of-birth form-control"  placeholder="<?php _e('Date Of Birth', 'nisarg') ?>"  >
                                     </div>
                                     <div class="col-md-4 col-sm-6">
                                         <div class="label-checkbox" ><?php _e('Preferred Language', 'nisarg'); ?></div>
@@ -156,13 +159,17 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <button class="btn btn-radius btn-lg-13"><?php _e('ADD ACTUAL FACE PHOTO', 'nisarg') ?></button>
+                                        <button onclick="return false;" class="btn btn-radius btn-lg-13"><?php _e('ADD ACTUAL FACE PHOTO', 'nisarg') ?>
+                                                    <input style="display: none;" type="file" class="file" name="actual_img"> </input>
+                                        </button>
+                                        <canvas style="display: none;"  id="e" width="177" height="113"></canvas>
                                         <span class="used-for"><?php _e('Used For Membership Card', 'nisarg');?></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <div class="indicator">Please wait...</div>
+                                    <input type="hidden" name="form_id" value="registerUserForm0" />
+                                        <div class="indicator"></div>
                                         <div class="alert result-message"></div>
                                     </div>
                                     <div class="col-sm-16 text-right">

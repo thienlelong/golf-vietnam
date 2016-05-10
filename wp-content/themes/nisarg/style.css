@@ -2104,7 +2104,21 @@ hr.line-title {
 
 
 /*dungdh*/
-
+.form-user-address .error,.form-user-info .error{
+    border: 1px solid #D3514F !important;
+}
+.form-user-address label.error,.form-user-info label.error
+{
+    display: none !important.;
+}
+.form-user-address .result-message {
+    background-color: #FADEDA;
+    border-radius: 3px 3px 3px 3px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    display: inline;
+}
 .form-user-info,
 .form-user-address{
     background: #fff;

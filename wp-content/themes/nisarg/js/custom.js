@@ -1,10 +1,14 @@
 jQuery(document).ready(function($) {
+  jQuery('.date-of-birth').datepicker();
     var count = 0;
     $('#btn-addmore').click(function(e) {
         count++;
         var formID = 'registerUserForm' + count;
         var formHtml = $("#registerUserForm0").clone().prop('id', formID).insertBefore($(".wrapper-btn-signin"));
         clearForm(formHtml, formID);
+        jQuery(formHtml).find("input[name='form_id']").each(function(){
+          jQuery(this).val(formID);
+        });
     });
 
     $('.page-static a[href*=#]:not([href=#])').click(function() {
@@ -65,14 +69,14 @@ function register_users() {
     //valid data before sending
     var valid = false;
     jQuery('.registerUserForm').each(function() {
-        // valid= jQuery(this).valid();
+         valid= jQuery(this).valid();
     });
     // Data to send
     var data = {
         action: 'register_users',
         users: getFormsData('.registerUserForm')
     };
-    valid = true;
+   
     if (valid) {
         jQuery.ajax({
             url: ajax_url,
@@ -83,11 +87,22 @@ function register_users() {
                 result = jQuery.parseJSON(response);
                 if (result.success) {
                     //code redirect
-                    alert('ngon');
+                    location.href="";
 
                 } else {
                     //code handle error
-                    alert('vl');
+                    result.error.forEach(function(error){
+                        jQuery('#'+error.form_id).find('.result-message').each(function(){
+                          if(error.user_email=="email_exists")
+                          { 
+                            jQuery(this).html("Email exist");
+                          }
+                          else
+                          {
+                             $(this).html("Please complete some requered field!");
+                          }
+                        });
+                    });
                 }
             },
             error: function(response) {
@@ -149,3 +164,22 @@ function clearForm(form, formID) {
             this.selectedIndex = -1;
     });
 };
+function setCanvasImage(canvas, imgSouce)
+{
+    var view=document.getElementById(canvas);
+    var context = view.getContext('2d');
+    var img = new Image();
+    img.src = imgSouce;
+    img.onload = function() {
+    context.drawImage(img, 0, 0);
+    };
+}
+function getCanVasBase64(canvas)
+{
+  if(typeof canvas!=undefined)
+    {
+      return canvas.toDataURL();
+    }
+    return "";
+}
+ 

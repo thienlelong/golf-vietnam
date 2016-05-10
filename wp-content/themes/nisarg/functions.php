@@ -412,6 +412,7 @@ function validate_user($user){
         return;
     }
     $err =   array();
+    $err['form_id']=$user['form_id'];
     //check email existed
     if( email_exists($user['user_email'])) {
       /* stuff to do when email address exists */
