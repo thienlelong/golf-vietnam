@@ -414,6 +414,9 @@ div.aligncenter {
 .text-right {
     text-align: right;
 }
+.text-left {
+    text-align: left;
+}
 .alignleft {
     float: left;
     margin: 5px 20px 20px 0;
@@ -2409,4 +2412,72 @@ label.css-label {
     border-radius: 100px;
     border: 1px solid #0b9347;
     font-size: 16px;
+}
+
+
+/* payment page */
+
+.pmitem-header {
+    color: #585858;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h4.pmitem-header {
+    text-align: left;
+}
+.pmitem-value {
+    color: #1072bc;
+    font-size: 18px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 30px;
+    display: block;
+}
+
+input.pmitem-value {
+    height: 30px;
+    width: 80px;
+    margin: 0 auto;
+}
+
+p.pmitem-value {
+    text-align: left;
+    margin-bottom: 0px;
+    line-height: 24px;
+}
+.pm-order {
+    font-size: 18px;
+    color: #474646;
+}
+
+.pm-order label {
+    display: inline-block;
+    width: 175px;
+}
+
+.payment-detail p {
+    color: #707070;
+    font-style: italic;
+    margin-top: 15px;
+}
+.payment-info .page-title {
+    border-bottom: 1px dashed #e1e1e1;
+    padding-bottom: 15px;
+}
+.payment-info {
+    border-bottom: 1px solid #e1e1e1;
+    padding-bottom: 30px;
+}
+
+.payment-form {
+    margin-bottom: 30px;
+}
+.payment-form .btn {
+    width: 100%;
+}
+#easy_paypal_form_div table {
+    display: none;
 }
