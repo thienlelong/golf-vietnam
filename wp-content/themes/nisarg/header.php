@@ -85,6 +85,8 @@
       </nav>
       </div>
       <div class="header-right col-md-3">
+        <img id="lagguage-vn" style="display: none" src="<?php bloginfo('template_directory'); ?>/images/headers/icon-vietnam.png" alt="" />
+        <img id="lagguage-en" style="display: none" src="<?php bloginfo('template_directory'); ?>/images/headers/icon-english.png" alt="" />
         <?php pll_the_languages( array(
            'dropdown' => 1,
            'show_flags' => 1,
@@ -104,35 +106,49 @@
     </div>
   </div> <!-- end .container-fluid -->
  <!--  <div id="cc_spacer"></div> --><!-- used to clear fixed navigation by the themes js -->
-  <div class="site-header">
-    <div class="container">
-        <?php if(is_front_page()): ?>
-        <div class="row site-header-info">
-          <div class="col-md-6 text-right"><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vietcap.png" alt="" />
-            <span class="btn btn-vietcap">
-              <h3><?php _e( 'VietCap', 'nisarg' ); ?></h3>
-              <h4><?php _e( 'VietNam National Handicap System', 'nisarg' ); ?></h4>
-            </span>
-          </div>
-          <div class="col-md-6">
-            <span class="btn btn-golf-better">
-              <h3><?php _e( 'Making Vietnam', 'nisarg' ); ?></h3>
-              <h3><?php _e( 'Golf Better', 'nisarg' ); ?></h3>
-            </span>
-            <span href=""><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vga.png" alt="" /></span>
-          </div>
+
+    <?php if(is_front_page()): ?>
+    <div class="site-header">
+        <div class="container">
+            <div class="row site-header-info">
+              <div class="col-md-6 text-right"><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vietcap.png" alt="" />
+                <span class="btn btn-vietcap">
+                  <h3><?php _e( 'VietCap', 'nisarg' ); ?></h3>
+                  <h4><?php _e( 'VietNam National Handicap System', 'nisarg' ); ?></h4>
+                </span>
+              </div>
+              <div class="col-md-6">
+                <span class="btn btn-golf-better">
+                  <h3><?php _e( 'Making Vietnam', 'nisarg' ); ?></h3>
+                  <h3><?php _e( 'Golf Better', 'nisarg' ); ?></h3>
+                </span>
+                <span href=""><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vga.png" alt="" /></span>
+              </div>
+            </div>
         </div>
-      <?php elseif(is_page('join-now') || is_page('dang-ky')): ?>
-        <div class="site-join-now text-center">
-          <a href="<?php echo site_url(); ?>" title="<?php echo bloginfo( 'name' ); ?>">
-            <?php
-            if(function_exists( 'ot_get_option' )) : echo '<img src="'. ot_get_option('logo', get_bloginfo('template_directory') . '/images/headers/logo.png') .'" alt="" />'; endif;
-            ?>
-          </a>
-          <h2 class="display-inline"><?php _e('HELP GROW THE GAME IN VIETNAM', 'nisarg'); ?></h2>
-        </div>
-      <?php endif; ?>
-    </div><!--.site-branding-->
-  </div><!--.site-header-->
+    </div>
+    <?php elseif(is_page('join-now') || is_page('dang-ky')): ?>
+    <div class="site-header">
+        <div class="container">
+            <div class="site-join-now text-center">
+              <a href="<?php echo site_url(); ?>" title="<?php echo bloginfo( 'name' ); ?>">
+                <?php
+                if(function_exists( 'ot_get_option' )) : echo '<img src="'. ot_get_option('logo', get_bloginfo('template_directory') . '/images/headers/logo.png') .'" alt="" />'; endif;
+                ?>
+              </a>
+              <h2 class="display-inline"><?php _e('HELP GROW THE GAME IN VIETNAM', 'nisarg'); ?></h2>
+            </div>
+        </div><!--.site-branding-->
+    </div><!--.site-header-->
+    <?php endif; ?>
 </header>
 <div id="content" class="site-content">
+<script type="text/javascript">
+    jQuery( document ).ready(function($) {
+        if($( "#lang_choice_1 option:selected" ).val() == 'en') {
+            $('#lagguage-en').css('display', 'inline');
+        } else {
+            $('#lagguage-vn').css('display', 'inline');
+        }
+    });
+</script>

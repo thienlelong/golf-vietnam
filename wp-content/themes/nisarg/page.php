@@ -23,7 +23,7 @@ get_header(); ?>
 						</div>
 					</div>
 				</div>
-				<?php if(is_page('join-now')) {
+				<?php if(is_page('join-now') || is_page('tham-gia-ngay')) {
 						get_template_part( 'template-parts/content', 'joinnow' );
 					} elseif(is_page('golf-club-listings') || is_page('danh-sach-golf-club')) {
 						get_template_part( 'template-parts/content', 'golf-club-listings' );
