@@ -58,14 +58,18 @@
                             <li><a href="<?php bloginfo('template_directory'); ?>/images/junior-golf.png" title=""></a></li>
                         </ul>
                         <div class="box-title">
-                            <h3><?php _e('20,000th Member', 'nisarg') ?></h3>
+                            <?php
+                                $result = count_users();
+                                $user_counts = $result['total_users'];
+                            ?>
+                            <h3><?php echo $user_counts;_e('th Member', 'nisarg') ?></h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="site-info-box">
-            <div class="logo-rolex">
+            <div class="logo-rolex">;
                 <img src="<?php bloginfo('template_directory'); ?>/images/logo-rolex.png">
             </div>
             <div class="count-member">
@@ -134,7 +138,7 @@
         }
         var refresh=1000;
         setInterval(display_watch, refresh);
-        $('.site-info-box').css('top', $(window).height()/2 - 140);
+        $('.site-info-box').css('top', $(window).height()/2 - 150);
         var offset = $(".site-info-box").offset();
         $(window).scroll(function() {
             $(".site-info-box").stop().animate({

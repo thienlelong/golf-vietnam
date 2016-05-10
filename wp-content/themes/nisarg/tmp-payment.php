@@ -20,33 +20,33 @@
                     <div class="entry-content page-content">
                         <div class="inner-70">
                             <div class="payment-info">
-                                <h2 class="page-title">Items Details</h2>
+                                <h2 class="page-title"><?php _e('Items Details', 'nisarg') ?></h2>
                                 <div class="pmitem">
                                   <div class="pmorder row">
                                       <div class="col-md-6">
-                                        <h4 class="pmitem-header">Description</h4>
-                                        <p class="pmitem-value text-left">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                                        <h4 class="pmitem-header"><?php _e('Description', 'nisarg') ?></h4>
+                                        <p class="pmitem-value text-left"><?php _e('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'nisarg') ?></p>
                                       </div>
                                       <div class="col-xs-4 col-md-2" >
-                                        <h6 class="pmitem-header">QUANTITY</h6>
+                                        <h6 class="pmitem-header"><?php _e('QUANTITY', 'nisarg') ?></h6>
                                         <input id="number-user" type="number" class="pmitem-value" min="0" step="1" max="9999" disabled="true">
                                       </div  >
-                                      <div class="col-xs-4 col-md-2" ><h6 class="pmitem-header">PRICE</h6>
+                                      <div class="col-xs-4 col-md-2" ><h6 class="pmitem-header"><?php _e('PRICE', 'nisarg') ?></h6>
                                         <span id="price" class="pmitem-value">$49.95</span>
                                       </div  >
-                                      <div  class="col-xs-4 col-md-2" ><h6 class="pmitem-header">TOTAL</h6>
+                                      <div  class="col-xs-4 col-md-2" ><h6 class="pmitem-header"><?php _e('TOTAL', 'nisarg') ?></h6>
                                         <span  id="total-price" class="pmitem-value">$72.45</span>
                                       </div  >
                                   </div>
                                 </div>
                             </div>
                             <div class="payment-detail">
-                                <h2 class="page-title">Payment Details</h2>
+                                <h2 class="page-title"><?php _e('Payment Details', 'nisarg') ?></h2>
                                 <div class="pmitem">
                                     <div class="row">
                                         <div class="col-sm-6" >
                                             <div class="pm-order">
-                                                <label>Transaction Amount:</label>
+                                                <label><?php _e('Transaction Amount', 'nisarg') ?>:</label>
                                                 <span id="pm-total-price" class="cl-blue">$72.45 (CAD)</span>
                                             </div>
                                             <div class="pm-order">
@@ -58,19 +58,19 @@
                                              <img src=<?php echo get_template_directory_uri()."/images/Paymentimgcard.png"?>>
                                         </div  >
                                     </div>
-                                <p>Please complete the following details exactly as they appear on your card. Do not put spaces or hyphens in the card number.</p>
+                                <p><?php _e('Please complete the following details exactly as they appear on your card. Do not put spaces or hyphens in the card number.', 'nisarg') ?></p>
                                 </div>
                             </div>
                         </div>
                         <div class="payment-form row">
 
                             <div class="row">
-                                <p class="col-sm-10 col-sm-offset-2 col-md-9 col-md-offset-3">By payment an account you agree to our <a href="<?php echo site_url('terms-and-conditions')?>">Terms and Conditions</a>  and our <a href="<?php echo site_url('privacy-policy')?>">Privacy Policy</a>.</p>
+                                <p class="col-sm-10 col-sm-offset-2 col-md-9 col-md-offset-3"><?php _e('By payment an account you agree to our', 'nisarg') ?> <a href="<?php echo site_url('terms-and-conditions')?>"><?php _e('Terms and Conditions', 'nisarg') ?></a> <?php _e('and our', 'nisarg') ?>  <a href="<?php echo site_url('privacy-policy')?>"><?php _e('Privacy Policy', 'nisarg') ?></a>.</p>
                                 <div class="col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-3">
-                                    <button  id="btn-process-transaction" class="btn btn-radius btn-lg-13">process transaction</button>
+                                    <button  id="btn-process-transaction" class="btn btn-radius btn-lg-13"><?php _e('process transaction', 'nisarg') ?></button>
                                     <?php echo do_shortcode('[easy_payment amount="9"]'); ?>
                                 </div>
-                                <div class="col-sm-5 col-md-3"><a href="" class="btn btn-radius btn-lg-13 bg-red">cancel transaction</a></div>
+                                <div class="col-sm-5 col-md-3"><a href="" class="btn btn-radius btn-lg-13 bg-red"><?php _e('cancel transaction', 'nisarg') ?></a></div>
                             </div>
                         </div>
 

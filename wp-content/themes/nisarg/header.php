@@ -85,6 +85,8 @@
       </nav>
       </div>
       <div class="header-right col-md-3">
+        <img id="lagguage-vn" style="display: none" src="<?php bloginfo('template_directory'); ?>/images/headers/icon-vietnam.png" alt="" />
+        <img id="lagguage-en" style="display: none" src="<?php bloginfo('template_directory'); ?>/images/headers/icon-english.png" alt="" />
         <?php pll_the_languages( array(
            'dropdown' => 1,
            'show_flags' => 1,
@@ -136,3 +138,12 @@
   </div><!--.site-header-->
 </header>
 <div id="content" class="site-content">
+<script type="text/javascript">
+    jQuery( document ).ready(function($) {
+        if($( "#lang_choice_1 option:selected" ).val() == 'en') {
+            $('#lagguage-en').css('display', 'inline');
+        } else {
+            $('#lagguage-vn').css('display', 'inline');
+        }
+    });
+</script>
