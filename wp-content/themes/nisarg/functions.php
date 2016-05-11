@@ -366,7 +366,7 @@ function vb_reg_new_users() {
     $err_array =array();
     foreach ($users as $user  ) {
          $validate=validate_user($user);
-         if(count($validate)!=0)
+         if($validate['is_error'])
              array_push($err_array,$validate);
     }
     if(count($err_array)!=0){
@@ -386,7 +386,7 @@ function vb_reg_new_users() {
          else
          {
             $result['success']=false;
-             $result['error']="error add user";
+            $result['error']="error add user";
            //delete user when one of them die
             foreach ($arrUserId as  $value) {
                 delete_user($value);
@@ -395,6 +395,13 @@ function vb_reg_new_users() {
          }
        }
     $result['users']=$arrUserId;
+    if(pll_current_language('locale')!='vi'){
+        $result['redirectLink']=  site_url('payment');
+    }
+    else{
+        $result['redirectLink']=  site_url('dangky'); 
+    }
+     
     echo json_encode($result) ;
     die();
 }
@@ -408,22 +415,30 @@ function delete_user($user_id,$meta_keys){
     delete_user_metas($user_id,$meta_keys);
     wp_delete_user($user_id);
 }
+
 function validate_user($user){
     if(!isset($user))
     {
         return;
     }
-    $err =   array();
+  
+    $err = array();
     $err['form_id']=$user['form_id'];
     //check email existed
     if( email_exists($user['user_email'])) {
       /* stuff to do when email address exists */
-       $err['user_email']='email_exists';
+        $err['user_email']='email_exists';
+        $err['is_error']=true;
     }
-
+    $validate_fields = array("first_name", "middle_name", "last_name", "password","user_email");
     foreach ($user as $key => $value) {
-        if(is_null($value)||empty($value)){
-            $err[$key]="required";
+        if(in_array($key, $validate_fields))
+        {
+            if(is_null($value)||empty($value))
+            {
+                $err[$key]="required";
+                $err['is_error']=true;
+            }
         }
     }
     return $err;
@@ -441,7 +456,9 @@ function add_member($user)
     $province = $user['province'];
     $city = $user['city'];
     $langguage = $user['langguage'];
-    $gender = $user['gender'];   /**
+    $gender = $user['gender']; 
+    $avatar=$user['avatar'];
+      /**
      * IMPORTANT: You should make server side validation here!
      *
      */
@@ -449,8 +466,8 @@ function add_member($user)
     //Add metatdata for user
     if($uId!=0){
          //add user metadata
-             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender");
-             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender);
+             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar");
+             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender,$avatar);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
     return $uId;

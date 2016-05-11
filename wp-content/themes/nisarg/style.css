@@ -2112,7 +2112,7 @@ hr.line-title {
 }
 .form-user-address label.error,.form-user-info label.error
 {
-    display: none !important.;
+    display: none !important;
 }
 .form-user-address .result-message {
     background-color: #FADEDA;

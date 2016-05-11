@@ -4,9 +4,7 @@
  **/
  get_header();
 ?>
-<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/base/jquery-ui.css" type="text/css" media="all" /> 
  
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
 <div class="container">
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
@@ -160,9 +158,10 @@
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <button onclick="return false;" class="btn btn-radius btn-lg-13"><?php _e('ADD ACTUAL FACE PHOTO', 'nisarg') ?>
-                                                    <input style="display: none;" type="file" class="file" name="actual_img"> </input>
+                                                    
                                         </button>
-                                        <canvas style="display: none;"  id="e" width="177" height="113"></canvas>
+                                        <input style="opacity:1;" type="file" class="file_avatar" name="actual_img"> </input>
+                                        <canvas class="canvas_avatar"  width="177" height="113"></canvas>
                                         <span class="used-for"><?php _e('Used For Membership Card', 'nisarg');?></span>
                                     </div>
                                 </div>
@@ -180,8 +179,8 @@
                             </div>
                         </form>
                         <div class="text-right wrapper-btn-signin">
-                            <button type="button" class="btn  btn-radius btn-addmore btn-lg-13 pull-left" id="btn-addmore"><i class="fa fa-plus" aria-hidden="true"></i><?php _e('Add more user', 'nisarg') ?></button>
-                            <button type="button" class="btn btn-radius bg-red btn-lg btn-large" id="btn-new-user"><?php _e('Pay Now', 'nisarg') ?></button>
+                            <button type="button" onclick="return false;" class="btn  btn-radius btn-addmore btn-lg-13 pull-left" id="btn-addmore"><i class="fa fa-plus" aria-hidden="true"></i><?php _e('Add more user', 'nisarg') ?></button>
+                            <button type="button" onclick="return false;" class="btn btn-radius bg-red btn-lg btn-large" id="btn-new-user"><?php _e('Pay Now', 'nisarg') ?></button>
                         </div>
                     </div><!-- .entry-content -->
                 </article><!-- #post-## -->
