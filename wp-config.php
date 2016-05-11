@@ -40,8 +40,10 @@ define('DB_USER', 'u449267025_nham');
 
 define('DB_PASSWORD', 'arV9oR6EyL');
 
+
 define('DB_HOST', 'mysql.hostinger.vn');
 */
+
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
