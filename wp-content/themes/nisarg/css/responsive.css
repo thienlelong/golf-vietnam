@@ -233,6 +233,9 @@
         width: 100%;
         margin-bottom: 15px;
     }
+    .payment-form {
+        padding: 0px 15px;
+    }
 }
 @media (max-width: 359px) {
     .site-header{

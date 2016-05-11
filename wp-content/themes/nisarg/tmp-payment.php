@@ -63,18 +63,27 @@
                             </div>
                         </div>
                         <div class="payment-form row">
-
                             <div class="row">
-                                <p class="col-sm-10 col-sm-offset-2 col-md-9 col-md-offset-3"><?php _e('By payment an account you agree to our', 'nisarg') ?> <a href="<?php echo site_url('terms-and-conditions')?>"><?php _e('Terms and Conditions', 'nisarg') ?></a> <?php _e('and our', 'nisarg') ?>  <a href="<?php echo site_url('privacy-policy')?>"><?php _e('Privacy Policy', 'nisarg') ?></a>.</p>
-                                <div class="col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-3">
+                                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                                    <input type="checkbox" name="auto-renew" id="auto-renew" class="css-checkbox" value="auto renew" />
+                                    <label for="auto-renew" class="css-label"><?php _e('Automatically renew my membership annually.', 'nisarg') ?></label>
+                                </div>
+                                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                                    <input type="checkbox" name="remind-expire" id="remind-expire" class="css-checkbox" value="Remind Expire" />
+                                    <label for="remind-expire" class="css-label"><?php _e('Remind me 1 month in advance next year.', 'nisarg') ?></label>
+                                    </label>
+                                </div>
+                                <p class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"><?php _e('By payment an account you agree to our', 'nisarg') ?> <a href="<?php echo site_url('terms-and-conditions')?>"><?php _e('Terms and Conditions', 'nisarg') ?></a> <?php _e('and our', 'nisarg') ?>  <a href="<?php echo site_url('privacy-policy')?>"><?php _e('Privacy Policy', 'nisarg') ?></a>.</p>
+                                <div class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
                                     <button  id="btn-process-transaction" class="btn btn-radius btn-lg-13"><?php _e('process transaction', 'nisarg') ?></button>
                                     <?php echo do_shortcode('[easy_payment amount="9"]'); ?>
                                 </div>
-                                <div class="col-sm-5 col-md-3"><a href="" class="btn btn-radius btn-lg-13 bg-red"><?php _e('cancel transaction', 'nisarg') ?></a></div>
+                                <div class="col-sm-5 col-md-4"><a href="" class="btn btn-radius btn-lg-13 bg-red"><?php _e('cancel transaction', 'nisarg') ?></a></div>
+                                <div id="confirm-checkbox" class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 alert alert-warning" role="alert" style="display: none;">
+                                    <?php _e('Please Select Info.', 'nisarg') ?>
+                                </div>
                             </div>
                         </div>
-
-
                     </div><!-- .entry-content -->
                 </article><!-- #post-## -->
             <?php endwhile; // End of the loop. ?>
@@ -93,8 +102,11 @@
         $('#easy_paypal_form_div form input[name=amount]').val("72.45");
         $('#easy_paypal_form_div form input[name=return]').val(url_return + '?uid=1');
         $('#btn-process-transaction').click(function() {
-            console.log("haha");
-            $('#easy_paypal_form_div input[type=image]').trigger('click');
+            if($("input[name=auto-renew]").is(":checked") && $("input[name=remind-expire]").is(":checked")) {
+                $('#easy_paypal_form_div input[type=image]').trigger('click');
+            } else {
+                $('#confirm-checkbox').css('display', 'block');
+            }
         });
     });
 </script>

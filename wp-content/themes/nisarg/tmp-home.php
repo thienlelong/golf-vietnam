@@ -69,7 +69,7 @@
             </div>
         </div>
         <div class="site-info-box">
-            <div class="logo-rolex">;
+            <div class="logo-rolex">
                 <img src="<?php bloginfo('template_directory'); ?>/images/logo-rolex.png">
             </div>
             <div class="count-member">

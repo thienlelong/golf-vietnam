@@ -691,16 +691,17 @@ header a.menu-toggle {
     display: block;
     margin: auto;
     margin-top: -15px;
+    min-width: 260px;
 }
 #left-navigation > ul > li{
     float: none;
     margin: 0px -15px;
-    padding: 10px 15px;
+    padding: 17px 20px;
     border-bottom: 1px dashed  #ccc;
 }
 #left-navigation > ul > li > a{
     text-align: left;
-    color: #000;
+    color: #505050;
     line-height: 35px;
     display: block;
     padding: 0;
@@ -2518,4 +2519,20 @@ p.pmitem-value {
 }
 .page-payment-success .btn{
     min-width: 250px;
+}
+
+.payment-form input[type=checkbox].css-checkbox:checked + label.css-label {
+    background-image: url(images/icon-check-blue-select.png);
+    background-position: 0 0;
+}
+.payment-form input[type=checkbox].css-checkbox + label.css-label {
+    background-image: url(images/icon-check-blue.png);
+    height: 30px;
+    padding-left: 30px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
