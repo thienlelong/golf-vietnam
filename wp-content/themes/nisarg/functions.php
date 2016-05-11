@@ -366,7 +366,7 @@ function vb_reg_new_users() {
     $err_array =array();
     foreach ($users as $user  ) {
          $validate=validate_user($user);
-         if($validate['is_error'])
+         if(isset($validate['is_error']) && $validate['is_error'])
              array_push($err_array,$validate);
     }
     if(count($err_array)!=0){
@@ -394,14 +394,16 @@ function vb_reg_new_users() {
             die();
          }
        }
-    $result['users']=$arrUserId;
+    $result['users'] = $arrUserId;
+    $_SESSION['usersId'] = implode(',', $arrUserId);
+
     if(pll_current_language('locale')!='vi'){
-        $result['redirectLink']=  site_url('payment');
+        $result['redirectLink']=  site_url('payment') ;
     }
     else{
-        $result['redirectLink']=  site_url('dangky'); 
+        $result['redirectLink']=  site_url('thanh-toan') ;
     }
-     
+
     echo json_encode($result) ;
     die();
 }
@@ -421,7 +423,7 @@ function validate_user($user){
     {
         return;
     }
-  
+
     $err = array();
     $err['form_id']=$user['form_id'];
     //check email existed
@@ -451,12 +453,12 @@ function add_member($user)
     $last_name = $user['last_name'];
     $user_email = $user['user_email'];
     $password = $user['password'];
-    $golf_club = $user['golf_club'];
+    $golf_club = isset($user['golf_club']) ? $user['golf_club'] : '';
     $district = $user['district'];
     $province = $user['province'];
     $city = $user['city'];
-    $langguage = $user['langguage'];
-    $gender = $user['gender']; 
+    $langguage = isset($user['langguage']) ? $user['langguage'] : '';
+    $gender = $user['gender'];
     $avatar=$user['avatar'];
       /**
      * IMPORTANT: You should make server side validation here!
@@ -474,4 +476,11 @@ function add_member($user)
 }
 add_action('wp_ajax_register_users', 'vb_reg_new_users');
 add_action('wp_ajax_nopriv_register_users', 'vb_reg_new_users');
+
+function ur_theme_start_session()
+{
+    if (!session_id())
+        session_start();
+}
+add_action("init", "ur_theme_start_session", 1);
 

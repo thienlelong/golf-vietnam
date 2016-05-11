@@ -4,7 +4,7 @@
  **/
  get_header();
 ?>
- 
+
 <div class="container">
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-12">
-                                      <input type="text" name="user_email" class="form-control"  placeholder="<?php _e('Email', 'nisarg') ?>" required>
+                                      <input type="email" name="user_email" class="form-control"  placeholder="<?php _e('Email', 'nisarg') ?>" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -158,7 +158,7 @@
                                 <div class="form-group">
                                     <div class="col-xs-12">
                                         <button onclick="return false;" class="btn btn-radius btn-lg-13"><?php _e('ADD ACTUAL FACE PHOTO', 'nisarg') ?>
-                                                    
+
                                         </button>
                                         <input style="opacity:1;" type="file" class="file_avatar" name="actual_img"> </input>
                                         <canvas class="canvas_avatar"  width="177" height="113"></canvas>

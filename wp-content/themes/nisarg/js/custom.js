@@ -44,9 +44,9 @@ jQuery(document).ready(function($) {
     jQuery('#btn-new-user').click(function(e) {
         register_users();
     });
-      
+
     jQuery('.file_avatar').live('change',function(e){
-      
+
       var file=jQuery(this)[0].files[0];
      // var canvas =document.getElementById('cavas_avatar');
      var formId=jQuery(this.form).attr("id");
@@ -100,7 +100,9 @@ function register_users() {
             type: 'post',
             datatype: 'json',
             success: function(response) {
+                console.log("response", response);
                 result = jQuery.parseJSON(response);
+                console.log("result", result);
                 if (result.success) {
                     //code redirect
                     location.href= result.redirectLink;
@@ -114,7 +116,7 @@ function register_users() {
                           }
                           else
                           {
-                             $(this).html("Please complete some requered field!");
+                            $(this).html("Please complete some requered field!");
                           }
                         });
                     });
@@ -137,7 +139,7 @@ function clearForm(form, formID) {
         var tag = this.tagName.toLowerCase(); // normalize case
         // it's ok to reset the value attr of text inputs,
         // password inputs, and textareas
-        if (type == 'text' || type == 'password' || tag == 'textarea')
+        if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'email')
             this.value = "";
         // checkboxes and radios need to have their checked state cleared
         // but should *not* have their 'value' changed
@@ -181,7 +183,7 @@ function clearForm(form, formID) {
             this.selectedIndex = -1;
     });
 };
- 
+
 function getCanVasBase64(canvas)
 {
   if(typeof canvas!=undefined)
@@ -212,9 +214,9 @@ function showThumbnail(file,canvas){
         var ret = reader.readAsDataURL(file);
         ctx = canvas.getContext("2d");
         image.onload= function(){
-          //clear canvas 
+          //clear canvas
           ctx.clearRect(0, 0, canvas.width, canvas.height);
           ctx.drawImage(image,0,0,100, 100 * image.height / image.width);
         }
     }
- 
+

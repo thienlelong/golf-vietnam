@@ -2,7 +2,7 @@
 /*
  * Template Name: Payment
  **/
- get_header();
+    get_header();
 ?>
 <div class="container">
     <div id="primary" class="content-area">
@@ -92,15 +92,18 @@
 </div><!--.container-->
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
-        var url_return = '<?php echo site_url('payment-success'); ?>'
-        $('#number-user').val('2');
+        var url_return = '<?php echo site_url('payment-success'); ?>';
+        var usersId = '<?php echo  $_SESSION['usersId']; ?>';
+        var userIdlength = usersId.split(",").length;
+        $('#number-user').val(userIdlength);
         $('#price').html('$49.95');
-        $('#total-price').html('$72.45');
-        $('#pm-total-price').html('$72.45 (CAD)');
+        var total = 49.95*userIdlength;
+        $('#total-price').html('$'+ total);
+        $('#pm-total-price').html('$' + total + '(CAD)');
 
         $('#easy_paypal_form_div form').attr('target', '');
-        $('#easy_paypal_form_div form input[name=amount]').val("72.45");
-        $('#easy_paypal_form_div form input[name=return]').val(url_return + '?uid=1');
+        $('#easy_paypal_form_div form input[name=amount]').val(total);
+        $('#easy_paypal_form_div form input[name=return]').val(url_return);
         $('#btn-process-transaction').click(function() {
             if($("input[name=auto-renew]").is(":checked") && $("input[name=remind-expire]").is(":checked")) {
                 $('#easy_paypal_form_div input[type=image]').trigger('click');
