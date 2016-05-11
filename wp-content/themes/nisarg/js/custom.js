@@ -44,7 +44,15 @@ jQuery(document).ready(function($) {
     jQuery('#btn-new-user').click(function(e) {
         register_users();
     });
-
+      
+    jQuery('.file_avatar').live('change',function(e){
+      
+      var file=jQuery(this)[0].files[0];
+     // var canvas =document.getElementById('cavas_avatar');
+     var formId=jQuery(this.form).attr("id");
+     var canvas= jQuery('#'+formId+' .canvas_avatar')[0];
+      showThumbnail(file,canvas);
+  });
 });
 //dungdh
 function arrayToObject(array) {
@@ -72,9 +80,17 @@ function register_users() {
          valid= jQuery(this).valid();
     });
     // Data to send
+    var users= getFormsData('.registerUserForm');
+    for(var i=0;i<users.length;i++)
+    {
+        var canvas =jQuery('#'+users[i].form_id+' .canvas_avatar')[0];
+        var base64Url=getCanVasBase64(canvas);
+        var bas64=base64Url.split(',')[1];
+        users[i].avatar=bas64;
+    }
     var data = {
         action: 'register_users',
-        users: getFormsData('.registerUserForm')
+        users:users
     };
 
     if (valid) {
@@ -87,8 +103,7 @@ function register_users() {
                 result = jQuery.parseJSON(response);
                 if (result.success) {
                     //code redirect
-                    location.href="";
-
+                    location.href= result.redirectLink;
                 } else {
                     //code handle error
                     result.error.forEach(function(error){
@@ -116,6 +131,8 @@ function clearForm(form, formID) {
     // iterate over all of the inputs for the form
     // element that was passed in
     jQuery(':input', form).each(function() {
+      jQuery(this).removeClass('error');
+
         var type = this.type;
         var tag = this.tagName.toLowerCase(); // normalize case
         // it's ok to reset the value attr of text inputs,
@@ -164,16 +181,7 @@ function clearForm(form, formID) {
             this.selectedIndex = -1;
     });
 };
-function setCanvasImage(canvas, imgSouce)
-{
-    var view=document.getElementById(canvas);
-    var context = view.getContext('2d');
-    var img = new Image();
-    img.src = imgSouce;
-    img.onload = function() {
-    context.drawImage(img, 0, 0);
-    };
-}
+ 
 function getCanVasBase64(canvas)
 {
   if(typeof canvas!=undefined)
@@ -182,3 +190,31 @@ function getCanVasBase64(canvas)
     }
     return "";
 }
+function showThumbnail(file,canvas){
+        if(canvas==null||file==null)
+        {
+          return;
+        }
+        var imageType = /image.*/
+        if(!file.type.match(imageType)){
+            return ;
+        }
+        var image = new Image();
+        // image.classList.add("")
+        image.file = file;
+        //thumbnail.appendChild(image)
+        var reader = new FileReader()
+        reader.onload = (function(aImg){
+          return function(e){
+            aImg.src = e.target.result;
+          };
+        }(image))
+        var ret = reader.readAsDataURL(file);
+        ctx = canvas.getContext("2d");
+        image.onload= function(){
+          //clear canvas 
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(image,0,0,100, 100 * image.height / image.width);
+        }
+    }
+ 
