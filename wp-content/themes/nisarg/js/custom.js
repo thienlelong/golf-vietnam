@@ -76,7 +76,7 @@ function register_users() {
         action: 'register_users',
         users: getFormsData('.registerUserForm')
     };
-   
+
     if (valid) {
         jQuery.ajax({
             url: ajax_url,
@@ -94,7 +94,7 @@ function register_users() {
                     result.error.forEach(function(error){
                         jQuery('#'+error.form_id).find('.result-message').each(function(){
                           if(error.user_email=="email_exists")
-                          { 
+                          {
                             jQuery(this).html("Email exist");
                           }
                           else
@@ -182,4 +182,3 @@ function getCanVasBase64(canvas)
     }
     return "";
 }
- 
