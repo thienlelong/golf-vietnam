@@ -365,26 +365,24 @@ function vb_reg_new_users() {
      //validate before add user
     $err_array =array();
     foreach ($users as $user  ) {
-         $validate=validate_user($user);
-         if(isset($validate['is_error']) && $validate['is_error'])
-             array_push($err_array,$validate);
+        $validate=validate_user($user);
+        if(isset($validate['is_error']) && $validate['is_error'])
+            array_push($err_array,$validate);
     }
     if(count($err_array)!=0){
-         $result['success']=false;
-         $result['message']="validate fail";
-         $result['error']=$err_array;
-         echo json_encode($result) ;
-         die();
+        $result['success']=false;
+        $result['message']="validate fail";
+        $result['error']=$err_array;
+        echo json_encode($result) ;
+        die();
     }
      //add users
-     foreach ($users as $u) {
+    foreach ($users as $u) {
         $uId =  add_member($u);
-        if($uId!=0)
-         {
+        if($uId!=0){
             array_push($arrUserId, $uId) ;
-         }
-         else
-         {
+        }
+         else {
             $result['success']=false;
             $result['error']="error add user";
            //delete user when one of them die
@@ -392,8 +390,8 @@ function vb_reg_new_users() {
                 delete_user($value);
             }
             die();
-         }
-       }
+        }
+    }
     $result['users'] = $arrUserId;
     $_SESSION['usersId'] = implode(',', $arrUserId);
 
@@ -410,7 +408,7 @@ function vb_reg_new_users() {
 function delete_user_metas($user_id,$meta_keys){
     foreach ($meta_keys as $key) {
         delete_user_meta($user_id, $key);
-        }
+    }
 }
 function delete_user($user_id,$meta_keys){
     //delete user
@@ -419,8 +417,7 @@ function delete_user($user_id,$meta_keys){
 }
 
 function validate_user($user){
-    if(!isset($user))
-    {
+    if(!isset($user)){
         return;
     }
 
@@ -460,7 +457,12 @@ function add_member($user)
     $langguage = isset($user['langguage']) ? $user['langguage'] : '';
     $gender = $user['gender'];
     $avatar=$user['avatar'];
-      /**
+    $date_of_birth = $user['date_of_birth'];
+    $start_date =  date('Y/m/d');
+    $expire_date = date("Y/m/d", strtotime(date("Y/m/d", strtotime($start_date)) . " + 365 day"));
+    $is_active = false;
+    $MID = date('y').'00001';
+    /**
      * IMPORTANT: You should make server side validation here!
      *
      */
@@ -468,8 +470,8 @@ function add_member($user)
     //Add metatdata for user
     if($uId!=0){
          //add user metadata
-             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar");
-             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender,$avatar);
+             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID");
+             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
     return $uId;

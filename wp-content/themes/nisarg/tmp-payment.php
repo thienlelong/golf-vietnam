@@ -94,6 +94,7 @@
     jQuery( document ).ready(function($) {
         var url_return = '<?php echo site_url('payment-success'); ?>';
         var usersId = '<?php echo  $_SESSION['usersId']; ?>';
+        console.log(usersId);
         var userIdlength = usersId.split(",").length;
         $('#number-user').val(userIdlength);
         $('#price').html('$49.95');
