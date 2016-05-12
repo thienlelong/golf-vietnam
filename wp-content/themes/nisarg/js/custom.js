@@ -222,7 +222,7 @@ function showThumbnail(file,canvas){
         image.onload= function(){
           //clear canvas
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.drawImage(image, 0, 0, 100, 100 * image.height / image.width);
+          ctx.drawImage(image, 0, 0, 60, 80 * image.height / image.width);
         }
     }
 
