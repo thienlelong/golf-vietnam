@@ -77,7 +77,15 @@ function register_users() {
     //valid data before sending
     var valid = false;
     jQuery('.registerUserForm').each(function() {
-         valid= jQuery(this).valid();
+        var validator = jQuery(this).validate({
+            rules: {
+                password: "required",
+                password2: {
+                  equalTo: "#password"
+                }
+            }
+        });
+        valid = validator.form();
     });
     // Data to send
     var users= getFormsData('.registerUserForm');

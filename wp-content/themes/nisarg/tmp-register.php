@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                      <input type="password" name="password" class="form-control"  placeholder="<?php _e('Login Password', 'nisarg') ?>" required>
+                                      <input type="password" name="password" class="form-control" id='password' placeholder="<?php _e('Login Password', 'nisarg') ?>" required>
                                     </div>
                                     <div class="col-sm-6">
                                       <input type="password" name="password2" class="form-control"  placeholder="<?php _e('Confirm Login Password', 'nisarg') ?>" required>

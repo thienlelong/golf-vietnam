@@ -25,23 +25,23 @@ Database name: sql5114853
 Database user: sql5114853
 Database password: ITlc3gFkMy
 Port number: 3306*/
-/*define('DB_NAME', 'u512183349_golf');
+define('DB_NAME', 'u512183349_golf');
 
 define('DB_USER', 'root');
 
 define('DB_PASSWORD', '');
 
-define('DB_HOST', 'localhost');*/
+define('DB_HOST', 'localhost');
 //u512183349_golf	u512183349_nham/OPTQB8DVGU	mysql.hostinger.vn
 
-define('DB_NAME', 'u449267025_golf');
+/*define('DB_NAME', 'u449267025_golf');
 
 define('DB_USER', 'u449267025_nham');
 
 define('DB_PASSWORD', 'arV9oR6EyL');
 
 
-define('DB_HOST', 'mysql.hostinger.vn');
+define('DB_HOST', 'mysql.hostinger.vn');*/
 
 
 /** Database Charset to use in creating database tables. */
@@ -91,7 +91,7 @@ $table_prefix  = 'wp_';
  *
  * @link https://codex.wordpress.org/Debugging_in_WordPress
  */
-define('WP_DEBUG', true);
+define('WP_DEBUG', false);
 
 /* That's all, stop editing! Happy blogging. */
 

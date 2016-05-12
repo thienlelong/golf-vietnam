@@ -2107,12 +2107,15 @@ hr.line-title {
 
 
 /*dungdh*/
-.form-user-address .error,.form-user-info .error{
-    border: 1px solid #D3514F !important;
-}
+/* .form-user-address .error,.form-user-info .error{
+    border: 1px solid #D3514F ;
+} */
 .form-user-address label.error,.form-user-info label.error
 {
-    display: none !important;
+    color: red;
+    border: 0px;
+    font-size: 13px;
+    font-style: italic;
 }
 .form-user-address .result-message ,
 .form-user-address .result-message {
@@ -2269,6 +2272,7 @@ hr.line-title {
     position: relative;
     overflow: hidden;
     margin: 10px;
+    margin-left: 0px;
 }
 
 .avatarUpload input.upload {
