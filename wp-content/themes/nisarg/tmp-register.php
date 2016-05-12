@@ -157,21 +157,30 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-xs-12">
-                                        <button onclick="return false;" class="btn btn-radius btn-lg-13"><?php _e('ADD ACTUAL FACE PHOTO', 'nisarg') ?>
-
-                                        </button>
-                                        <input style="opacity:1;" type="file" class="file_avatar" name="actual_img"> </input>
-                                        <canvas class="canvas_avatar"  width="177" height="113"></canvas>
+                                        <div class="avatarUpload btn btn-radius btn-lg-13">
+                                            <span><?php _e('ADD ACTUAL FACE PHOTO', 'nisarg') ?></span>
+                                            <input  type="file" class="file_avatar upload" name="actual_img"> </input>
+                                        </div>
+                                        <canvas class="canvas_avatar"  width="60" height="80"></canvas>
                                         <span class="used-for"><?php _e('Used For Membership Card', 'nisarg');?></span>
+                                        <div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-6">
-                                    <input type="hidden" name="form_id" value="registerUserForm0" />
-                                        <div class="indicator"></div>
-                                        <div class="alert result-message"></div>
+                                    <div class="col-sm-12">
+                                        <input type="hidden" name="form_id" value="registerUserForm0" />
+                                        <div class="alert alert-warning result-message" role="alert">
+                                            <div id="emailExist">
+                                               <strong>Warning!</strong> <?php _e('An account already exists for this email address', 'nisarg'); ?>.
+                                            </div>
+                                          <!--  <div id="fieldRequired">
+                                              <strong>Warning!</strong> <?php _e('An account already exists for this email address', 'nisarg'); ?>.
+                                          </div> -->
+                                        </div>
                                     </div>
-                                    <div class="col-sm-16 text-right">
+                                    <div class="col-sm-12 text-right">
                                         <?php wp_nonce_field('vb_new_user','vb_new_user_nonce', true, true ); ?>
                                     </div>
                                 </div>

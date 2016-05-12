@@ -109,15 +109,13 @@ function register_users() {
                 } else {
                     //code handle error
                     result.error.forEach(function(error){
-                        jQuery('#'+error.form_id).find('.result-message').each(function(){
-                          if(error.user_email=="email_exists")
-                          {
-                            jQuery(this).html("Email exist");
-                          }
-                          else
-                          {
-                            $(this).html("Please complete some requered field!");
-                          }
+                        jQuery('#' + error.form_id).find('.result-message').each(function(){
+                            if(error.user_email=="email_exists") {
+                                jQuery(this).css('display', 'block');
+                            }
+                            else {
+                                jQuery(this).find('#fieldRequired').css('display', 'block');
+                            }
                         });
                     });
                 }
@@ -216,7 +214,7 @@ function showThumbnail(file,canvas){
         image.onload= function(){
           //clear canvas
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.drawImage(image,0,0,100, 100 * image.height / image.width);
+          ctx.drawImage(image, 0, 0, 100, 100 * image.height / image.width);
         }
     }
 

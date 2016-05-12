@@ -2114,13 +2114,13 @@ hr.line-title {
 {
     display: none !important;
 }
+.form-user-address .result-message ,
 .form-user-address .result-message {
-    background-color: #FADEDA;
-    border-radius: 3px 3px 3px 3px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-    padding: 10px;
-    display: inline;
+    display: none;
+}
+.canvas_avatar {
+    margin-bottom: -40px;
+    border: 1px solid #e1e1e1;
 }
 .form-user-info,
 .form-user-address{
@@ -2264,6 +2264,25 @@ hr.line-title {
 .golf_club {
     position: relative;
 }
+
+.avatarUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.avatarUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 31px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
 input[type=radio].css-checkbox {
     position: absolute;
     z-index: -1000;
