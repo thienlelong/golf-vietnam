@@ -142,6 +142,15 @@
     </div><!--.site-header-->
     <?php endif; ?>
 </header>
+<div class="modal js-loading-bar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <img src="<?php bloginfo('template_directory'); ?>/images/icon-loading.gif" alt="">
+            </div>
+        </div>
+    </div>
+</div>
 <div id="content" class="site-content">
 <script type="text/javascript">
     jQuery( document ).ready(function($) {

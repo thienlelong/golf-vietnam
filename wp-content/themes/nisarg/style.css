@@ -281,49 +281,6 @@ textarea:hover {
 	outline: 0;
 }
 
-/* button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-    border: 1px solid #455A64;
-    border-radius: 2px;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
-    color:#fff;
-}
-
-button:hover,
-html input[type="button"]:hover,
-input[type="reset"]:hover,
-input[type="submit"]:hover {
-    border: 1px solid #455A64;
-    border-radius: 2px;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
-    color:#fff;
-}
-
-button:focus,
-html input[type="button"]:focus,
-input[type="reset"]:focus,
-input[type="submit"]:focus,
-button:active,
-html input[type="button"]:active,
-input[type="reset"]:active,
-input[type="submit"]:active {
-    border: 1px solid #455A64;
-    border-radius: 2px;
-    background:    -moz-linear-gradient(#607d8b, #455a64);
-    background:    -o-linear-gradient(#607d8b, #455a64);
-    background:    -webkit-linear-gradient(#607d8b, #455a64);
-    background:    linear-gradient(#607d8b, #455a64);
-    color:#fff;
-} */
-
 input[type=text]:focus,
 input[type=email]:focus,
 textarea:focus {
@@ -446,7 +403,18 @@ a img.aligncenter {
     margin-right: auto;
     margin-bottom: 20px;
 }
+.progress-bar.animate {
+   width: 100%;
+}
 
+.js-loading-bar .modal-content {
+    margin: 0 auto;
+    width: 85px;
+}
+
+.js-loading-bar {
+    top: 40%;
+}
 .wp-caption {
     background: #fff;
     max-width: 96%; /* Image does not overflow the content area */

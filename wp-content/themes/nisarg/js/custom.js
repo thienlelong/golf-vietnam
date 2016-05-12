@@ -1,5 +1,14 @@
 jQuery(document).ready(function($) {
-  jQuery('.date-of-birth').datepicker();
+    $(document)
+    .ajaxStart(function(){
+        var $modal = $('.js-loading-bar');
+        $modal.modal('show');
+    })
+    .ajaxStop(function(){
+        var $modal = $('.js-loading-bar');
+        $modal.modal('hide');
+    });
+    jQuery('.date-of-birth').datepicker();
     var count = 0;
     $('#btn-addmore').click(function(e) {
         count++;
@@ -73,15 +82,17 @@ function getFormsData(className) {
 }
 
 function register_users() {
+
     var ajax_url = vb_reg_vars.vb_ajax_url;
     //valid data before sending
     var valid = false;
     jQuery('.registerUserForm').each(function() {
+
         var validator = jQuery(this).validate({
             rules: {
                 password: "required",
                 password2: {
-                  equalTo: "#password"
+                   equalTo: jQuery(this).find("#password")
                 }
             }
         });
@@ -102,15 +113,14 @@ function register_users() {
     };
 
     if (valid) {
+
         jQuery.ajax({
             url: ajax_url,
             data: data,
             type: 'post',
             datatype: 'json',
             success: function(response) {
-                console.log("response", response);
                 result = jQuery.parseJSON(response);
-                console.log("result", result);
                 if (result.success) {
                     //code redirect
                     location.href= result.redirectLink;
@@ -181,8 +191,8 @@ function clearForm(form, formID) {
                   jQuery('#' + formID + ' input[name=golf_club]:checked + label').html(jQuery(this).html());
               });
             } else {
-              jQuery(this).prop('id', id);
-              jQuery(this).next().prop('for', id);
+               jQuery(this).prop('id', id);
+               jQuery(this).next().prop('for', id);
             }
         }
         else if (tag == 'select')
