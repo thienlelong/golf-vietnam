@@ -2091,7 +2091,7 @@ hr.line-title {
 }
 .canvas_avatar {
     margin-bottom: -40px;
-    border: 1px solid #e1e1e1;
+   /*  border: 1px solid #e1e1e1; */
 }
 .form-user-info,
 .form-user-address{
@@ -2362,7 +2362,8 @@ label.css-label {
     color: #0b9347;
 }
 
-.woocommerce-account .page-content {
+.woocommerce-account .page-content,
+.post-272 .page-content{
     background: transparent;
     webkit-box-shadow:none;
     -moz-box-shadow:none;
@@ -2464,6 +2465,9 @@ p.pmitem-value {
 .pm-order label {
     display: inline-block;
     width: 175px;
+}
+.pm-paypal img {
+    margin-top: -40px;
 }
 
 .payment-detail p {

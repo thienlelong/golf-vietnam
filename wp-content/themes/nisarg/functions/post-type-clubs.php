@@ -58,9 +58,23 @@ $args = array(
    'taxonomies' => array('category',),
 
 );
-
 //Register the Actitity post type.
 register_post_type( 'golf_clubs' , $args );
 
+function clubs_category_taxonomies()
+{
+   // Video type
+   register_taxonomy('clubs-category',array('golf_clubs'),array(
+      'hierarchical' => true,
+      'label' => 'Clubs Categories',
+      'singular_name' => 'Category',
+      'show_ui' => true,
+      'query_var' => true,
+      'rewrite' => array('slug' => 'clubs-category'),
+      'sort' => true
+   ));
+}
+// Add custom taxonomy term for activity for the area targeted
+add_action( 'init', 'clubs_category_taxonomies', 0 );
 
 ?>

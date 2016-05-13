@@ -56,11 +56,11 @@ jQuery(document).ready(function($) {
 
     jQuery('.file_avatar').live('change',function(e){
 
-      var file=jQuery(this)[0].files[0];
-     // var canvas =document.getElementById('cavas_avatar');
-     var formId=jQuery(this.form).attr("id");
-     var canvas= jQuery('#'+formId+' .canvas_avatar')[0];
-      showThumbnail(file,canvas);
+    var file=jQuery(this)[0].files[0];
+    // var canvas =document.getElementById('cavas_avatar');
+    var formId=jQuery(this.form).attr("id");
+    var canvas= jQuery('#'+formId+' .canvas_avatar')[0];
+    showThumbnail(file,canvas);
   });
 });
 //dungdh
@@ -149,12 +149,14 @@ function clearForm(form, formID) {
     // iterate over all of the inputs for the form
     // element that was passed in
     jQuery(':input', form).each(function() {
-      jQuery(this).removeClass('error');
+        jQuery(this).removeClass('error');
 
+        jQuery('#' +formID + ' label.error').remove();
         var type = this.type;
         var tag = this.tagName.toLowerCase(); // normalize case
         // it's ok to reset the value attr of text inputs,
         // password inputs, and textareas
+        jQuery('#' + formID + ' .date-of-birth').datepicker();
         if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'email')
             this.value = "";
         // checkboxes and radios need to have their checked state cleared
@@ -223,9 +225,9 @@ function showThumbnail(file,canvas){
         //thumbnail.appendChild(image)
         var reader = new FileReader()
         reader.onload = (function(aImg){
-          return function(e){
+        return function(e){
             aImg.src = e.target.result;
-          };
+        };
         }(image))
         var ret = reader.readAsDataURL(file);
         ctx = canvas.getContext("2d");

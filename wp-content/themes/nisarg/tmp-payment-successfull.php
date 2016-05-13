@@ -4,6 +4,29 @@
  **/
  get_header();
 ?>
+<?php
+if($_GET["orderId"] && $_SESSION["usersId"]) {
+    $orderId =  $_GET['orderId'];
+    $userIDs = $pieces = explode(",", $_SESSION["usersId"]);;
+    for ($i=0; $i < count($userIDs); $i++) {
+       update_user_meta( $userIDs[$i], 'orderId', $orderId);
+    }
+
+    $ehandicap  = new ehandicap();
+    $member = new eHandicapMember();
+
+    $member->lastname ='thien';
+    $member->firstname="demo";
+    $member->MID="147896325";
+    $member->MID="vietcap";
+    $member->gender="f";
+    $member->email="thien@gmail.com";
+    $member->pass="password";
+    $ehandicap->RegisterNewMember($member);
+
+   /* unset($_SESSION['usersId']);*/
+}
+?>
 <div class="container">
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">

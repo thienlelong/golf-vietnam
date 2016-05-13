@@ -13,6 +13,7 @@ include(TEMPLATEPATH.'/theme-options.php');
 include(TEMPLATEPATH.'/functions/post-type-clubs.php');
 include(TEMPLATEPATH.'/functions/post-type-events.php');
 include(TEMPLATEPATH.'/functions/metaboxes.php');
+include(TEMPLATEPATH.'/inc/ehandicap.php');
 if ( ! function_exists( 'nisarg_setup' ) ) :
 /**
  * Sets up theme defaults and registers support for various WordPress features.

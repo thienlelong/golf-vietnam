@@ -25,7 +25,7 @@
                                   <div class="pmorder row">
                                       <div class="col-md-6">
                                         <h4 class="pmitem-header"><?php _e('Description', 'nisarg') ?></h4>
-                                        <p class="pmitem-value text-left"><?php _e('Lorem Ipsum is simply dummy text of the printing and typesetting industry.', 'nisarg') ?></p>
+                                        <p class="pmitem-value text-left"><?php _e('Buy account of golfvn.', 'nisarg') ?></p>
                                       </div>
                                       <div class="col-xs-4 col-md-2" >
                                         <h6 class="pmitem-header"><?php _e('QUANTITY', 'nisarg') ?></h6>
@@ -44,18 +44,18 @@
                                 <h2 class="page-title"><?php _e('Payment Details', 'nisarg') ?></h2>
                                 <div class="pmitem">
                                     <div class="row">
-                                        <div class="col-sm-6" >
+                                        <div class="col-md-6" >
                                             <div class="pm-order">
                                                 <label><?php _e('Transaction Amount', 'nisarg') ?>:</label>
                                                 <span id="pm-total-price" class="cl-blue">$72.45 (CAD)</span>
                                             </div>
                                             <div class="pm-order">
                                                 <label>Order ID:</label>
-                                                <span class="cl-blue">mhp16104072730p58</span>
+                                                <span class="cl-blue" id="orderId">mhp16104072730p58</span>
                                                 </div>
                                         </div  >
-                                        <div class="col-sm-6" >
-                                             <img src=<?php echo get_template_directory_uri()."/images/Paymentimgcard.png"?>>
+                                        <div class="col-md-6 pm-paypal">
+                                            <img src=<?php echo get_template_directory_uri()."/images/Paymentimgcard.png"?>>
                                         </div  >
                                     </div>
                                 <p><?php _e('Please complete the following details exactly as they appear on your card. Do not put spaces or hyphens in the card number.', 'nisarg') ?></p>
@@ -80,7 +80,8 @@
                                 </div>
                                 <div class="col-sm-5 col-md-4"><a href="" class="btn btn-radius btn-lg-13 bg-red"><?php _e('cancel transaction', 'nisarg') ?></a></div>
                                 <div id="confirm-checkbox" class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 alert alert-warning" role="alert" style="display: none;">
-                                    <?php _e('Please Select Info.', 'nisarg') ?>
+                                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                    <?php _e('Please check all box before payment.', 'nisarg') ?>
                                 </div>
                             </div>
                         </div>
@@ -92,18 +93,20 @@
 </div><!--.container-->
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
-        var url_return = '<?php echo site_url('payment-success'); ?>';
-        var usersId = '<?php echo  $_SESSION['usersId']; ?>';
-        var userIdlength = usersId.split(",").length;
-        $('#number-user').val(userIdlength);
-        $('#price').html('$49.95');
-        var total = 49.95*userIdlength;
+        var url_return = '<?php echo site_url("payment-success"); ?>';
+        var usersId = '<?php echo  $_SESSION["usersId"]; ?>';
+        var totalUser = usersId.split(",").length;
+        var orderId = Math.random().toString(36).substring(11);
+        $('#orderId').html(orderId);
+        $('#number-user').val(totalUser);
+        $('#price').html('$40');
+        var total = 40 * totalUser;
         $('#total-price').html('$'+ total);
-        $('#pm-total-price').html('$' + total + '(CAD)');
+        $('#pm-total-price').html('$' + total + ' (CAD)');
 
         $('#easy_paypal_form_div form').attr('target', '');
         $('#easy_paypal_form_div form input[name=amount]').val(total);
-        $('#easy_paypal_form_div form input[name=return]').val(url_return);
+        $('#easy_paypal_form_div form input[name=return]').val(url_return + '?orderId=' + orderId);
         $('#btn-process-transaction').click(function() {
             if($("input[name=auto-renew]").is(":checked") && $("input[name=remind-expire]").is(":checked")) {
                 $('#easy_paypal_form_div input[type=image]').trigger('click');

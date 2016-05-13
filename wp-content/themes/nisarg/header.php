@@ -98,7 +98,9 @@
         <a href="<?php echo wp_logout_url( get_permalink() ); ?>" class="btn btn-login btn-radius"><?php _e( 'Log out', 'nisarg' ); ?></a>
         <?php
         } else { ?>
-          <a href="<?php echo site_url('login');?>" class="btn btn-login btn-radius">
+          <a href="<?php if(pll_current_language('locale')=='vi'){
+                    echo site_url('dang-nhap');
+                }else {echo site_url('login');}?>" class="btn btn-login btn-radius">
             <?php _e( 'Log in', 'nisarg' ); ?>
           </a>
         <?php } ?>

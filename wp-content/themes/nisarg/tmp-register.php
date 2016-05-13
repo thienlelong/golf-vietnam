@@ -59,12 +59,27 @@
                                                 <label for="clubMember" class="css-label"><?php _e('CLUB MEMBER', 'nisarg') ?></label>
                                             </label>
                                             <ul class="golf-club-list">
-                                                <li data-clubId="1">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                                <li data-clubId="2">DANANG GOLF CLUB</li>
-                                                <li data-clubId="3">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                                <li data-clubId="4">DANANG GOLF CLUB</li>
-                                                <li data-clubId="5">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                                <li data-clubId="5">DANANG GOLF CLUB</li>
+                                            <?php
+                                            $wp_query = new WP_Query(array(
+                                                'post_type' => 'golf_clubs',
+                                                'posts_per_page' => -1,
+                                                'order' => 'ASC',
+                                                'orderby' => 'menu_order',
+                                                'tax_query' => array(
+                                                    array(
+                                                        'taxonomy' => 'clubs-category',
+                                                        'field' => 'slug',
+                                                        'terms' => array('club-member')
+                                                    )
+                                                )
+                                            ));
+                                            if($wp_query->have_posts()) :
+                                            ?>
+                                                <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++;
+                                                ?>
+                                                <li data-clubId="<?php echo $post->ID; ?>"><?php the_title(); ?></li>
+                                                <?php endwhile; ?>
+                                            <?php endif; wp_reset_query(); ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -76,12 +91,27 @@
                                                 <label for="publicMember" class="css-label"><?php _e('PUBLIC MEMBER', 'nisarg') ?></label>
                                             </label>
                                             <ul class="golf-club-list">
-                                                <li data-clubId="1">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                                <li data-clubId="2">DANANG GOLF CLUB</li>
-                                                <li data-clubId="3">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                                <li data-clubId="4">DANANG GOLF CLUB</li>
-                                                <li data-clubId="5">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                                <li data-clubId="5">DANANG GOLF CLUB</li>
+                                                 <?php
+                                            $wp_query = new WP_Query(array(
+                                                'post_type' => 'golf_clubs',
+                                                'posts_per_page' => -1,
+                                                'order' => 'ASC',
+                                                'orderby' => 'menu_order',
+                                                'tax_query' => array(
+                                                    array(
+                                                        'taxonomy' => 'clubs-category',
+                                                        'field' => 'slug',
+                                                        'terms' => array('public-member')
+                                                    )
+                                                )
+                                            ));
+                                            if($wp_query->have_posts()) :
+                                            ?>
+                                                <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++;
+                                                ?>
+                                                <li data-clubId="<?php echo $post->ID; ?>"><?php the_title(); ?></li>
+                                                <?php endwhile; ?>
+                                            <?php endif; wp_reset_query(); ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -93,12 +123,27 @@
                                                 <label for="associationMember" class="css-label"><?php _e('ASSOCIATION MEMBER', 'nisarg') ?></label>
                                             </label>
                                             <ul class="golf-club-list">
-                                                <li data-clubId="1">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                                <li data-clubId="2">DANANG GOLF CLUB</li>
-                                                <li data-clubId="3">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                                <li data-clubId="4">DANANG GOLF CLUB</li>
-                                                <li data-clubId="5">BRG KINGS’ ISLAND GOLF RESORT</li>
-                                                <li data-clubId="5">DANANG GOLF CLUB</li>
+                                            <?php
+                                            $wp_query = new WP_Query(array(
+                                                'post_type' => 'golf_clubs',
+                                                'posts_per_page' => -1,
+                                                'order' => 'ASC',
+                                                'orderby' => 'menu_order',
+                                                'tax_query' => array(
+                                                    array(
+                                                        'taxonomy' => 'clubs-category',
+                                                        'field' => 'slug',
+                                                        'terms' => array('association-member')
+                                                    )
+                                                )
+                                            ));
+                                            if($wp_query->have_posts()) :
+                                            ?>
+                                                <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++;
+                                                ?>
+                                                <li data-clubId="<?php echo $post->ID; ?>"><?php the_title(); ?></li>
+                                                <?php endwhile; ?>
+                                            <?php endif; wp_reset_query(); ?>
                                             </ul>
                                         </div>
                                     </div>
@@ -173,7 +218,8 @@
                                         <input type="hidden" name="form_id" value="registerUserForm0" />
                                         <div class="alert alert-warning result-message" role="alert">
                                             <div id="emailExist">
-                                               <strong>Warning!</strong> <?php _e('An account already exists for this email address', 'nisarg'); ?>.
+                                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                <strong>Warning!</strong> <?php _e('An account already exists for this email address', 'nisarg'); ?>.
                                             </div>
                                           <!--  <div id="fieldRequired">
                                               <strong>Warning!</strong> <?php _e('An account already exists for this email address', 'nisarg'); ?>.
