@@ -169,7 +169,7 @@
     .site-header{
         position: relative;
         width: 100%;
-        min-height: 170px;
+        /* min-height: 170px; */
        /*  margin-bottom: 2em; */
     }
 
@@ -295,6 +295,9 @@
     }
     .join-now-content .join-now-banner a{
 
+    }
+    .site-info-box {
+        display: none;
     }
 }
 @media (max-width: 410px) {
