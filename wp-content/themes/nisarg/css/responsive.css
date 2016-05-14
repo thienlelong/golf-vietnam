@@ -289,6 +289,13 @@
     .home-action .btn-download, .home-action .btn-associal {
         margin: 10px 0px;
     }
+    .join-now-content .join-now-banner{
+        margin-top: 15px;
+        padding: 0px 15px;
+    }
+    .join-now-content .join-now-banner a{
+
+    }
 }
 @media (max-width: 410px) {
     .site-header{
