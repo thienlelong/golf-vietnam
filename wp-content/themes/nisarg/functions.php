@@ -461,18 +461,7 @@ function add_member($user)
     $start_date =  date('Y/m/d');
     $expire_date = date("Y/m/d", strtotime(date("Y/m/d", strtotime($start_date)) . " + 365 day"));
     $is_active = false;
-    $MID = date('y')*100000 + 1;
-    global $wpdb;
-    $user_lastest = $wpdb->get_results("SELECT ID FROM $wpdb->users ORDER BY ID DESC LIMIT 1");
-    $MID_lastest = get_user_meta($user_lastest[0]->ID, 'MID', true);
-    if(isset($MID_lastest)) {
-        $year = substr($MID_lastest, 0, 2);
-        if($year == date('y')) {
-            $MID = $MID_lastest + 1;
-        } else {
-            $MID = date('y')*100000 + 1;
-        }
-    }
+    $MID = date('y').'00001';
     /**
      * IMPORTANT: You should make server side validation here!
      *
@@ -496,3 +485,27 @@ function ur_theme_start_session()
         session_start();
 }
 add_action("init", "ur_theme_start_session", 1);
+
+//call service api
+//dungdh update userprofile
+add_action( 'show_user_profile', 'my_show_extra_profile_fields' );
+add_action( 'edit_user_profile', 'my_show_extra_profile_fields' );
+
+function my_show_extra_profile_fields( $user ) { ?>
+
+    
+    <h3>Extra profile information</h3>
+
+    <? echo the_content() ?>
+    <table class="form-table">
+        <tr>
+            <th><label for="twitter">Twitter</label></th>
+
+            <td>
+                <input type="text" name="twitter" id="twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" class="regular-text" /><br />
+                <span class="description">Please enter your Twitter username.</span>
+            </td>
+        </tr>
+
+    </table>
+<?php }
