@@ -3,10 +3,10 @@
  */
 
 (function($){
-    
-    $( '.navbar-nav > li.menu-item > a' ).click( function(){
+
+    /*$( '.navbar-nav > li.menu-item > a' ).click( function(){
           window.location = $( this ).attr( 'href' );
-        });
+        });*/
 
     $('.dropdown').hover(function() {
         $(this).addClass('open');
@@ -16,7 +16,7 @@
     });
 
     var setHeight = function (h) {
-		
+
 	height = h;
 
 	$("#cc_spacer").css("height", height + "px");

@@ -1,10 +1,10 @@
 <?php
 /**
-* 
+*
 */
-	class eHandicap 
+	class eHandicap
 	{
-		private $registerLink='http://vn.ehandicap.net/cgi-bin/admin_mem.exe?vietcapnew=1&CID=vietcap&MID=%s&firstname=%s&lastname=%sgender=%s&email=%s&pass=%s';
+		private $registerLink='http://vn.ehandicap.net/cgi-bin/admin_mem.exe?vietcapnew=1&CID=vietcap&MID=%s&firstname=%s&lastname=%s&gender=%s&email=%s&pass=%s';
 		function __construct()
 		{
 			# code...
@@ -37,7 +37,7 @@
 			// close cURL resource, and free up system resources
 			curl_close($ch);
 		}
-	}										
+	}
 	  class eHandicapMember {
 		public 	$vietcapnew='';
 		public	$CID='';

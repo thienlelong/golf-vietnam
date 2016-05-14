@@ -132,6 +132,10 @@
     .inner-100 {
         padding: 15px 0px !important;
     }
+
+    .pm-paypal img {
+        margin-top: 0px;
+    }
   }
 @media (max-width: 767px) {
     body{
