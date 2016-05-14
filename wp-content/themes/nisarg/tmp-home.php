@@ -9,10 +9,10 @@
     <div class="section-homepage">
         <div class="home-action">
             <div class="container">
-                <a href="#" class="btn btn-radius btn-download" data-toggle="tooltip" data-placement="top" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/icon-vietcap.png" alt=""> <span> <?php _e('Download VietCap', 'nisarg');?><br><?php _e('Application For Free', 'nisarg') ?></span>
+                <a href="#" class="btn btn-radius btn-download" data-toggle="tooltip" data-placement="top" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/icon-vietcap.png" alt=""> <span> <?php _e('Download VietCap <br> Application For Free', 'nisarg') ?></span>
                     <img src="<?php bloginfo('template_directory'); ?>/images/icon-download.png" alt="">
                 </a>
-                <a href="#" class="btn btn-radius btn-associal"><span> <?php _e('Download Association', 'nisarg') ?><br> <?php _e('Application Form', 'nisarg') ?></span> <img src="<?php bloginfo('template_directory'); ?>/images/icon-search.png" alt=""> </a>
+                <a href="<?php bloginfo('template_directory'); ?>/document/Golf_Vietnam_Association_Application_Form.docx" class="btn btn-radius btn-associal" target="_blank" download><span> <?php _e('Download Association <br> Application Form', 'nisarg') ?></span> <img src="<?php bloginfo('template_directory'); ?>/images/icon-search.png" alt=""> </a>
             </div>
         </div>
         <div class="container">
@@ -34,9 +34,16 @@
                     $categories = get_categories($args);
                     $i=0;
                 ?>
+                <?php
+                    if(pll_current_language('locale') !='vi') {
+                        $page_url = 'golf-events?category=';
+                    } else {
+                        $page_url = 'su-kien-golf?category=';
+                    }
+                ?>
 
                 <?php foreach ($categories as $category) {
-                    $slug = 'golf-events?category='.$category->slug;
+                    $slug = $page_url . $category->slug;
                     $name = $category->name;
                     $i++;
                     ?>

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nisarg\n"
 "POT-Creation-Date: 2016-04-15 20:28+0700\n"
-"PO-Revision-Date: 2016-05-14 12:28+0700\n"
+"PO-Revision-Date: 2016-05-14 17:39+0700\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -76,9 +76,7 @@ msgstr "Đọc tiếp"
 
 #: image.php:27
 #, php-format
-msgid ""
-"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> at <a href=\"%3$s\" title=\"Link "
-"to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
+msgid "Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
 msgstr ""
 
 #: image.php:37 image.php:103 template-parts/content-page.php:33
@@ -93,23 +91,21 @@ msgstr ""
 msgid "Next &rarr;"
 msgstr ""
 
-#: image.php:89 template-parts/content-aside.php:28 template-parts/content-gallery.php:33 template-parts/content-link.php:32
-#: template-parts/content-page.php:26 template-parts/content-quote.php:34 template-parts/content-status.php:23 template-parts/content.php:54
+#: image.php:89 template-parts/content-aside.php:28
+#: template-parts/content-gallery.php:33 template-parts/content-link.php:32
+#: template-parts/content-page.php:26 template-parts/content-quote.php:34
+#: template-parts/content-status.php:23 template-parts/content.php:54
 msgid "Pages:"
 msgstr ""
 
 #: image.php:95
 #, php-format
-msgid ""
-"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href="
-"\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+msgid "<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
 msgstr ""
 
 #: image.php:97
 #, php-format
-msgid ""
-"Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel="
-"\"trackback\">Trackback URL</a>."
+msgid "Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
 msgstr ""
 
 #: image.php:99
@@ -383,24 +379,24 @@ msgid "Featured"
 msgstr ""
 
 #: header.php:12
-msgid "Find a Course"
-msgstr ""
+msgid "Log out"
+msgstr "Đăng xuất"
 
 #: header.php:13
 msgid "VietNam National Handicap System"
-msgstr ""
+msgstr "Hệ thống Handicap Quốc gia Việt Nam"
 
 #: header.php:15
 msgid "Making Vietnam"
-msgstr "Làm cho Việt Nam"
+msgstr "Phát Triển Golf"
 
 #: header.php:16
 msgid "Golf Better"
-msgstr "Sân tốt hơn"
+msgstr "Việt Nam Tốt Hơn"
 
 #: header.php:17
 msgid "HELP GROW THE GAME IN VIETNAM"
-msgstr "GIÚP PHÁT TRIỂN CÁC TRÒ CHƠI TẠI VIỆT NAM"
+msgstr "GÓP PHẦN PHÁT TRIỂN GOLF VIỆT NAM"
 
 #: footer.php:2
 msgid "Proud Partners"
@@ -408,80 +404,79 @@ msgstr "Đối tác"
 
 #: footer.php:3
 msgid "VietCap. Designed with"
-msgstr "VietCap. Được thiết kế với"
+msgstr ""
 
 #: tmp-home.php:1
-msgid "Download VietCap"
-msgstr "VietCap. Được thiết kế với"
+msgid "Download VietCap <br> Application For Free"
+msgstr "Tải về ứng dụng <br> VietCap miễn phí"
 
 #: tmp-home.php:2
-msgid "Application For Free"
-msgstr ""
-
-#: tmp-home.php:3
-msgid "Application Form"
-msgstr ""
-
-#: tmp-home.php:4
-msgid "Download Association"
-msgstr ""
+msgid "Download Association <br> Application Form"
+msgstr "Tải về Mẫu đơn <br> Đăng ký Hiệp hội"
 
 #: template-parts/content-joinnow.php:1
 msgid "Join thousands of other golfers getting more out of their game with a Golf Vietnam Membership."
-msgstr ""
+msgstr "Trở thành hội viên của Golf Vietnam và cùng tham gia vào cuộc chơi với hàng nghìn golf thủ khác"
 
 #: template-parts/content-joinnow.php:2
 msgid "Golf Vietnam currently offers three categories of membership for new members.  You will be able to choose from:"
-msgstr ""
+msgstr "Golf Vietnam hiện có 3 hạng mục hội viên cho bạn lựa chọn:"
 
 #: template-parts/content-joinnow.php:3
 msgid "Club Membership"
-msgstr " Lợi ích thành viên bao gồm:"
+msgstr "Thành viên CLB"
 
 #: template-parts/content-joinnow.php:4
 msgid "If you currently belong to an authorized Golf Club"
-msgstr ""
+msgstr "Nếu bạn hiện đang trực thuộc một CLB Golf uỷ quyền"
 
 #: template-parts/content-joinnow.php:5
 msgid "Association Membership"
-msgstr " Lợi ích thành viên bao gồm:"
+msgstr " Thành viên hiệp hội"
 
 #: template-parts/content-joinnow.php:6
 msgid "You belong to an authorized Golf Association"
-msgstr ""
+msgstr "Bạn trực thuộc một hiệp hội Golf uỷ quyền"
 
 #: template-parts/content-joinnow.php:7
 msgid "Public Membership"
-msgstr " Lợi ích thành viên bao gồm:"
+msgstr "Thành viên chung"
+
+#: template-parts/content-joinnow.php:20
+msgid "You are a public player"
+msgstr "Bạn là tay chơi tự do"
 
 #: template-parts/content-joinnow.php:8
 msgid "Annual Membership Fees Are :"
-msgstr " Lợi ích thành viên bao gồm:"
+msgstr "Phí Thành Viên Hàng Năm:"
 
 #: template-parts/content-joinnow.php:9
 msgid "Memberships are valid for <span class=\"cl-blue\">365 days</span> from date of purchase."
-msgstr ""
+msgstr "Tư cách hội viên có giá trị trong vòng <span class=\"cl-blue\">365 ngày</span> kể từ ngày đóng phí"
 
 #: template-parts/content-joinnow.php:10
 msgid "Join Now Click Here"
-msgstr "Click Để Đăng Ký"
+msgstr "Nhấp Vào  Để Tham Gia"
 
 #: template-parts/content-joinnow.php:11
 msgid "<strong>Note:</strong>  When making payment click the “Automatically Renew” function which will keep your existing account active yearly."
-msgstr ""
-"<strong>Lưu ý:</strong>  Khi thực hiện thanh toán, bấm vào \"Tự động làm mới\" chức năng mà sẽ giữ cho tài khoản đang hoạt động hàng năm."
+msgstr "<strong>Chú ý:</strong> Khi click vào chức năng \"Tự Động Trả Tiền\" thì tư cách hội viên sẽ tự động được duy trì hàng năm."
 
 #: template-parts/content-joinnow.php:12
 msgid "Membership Benefits Include:"
-msgstr " Lợi ích thành viên bao gồm:"
+msgstr "Quyền lợi hội viên bao gồm:"
+
+#: template-parts/content-joinnow.php:13
+msgid "<li>On-line FREE VietCap application</li><li>Official Golf Vietnam Handicap Factor</li><li>Internationally recognized membership card</li><li>Access to official Handicap Rules</li><li>Access to official Amateur Status rules</li><li>Access to play in Club and National Events</li><li>“Peer Review” allows all players access to each other’s scores and trends</li><li>Record own scores on same day</li><li>Receive daily updated handicaps</li><li>Access to authorized Clubs Handicap charts to adjust handicaps accordingly</li><li>Shop On-line for golf products and high end luxury products</li>"
+msgstr "<li>Dùng ứng dụng VietCap miễn phí</li><li>Thành viên chính thức của Golf Vietnam Handicap</li><li>Thẻ hội viên được công nhận cấp quốc tế</li><li>Quyền truy cập điều luật chính thức của Handicap</li><li>Quyền truy cập điều luật chính thức của Amateur Status (Hạng nghiệp dư)</li><li>Quyền tham gia chơi trong Câu Lạc Bộ và các sự kiện quốc gia</li><li>\"Peer Review\" cho phép tất cả người chơi truy cập để xem điểm và quá trình tiến bộ của thành viên khác</li><li>Ghi lại điểm trong ngày</li><li>Nhận cập nhật handicap hàng ngày</li><li>Quyền truy cập vào các biểu đồ Handicap của CLB để điều chỉnh</li><li>Mua hàng online các sản phẩm về golf và nhiều mặt hàng cao cấp khác</li>"
 
 #: tmp-register.php:1
 msgid "Basic Information"
 msgstr "Thông tin cơ bản"
 
 #: tmp-register.php:2
-msgid "Address Detail (preferred delivery)\"Address Detail (preferred delivery"
-msgstr "Địa chỉ chi tiết (giao hàng ưa thích) \"địa chỉ chi tiết (ưu tiên giao hàng"
+msgid "Address Detail (preferred delivery)"
+msgstr "Chi tiết địa chỉ (ưu tiên giao hàng)"
 
 #: tmp-register.php:3
 msgid "An account already exists for this email address"
@@ -503,13 +498,81 @@ msgstr "Được sử dụng cho thẻ hội viên"
 msgid "ADD ACTUAL FACE PHOTO"
 msgstr "THÊM HÌNH ẢNH THỰC TẾ KHUÔN MẶT"
 
+#: tmp-register.php:6
+msgid "First Name"
+msgstr "Họ"
+
+#: tmp-register.php:6
+msgid "Middle Name"
+msgstr "Tên Lót"
+
+#: tmp-register.php:6
+msgid "Last Name"
+msgstr "Tên"
+
+#: tmp-register.php:6
+msgid "Login Password"
+msgstr "Mật Khẩu"
+
+#: tmp-register.php:6
+msgid "Confirm Login Password"
+msgstr "Xác Nhận Mật Khẩu"
+
+#: tmp-register.php:6
+msgid "Choose one of following:"
+msgstr "Chọn một trong những mục sau:"
+
+#: tmp-register.php:6
+msgid "CLUB MEMBER"
+msgstr "Thành viên CLB"
+
+#: tmp-register.php:6
+msgid "PUBLIC MEMBER"
+msgstr "Thành viên chung"
+
+#: tmp-register.php:6
+msgid "ASSOCIATION MEMBER"
+msgstr "Thành viên hiệp hội"
+
+#: tmp-register.php:6
+msgid "Address / Unit"
+msgstr "Địa chỉ / Đơn vị"
+
+#: tmp-register.php:6
+msgid "Province"
+msgstr "Tỉnh"
+
+#: tmp-register.php:6
+msgid "City"
+msgstr "Thành Phố"
+
+#: tmp-register.php:6
+msgid "Date Of Birth"
+msgstr "Ngày Sinh"
+
+#: tmp-register.php:6
+msgid "Preferred Language"
+msgstr "Ngôn Ngữ Ưa Thích"
+
+#: tmp-register.php:6
+msgid "Gender"
+msgstr "Giới Tính"
+
+#: tmp-register.php:6
+msgid "Male"
+msgstr "Nam"
+
+#: tmp-register.php:6
+msgid "Female"
+msgstr "Nữ"
+
 #: tmp-payment.php:1
 msgid "Items Details"
-msgstr ""
+msgstr "Chi Tiết Thanh Toán"
 
 #: tmp-payment.php:2
 msgid "Description"
-msgstr ""
+msgstr "Mô Tả"
 
 #: tmp-payment.php:3
 msgid "Buy account of golfvn."
@@ -519,41 +582,49 @@ msgstr "Mua tài khoản của golfvn."
 msgid "QUANTITY"
 msgstr "Số Lượng"
 
+#: tmp-payment.php:15
+msgid "PRICE"
+msgstr "Đơn Giá"
+
+#: tmp-payment.php:15
+msgid "TOTAL"
+msgstr "Tổng Cộng"
+
 #: tmp-payment.php:17
 msgid "Payment Details"
 msgstr "Chi Tiết Thanh Toán"
 
 #: tmp-payment.php:16
 msgid "Transaction Amount"
-msgstr ""
+msgstr "Số Tiền Giao Dịch"
 
 #: tmp-payment.php:5
 msgid "Please complete the following details exactly as they appear on your card. Do not put spaces or hyphens in the card number."
-msgstr ""
+msgstr "Vui lòng điền thông tin sau chính xác như chúng xuất hiện trên thẻ của bạn. Đừng đặt khoảng trắng hoặc dấu gạch ngang trong số thẻ."
 
 #: tmp-payment.php:6
 msgid "Automatically renew my membership annually."
-msgstr ""
+msgstr "Tự động gia hạn thành viên của tôi hàng năm."
 
 #: tmp-payment.php:7
 msgid "Remind me 1 month in advance next year."
-msgstr ""
+msgstr "Nhắc nhở tôi 1 tháng trước năm tiếp theo."
 
 #: tmp-payment.php:8
 msgid "By payment an account you agree to our"
-msgstr ""
+msgstr "Bằng cách thanh toán một tài khoản bạn đồng ý với chúng tôi"
 
 #: tmp-payment.php:9
 msgid "Terms and Conditions"
-msgstr ""
+msgstr "Các điều khoản và điều kiện"
 
 #: tmp-payment.php:10
 msgid "and our"
-msgstr ""
+msgstr "và"
 
 #: tmp-payment.php:11
 msgid "Privacy Policy"
-msgstr ""
+msgstr "Chính sách bảo mật "
 
 #: tmp-payment.php:12
 msgid "Please check all box before payment."
@@ -569,15 +640,15 @@ msgstr "Xử Lý Thanh Toán"
 
 #: tmp-payment-successful.php:1
 msgid "Your Order Has Been Processed!"
-msgstr ""
+msgstr "Đơn hàng của bạn đã được xử lý!"
 
 #: tmp-payment-successful.php:2
 msgid "Thank you for payment with us online!"
-msgstr ""
+msgstr "Cảm ơn bạn đã thanh toán  trực tuyến với chúng tôi!"
 
 #: tmp-payment-successful.php:3
 msgid "Back to home"
-msgstr "Về Trang Chủ"
+msgstr "Trở Về Trang Chủ"
 
 #: woocommerce/myaccount/form-login.php:1
 msgid "Username"
@@ -590,3 +661,35 @@ msgstr "Mật Khẩu"
 #: woocommerce/myaccount/form-login.php:3
 msgid "Forgot your password or username?"
 msgstr "Quên mật khẩu hay tên đăng nhập của bạn?"
+
+#: template-parts/content-golf-club-listings.php:1
+msgid "Authorized Golf Club"
+msgstr "Câu lạc bộ Golf ủy quyền"
+
+#: template-parts/content-golf-club-listings.php:1
+msgid "Welcome to the Golf Vietnam eHandicap Network. To view your current handicap information complete with information about your most recent rounds of golf, select your home club and click on the Member Lookup button."
+msgstr "Chào mừng đến với Mạng eHandicap Golf Việt Nam. Để xem thông tin handicap hiện tại của bạn đầy đủ  về vòng gần đây nhất của bạn của sân golf, chọn câu lạc bộ gia đình của bạn và nhấp vào nút Member Lookup."
+
+#: template-parts/content-golf-club-listings.php:1
+msgid "Search Results for"
+msgstr "Kiết quả Tìm kiến cho"
+
+#: template-parts/content-golf-club-listings.php:1
+msgid "Search..."
+msgstr "Tìm Kiếm..."
+
+#: template-parts/content-golf-club-listings.php:1
+msgid "Search"
+msgstr "Tìm Kiếm"
+
+#: template-parts/content-golf-events.php:1
+msgid "View  Information"
+msgstr "Xem Thông Tin"
+
+#: template-parts/content-golf-events.php:1
+msgid "DATES"
+msgstr "Ngày"
+
+#: template-parts/content-golf-events.php:1
+msgid "HOST CLUB:"
+msgstr "Câu lạc bộ tổ chức:"
