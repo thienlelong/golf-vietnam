@@ -62,7 +62,9 @@
                         <ul id="portfolio" class="clearfix">
                             <li><a href="<?php bloginfo('template_directory'); ?>/images/members.png" title=""><img src="<?php bloginfo('template_directory'); ?>/images/members.png" alt=""></a>
                             </li>
-                            <li><a href="<?php bloginfo('template_directory'); ?>/images/junior-golf.png" title=""></a></li>
+                            <li><a href="<?php bloginfo('template_directory'); ?>/images/home-page/list-golf-1.jpg" title=""></a></li>
+                            <li><a href="<?php bloginfo('template_directory'); ?>/images/home-page/list-golf-2.jpg" title=""></a></li>
+                            <li><a href="<?php bloginfo('template_directory'); ?>/images/home-page/list-golf-3.jpg" title=""></a></li>
                         </ul>
                         <div class="box-title">
                             <?php

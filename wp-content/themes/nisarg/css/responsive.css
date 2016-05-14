@@ -241,7 +241,7 @@
         padding: 0px 15px;
     }
 }
-@media (max-width: 359px) {
+@media (max-width: 410px) {
     .site-header{
         position: relative;
         width: 100%;
@@ -270,6 +270,15 @@
     .site-header .btn-golf-better {
         margin: 0px;
         margin-bottom: 15px;
+    }
+    .home-action .btn {
+        margin: 15px 0px;
+        font-size: 15px;
+    }
+    .home-action .btn-download,
+    .home-action .btn-associal {
+        padding: 10px 0px;
+        width: 100%;
     }
 }
 
