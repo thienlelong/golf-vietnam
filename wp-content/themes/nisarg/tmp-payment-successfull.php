@@ -5,7 +5,7 @@
  get_header();
 ?>
 <?php
-if($_GET["orderId"] && $_SESSION["usersId"]) {
+if($_GET["orderId"] /*&& $_SESSION["usersId"]*/) {
     $orderId =  $_GET['orderId'];
     $userIDs = $pieces = explode(",", $_SESSION["usersId"]);;
     for ($i=0; $i < count($userIDs); $i++) {
@@ -15,15 +15,14 @@ if($_GET["orderId"] && $_SESSION["usersId"]) {
     $ehandicap  = new ehandicap();
     $member = new eHandicapMember();
 
-    $member->lastname ='thien';
-    $member->firstname="demo";
-    $member->MID="147896325";
-    $member->MID="vietcap";
+    $member->lastname = 'thien';
+    $member->firstname = "lelong";
+    $member->MID = "1600001";
     $member->gender="f";
-    $member->email="thien@gmail.com";
+    $member->email="Dthien@gmail.com";
     $member->pass="password";
-    $ehandicap->RegisterNewMember($member);
-
+    $result = $ehandicap->RegisterNewMember($member);
+    var_dump($result);
    /* unset($_SESSION['usersId']);*/
 }
 ?>

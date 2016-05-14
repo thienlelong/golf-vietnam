@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nisarg\n"
 "POT-Creation-Date: 2016-04-15 20:28+0700\n"
-"PO-Revision-Date: 2016-04-15 20:30+0700\n"
+"PO-Revision-Date: 2016-05-14 12:28+0700\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,35 +21,33 @@ msgid "Oops! That page can&rsquo;t be found."
 msgstr ""
 
 #: 404.php:20
-msgid ""
-"It looks like nothing was found at this location. Maybe try one of the links "
-"below or a search?"
-msgstr ""
+msgid "It looks like nothing was found at this location. Maybe try one of the links below or a search?"
+msgstr "Có vẻ như không có gì được thấy ở vị trí này. Thử tìm kiếm xem!"
 
 #: archive.php:19
 msgid "Browsed by"
-msgstr ""
+msgstr "Duyệt bởi"
 
 #: comments.php:27
 #, php-format
 msgid "One thought on &ldquo;%2$s&rdquo;"
-msgstr ""
+msgstr "Một ý nghĩ về \"%2$s\""
 
 #: comments.php:47
 msgid "Comment navigation"
-msgstr ""
+msgstr "1 bình luận"
 
 #: comments.php:50
 msgid "Older Comments"
-msgstr ""
+msgstr "Các bình luận mới cũ hơn"
 
 #: comments.php:54
 msgid "Newer Comments"
-msgstr ""
+msgstr "Các bình luận mới hơn"
 
 #: comments.php:63 single.php:32
 msgid "Comments are closed."
-msgstr ""
+msgstr "Bình luận bị đóng"
 
 #: footer.php:18
 msgid "Proudly Powered by "
@@ -74,20 +72,18 @@ msgstr ""
 
 #: functions.php:199
 msgid " Read More"
-msgstr ""
+msgstr "Đọc tiếp"
 
 #: image.php:27
 #, php-format
 msgid ""
-"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime="
-"\"%1$s\" pubdate>%2$s</time></span> at <a href=\"%3$s\" title=\"Link to full-"
-"size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s"
-"\" rel=\"gallery\">%7$s</a>"
+"Published <span class=\"entry-date\"><time class=\"entry-date\" datetime=\"%1$s\" pubdate>%2$s</time></span> at <a href=\"%3$s\" title=\"Link "
+"to full-size image\">%4$s &times; %5$s</a> in <a href=\"%6$s\" title=\"Return to %7$s\" rel=\"gallery\">%7$s</a>"
 msgstr ""
 
 #: image.php:37 image.php:103 template-parts/content-page.php:33
 msgid "Edit"
-msgstr ""
+msgstr "Chỉnh sửa bài viết này"
 
 #: image.php:41
 msgid "&larr; Previous"
@@ -97,33 +93,27 @@ msgstr ""
 msgid "Next &rarr;"
 msgstr ""
 
-#: image.php:89 template-parts/content-aside.php:28
-#: template-parts/content-gallery.php:33 template-parts/content-link.php:32
-#: template-parts/content-page.php:26 template-parts/content-quote.php:34
-#: template-parts/content-status.php:23 template-parts/content.php:54
+#: image.php:89 template-parts/content-aside.php:28 template-parts/content-gallery.php:33 template-parts/content-link.php:32
+#: template-parts/content-page.php:26 template-parts/content-quote.php:34 template-parts/content-status.php:23 template-parts/content.php:54
 msgid "Pages:"
 msgstr ""
 
 #: image.php:95
 #, php-format
 msgid ""
-"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a "
-"comment</a> or leave a trackback: <a class=\"trackback-link\" href=\"%s\" "
-"title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
+"<a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">Post a comment</a> or leave a trackback: <a class=\"trackback-link\" href="
+"\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>."
 msgstr ""
 
 #: image.php:97
 #, php-format
 msgid ""
-"Comments are closed, but you can leave a trackback: <a class=\"trackback-link"
-"\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback"
-"\">Trackback URL</a>."
+"Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel="
+"\"trackback\">Trackback URL</a>."
 msgstr ""
 
 #: image.php:99
-msgid ""
-"Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond"
-"\" title=\"Post a comment\">post a comment</a>."
+msgid "Trackbacks are closed, but you can <a class=\"comment-link\" href=\"#respond\" title=\"Post a comment\">post a comment</a>."
 msgstr ""
 
 #: image.php:101
@@ -132,9 +122,7 @@ msgstr ""
 
 #: inc/back-compat.php:28 inc/back-compat.php:37 inc/back-compat.php:49
 #, php-format
-msgid ""
-"Nisarg requires at least WordPress version 4.1. You are running version %s. "
-"Please upgrade and try again."
+msgid "Nisarg requires at least WordPress version 4.1. You are running version %s. Please upgrade and try again."
 msgstr ""
 
 #: inc/custom-header.php:35 inc/custom-header.php:50
@@ -155,7 +143,7 @@ msgstr ""
 
 #: inc/customizer.php:28
 msgid "Log in"
-msgstr ""
+msgstr "Đăng nhập"
 
 #: inc/customizer.php:29
 msgid "Applied to header background."
@@ -203,15 +191,15 @@ msgstr ""
 
 #: inc/template-tags.php:24
 msgid "Posts navigation"
-msgstr ""
+msgstr "Xem tất cả các bài viết bởi"
 
 #: inc/template-tags.php:31
 msgid "NEWER POSTS"
-msgstr ""
+msgstr "Xem tất cả các bài viết bởi"
 
 #: inc/template-tags.php:41
 msgid "OLDER POST"
-msgstr ""
+msgstr "Các bình luận mới cũ hơn"
 
 #: inc/template-tags.php:71
 msgid "Post navigation"
@@ -235,19 +223,19 @@ msgstr ""
 
 #: inc/template-tags.php:121
 msgid "View all posts by"
-msgstr ""
+msgstr "Xem tất cả các bài viết bởi"
 
 #: inc/template-tags.php:138
 msgid "Comments"
-msgstr ""
+msgstr "Bình luận"
 
 #: inc/template-tags.php:139
 msgid "0 Comment"
-msgstr ""
+msgstr "1 bình luận"
 
 #: inc/template-tags.php:139
 msgid "1 comment"
-msgstr ""
+msgstr "1 bình luận"
 
 #: inc/template-tags.php:139
 #, php-format
@@ -270,7 +258,7 @@ msgstr ""
 
 #: inc/template-tags.php:177
 msgid "Edit This Post"
-msgstr ""
+msgstr "Chỉnh sửa bài viết này"
 
 #: inc/template-tags.php:194
 #, php-format
@@ -375,24 +363,19 @@ msgstr ""
 
 #: template-parts/content-none.php:13 template-parts/content-none.php:14
 msgid "Nothing Found"
-msgstr ""
+msgstr "Có vẻ như không có gì được thấy ở vị trí này. Thử tìm kiếm xem!"
 
 #: template-parts/content-none.php:20
 #, php-format
-msgid ""
-"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgid "Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
 msgstr ""
 
 #: template-parts/content-none.php:24
-msgid ""
-"Sorry, but nothing matched your search terms. Please try again with some "
-"different keywords."
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
 msgstr ""
 
 #: template-parts/content-none.php:29
-msgid ""
-"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
-"searching can help."
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
 msgstr ""
 
 #: template-parts/content.php:14
@@ -426,3 +409,184 @@ msgstr "Đối tác"
 #: footer.php:3
 msgid "VietCap. Designed with"
 msgstr "VietCap. Được thiết kế với"
+
+#: tmp-home.php:1
+msgid "Download VietCap"
+msgstr "VietCap. Được thiết kế với"
+
+#: tmp-home.php:2
+msgid "Application For Free"
+msgstr ""
+
+#: tmp-home.php:3
+msgid "Application Form"
+msgstr ""
+
+#: tmp-home.php:4
+msgid "Download Association"
+msgstr ""
+
+#: template-parts/content-joinnow.php:1
+msgid "Join thousands of other golfers getting more out of their game with a Golf Vietnam Membership."
+msgstr ""
+
+#: template-parts/content-joinnow.php:2
+msgid "Golf Vietnam currently offers three categories of membership for new members.  You will be able to choose from:"
+msgstr ""
+
+#: template-parts/content-joinnow.php:3
+msgid "Club Membership"
+msgstr " Lợi ích thành viên bao gồm:"
+
+#: template-parts/content-joinnow.php:4
+msgid "If you currently belong to an authorized Golf Club"
+msgstr ""
+
+#: template-parts/content-joinnow.php:5
+msgid "Association Membership"
+msgstr " Lợi ích thành viên bao gồm:"
+
+#: template-parts/content-joinnow.php:6
+msgid "You belong to an authorized Golf Association"
+msgstr ""
+
+#: template-parts/content-joinnow.php:7
+msgid "Public Membership"
+msgstr " Lợi ích thành viên bao gồm:"
+
+#: template-parts/content-joinnow.php:8
+msgid "Annual Membership Fees Are :"
+msgstr " Lợi ích thành viên bao gồm:"
+
+#: template-parts/content-joinnow.php:9
+msgid "Memberships are valid for <span class=\"cl-blue\">365 days</span> from date of purchase."
+msgstr ""
+
+#: template-parts/content-joinnow.php:10
+msgid "Join Now Click Here"
+msgstr "Click Để Đăng Ký"
+
+#: template-parts/content-joinnow.php:11
+msgid "<strong>Note:</strong>  When making payment click the “Automatically Renew” function which will keep your existing account active yearly."
+msgstr ""
+"<strong>Lưu ý:</strong>  Khi thực hiện thanh toán, bấm vào \"Tự động làm mới\" chức năng mà sẽ giữ cho tài khoản đang hoạt động hàng năm."
+
+#: template-parts/content-joinnow.php:12
+msgid "Membership Benefits Include:"
+msgstr " Lợi ích thành viên bao gồm:"
+
+#: tmp-register.php:1
+msgid "Basic Information"
+msgstr "Thông tin cơ bản"
+
+#: tmp-register.php:2
+msgid "Address Detail (preferred delivery)\"Address Detail (preferred delivery"
+msgstr "Địa chỉ chi tiết (giao hàng ưa thích) \"địa chỉ chi tiết (ưu tiên giao hàng"
+
+#: tmp-register.php:3
+msgid "An account already exists for this email address"
+msgstr "Một tài khoản đã tồn tại đối với địa chỉ email này"
+
+#: tmp-register.php:4
+msgid "Add more user"
+msgstr "Thêm nhiều người dùng"
+
+#: tmp-register.php:5
+msgid "Pay Now"
+msgstr "Thanh toán ngay"
+
+#: tmp-register.php:5
+msgid "Used For Membership Card"
+msgstr "Được sử dụng cho thẻ hội viên"
+
+#: tmp-register.php:6
+msgid "ADD ACTUAL FACE PHOTO"
+msgstr "THÊM HÌNH ẢNH THỰC TẾ KHUÔN MẶT"
+
+#: tmp-payment.php:1
+msgid "Items Details"
+msgstr ""
+
+#: tmp-payment.php:2
+msgid "Description"
+msgstr ""
+
+#: tmp-payment.php:3
+msgid "Buy account of golfvn."
+msgstr "Mua tài khoản của golfvn."
+
+#: tmp-payment.php:15
+msgid "QUANTITY"
+msgstr "Số Lượng"
+
+#: tmp-payment.php:17
+msgid "Payment Details"
+msgstr "Chi Tiết Thanh Toán"
+
+#: tmp-payment.php:16
+msgid "Transaction Amount"
+msgstr ""
+
+#: tmp-payment.php:5
+msgid "Please complete the following details exactly as they appear on your card. Do not put spaces or hyphens in the card number."
+msgstr ""
+
+#: tmp-payment.php:6
+msgid "Automatically renew my membership annually."
+msgstr ""
+
+#: tmp-payment.php:7
+msgid "Remind me 1 month in advance next year."
+msgstr ""
+
+#: tmp-payment.php:8
+msgid "By payment an account you agree to our"
+msgstr ""
+
+#: tmp-payment.php:9
+msgid "Terms and Conditions"
+msgstr ""
+
+#: tmp-payment.php:10
+msgid "and our"
+msgstr ""
+
+#: tmp-payment.php:11
+msgid "Privacy Policy"
+msgstr ""
+
+#: tmp-payment.php:12
+msgid "Please check all box before payment."
+msgstr "Vui lòng tick hết vào ô checkbox trước khi tiến hành thanh toán"
+
+#: tmp-payment.php:13
+msgid "cancel transaction"
+msgstr "Hủy Bỏ Thanh Toán"
+
+#: tmp-payment.php:14
+msgid "process transaction"
+msgstr "Xử Lý Thanh Toán"
+
+#: tmp-payment-successful.php:1
+msgid "Your Order Has Been Processed!"
+msgstr ""
+
+#: tmp-payment-successful.php:2
+msgid "Thank you for payment with us online!"
+msgstr ""
+
+#: tmp-payment-successful.php:3
+msgid "Back to home"
+msgstr "Về Trang Chủ"
+
+#: woocommerce/myaccount/form-login.php:1
+msgid "Username"
+msgstr "Tài Khoản"
+
+#: woocommerce/myaccount/form-login.php:2
+msgid "Password"
+msgstr "Mật Khẩu"
+
+#: woocommerce/myaccount/form-login.php:3
+msgid "Forgot your password or username?"
+msgstr "Quên mật khẩu hay tên đăng nhập của bạn?"

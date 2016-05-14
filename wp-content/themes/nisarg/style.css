@@ -2175,7 +2175,7 @@ hr.line-title {
     text-align: center;
     font-weight: 700;
 }
-.checkbox-golf-club.active {
+.club-member.checkbox-golf-club.active {
     background: #73cd54;
 }
 .checkbox-golf-club img {
@@ -2186,6 +2186,16 @@ hr.line-title {
     margin-top: -5px;
     margin-right: 5px;
 }
+
+.public-member.checkbox-golf-club.active {
+    background: #00b9cc;
+}
+
+.association-member.checkbox-golf-club.active {
+    background: #1abc9c;
+}
+
+
 .checkbox-golf-club input[type=radio].css-checkbox + label.css-label{
     line-height: 15px;
     padding-left: 0px;
@@ -2227,11 +2237,23 @@ hr.line-title {
     padding: 8px 10px;
     border-bottom: 1px solid #e1e1e1;
 }
-.golf-club-list li:hover {
+.club-member.golf-club-list li:hover {
     background: #73cd54;
     cursor: pointer;
     color: #fff;
 }
+.public-member.golf-club-list li:hover {
+    background: #00b9cc;
+    cursor: pointer;
+    color: #fff;
+}
+
+.association-member.golf-club-list li:hover {
+    background: #1abc9c;
+    cursor: pointer;
+    color: #fff;
+}
+
 .golf_club {
     position: relative;
 }
@@ -2530,4 +2552,5 @@ p.pmitem-value {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+
 }

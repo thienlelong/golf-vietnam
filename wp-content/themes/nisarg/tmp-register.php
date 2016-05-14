@@ -58,7 +58,7 @@
                                                 <input type="radio" name="golf_club" value="" id="clubMember" class="css-checkbox" />
                                                 <label for="clubMember" class="css-label"><?php _e('CLUB MEMBER', 'nisarg') ?></label>
                                             </label>
-                                            <ul class="golf-club-list">
+                                            <ul class="club-member golf-club-list">
                                             <?php
                                             $wp_query = new WP_Query(array(
                                                 'post_type' => 'golf_clubs',
@@ -90,7 +90,7 @@
                                                 <input type="radio" name="golf_club" value="" id="publicMember" class="css-checkbox" />
                                                 <label for="publicMember" class="css-label"><?php _e('PUBLIC MEMBER', 'nisarg') ?></label>
                                             </label>
-                                            <ul class="golf-club-list">
+                                            <ul class="public-member golf-club-list">
                                                  <?php
                                             $wp_query = new WP_Query(array(
                                                 'post_type' => 'golf_clubs',
@@ -122,7 +122,7 @@
                                                 <input type="radio" name="golf_club" value="" id="associationMember" class="css-checkbox" />
                                                 <label for="associationMember" class="css-label"><?php _e('ASSOCIATION MEMBER', 'nisarg') ?></label>
                                             </label>
-                                            <ul class="golf-club-list">
+                                            <ul class="association-member golf-club-list">
                                             <?php
                                             $wp_query = new WP_Query(array(
                                                 'post_type' => 'golf_clubs',
@@ -221,9 +221,6 @@
                                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                                 <strong>Warning!</strong> <?php _e('An account already exists for this email address', 'nisarg'); ?>.
                                             </div>
-                                          <!--  <div id="fieldRequired">
-                                              <strong>Warning!</strong> <?php _e('An account already exists for this email address', 'nisarg'); ?>.
-                                          </div> -->
                                         </div>
                                     </div>
                                     <div class="col-sm-12 text-right">

@@ -40,9 +40,6 @@
         <div class="modal left fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-<!--               <div class="modal-header">
-  <a href="#" class="btn  btn-radius btn-lg"><i class="fa fa-search cl-white" aria-hidden="true"></i> <?php _e('Find a Course', 'nisarg'); ?></a>
-</div> -->
               <div class="modal-body">
                 <nav id="left-navigation" class="navbar-modern navbar-footer" role="navigation">
                   <?php wp_nav_menu(array(
@@ -129,7 +126,7 @@
             </div>
         </div>
     </div>
-    <?php elseif(is_page('join-now') || is_page('dang-ky')): ?>
+    <?php elseif(is_page('join-now') || is_page('tham-gia-ngay')): ?>
     <div class="site-header">
         <div class="container">
             <div class="site-join-now text-center">

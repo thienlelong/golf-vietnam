@@ -78,7 +78,7 @@
                                     <button  id="btn-process-transaction" class="btn btn-radius btn-lg-13"><?php _e('process transaction', 'nisarg') ?></button>
                                     <?php echo do_shortcode('[easy_payment amount="9"]'); ?>
                                 </div>
-                                <div class="col-sm-5 col-md-4"><a href="" class="btn btn-radius btn-lg-13 bg-red"><?php _e('cancel transaction', 'nisarg') ?></a></div>
+                                <div class="col-sm-5 col-md-4"><a href="<?php echo get_home_url(); ?>" class="btn btn-radius btn-lg-13 bg-red"><?php _e('cancel transaction', 'nisarg') ?></a></div>
                                 <div id="confirm-checkbox" class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 alert alert-warning" role="alert" style="display: none;">
                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                     <?php _e('Please check all box before payment.', 'nisarg') ?>
