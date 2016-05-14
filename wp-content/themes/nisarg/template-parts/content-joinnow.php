@@ -17,7 +17,7 @@
         </div>
         <div class="join-club">
             <p class="text-center club-title"><?php _e('Golf Vietnam currently offers three categories of membership for new members.  You will be able to choose from:', 'nisarg') ?></p>
-            <div class="clearfix">
+            <div class="clearfix join-now-action">
                 <div class="col-sm-4">
                     <button class="btn btn-radius btn-join-club bg-blue">
                         <p><?php _e('Club Membership', 'nisarg') ?></p>

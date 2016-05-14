@@ -36,7 +36,7 @@
                 $club_Id = get_post_meta($post->ID, 'host_club', true);
             ?>
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-md-9">
                         <h3 class="event-title">
                             <?php the_title(); ?>
                         </h3>
@@ -45,7 +45,7 @@
                         </h4>
                         <div class="event-address"><img src="<?php bloginfo('template_directory'); ?>/images/icon-location.png" alt="" /><?php echo get_post_meta($post->ID, 'address', true); ?></div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-md-3">
                         <div class="meta-dates">
                             <span><?php _e('DATES', 'nisarg'); ?></span>
                             <p><?php echo mysql2date('F j', get_post_meta($post->ID, 'date_start', true)); ?> - <?php echo  mysql2date('F j Y',get_post_meta($post->ID, 'date_finish', true)); ?></p>

@@ -25,6 +25,19 @@
     .register-form .inner-100 {
         padding: 15px !important
     }
+    .member-card {
+        margin-bottom: 20px;
+    }
+    .join-now-banner img {
+        width: 100%;
+    }
+    .join-now-banner a {
+       /*  width: auto; */
+    }
+    .join-now-banner {
+        padding-left: 0px;
+        text-align: center;
+    }
 }
 
 @media (max-width: 990px){
@@ -144,6 +157,9 @@
     .inner-70 {
         padding: 15px 0px !important;
     }
+    .page-events.inner-70 {
+        padding: 15px !important;
+    }
     .inner-100 {
         padding: 15px 0px !important;
     }
@@ -157,6 +173,21 @@
        /*  margin-bottom: 2em; */
     }
 
+    .site-header .site-join-now h2{
+        font-size: 24px;
+    }
+    .join-club .join-now-action {
+        margin: 0px -15px;
+    }
+
+    .membership-info p {
+        font-size: 24px;
+    }
+    .section-membership .price {
+        margin-bottom: 10px;
+        font-size: 24px;
+        display: inline-block;
+    }
     .site-title {
         font-size: 2.1em;
         letter-spacing: 10px;
@@ -212,17 +243,23 @@
         right: 0;
     }
     .join-now-banner {
-        margin-top: 15px;
+        margin-top: 0px;
         text-align: center;
-        padding-left: 15px;
+        padding-left: 0px;
     }
     .join-now-banner img{
         width: 100%;
     }
     .page-static {
-        padding: 15px;
+        padding: 15px 0px;
+    }
+    .page-static h2 {
+        font-size: 24px;
     }
 
+    .page-static h3 {
+        font-size: 22px;
+    }
     .register-form input[name=first_name],
     .register-form input[name=middle_name],
     .register-form input[name=last_name],
@@ -239,6 +276,18 @@
     }
     .payment-form {
         padding: 0px 15px;
+    }
+    .register-form .inner-100 {
+        padding: 0px !important;
+    }
+    .register-form .checkbox-golf-club {
+        margin-bottom: 15px;
+    }
+    .entry-header, .entry-content, .entry-summary, .entry-footer {
+        padding: 15px;
+    }
+    .home-action .btn-download, .home-action .btn-associal {
+        margin: 10px 0px;
     }
 }
 @media (max-width: 410px) {
@@ -279,6 +328,25 @@
     .home-action .btn-associal {
         padding: 10px 0px;
         width: 100%;
+    }
+    .section-membership .btn{
+        font-size: 22px !important;
+    }
+    .section-membership .price {
+        margin-bottom: 10px;
+        margin-right: 0px;
+        display: inline-block;
+    }
+    .join-now-banner a{
+        margin-right: 0px;
+        width: 100%;
+
+    }
+    .pmitem-header {
+        font-size: 13px;
+    }
+    .list-clubs .club-detail .club-name {
+        margin-top: 0px;
     }
 }
 
@@ -388,5 +456,9 @@
     .comment-reply-link,
     .comment-reply-login {
         color: #333;
+    }
+    .join-now-banner a {
+        margin: 0px;
+        width: 100%;
     }
 }
