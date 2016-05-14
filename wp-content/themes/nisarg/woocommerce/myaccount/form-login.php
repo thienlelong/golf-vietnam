@@ -39,23 +39,41 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php do_action( 'woocommerce_login_form_start' ); ?>
 
 					<p class="form-row form-row-wide">
-						<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Username', 'woocommerce' ); ?>" />
+
+						<?php if(pll_current_language('locale') =='vi'): ?>
+							<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Tài Khoản', 'woocommerce' ); ?>" />
+						<?php else: ?>
+							<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Tài Khoản', 'woocommerce' ); ?>" />
+						<?php endif; ?>
 					</p>
 					<p class="form-row form-row-wide">
-						<input class="input-text" type="password" name="password" id="password" placeholder="<?php _e( 'Password', 'woocommerce' ); ?>" />
+						<?php if(pll_current_language('locale') =='vi'): ?>
+							<input class="input-text" type="password" name="password" id="password" placeholder="<?php _e( 'Mật Khẩu', 'woocommerce' ); ?>" />
+						<?php else: ?>
+							<input class="input-text" type="password" name="password" id="password" placeholder="<?php _e( 'Password', 'woocommerce' ); ?>" />
+						<?php endif; ?>
 					</p>
 
 					<?php do_action( 'woocommerce_login_form' ); ?>
 
 					<p class="form-row">
 						<?php wp_nonce_field( 'woocommerce-login' ); ?>
-						<input type="submit" class="btn btn-radius btn-lg-13" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>" />
+						<?php if(pll_current_language('locale') =='vi'): ?>
+							<input type="submit" class="btn btn-radius btn-lg-13" name="login" value="<?php esc_attr_e( 'Đăng Nhập', 'woocommerce' ); ?>" />
+						<?php else: ?>
+							<input type="submit" class="btn btn-radius btn-lg-13" name="login" value="<?php esc_attr_e( 'Login', 'woocommerce' ); ?>" />
+						<?php endif; ?>
+
 						<!-- <label for="rememberme" class="inline">
 							<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php _e( 'Remember me', 'woocommerce' ); ?>
 						</label> -->
 					</p>
 					<p class="lost_password">
+					<?php if(pll_current_language('locale') !='vi'): ?>
 						<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Forgot your password or username?', 'woocommerce' ); ?></a>
+					<?php else: ?>
+						<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Quên mật khẩu hoặc tài khoản đăng nhập?', 'woocommerce' ); ?></a>
+					<?php endif; ?>
 					</p>
 
 					<?php do_action( 'woocommerce_login_form_end' ); ?>
