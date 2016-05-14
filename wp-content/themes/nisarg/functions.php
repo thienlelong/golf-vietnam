@@ -12,6 +12,7 @@ require_once(OPT . '/ot-loader.php');
 include(TEMPLATEPATH.'/theme-options.php');
 include(TEMPLATEPATH.'/functions/post-type-clubs.php');
 include(TEMPLATEPATH.'/functions/post-type-events.php');
+include(TEMPLATEPATH.'/functions/post-type-partners.php');
 include(TEMPLATEPATH.'/functions/metaboxes.php');
 include(TEMPLATEPATH.'/inc/ehandicap.php');
 @ini_set( 'upload_max_size' , '64M' );
@@ -490,27 +491,3 @@ function ur_theme_start_session()
         session_start();
 }
 add_action("init", "ur_theme_start_session", 1);
-
-//call service api
-//dungdh update userprofile
-add_action( 'show_user_profile', 'my_show_extra_profile_fields' );
-add_action( 'edit_user_profile', 'my_show_extra_profile_fields' );
-
-function my_show_extra_profile_fields( $user ) { ?>
-
-    
-    <h3>Extra profile information</h3>
-
-    <? echo the_content() ?>
-    <table class="form-table">
-        <tr>
-            <th><label for="twitter">Twitter</label></th>
-
-            <td>
-                <input type="text" name="twitter" id="twitter" value="<?php echo esc_attr( get_the_author_meta( 'twitter', $user->ID ) ); ?>" class="regular-text" /><br />
-                <span class="description">Please enter your Twitter username.</span>
-            </td>
-        </tr>
-
-    </table>
-<?php }
