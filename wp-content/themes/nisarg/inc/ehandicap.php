@@ -5,7 +5,7 @@
 //http://vn.ehandicap.net/cgi-bin/hcapstat.exe?NAME=THEIN&MID=147896325&CID=vietcap
 	class eHandicap
 	{
-		private $registerLink = 'http://vn.ehandicap.net/cgi-bin/admin_mem.exe?vietcapnew=1&CID=vietcap&MID=%s&firstname=%s&lastname=%s&gender=%s&email=%s&pass=%s';
+		private $registerLink = 'http://vietcap.ehandicap.net/cgi-bin/admin_mem.exe?vietcapnew=1&CID=vietcap&MID=%s&firstname=%s&lastname=%s&gender=%s&email=%s&pass=%s';
 		function __construct()
 		{
 			# code...
@@ -29,8 +29,8 @@
 			return sprintf($this->registerLink,$member->MID,$member->firstname,$member->lastname,$member->gender,$member->email,$member->pass);
 		}
 		private function testSubmit($url) {
-			echo $url;
 			$ch = curl_init();
+			echo $url;
 			// set URL and other appropriate options
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_HEADER, 0);

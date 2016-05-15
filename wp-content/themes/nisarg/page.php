@@ -17,7 +17,15 @@ get_header(); ?>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<div class="page-header">
 					<div class="row">
-						<div class="col-md-4"><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?></div>
+						<div class="col-md-4">
+						<?php if($_GET["category"]) {
+						    $category =  $_GET['category'];
+						    echo '<h1 class="entry-title text-capitalize">'. str_replace("-"," ", $category) .'</h1>';
+						} else {
+							the_title( '<h1 class="entry-title">', '</h1>' );
+						}
+						?>
+						</div>
 						<div class="col-md-8 text-right">
 							<img src="<?php bloginfo('template_directory'); ?>/images/page-banner.png" alt="">
 						</div>
@@ -27,7 +35,7 @@ get_header(); ?>
 						get_template_part( 'template-parts/content', 'joinnow' );
 					} elseif(is_page('golf-club-listings') || is_page('danh-sach-golf-club')) {
 						get_template_part( 'template-parts/content', 'golf-club-listings' );
-					} elseif(is_page('golf-events') ) {
+					} elseif(is_page('golf-events') || is_page('su-kien-golf')) {
 						get_template_part( 'template-parts/content', 'golf-events' );
 					}
 					else {

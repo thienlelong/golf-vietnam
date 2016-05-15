@@ -192,11 +192,11 @@
                                         <div class="label-checkbox"> <?php _e('Gender', 'nisarg'); ?></div>
                                         <label class="radio-inline">
                                             <input type="radio" name="gender" id="male" checked value="Male" class="css-checkbox" />
-                                            <label for="male" class="css-label">Male</label>
+                                            <label for="male" class="css-label"><?php _e('Male', 'nisarg'); ?></label>
                                         </label>
                                         <label class="radio-inline">
                                             <input type="radio" name="gender" id="female" value="Female" class="css-checkbox" />
-                                            <label for="female" class="css-label">Female</label>
+                                            <label for="female" class="css-label"><?php _e('Female', 'nisarg'); ?></label>
                                         </label>
                                     </div>
                                 </div>

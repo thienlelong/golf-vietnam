@@ -3,21 +3,21 @@
 
 $labels = array(
 
-   'name' => _x('Golf Club List', 'post type general name'),
+   'name' => _x('Golf Clubs', 'post type general name'),
 
-   'singular_name' => _x('Golf Club', 'post type singular name'),
+   'singular_name' => _x('Golf Clubs', 'post type singular name'),
 
-   'add_new' => _x('Add New', 'Golf Club'),
+   'add_new' => _x('Add New', 'Golf Clubs'),
 
-   'add_new_item' => __('Add New Golf Club'),
+   'add_new_item' => __('Add New Golf Clubs'),
 
-   'edit_item' => __('Edit Golf Club'),
+   'edit_item' => __('Edit Golf Clubs'),
 
-   'new_item' => __('New Golf Club'),
+   'new_item' => __('New Golf Clubs'),
 
-   'view_item' => __('View Golf Club'),
+   'view_item' => __('View Golf Clubs'),
 
-   'search_items' => __('Search Golf Club'),
+   'search_items' => __('Search Golf Clubs'),
 
    'not_found' =>  __('Nothing found'),
 
@@ -53,7 +53,7 @@ $args = array(
 
    'menu_position' => 20,
 
-   'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'page-attributes', 'comments','revisions'),
+   'supports' => array('title'),
 
    'taxonomies' => array('category',),
 

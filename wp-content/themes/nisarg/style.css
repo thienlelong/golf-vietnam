@@ -635,7 +635,7 @@ header a.menu-toggle {
     cursor: pointer;
     text-decoration: none;
     outline: none;
-    /* width: 120px; */
+    background: #fff !important
 }
 .header-right .language-toggle {
     color: #5a5959;
@@ -1327,7 +1327,7 @@ color: #000000;
 .membership-info p {
     font-size: 30px;
     font-weight: bold;
-    margin-bottom: 0px;
+   /*  margin-bottom: 0px; */
 }
 
 .membership-info p:last-child {
@@ -1360,7 +1360,7 @@ color: #000000;
 .join-now-membership .list-membership li{
     width: 100%;
     padding-left: 20px;
-    background: url(images/list-item.png) no-repeat center left 5px;
+    background: url(images/list-item.png) no-repeat 5px 8px;
     color: #2482c9;
     margin-bottom: 3px;
     font-size: 14px;
@@ -1472,7 +1472,7 @@ color: #000000;
 }
 .list-search input[type=submit]{
     height: 40px;
-    width: 135px;
+    width: 150px;
     position: absolute;
     color: white;
     padding: 0 20px 0 50px;
@@ -1585,6 +1585,7 @@ input.btn-border {
 .waiver-form .btn{
     padding: 12px 30px;
 }
+
 
 /*
 * 4.3 Post Formats
@@ -2494,7 +2495,6 @@ p.pmitem-value {
 
 .payment-detail p {
     color: #707070;
-    font-style: italic;
     margin-top: 15px;
 }
 

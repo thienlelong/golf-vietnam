@@ -169,7 +169,7 @@ class Meta_Box {
 $prefix = 'golf_clubs_';
 $metaBoxes[] = array(
 	'id' => 'golf_clubs_custom',
-    'title' => __('Golf Club Config', 'moonation'),
+    'title' => __('Golf Club Info', 'moonation'),
     'pages' => array('golf_clubs'),
     'context' => 'normal',
     'priority' => 'low',
@@ -189,26 +189,36 @@ $metaBoxes[] = array(
 	)
 );
 
-
-/*$prefix = 'client_';
-$metaBoxes[] = array(
-	'id' => 'client_custom',
-    'title' => __('Custom Information', 'moonation'),
-    'pages' => array('client'),
-    'context' => 'normal',
-    'priority' => 'low',
-    'fields' => array(
-		array(
-            'name' => __('Sub Title', 'moonation'),
-            'id' => $prefix . 'sub_title',
-            'type' => 'text',
-            'desc' => ''
-		)
-	)
-);*/
-
 // print options company add/edit
 if($metaBoxes) { foreach ($metaBoxes as $metaBox){
     $box = new Meta_Box($metaBox);
+}}
+
+$prefix = 'proud_partners_';
+$metaBoxesPartners[] = array(
+    'id' => 'proud_partners_custom',
+    'title' => __('Proud Partners Info', 'moonation'),
+    'pages' => array('proud_partners'),
+    'context' => 'normal',
+    'priority' => 'low',
+    'fields' => array(
+        array(
+            'name' => __('Proud Partners Website', 'moonation'),
+            'id' => $prefix . 'website',
+            'type' => 'text',
+            'desc' => ''
+        ),
+        array(
+            'name' => __('Proud Partners Logo', 'moonation'),
+            'id' => $prefix . 'logo',
+            'type' => 'image',
+            'desc' => ''
+        ),
+    )
+);
+
+// print options company add/edit
+if($metaBoxesPartners) { foreach ($metaBoxesPartners as $metaBoxesPartner){
+    $box = new Meta_Box($metaBoxesPartner);
 }}
 ?>

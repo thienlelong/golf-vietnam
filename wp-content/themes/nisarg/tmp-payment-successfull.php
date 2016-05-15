@@ -17,12 +17,12 @@ if($_GET["orderId"] /*&& $_SESSION["usersId"]*/) {
 
     $member->lastname = 'thien';
     $member->firstname = "lelong";
-    $member->MID = "1600001";
+    $member->MID = "5600003";
     $member->gender="f";
-    $member->email="Dthien@gmail.com";
+    $member->email="thien@gmail.com";
     $member->pass="password";
     $result = $ehandicap->RegisterNewMember($member);
-    var_dump($result);
+    echo $result;
    /* unset($_SESSION['usersId']);*/
 }
 ?>

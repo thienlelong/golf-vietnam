@@ -14,38 +14,22 @@
 			<h1 class="section-title"><?php _e("Proud Partners", 'nisarg') ?>
 			</h1>
 			<div class="owl-carousel" id="owl-partners">
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-adias.png" alt=""></a>
-			    </div>
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-callaway.png" alt=""></a>
-			    </div>
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-footjoy.png" alt=""></a>
-			    </div>
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-mercedes.png" alt=""></a>
-			    </div>
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-ping.png" alt=""></a>
-			    </div>
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-ping-play.png" alt=""></a>
-			    </div>
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-puma.png" alt=""></a>
-			    </div>
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-rolex.png" alt=""></a>
-			    </div>
-
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-callaway-1.png" alt=""></a>
-			    </div>
-			    <div class="item">
-			    	<a href=""><img src="<?php bloginfo('template_directory'); ?>/images/partners/logo-callaway.png" alt="">
-			    	</a>
-			    </div>
+			<?php
+                $wp_query = new WP_Query(array(
+                    'post_type' => 'proud_partners',
+                    'posts_per_page' => 20,
+                    'order' => 'ASC',
+                    'orderby' => 'menu_order',
+                    'caller_get_posts' => 1
+                ));
+                if($wp_query->have_posts()) :
+                ?>
+                    <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++; ?>
+					    <div class="item">
+					    	<a href="<?php echo get_post_meta($post->ID, 'proud_partners_website', true); ?>" target="_blank"><img src="<?php echo get_field('proud_partners_logo', $post->ID); ?>" alt=""></a>
+					    </div>
+					<?php endwhile; ?>
+				<?php endif; wp_reset_query(); ?>
 			</div>
 		</div>
 	</div>
@@ -56,7 +40,7 @@
 					<?php echo '&copy; '.date("Y"); ?>
 					<span class="sep"> | </span>
 					<?php printf( esc_html__( 'VietCap. Designed with ','nisargf')); ?>
-					<a href="http://ydcvn.com" target="_blank" class="cl-green">ydcvn</a>
+					<a href="http://ydcvn.com" target="_blank" class="cl-green">YDCVN</a>
 				</div><!-- .site-info -->
 				<div  class="col-sm-6 app-store">
 					<a href="#" data-toggle="tooltip" data-placement="left" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/footers/logo-google-play.png" alt="" /></a>
@@ -70,9 +54,9 @@
 	jQuery(document).ready(function() {
 		jQuery("#owl-partners").owlCarousel({
 			autoPlay: 3000, //Set AutoPlay to 3 seconds
-			items : 9,
-			itemsDesktop : [1200,8],
-			itemsDesktopSmall : [979,6],
+			items : 7,
+			itemsDesktop : [1200,6],
+			itemsDesktopSmall : [979,4],
 			itemsMobile : [768,2],
 			navigation: true,
 			pagination: false,

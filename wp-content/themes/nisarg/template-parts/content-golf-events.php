@@ -36,23 +36,23 @@
                 $club_Id = get_post_meta($post->ID, 'host_club', true);
             ?>
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-md-9">
                         <h3 class="event-title">
                             <?php the_title(); ?>
                         </h3>
                         <h4 class="event-club">
-                            <span>HOST CLUB:</span> <a href="<?php echo get_post_meta($club_Id, 'golf_clubs_club_website', true); ?>" target="new"><?php echo get_the_title( $club_Id ); ?></a>
+                            <span><?php _e('HOST CLUB:', 'nisarg') ?></span> <a href="<?php echo get_post_meta($club_Id, 'golf_clubs_club_website', true); ?>" target="_blank"><?php echo get_the_title( $club_Id ); ?></a>
                         </h4>
                         <div class="event-address"><img src="<?php bloginfo('template_directory'); ?>/images/icon-location.png" alt="" /><?php echo get_post_meta($post->ID, 'address', true); ?></div>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-md-3">
                         <div class="meta-dates">
-                            <span>DATES</span>
+                            <span><?php _e('DATES', 'nisarg'); ?></span>
                             <p><?php echo mysql2date('F j', get_post_meta($post->ID, 'date_start', true)); ?> - <?php echo  mysql2date('F j Y',get_post_meta($post->ID, 'date_finish', true)); ?></p>
                         </div>
                         <?php $file = get_field('information_doc');?>
-                        <a href="<?php echo $file['url']; ?>" target="_blank" download class=" btn-border btn-radius">
-                            view  Information
+                        <a href="<?php echo $file['url']; ?>" target="_blank" download class="btn-border btn-radius">
+                            <?php _e('View  Information', 'nisarg'); ?>
                         </a>
                     </div>
                 </div>

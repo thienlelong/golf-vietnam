@@ -56,7 +56,7 @@ $args = array(
 
    'menu_position' => 20,
 
-   'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'page-attributes', 'comments','revisions'),
+   'supports' => array('title', 'custom-fields', 'page-attributes'),
 
    'taxonomies' => array('category',),
 

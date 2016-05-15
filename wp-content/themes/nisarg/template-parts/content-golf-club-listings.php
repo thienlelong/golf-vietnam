@@ -17,17 +17,17 @@
     <div class="entry-content page-content">
         <div class="inner-70">
             <h2 class="page-title text-center"><?php _e('Authorized Golf Club', 'nisarg'); ?></h2>
-            <p class="text-center"> <?php _e('Welcome to the Golf Vietnam eHandicap Network. To view your current handicap information complete with information about your most recent rounds of golf, select your home club and click on the \'Member Lookup\' button.', 'nisarg'); ?></p>
+            <p class="text-center"> <?php _e('Welcome to the Golf Vietnam eHandicap Network. To view your current handicap information complete with information about your most recent rounds of golf, select your home club and click on the Member Lookup button.', 'nisarg'); ?></p>
             <form class="list-search">
                 <div class="canhxn">
-                <input type="text" placeholder="Search..." name="search" />
-                <input type="submit" value="search" />
+                <input type="text" placeholder="<?php _e('Search...', 'nisarg'); ?>" name="search" />
+                <input type="submit" value="<?php _e('Search', 'nisarg');?>" />
                 </div>
             </form>
             <div class="list-clubs">
             <?php
                 if (isset($_GET['search'])) {
-                    echo $title = __('Search Results for', 'nisarg') . ' <em>"' . $query_search . '"</em>';
+                    echo $title = _e('Search Results for', 'nisarg') . ' <em>"' . $query_search . '"</em>';
                 }
             ?>
                 <hr class="dot-line">
@@ -58,7 +58,7 @@
                                 </div>
                                 <div class="club-detail">
                                     <h3 class="club-name"><?php the_title(); ?></h3>
-                                    <a href="<?php echo get_post_meta($post->ID, 'golf_clubs_club_website', true); ?>"><?php echo get_post_meta($post->ID, 'golf_clubs_club_website', true); ?></a>
+                                    <a href="<?php echo get_post_meta($post->ID, 'golf_clubs_club_website', true); ?>" target="_blank"><?php echo get_post_meta($post->ID, 'golf_clubs_club_website', true); ?></a>
                                 </div>
                             </div>
                         <?php endwhile; ?>

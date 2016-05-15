@@ -27,7 +27,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php if( 'lost_password' === $args['form'] ) : ?>
 		<h2 class="page-title">Password Reset</h2>
-		<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'If you have forgotten your password or username, enter your email address below and you will receive an email that will provide you with your username and a link to reset your password.', 'woocommerce' ) ); ?></p>
+		<?php if(pll_current_language('locale') =='vi'): ?>
+			<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Nếu bạn quên mật khẩu hoặc tên đăng nhập của bạn, nhập địa chỉ email của bạn dưới đây và bạn sẽ nhận được một email mà sẽ cung cấp cho bạn với tên truy cập của bạn và liên kết để đặt lại mật khẩu của bạn.', 'woocommerce' ) ); ?></p>
+		<?php else: ?>
+			<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'If you have forgotten your password or username, enter your email address below and you will receive an email that will provide you with your username and a link to reset your password.', 'woocommerce' ) ); ?></p>
+		<?php endif; ?>
 
 		<div class="form-row reset_password"><input class="btn-radius" type="text" name="user_login" id="user_login" placeholder="<?php _e( 'Your Email', 'woocommerce' ); ?>" />
 		<?php do_action( 'woocommerce_lostpassword_form' ); ?>
