@@ -50,9 +50,9 @@
                     ));
                     if($wp_query->have_posts()) :
                     ?>
-                    <div class="row">
+                    <div class="row clubs">
                         <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++; ?>
-                            <div class="col-md-6">
+                            <div class="col-md-6 club">
                                 <div class="club-item clearfix">
                                     <div class="club-logo">
                                         <img src="<?php echo get_field('golf_clubs_club_logo', $post->ID); ?>" alt="<?php the_title(); ?>" />
