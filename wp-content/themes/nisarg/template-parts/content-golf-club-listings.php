@@ -35,7 +35,7 @@
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $wp_query = new WP_Query(array(
                         'post_type' => 'golf_clubs',
-                        'posts_per_page' => 4,
+                        'posts_per_page' => 14,
                         'paged' => $paged,
                         'order' => 'ASC',
                         'orderby' => 'menu_order',

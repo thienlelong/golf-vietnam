@@ -1497,6 +1497,7 @@ color: #000000;
     float: left;
     border: 1px solid #ebebeb;
     margin-right: 5%;
+    text-align: center;
 }
 .list-clubs .club-detail {
     width: 65%;
