@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: nisarg\n"
 "POT-Creation-Date: 2016-04-15 20:28+0700\n"
-"PO-Revision-Date: 2016-05-14 23:35+0700\n"
+"PO-Revision-Date: 2016-05-15 11:01+0700\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -693,3 +693,47 @@ msgstr "Ngày"
 #: template-parts/content-golf-events.php:1
 msgid "HOST CLUB:"
 msgstr "câu lạc bộ golf"
+
+#: tmp-waiver-form.php:1
+msgid "Name of Competion"
+msgstr "Tên Giải Đấu"
+
+#: tmp-waiver-form.php:2
+msgid "Location"
+msgstr "Địa Điểm"
+
+#: tmp-waiver-form.php:4 tmp-waiver-form.php:1
+msgid "Competitor"
+msgstr "Đấu Thủ"
+
+#: tmp-waiver-form.php:1
+msgid "Receipt of waiver acknowledged by Tournament Official :"
+msgstr "Xác nhận bác bỏ được công nhận bởi Ban Tổ Chức giải đấu :"
+
+#: tmp-waiver-form.php:1
+msgid "Receipt of waiver acknowledged by Tournament Official"
+msgstr "Xác nhận bác bỏ được công nhận bởi Ban Tổ Chức giải đấu"
+
+#: tmp-waiver-form.php:1
+msgid "Dates"
+msgstr "Ngày Tháng"
+
+#: tmp-waiver-form.php:1
+msgid "Name"
+msgstr "Tên"
+
+#: tmp-waiver-form.php:1
+msgid "Signature"
+msgstr "Chữ Ký"
+
+#: tmp-waiver-form.php:1
+msgid "submit WAIVER form"
+msgstr "Đăng Ký "
+
+#: tmp-waiver-form.php:1
+msgid "You Are Submitted Successfully"
+msgstr "Bạn đã đăng ký thành công"
+
+#: tmp-waiver-form.php:1
+msgid "Without limiting the foregoing, I agree not to accept any cash prizes, and any merchandise prizes whose aggregate retail value exceeds $1000.00 that I might win at the above tournament."
+msgstr "Như đã nói ở trên, tôi đồng ý không nhận bất kỳ khoản tiền thưởng nào, và bất kỳ giải thưởng hàng hóa có tổng giá trị bán lẻ vượt quá $ 1.000,00 mà tôi có thể giành chiến thắng tại giải đấu trên."

@@ -158,5 +158,21 @@
         } else {
             $('#lagguage-vn').css('display', 'inline');
         }
+        $( '.navbar-nav > li.handicap-member > a' ).click( function(){
+          var is_login = '<?php echo is_user_logged_in(); ?>';
+
+          if(is_login == 1) {
+            var user_lastname = '<?php echo wp_get_current_user()->user_lastname;?>';
+            var user_firstname  = '<?php echo wp_get_current_user()->user_firstname ;?>';
+            window.location.href = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME=' + user_lastname + user_firstname + '&MID=1600005&CID=vietcap'
+          } else {
+            var lagguage = '<?php echo pll_current_language("locale"); ?>';
+            if(lagguage == 'vi') {
+              window.location.href = '<?php echo site_url("dang-nhap") ?>';
+            } else {
+              window.location.href = '<?php echo site_url("login") ?>';
+            }
+          }
+        });
     });
 </script>

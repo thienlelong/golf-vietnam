@@ -328,7 +328,7 @@ function wc_custom_user_redirect( $redirect, $user ) {
         $redirect = $dashboard;
     } elseif ( $role == 'customer' || $role == 'subscriber' ) {
         //Redirect customers and subscribers to the "My Account" page
-        $redirect = $home_page;
+        $redirect = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME='. $user->user_firstname . $user->user_lastname .'&MID=1600005&CID=vietcap';
     } else {
         //Redirect any other role to the previous visited page or, if not available, to the home
         $redirect = wp_get_referer() ? wp_get_referer() : home_url();
@@ -491,3 +491,73 @@ function ur_theme_start_session()
         session_start();
 }
 add_action("init", "ur_theme_start_session", 1);
+
+function vb_reg_waiver_forms() {
+    global $wpdb;
+    $table_name = $wpdb->prefix . 'waiver';
+    $charset_collate = $wpdb->get_charset_collate();
+    if($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+        $sql = "CREATE TABLE $table_name (
+            id int(11) NOT NULL AUTO_INCREMENT,
+            competion_name varchar(255) DEFAULT NULL,
+            location varchar(255) DEFAULT NULL,
+            dates varchar(255) DEFAULT NULL,
+            competitor varchar(255) DEFAULT NULL,
+            competitor_dates varchar(255) DEFAULT NULL,
+            competitor_name varchar(255) DEFAULT NULL,
+            competitor_signature varchar(255) DEFAULT NULL,
+            receipt_waiver varchar(255) DEFAULT NULL,
+            receipt_dates varchar(255) DEFAULT NULL,
+            receipt_name varchar(255) DEFAULT NULL,
+            receipt_signature varchar(255) DEFAULT NULL,
+            UNIQUE KEY id (id)
+        ) $charset_collate;";
+
+        require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+        dbDelta( $sql );
+    }
+
+    $result["success"]=true;
+    if(!isset($_POST['waiver_forms'])) {
+        $result["success"] = false;
+        echo json_encode($result) ;
+        die();
+    }
+    $waiver_data = $_POST['waiver_forms'];
+    $competion_name = $waiver_data['competion_name'];
+    $location = $waiver_data['location'];
+    $dates = $waiver_data['dates'];
+    $competitor = $waiver_data['competitor'];
+    $competitor_dates = $waiver_data['competitor_dates'];
+    $competitor_name = $waiver_data['competitor_name'];
+    $competitor_signature = $waiver_data['competitor_signature'];
+    $receipt_waiver = $waiver_data['receipt_waiver'];
+    $receipt_dates = $waiver_data['receipt_dates'];
+    $receipt_name = $waiver_data['receipt_name'];
+    $receipt_signature = $waiver_data['receipt_signature'];
+    $inserted = $wpdb->insert('wp_waiver',
+        array(
+            'competion_name' => $competion_name,
+            'location' => $location,
+            'dates' => $dates,
+            'competitor' => $competitor,
+            'competitor_dates' => $competitor_dates,
+            'competitor_name' => $competitor_name,
+            'competitor_signature' => $competitor_signature,
+            'receipt_waiver' => $receipt_waiver,
+            'receipt_dates' => $receipt_dates,
+            'receipt_name' => $receipt_name,
+            'receipt_signature' => $receipt_signature
+        ),
+        array(
+            '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s'
+        )
+    );
+    if(!$inserted) {
+        $result["success"] = false;
+    }
+    echo json_encode($result) ;
+    die();
+}
+add_action('wp_ajax_waiver_forms', 'vb_reg_waiver_forms');
+add_action('wp_ajax_nopriv_waiver_forms', 'vb_reg_waiver_forms');

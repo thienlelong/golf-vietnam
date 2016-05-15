@@ -635,7 +635,7 @@ header a.menu-toggle {
     cursor: pointer;
     text-decoration: none;
     outline: none;
-    /* width: 120px; */
+    background: #fff !important
 }
 .header-right .language-toggle {
     color: #5a5959;
@@ -1585,6 +1585,7 @@ input.btn-border {
 .waiver-form .btn{
     padding: 12px 30px;
 }
+
 
 /*
 * 4.3 Post Formats
