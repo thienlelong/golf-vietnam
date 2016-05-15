@@ -52,13 +52,15 @@
                     ?>
                     <div class="row">
                         <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++; ?>
-                            <div class="col-md-6 club-item clearfix">
-                                <div class="club-logo">
-                                    <img src="<?php echo get_field('golf_clubs_club_logo', $post->ID); ?>" alt="<?php the_title(); ?>" />
-                                </div>
-                                <div class="club-detail">
-                                    <h3 class="club-name"><?php the_title(); ?></h3>
-                                    <a href="<?php echo get_post_meta($post->ID, 'golf_clubs_club_website', true); ?>" target="_blank"><?php echo get_post_meta($post->ID, 'golf_clubs_club_website', true); ?></a>
+                            <div class="col-md-6">
+                                <div class="club-item clearfix">
+                                    <div class="club-logo">
+                                        <img src="<?php echo get_field('golf_clubs_club_logo', $post->ID); ?>" alt="<?php the_title(); ?>" />
+                                    </div>
+                                    <div class="club-detail">
+                                        <h3 class="club-name"><?php the_title(); ?></h3>
+                                        <a href="<?php echo get_post_meta($post->ID, 'golf_clubs_club_website', true); ?>" target="_blank"><?php echo get_post_meta($post->ID, 'golf_clubs_club_website', true); ?></a>
+                                    </div>
                                 </div>
                             </div>
                         <?php endwhile; ?>
