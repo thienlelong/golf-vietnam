@@ -163,7 +163,7 @@ if ( !current_user_can('edit_user', $user_id) )
 
 $sessions = WP_Session_Tokens::get_instance( $profileuser->ID );
 
-include(ABSPATH . 'wp-admin/admin-header.php');
+include(ABSPATH . 'wp-admin/admin-header.php'); 
 ?>
 
 <?php if ( !IS_PROFILE_PAGE && is_super_admin( $profileuser->ID ) && current_user_can( 'manage_network_options' ) ) { ?>

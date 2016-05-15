@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Edit user administration panel.
@@ -8,18 +9,73 @@
 
 /** WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
-
-wp_reset_vars( array( 'action', 'user_id', 'wp_http_referer' ) );
-var_dump($wp_http_referer);
-include(ABSPATH . 'wp-admin/admin-header.php');
-$user_id = (int) $user_id;
-$profileuser = get_user_to_edit($user_id);
-$usermetata = get_user_meta($user_id,"",true); 
-?>
+//wp_redirect( 'http://localhost/',301);
  
+if(!isset($_GET['action'])&&!isset($_POST['action']))
+{
+	$requestUri =strtolower( $_SERVER['REQUEST_URI']);
+	$redirect =str_replace('/user-update.php', "", $requestUri);
+	wp_redirect($redirect,301);
+	exit;
+}
 
+
+include(ABSPATH . 'wp-admin/admin-header.php'); 
+///wp_reset_vars( array( 'action', 'user_id', 'wp_http_referer' ) );
+wp_reset_vars( array( 'action', 'user_id', 'wp_http_referer' ) );
+
+$user_id = (int) $user_id;
+$current_user = wp_get_current_user();
+if ( ! defined( 'IS_PROFILE_PAGE' ) )
+	define( 'IS_PROFILE_PAGE', ( $user_id == $current_user->ID ) );
+
+if ( ! $user_id && IS_PROFILE_PAGE )
+	$user_id = $current_user->ID;
+elseif ( ! $user_id && ! IS_PROFILE_PAGE )
+	wp_die(__( 'Invalid user ID.' ) );
+elseif ( ! get_userdata( $user_id ) )
+	wp_die( __('Invalid user ID.') );
+
+$isUpdated=false;
+// update user section
+if(isset($_POST['action']))
+{
+	if ( !empty( $_POST['first_name'] ) )
+      update_user_meta( $user_id, 'first_name', esc_attr( $_POST['first_name'] ));
+    if ( !empty( $_POST['last_name'] ) )
+        update_user_meta($user_id, 'last_name', esc_attr( $_POST['last_name'] ) );
+    if ( !empty( $_POST['middle_name'] ) )
+        update_user_meta( $user_id, 'middle_name', esc_attr( $_POST['middle_name']));
+    if ( !empty( $_POST['district'] ) )
+      update_user_meta( $user_id, 'district', esc_attr( $_POST['district'] ));
+    if ( !empty( $_POST['province'] ) )
+        update_user_meta($user_id, 'province', esc_attr( $_POST['province'] ) );
+    if ( !empty( $_POST['city'] ) )
+        update_user_meta( $user_id, 'city', esc_attr( $_POST['city']));
+    if ( !empty( $_POST['gender'] ) )
+        update_user_meta( $user_id, 'gender', esc_attr( $_POST['gender']));
+    if ( !empty( $_POST['date_of_birth'] ) )
+        update_user_meta( $user_id, 'date_of_birth', esc_attr( $_POST['date_of_birth']));
+
+    if ( !empty( $_POST['address']) )
+        update_user_meta( $user_id, 'address', esc_attr( $_POST['address']));
+    
+
+    $isUpdated=true;
+}
+
+// get infor after update
+$profileuser = get_user_to_edit($user_id);
+$usermetata  = get_user_meta (   $user_id);
+?>
+ <style type="text/css">
+	.woocommerce-message{
+		display: none;
+	}
+</style>
+ 
 <div>
-    <form class="form-horizontal registerUserForm register-form" id="registerUserForm0">
+    <form method="Post" class="form-horizontal registerUserForm register-form" id="registerUserForm0">
         <div class="form-user-info">
             <h2 class="form-header"><span class="step">1</span><?php _e('Basic Information', 'nisarg') ?></h2>
             <div class="inner-100">
@@ -37,17 +93,11 @@ $usermetata = get_user_meta($user_id,"",true);
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                  <input type="email"    value="<?php echo $profileuser->user_email;?>" name="user_email" class="form-control"  placeholder="<?php _e('Email', 'nisarg') ?>" required>
+                  <input type="email" readonly   value="<?php echo $profileuser->user_email;?>" name="user_email" class="form-control"  placeholder="<?php _e('Email', 'nisarg') ?>" required>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-sm-6">
-                  <input type="password" name="password" class="form-control" id='password' placeholder="<?php _e('Login Password', 'nisarg') ?>" required>
-                </div>
-                <div class="col-sm-6">
-                  <input type="password" name="password2" class="form-control"  placeholder="<?php _e('Confirm Login Password', 'nisarg') ?>" required>
-                </div>
-            </div>
+          
+            
              <div class="form-group">
                 <span class="col-sm-6 col-md-6 labelicon"><?php _e('Choose one of following:', 'nisarg')?></span>
              </div>
@@ -176,7 +226,7 @@ $usermetata = get_user_meta($user_id,"",true);
             </div>
             <div class="form-group">
                 <div class="col-md-4 col-sm-8">
-                  <input type="text" name="date_of_birth" class="date-of-birth form-control"  placeholder="<?php _e('Date Of Birth', 'nisarg') ?>"  >
+                  <input type="text" value="<?php echo $usermetata['date_of_birth'][0];?>" name="date_of_birth" class="date-of-birth form-control"  placeholder="<?php _e('Date Of Birth', 'nisarg') ?>"  >
                 </div>
                 <div class="col-md-4 col-sm-6">
                     <div class="label-checkbox" ><?php _e('Preferred Language', 'nisarg'); ?></div>
@@ -196,7 +246,7 @@ $usermetata = get_user_meta($user_id,"",true);
                         <label for="male" class="css-label">Male</label>
                     </label>
                     <label class="radio-inline">
-                        <input type="radio" name="gender" id="female" value="Female" class="css-checkbox" />
+                        <input type="radio" name="gender" id="female" value="<?php echo $usermetata['date_of_birth'][0];?>" class="css-checkbox" />
                         <label for="female" class="css-label">Female</label>
                     </label>
                 </div>
@@ -217,6 +267,7 @@ $usermetata = get_user_meta($user_id,"",true);
             <div class="form-group">
                 <div class="col-sm-12">
                     <input type="hidden" name="form_id" value="registerUserForm0" />
+                     <input type="hidden" name="action" value="edit" />
                     <div class="alert alert-warning result-message" role="alert">
                         <div id="emailExist">
                             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
@@ -228,16 +279,27 @@ $usermetata = get_user_meta($user_id,"",true);
                     <?php wp_nonce_field('vb_new_user','vb_new_user_nonce', true, true ); ?>
                 </div>
             </div>
+             <div class="form-group">
+                <div class="col-xs-12">
+                     
+                        <input class="btn btn-success btn-radius btn-lg-13 pull-right" value="<?php _e('Update', 'nisarg') ?>" type="submit"></input>
+                    
+                </div>
+            </div>
             </div>
         </div>
+          
+        <?php if($isUpdated):?>
+	          <div class="alert alert-success">
+	         	<?php _e('Update Success', 'nisarg');?>
+	         </div>
+        <?php endif?>
+
     </form>
+    <?php //var_dump($_POST);?>
  </div>
-<?include( ABSPATH . 'wp-admin/admin-footer.php');?>
-<style type="text/css">
-	.woocommerce-message{
-		display: none;
-	}
-</style>
+<?php   include( ABSPATH . 'wp-admin/admin-footer.php');?>
+
 <link rel="stylesheet" type="text/css" href=<?php echo get_template_directory_uri().'/css/bootstrap.css';?>></link>
 <script type="text/javascript" src=<?php echo get_template_directory_uri() . '/js/bootstrap.js';?>></script>
 <script type="text/javascript" src=<?php echo get_template_directory_uri() . '/js/jquery-ui.min.js';?>></script>
@@ -268,3 +330,4 @@ $usermetata = get_user_meta($user_id,"",true);
         });
     });
 </script>
+

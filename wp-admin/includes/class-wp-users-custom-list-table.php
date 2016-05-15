@@ -399,12 +399,12 @@ class WP_Users_Custom_List_Table extends WP_List_Table {
 			// Set up the user editing link
 			$edit_link = esc_url( add_query_arg( 'wp_http_referer', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ), get_edit_user_link( $user_object->ID ) ) );
 			 //dungdh	
-			 $custom_edit_link= get_admin_url().'user-update.php/?user_id='. $user_object->ID ;
-
+			 $custom_edit_link= esc_url( add_query_arg( 'wp_http_referer', urlencode( wp_unslash( $_SERVER['REQUEST_URI'] ) ),  get_admin_url().'user-update.php/?user_id='. $user_object->ID ) );;
+			 $custom_edit_link=  $custom_edit_link.'&action=edit';
 			if ( current_user_can( 'edit_user',  $user_object->ID ) ) {
 				$edit = "<strong><a href=\"$edit_link\">$user_object->user_login</a></strong><br />";
-				$actions['edit'] = '<a href="' . $edit_link . '">' . __( 'Edit' ) . '</a>';
-				$actions['edit'] = '<a href="' .  $custom_edit_link . '">' . __( 'Edit' ) . '</a>';
+				$actions['edit'] = '<a href="' . $custom_edit_link . '">' . __( 'Edit' ) . '</a>';
+				//$actions['edit'] = '<a href="' .  $custom_edit_link . '">' . __( 'Edit' ) . '</a>';
 			} else {
 				$edit = "<strong>$user_object->user_login</strong><br />";
 			}
