@@ -328,7 +328,7 @@ function wc_custom_user_redirect( $redirect, $user ) {
         $redirect = $dashboard;
     } elseif ( $role == 'customer' || $role == 'subscriber' ) {
         //Redirect customers and subscribers to the "My Account" page
-        $redirect = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME='. $user->user_firstname . $user->user_lastname .'&MID=1600005&CID=vietcap';
+        $redirect = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME='. $user->user_firstname . $user->user_lastname .'&MID='. get_the_author_meta( 'MID', $user->id ).'&CID=vietcap';
     } else {
         //Redirect any other role to the previous visited page or, if not available, to the home
         $redirect = wp_get_referer() ? wp_get_referer() : home_url();
@@ -467,7 +467,18 @@ function add_member($user)
     $start_date =  date('Y/m/d');
     $expire_date = date("Y/m/d", strtotime(date("Y/m/d", strtotime($start_date)) . " + 365 day"));
     $is_active = false;
-    $MID = date('y').'00001';
+    $is_payment = false;
+    global $wpdb;
+    $user_lastest = $wpdb->get_results("SELECT ID FROM $wpdb->users ORDER BY ID DESC LIMIT 1");
+    $MID_lastest = get_user_meta($user_lastest[0]->ID, 'MID', true);
+    if(isset($MID_lastest)) {
+        $year = substr($MID_lastest, 0, 2);
+        if($year == date('y')) {
+            $MID = $MID_lastest + 1;
+        } else {
+            $MID = date('y')*100000 + 1;
+        }
+   }
     /**
      * IMPORTANT: You should make server side validation here!
      *
@@ -476,8 +487,8 @@ function add_member($user)
     //Add metatdata for user
     if($uId!=0){
          //add user metadata
-             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID");
-             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID);
+             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup');
+             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
     return $uId;
@@ -561,3 +572,41 @@ function vb_reg_waiver_forms() {
 }
 add_action('wp_ajax_waiver_forms', 'vb_reg_waiver_forms');
 add_action('wp_ajax_nopriv_waiver_forms', 'vb_reg_waiver_forms');
+
+
+function new_modify_user_table( $column ) {
+    $column['MID'] = 'MID';
+    $column['is_active'] = 'Active VietCap';
+    $column['avatar'] = 'Avatar';
+    $column['is_payment'] = 'Payment';
+    return $column;
+}
+add_filter( 'manage_users_columns', 'new_modify_user_table' );
+
+function new_modify_user_table_row( $val, $column_name, $user_id ) {
+    $user = get_userdata( $user_id );
+    switch ($column_name) {
+        case 'MID' :
+            return get_the_author_meta( 'MID', $user_id );
+            break;
+        case 'is_active' :
+            return !get_the_author_meta( 'is_active', $user_id ) ? 'false' : 'true';
+            break;
+        case 'avatar' :
+            return '';
+            break;
+        case 'is_payment' :
+            return !get_the_author_meta( 'is_payment', $user_id ) ? 'false' : 'true';
+            break;
+        default:
+    }
+    return $return;
+}
+add_filter( 'manage_users_custom_column', 'new_modify_user_table_row', 10, 3 );
+
+add_filter('manage_users_columns','remove_users_columns');
+function remove_users_columns($column_headers) {
+    unset($column_headers['role']);
+    unset($column_headers['posts']);
+    return $column_headers;
+}

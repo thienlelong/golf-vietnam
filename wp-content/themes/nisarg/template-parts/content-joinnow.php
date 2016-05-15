@@ -58,20 +58,9 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="join-now-membership">
-                    <h3 class="memba">Membership Benefits Include:</h3>
-                    <ul class="list-membership"><!-- <li>On-line FREE VietCap application</li>
-                        <li>Official Golf Vietnam Handicap Factor</li>
-                        <li>Internationally recognized membership card</li>
-                        <li>Access to official Handicap Rules</li>
-                        <li>Access to official Amateur Status rules</li>
-                        <li>Access to play in Club and National Events</li>
-                        <li>“Peer Review” allows all players access to each other’s scores and trends</li>
-                        <li>Record own scores on same day</li>
-                        <li>Receive daily updated handicaps</li>
-                        <li>Access to authorized Clubs Handicap charts to adjust handicaps accordingly</li>
-                        <li>Shop On-line for golf products and high end luxury products</li> -->
+                    <h3 class="memba"><?php _e('Membership Benefits Include:', 'nisarg'); ?></h3>
+                    <ul class="list-membership">
                         <?php _e('<li>On-line FREE VietCap application</li><li>Official Golf Vietnam Handicap Factor</li><li>Internationally recognized membership card</li><li>Access to official Handicap Rules</li><li>Access to official Amateur Status rules</li><li>Access to play in Club and National Events</li><li>“Peer Review” allows all players access to each other’s scores and trends</li><li>Record own scores on same day</li><li>Receive daily updated handicaps</li><li>Access to authorized Clubs Handicap charts to adjust handicaps accordingly</li><li>Shop On-line for golf products and high end luxury products</li>', 'nisarg'); ?>
-
                     </ul>
                 </div>
             </div>

@@ -5,25 +5,27 @@
  get_header();
 ?>
 <?php
-if($_GET["orderId"] /*&& $_SESSION["usersId"]*/) {
+if($_GET["orderId"] && $_SESSION["usersId"]) {
     $orderId =  $_GET['orderId'];
-    $userIDs = $pieces = explode(",", $_SESSION["usersId"]);;
-    for ($i=0; $i < count($userIDs); $i++) {
-       update_user_meta( $userIDs[$i], 'orderId', $orderId);
-    }
-
+    $userIDs = $pieces = explode(",", $_SESSION["usersId"]);
     $ehandicap  = new ehandicap();
-    $member = new eHandicapMember();
-
-    $member->lastname = 'thien';
-    $member->firstname = "lelong";
-    $member->MID = "5600003";
-    $member->gender="f";
-    $member->email="thien@gmail.com";
-    $member->pass="password";
-    $result = $ehandicap->RegisterNewMember($member);
-    echo $result;
-   /* unset($_SESSION['usersId']);*/
+    for ($i=0; $i < count($userIDs); $i++) {
+        update_user_meta( $userIDs[$i], 'orderId', $orderId);
+        update_user_meta( $userIDs[$i], 'is_payment', true);
+        $member = new eHandicapMember();
+        $user_info = get_userdata($userIDs[$i]);
+        $member->lastname = $user_info->first_name;
+        $member->firstname = $user_info->last_name;
+        $member->MID = get_the_author_meta( 'MID', $userIDs[$i] );
+        $member->gender = get_the_author_meta( 'gender', $userIDs[$i] );
+        $member->email = $user_info->user_email;
+        $member->pass = get_the_author_meta( 'passbackup', $userIDs[$i] );
+        $result = $ehandicap->RegisterNewMember($member);
+        if (strpos($result, 'OK') !== false) {
+            update_user_meta( $userIDs[$i], 'is_active', true);
+        }
+    }
+    unset($_SESSION['usersId']);
 }
 ?>
 <div class="container">

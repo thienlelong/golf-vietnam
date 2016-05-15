@@ -1492,11 +1492,17 @@ color: #000000;
 .list-clubs .club-item {
     margin: 15px 0px 30px;
 }
+
+.list-clubs .clubs .club:nth-child(2n+1) {
+    clear: both;
+}
+
 .list-clubs .club-logo {
     width: 30%;
     float: left;
     border: 1px solid #ebebeb;
     margin-right: 5%;
+    text-align: center;
 }
 .list-clubs .club-detail {
     width: 65%;
