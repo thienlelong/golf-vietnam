@@ -30,7 +30,6 @@
 		}
 		private function testSubmit($url) {
 			$ch = curl_init();
-			echo $url;
 			// set URL and other appropriate options
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_HEADER, 0);
