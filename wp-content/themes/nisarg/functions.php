@@ -13,6 +13,7 @@ include(TEMPLATEPATH.'/theme-options.php');
 include(TEMPLATEPATH.'/functions/post-type-clubs.php');
 include(TEMPLATEPATH.'/functions/post-type-events.php');
 include(TEMPLATEPATH.'/functions/post-type-partners.php');
+include(TEMPLATEPATH.'/functions/post-type-members.php');
 include(TEMPLATEPATH.'/functions/metaboxes.php');
 include(TEMPLATEPATH.'/inc/ehandicap.php');
 @ini_set( 'upload_max_size' , '64M' );

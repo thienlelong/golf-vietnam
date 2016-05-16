@@ -221,4 +221,26 @@ $metaBoxesPartners[] = array(
 if($metaBoxesPartners) { foreach ($metaBoxesPartners as $metaBoxesPartner){
     $box = new Meta_Box($metaBoxesPartner);
 }}
+
+$prefix = 'members_';
+$metaBoxesMembers[] = array(
+    'id' => 'members_custom',
+    'title' => __('Members Info', 'moonation'),
+    'pages' => array('members'),
+    'context' => 'normal',
+    'priority' => 'low',
+    'fields' => array(
+        array(
+            'name' => __('Members Image', 'moonation'),
+            'id' => $prefix . 'image',
+            'type' => 'image',
+            'desc' => ''
+        ),
+    )
+);
+
+// print options company add/edit
+if($metaBoxesMembers) { foreach ($metaBoxesMembers as $metaBoxesMember){
+    $box = new Meta_Box($metaBoxesMember);
+}}
 ?>

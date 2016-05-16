@@ -62,9 +62,22 @@
                         <ul id="portfolio" class="clearfix">
                             <li><a href="<?php bloginfo('template_directory'); ?>/images/members.png" title=""><img src="<?php bloginfo('template_directory'); ?>/images/members.png" alt=""></a>
                             </li>
-                            <li><a href="<?php bloginfo('template_directory'); ?>/images/home-page/list-golf-1.jpg" title=""></a></li>
-                            <li><a href="<?php bloginfo('template_directory'); ?>/images/home-page/list-golf-2.jpg" title=""></a></li>
-                            <li><a href="<?php bloginfo('template_directory'); ?>/images/home-page/list-golf-3.jpg" title=""></a></li>
+                            <?php
+                            $wp_query = new WP_Query(array(
+                                'post_type' => 'members',
+                                'posts_per_page' => 20,
+                                'order' => 'ASC',
+                                'orderby' => 'menu_order',
+                                'caller_get_posts' => 1
+                            ));
+                            if($wp_query->have_posts()) :
+                            ?>
+                                <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++; ?>
+                                    <div class="item">
+                                         <li><a href="<?php echo get_field('members_image', $post->ID); ?>" title=""></a></li>
+                                    </div>
+                                <?php endwhile; ?>
+                            <?php endif; wp_reset_query(); ?>
                         </ul>
                         <div class="box-title">
                             <?php

@@ -43,7 +43,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<?php if(pll_current_language('locale') =='vi'): ?>
 							<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Tài Khoản', 'woocommerce' ); ?>" />
 						<?php else: ?>
-							<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Tài Khoản', 'woocommerce' ); ?>" />
+							<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Username', 'woocommerce' ); ?>" />
 						<?php endif; ?>
 					</p>
 					<p class="form-row form-row-wide">
