@@ -90,38 +90,16 @@ class TT_Example_List_Table extends WP_List_Table {
      * @var array
      **************************************************************************/
 
-  /*  global $wpdb;*/
-/*    var $example_data = array();
-    var $sqlget = "SELECT * FROM wp_waiver";
-    var $sqldata = mysql_query($sqlget) or die('error getting');*/
-   /* var $result = mysql_query('SELECT * FROM  wp_waiver');*/
-/*    foreach ( $sqldata as $waiver ) {
-        $example_data[] = array(
-            'ID'        => $waiver->id,
-            'location'     => $waiver->location,
-            'dates'    => $waiver->dates,
-            'competitor'  => $waiver->competitor,
-            'competitor_dates'     => $waiver->competitor_dates,
-            'competitor_name'    => $waiver->competitor_name,
-            'competitor_signature'  => $waiver->competitor_signature,
-            'receipt_waiver'     => $waiver->receipt_waiver,
-            'receipt_dates'    => $waiver->receipt_dates,
-            'receipt_name'  => $waiver->receipt_name,
-            'receipt_signature'  => $waiver->receipt_signature
-
-        );
-    }*/
-
-
     private function table_data()
     {
         $data = array();
         $sqlget = "SELECT * FROM wp_waiver";
         global $wpdb;
-        $sqldata = $sql_results = $wpdb->get_results($sqlget);
+        $sqldata = $wpdb->get_results($sqlget);
         foreach ( $sqldata as $waiver ) {
         $data[] = array(
                 'ID'        => $waiver->id,
+                'competion_name'     => $waiver->competion_name,
                 'location'     => $waiver->location,
                 'dates'    => $waiver->dates,
                 'competitor'  => $waiver->competitor,
@@ -134,13 +112,8 @@ class TT_Example_List_Table extends WP_List_Table {
                 'receipt_signature'  => $waiver->receipt_signature
             );
         }
-
-
         return $data;
     }
-
-
-
 
 
     /** ************************************************************************
@@ -152,7 +125,7 @@ class TT_Example_List_Table extends WP_List_Table {
 
         //Set parent defaults
         parent::__construct( array(
-            'singular'  => 'movie',     //singular name of the listed records
+            'singular'  => 'waiver',     //singular name of the listed records
             'plural'    => 'movies',    //plural name of the listed records
             'ajax'      => false        //does this table support ajax?
         ) );
@@ -183,7 +156,8 @@ class TT_Example_List_Table extends WP_List_Table {
      **************************************************************************/
     function column_default($item, $column_name){
         switch($column_name){
-            case 'ID':
+           /* case 'ID':*/
+            case 'competion_name':
             case 'location':
             case 'dates':
             case 'competitor':
@@ -217,7 +191,7 @@ class TT_Example_List_Table extends WP_List_Table {
      * @param array $item A singular item (one full row's worth of data)
      * @return string Text to be placed inside the column <td> (movie title only)
      **************************************************************************/
-    function column_title($item){
+   function column_title($item){
 
         //Build row actions
         $actions = array(
@@ -227,10 +201,11 @@ class TT_Example_List_Table extends WP_List_Table {
 
         //Return the title contents
         return sprintf('%1$s <span style="color:silver">(id:%2$s)</span>%3$s',
-            /*$1%s*/ $item['location'],
-            /*$2%s*/ $item['ID'],
-            /*$3%s*/ $this->row_actions($actions)
+            $item['location'],
+             $item['ID'],
+            $this->row_actions($actions)
         );
+
     }
 
 
@@ -268,11 +243,12 @@ class TT_Example_List_Table extends WP_List_Table {
     function get_columns(){
         $columns = array(
             'cb'        => '<input type="checkbox" />', //Render a checkbox instead of text
+            'competion_name' => 'Competion',
             'location'    => 'Location',
             'dates'  => 'Dates',
             'competitor'  => 'Competitor',
             'competitor_dates'  => 'Dates',
-            'competitor_name'  => 'Dame',
+            'competitor_name'  => 'Mame',
             'competitor_signature'  => 'Signature',
             'receipt_waiver'  => 'Receipt Waiver',
             'receipt_dates'  => 'Dates',
@@ -299,8 +275,8 @@ class TT_Example_List_Table extends WP_List_Table {
      **************************************************************************/
     function get_sortable_columns() {
         $sortable_columns = array(
-            'competion_name'     => array('competion_name',false)    //true means it's already sorted
-           /* 'location'    => array('location',false),
+            'competion_name'     => array('competion_name',false),    //true means it's already sorted
+            'location'    => array('location',false),
             'dates'  => array('dates',false),
             'competitor'  => array('competitor',false),
             'competitor_dates'  => array('competitor_dates',false),
@@ -309,7 +285,7 @@ class TT_Example_List_Table extends WP_List_Table {
             'receipt_waiver'  => array('receipt_waiver',false),
             'receipt_dates'  => array('receipt_dates',false),
             'receipt_name'  => array('receipt_name',false),
-            'receipt_signature'  => array('receipt_signature',false),*/
+            'receipt_signature'  => array('receipt_signature',false),
         );
         return $sortable_columns;
     }
@@ -347,8 +323,17 @@ class TT_Example_List_Table extends WP_List_Table {
     function process_bulk_action() {
 
         //Detect when a bulk action is being triggered...
-        if( 'delete'===$this->current_action() ) {
+        if( 'delete'===$this->current_action() && isset($_GET['waiver']) ) {
+            /*wp_die('Items deleted (or they would be if we had items to delete)!');*/
+            /*wp_redirect( esc_url( add_query_arg() ) );*/
+
+            foreach($_GET['waiver'] as $id) {
+                global $wpdb;
+                $wpdb->query($wpdb->prepare("DELETE FROM wp_waiver WHERE id = %d",$id));
+            }
+
             wp_die('Items deleted (or they would be if we had items to delete)!');
+            exit;
         }
 
     }
@@ -375,7 +360,7 @@ class TT_Example_List_Table extends WP_List_Table {
         /**
          * First, lets decide how many records per page to show
          */
-        $per_page = 5;
+        $per_page = 10;
 
 
         /**
@@ -388,8 +373,7 @@ class TT_Example_List_Table extends WP_List_Table {
         $columns = $this->get_columns();
         $hidden = array();
         $sortable = $this->get_sortable_columns();
-
-
+       /* $this->column_title($data);*/
         /**
          * REQUIRED. Finally, we build an array to be used by the class for column
          * headers. The $this->_column_headers property takes an array which contains

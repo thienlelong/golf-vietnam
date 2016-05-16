@@ -118,6 +118,7 @@
                     console.log(result);
                     if (result.success) {
                         jQuery('.results-message').css('display', 'block');
+                        jQuery('#waiver-form')[0].reset();
                     }
                 },
                 error: function(response) {
