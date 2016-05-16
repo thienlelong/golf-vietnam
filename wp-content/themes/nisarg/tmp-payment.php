@@ -93,7 +93,11 @@
 </div><!--.container-->
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
+        var lagguage = '<?php echo pll_current_language("locale"); ?>';
         var url_return = '<?php echo site_url("payment-success"); ?>';
+        if(lagguage == 'vi') {
+          url_return = '<?php echo site_url("dang-ky-thanh-cong") ?>';
+        }
         var usersId = '<?php echo  $_SESSION["usersId"]; ?>';
         var totalUser = usersId.split(",").length;
         var orderId = Math.random().toString(36).substring(11);

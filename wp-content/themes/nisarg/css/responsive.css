@@ -2,7 +2,22 @@
 * 7.0 Media Queries
 * --------------------------------------------------------------------
 */
+
+@media (min-width: 1320px){
+     #navigation_menu .navbar-nav {
+        padding-left: 100px;
+     }
+}
+
+@media (min-width: 1190px) and  (max-width: 1320px){
+    .header-right .btn-login {
+        margin: 20px 0;
+    }
+}
 @media (max-width: 1200px){
+    #navigation_menu .navbar-nav > li {
+        margin: 0 2px;
+    }
     .site-header .btn-vietcap {
          margin-left: 15px;
     }
@@ -160,11 +175,36 @@
     .page-events.inner-70 {
         padding: 15px !important;
     }
+    .header-right .btn-login {
+        margin: 15px 0;
+    }
     .inner-100 {
         padding: 15px 0px !important;
     }
     #navigation_menu .navbar-nav > li {
         padding: 5px;
+        padding-left: 0px;
+    }
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #0b9347;
+    }
+
+    #logo img{
+        height: 50px;
+    }
+    .navbar-default {
+        border-bottom: 1px solid #e7e7e7;
+    }
+    .navbar-default .navbar-toggle {
+        margin: 15px 0;
+        border-color: #0b9347;
+    }
+    .navbar-default .navbar-toggle:hover,
+    .navbar-default .navbar-toggle:focus {
+        background-color: #0b9347;
+    }
+    .navbar-default .navbar-collapse {
+        padding-left: 0px;
     }
     .site-header{
         position: relative;
