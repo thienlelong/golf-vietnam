@@ -255,61 +255,6 @@ function nisarg_get_link_url() {
 }
 
 
-/*
-Plugin Name: Register Helper Example
-Plugin URI: http://www.paidmembershipspro.com/wp/pmpro-customizations/
-Description: Register Helper Initialization Example
-Version: .1
-Author: Stranger Studios
-Author URI: http://www.strangerstudios.com
-*/
-//we have to put everything in a function called on init, so we are sure Register Helper is loaded
-function my_pmprorh_init()
-{
-    //don't break if Register Helper is not loaded
-    if(!function_exists("pmprorh_add_registration_field"))
-    {
-        return false;
-    }
-    //define the fields
-    $fields = array();
-    $fields[] = new PMProRH_Field(
-        "company",              // input name, will also be used as meta key
-        "text",                 // type of field
-        array(
-            "size"=>40,         // input size
-            "class"=>"company", // custom class
-            "profile"=>true,    // show in user profile
-            "required"=>true    // make this field required
-        ));
-    $fields[] = new PMProRH_Field(
-        "referral",                     // input name, will also be used as meta key
-        "text",                         // type of field
-        array(
-            "label"=>"Referral Code",   // custom field label
-            "profile"=>"admins"         // only show in profile for admins
-        ));
-    $fields[] = new PMProRH_Field(
-        "gender",                   // input name, will also be used as meta key
-        "radio",
-       	array("options"=>array("male"=>"Male", "female"=>"Female"))
-    	);
-
-   	 $fields[] = new PMProRH_Field(
-        "languages",                   // input name, will also be used as meta key
-        "checkbox",
-       	array("profile"=>true)
-    	);
-   	$fields[] = new PMProRH_Field("avatar", "file", array("profile"=>true, "options"=>array()));
-    //add the fields into a new checkout_boxes are of the checkout page
-    foreach($fields as $field)
-        pmprorh_add_registration_field(
-            "checkout_boxes", // location on checkout page
-            $field            // PMProRH_Field object
-        );
-    //that's it. see the PMPro Register Helper readme for more information and examples.
-}
-
 function wc_custom_user_redirect( $redirect, $user ) {
     // Get the first of all the roles assigned to the user
     $role = $user->roles[0];
@@ -636,9 +581,6 @@ function extra_user_profile_fields( $user ) { ?>
             </label>
         </th>
         <td>
-        <?php
-            $base64strImg = base64_encode( get_the_author_meta( 'avatar', $user->ID ));
-        ?>
         </td>
     </tr>
 

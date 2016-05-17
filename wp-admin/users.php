@@ -18,11 +18,11 @@ if ( ! current_user_can( 'list_users' ) ) {
 	);
 }
 //dungdh
-//$wp_list_table = _get_list_table('WP_Users_List_Table');
-require_once(ABSPATH . 'wp-admin/includes/class-wp-users-custom-list-table.php');
+$wp_list_table = _get_list_table('WP_Users_List_Table');
+/*require_once(ABSPATH . 'wp-admin/includes/class-wp-users-custom-list-table.php');
 $wp_list_table = new WP_Users_Custom_List_Table();
 //var_dump($wp_list_table);
-//dungdh end get user custom table
+//dungdh end get user custom table*/
 $pagenum = $wp_list_table->get_pagenum();
 $title = __('Users');
 $parent_file = 'users.php';
