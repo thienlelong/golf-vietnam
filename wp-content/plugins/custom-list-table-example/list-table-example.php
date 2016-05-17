@@ -324,16 +324,10 @@ class TT_Example_List_Table extends WP_List_Table {
 
         //Detect when a bulk action is being triggered...
         if( 'delete'===$this->current_action() && isset($_GET['waiver']) ) {
-            /*wp_die('Items deleted (or they would be if we had items to delete)!');*/
-            /*wp_redirect( esc_url( add_query_arg() ) );*/
-
             foreach($_GET['waiver'] as $id) {
                 global $wpdb;
                 $wpdb->query($wpdb->prepare("DELETE FROM wp_waiver WHERE id = %d",$id));
             }
-
-            wp_die('Items deleted (or they would be if we had items to delete)!');
-            exit;
         }
 
     }
