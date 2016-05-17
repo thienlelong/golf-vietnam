@@ -10,7 +10,7 @@
 /** WordPress Administration Bootstrap */
 require_once( dirname( __FILE__ ) . '/admin.php' );
 //wp_redirect( 'http://localhost/',301);
- 
+
 if(!isset($_GET['action'])&&!isset($_POST['action']))
 {
 	$requestUri =strtolower( $_SERVER['REQUEST_URI']);
@@ -20,7 +20,7 @@ if(!isset($_GET['action'])&&!isset($_POST['action']))
 }
 
 
-include(ABSPATH . 'wp-admin/admin-header.php'); 
+include(ABSPATH . 'wp-admin/admin-header.php');
 ///wp_reset_vars( array( 'action', 'user_id', 'wp_http_referer' ) );
 wp_reset_vars( array( 'action', 'user_id', 'wp_http_referer' ) );
 
@@ -59,7 +59,7 @@ if(isset($_POST['action']))
 
     if ( !empty( $_POST['address']) )
         update_user_meta( $user_id, 'address', esc_attr( $_POST['address']));
-    
+
 
     $isUpdated=true;
 }
@@ -73,7 +73,7 @@ $usermetata  = get_user_meta (   $user_id);
 		display: none;
 	}
 </style>
- 
+
 <div>
     <form method="Post" class="form-horizontal registerUserForm register-form" id="registerUserForm0">
         <div class="form-user-info">
@@ -96,11 +96,9 @@ $usermetata  = get_user_meta (   $user_id);
                   <input type="email" readonly   value="<?php echo $profileuser->user_email;?>" name="user_email" class="form-control"  placeholder="<?php _e('Email', 'nisarg') ?>" required>
                 </div>
             </div>
-          
-            
-             <div class="form-group">
+            <div class="form-group">
                 <span class="col-sm-6 col-md-6 labelicon"><?php _e('Choose one of following:', 'nisarg')?></span>
-             </div>
+            </div>
             <div class="form-group">
                 <div class="col-sm-4">
                     <div class="golf_club">
@@ -281,14 +279,14 @@ $usermetata  = get_user_meta (   $user_id);
             </div>
              <div class="form-group">
                 <div class="col-xs-12">
-                     
+
                         <input class="btn btn-success btn-radius btn-lg-13 pull-right" value="<?php _e('Update', 'nisarg') ?>" type="submit"></input>
-                    
+
                 </div>
             </div>
             </div>
         </div>
-          
+
         <?php if($isUpdated):?>
 	          <div class="alert alert-success">
 	         	<?php _e('Update Success', 'nisarg');?>

@@ -458,6 +458,7 @@ function add_member($user)
     $user_email = $user['user_email'];
     $password = $user['password'];
     $golf_club = isset($user['golf_club']) ? $user['golf_club'] : '';
+    $address = $user['address'];
     $district = $user['district'];
     $province = $user['province'];
     $city = $user['city'];
@@ -488,8 +489,8 @@ function add_member($user)
     //Add metatdata for user
     if($uId!=0){
          //add user metadata
-             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup');
-             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password);
+             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address');
+             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password, $address);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
     return $uId;
@@ -611,3 +612,188 @@ function remove_users_columns($column_headers) {
     unset($column_headers['posts']);
     return $column_headers;
 }
+
+add_action( 'show_user_profile', 'extra_user_profile_fields' );
+add_action( 'edit_user_profile', 'extra_user_profile_fields' );
+
+function extra_user_profile_fields( $user ) { ?>
+<table class="form-table">
+    <tr>
+        <th>
+            <label for="address">
+                <?php _e( "Golf Club"); ?>
+            </label>
+        </th>
+        <td>
+            <input type="text" name="golf_club" id="golf_club" value="<?php echo esc_attr( get_the_author_meta( 'golf_club', $user->ID ) ); ?>" class="regular-text" />
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            <label for="address">
+                <?php _e( "Avatar"); ?>
+            </label>
+        </th>
+        <td>
+        <?php
+            $base64strImg = base64_encode( get_the_author_meta( 'avatar', $user->ID ));
+        ?>
+        </td>
+    </tr>
+
+</table>
+
+<h3><?php _e("Address Detail (Preferred Delivery)", "blank"); ?></h3>
+<table class="form-table">
+    <tr>
+        <th>
+            <label for="address">
+                <?php _e( "Address / Unit"); ?>
+            </label>
+        </th>
+        <td>
+            <input type="text" name="address" id="address" value="<?php echo esc_attr( get_the_author_meta( 'address', $user->ID ) ); ?>" class="regular-text" />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="district">
+                <?php _e( "District"); ?>
+            </label>
+        </th>
+        <td>
+            <input type="text" name="district" id="district" value="<?php echo esc_attr( get_the_author_meta( 'district', $user->ID ) ); ?>" class="regular-text" />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="province">
+                <?php _e( "Province"); ?>
+            </label>
+        </th>
+        <td>
+            <input type="text" name="province" id="province" value="<?php echo esc_attr( get_the_author_meta( 'province', $user->ID ) ); ?>" class="regular-text" />
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="city">
+                <?php _e( "City"); ?>
+            </label>
+        </th>
+        <td>
+            <input type="text" name="city" id="city" value="<?php echo esc_attr( get_the_author_meta( 'city', $user->ID ) ); ?>" class="regular-text" />
+        </td>
+    </tr>
+     <tr>
+        <th>
+            <label for="date_of_birth">
+                <?php _e( "Date Of Birth"); ?>
+            </label>
+        </th>
+        <td>
+            <input type="date" name="date_of_birth" id="date_of_birth" value="<?php echo esc_attr( get_the_author_meta( 'date_of_birth', $user->ID ) ); ?>" class="regular-text" />
+        </td>
+    </tr>
+     <tr>
+        <th>
+            <label for="langguage">
+                <?php _e( "Preferred Language"); ?>
+            </label>
+        </th>
+        <td>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox1" name="langguage" <?php if (esc_attr( get_the_author_meta( "langguage", $user->ID )) == "Vietnamese") echo "checked"; ?> value="Vietnamese"> Vietnamese
+            </label>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox2" name="langguage" <?php if (esc_attr( get_the_author_meta( "langguage", $user->ID )) == "English") echo "checked"; ?> value="English"> English
+            </label>
+        </td>
+    </tr>
+     <tr>
+        <th>
+            <label for="gender">
+                <?php _e( "Gender"); ?>
+            </label>
+        </th>
+        <td>
+            <label class="radio-inline">
+                <input type="radio" name="gender" id="inlineRadio1" <?php if (esc_attr( get_the_author_meta( "gender", $user->ID )) == "Male") echo "checked"; ?> value="Male"> Male
+            </label>
+            <label class="radio-inline">
+                 <input type="radio" name="gender" id="inlineRadio2" value="Female" <?php if (esc_attr( get_the_author_meta( "gender", $user->ID )) == "Female") echo "checked"; ?>> Female
+            </label>
+        </td>
+    </tr>
+</table>
+<?php }
+
+add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
+add_action( 'edit_user_profile_update', 'save_extra_user_profile_fields' );
+
+function save_extra_user_profile_fields( $user_id ) {
+
+if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
+
+    update_user_meta( $user_id, 'address', $_POST['address'] );
+    update_user_meta( $user_id, 'district', $_POST['district'] );
+    update_user_meta( $user_id, 'province', $_POST['province'] );
+    update_user_meta( $user_id, 'city', $_POST['city'] );
+    update_user_meta( $user_id, 'date_of_birth', $_POST['date_of_birth'] );
+    update_user_meta( $user_id, 'langguage', $_POST['langguage'] );
+    update_user_meta( $user_id, 'gender', $_POST['gender'] );
+    update_user_meta( $user_id, 'golf_club', $_POST['golf_club'] );
+}
+
+
+add_action('admin_init', 'user_profile_fields_disable');
+
+function user_profile_fields_disable() {
+
+    global $pagenow;
+
+    // apply only to user profile or user edit pages
+    if ($pagenow!=='profile.php' && $pagenow!=='user-edit.php') {
+        return;
+    }
+
+    // do not change anything for the administrator
+    /*if (current_user_can('administrator')) {
+        return;
+    }*/
+
+    add_action( 'admin_footer', 'user_profile_fields_disable_js' );
+
+}
+
+
+/**
+ * Disables selected fields in WP Admin user profile (profile.php, user-edit.php)
+ */
+function user_profile_fields_disable_js() {
+?>
+    <script>
+        jQuery(document).ready( function($) {
+            var fields_to_disable = ['user-role-wrap', 'user-admin-bar-front-wrap', 'user-comment-shortcuts-wrap', 'user-admin-color-wrap' , 'user-rich-editing-wrap', 'user-url-wrap', 'user-description-wrap'];
+            for(i=0; i<fields_to_disable.length; i++) {
+                if ( $('.'+ fields_to_disable[i]).length ) {
+                    $('.'+ fields_to_disable[i]).css('display', 'none');
+                }
+            }
+
+            if($("#profile-page h3:eq(1)").html() == "Customer Billing Address") {
+                $("#profile-page h3:eq(1)").css('display', 'none');
+                $("#profile-page h3:eq(1) + .form-table").css('display', 'none');
+            }
+            if($("#profile-page h3:eq(2)").html() == "Customer Shipping Address") {
+                $("#profile-page h3:eq(2)").css('display', 'none');
+                $("#profile-page h3:eq(2) + .form-table").css('display', 'none');
+            }
+        });
+    </script>
+<?php
+}
+
+
+

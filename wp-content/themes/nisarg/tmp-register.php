@@ -175,7 +175,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-8">
-                                      <input type="text" name="date_of_birth" class="date-of-birth form-control"  placeholder="<?php _e('Date Of Birth', 'nisarg') ?>"  >
+                                      <input type="text" name="date_of_birth" class="date-of-birth form-control"  placeholder="<?php _e(' Date Of Birth', 'nisarg') ?>"  >
                                     </div>
                                     <div class="col-md-4 col-sm-6">
                                         <div class="label-checkbox" ><?php _e('Preferred Language', 'nisarg'); ?></div>
@@ -257,7 +257,7 @@
         $("#registerUserForm0 .golf-club-list li").on('click', function(event){
             var clubId = $(this).attr("data-clubId");
             $('#registerUserForm0 .golf-club-list').css("display", "none");
-            $('#registerUserForm0 input[name=golf_club]:checked').val(clubId);
+            $('#registerUserForm0 input[name=golf_club]:checked').val($(this).html());
             $('#registerUserForm0 input[name=golf_club]:checked + label').html($(this).html());
         });
     });

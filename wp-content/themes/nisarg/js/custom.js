@@ -189,7 +189,7 @@ function clearForm(form, formID) {
               jQuery('#' + formID + ' .golf-club-list li').on('click', function(event){
                   var clubId = jQuery(this).attr("data-clubId");
                   jQuery('#' + formID + ' .golf-club-list').css("display", "none");
-                  jQuery('#' + formID + ' input[name=golf_club]:checked').val(clubId);
+                  jQuery('#' + formID + ' input[name=golf_club]:checked').val(jQuery(this).html());
                   jQuery('#' + formID + ' input[name=golf_club]:checked + label').html(jQuery(this).html());
               });
             } else {
