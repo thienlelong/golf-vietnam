@@ -211,7 +211,6 @@
                                         <span class="used-for"><?php _e('Used For Membership Card', 'nisarg');?></span>
                                         <div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <div class="form-group">
