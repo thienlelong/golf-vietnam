@@ -206,7 +206,8 @@
                                             <span><?php _e('ADD ACTUAL FACE PHOTO', 'nisarg') ?></span>
                                             <input  type="file" class="file_avatar upload" name="actual_img"> </input>
                                         </div>
-                                        <canvas class="canvas_avatar"  width="60" height="80"></canvas>
+                                          <canvas width="96" height="96" class="canvas_avatar_thumnail"></canvas>
+                                        <canvas style="display: none;" class="canvas_avatar"  ></canvas>
                                         <span class="used-for"><?php _e('Used For Membership Card', 'nisarg');?></span>
                                         <div>
                                         </div>

@@ -306,6 +306,7 @@ function add_user_metas($user_id, $meta_keys, $meta_values, $prev_values = NULL)
 //dungdh
 function vb_reg_new_users() {
     //var_dump($_POST);
+    //die();
    // return;
       /*  if( !isset( $_POST['nonce'] ) || !wp_verify_nonce( $_POST['nonce'], 'vb_new_user' ) )
          die( 'Ooops, something went wrong, please try again later.' );*/
@@ -409,7 +410,7 @@ function add_member($user)
     $city = $user['city'];
     $langguage = isset($user['langguage']) ? $user['langguage'] : '';
     $gender = $user['gender'];
-    $avatar=$user['avatar'];
+    $avatar="".$user['avatar'];
     $date_of_birth = $user['date_of_birth'];
     $start_date =  date('Y/m/d');
     $expire_date = date("Y/m/d", strtotime(date("Y/m/d", strtotime($start_date)) . " + 365 day"));
@@ -581,6 +582,8 @@ function extra_user_profile_fields( $user ) { ?>
             </label>
         </th>
         <td>
+            <?php //echo get_the_author_meta( 'avatar', $user->ID ); ?>
+            <img src="<?php echo get_the_author_meta( 'avatar', $user->ID ); ?>">  
         </td>
     </tr>
 

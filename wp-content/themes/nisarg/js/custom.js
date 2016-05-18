@@ -60,7 +60,8 @@ jQuery(document).ready(function($) {
     // var canvas =document.getElementById('cavas_avatar');
     var formId=jQuery(this.form).attr("id");
     var canvas= jQuery('#'+formId+' .canvas_avatar')[0];
-    showThumbnail(file,canvas);
+    var thumbnail= jQuery('#'+formId+' .canvas_avatar_thumnail')[0];
+    showThumbnail(file,canvas,thumbnail);
   });
 });
 //dungdh
@@ -104,8 +105,8 @@ function register_users() {
     {
         var canvas =jQuery('#'+users[i].form_id+' .canvas_avatar')[0];
         var base64Url=getCanVasBase64(canvas);
-        var bas64=base64Url.split(',')[1];
-        users[i].avatar=bas64;
+       // var bas64=base64Url.split(',')[1];
+        users[i].avatar=base64Url;
     }
     var data = {
         action: 'register_users',
@@ -210,8 +211,8 @@ function getCanVasBase64(canvas)
     }
     return "";
 }
-function showThumbnail(file,canvas){
-        if(canvas==null||file==null)
+function showThumbnail(file,canvas,thumbnail){
+        if(canvas==null||file==null||thumbnail==null)
         {
           return;
         }
@@ -231,10 +232,15 @@ function showThumbnail(file,canvas){
         }(image))
         var ret = reader.readAsDataURL(file);
         ctx = canvas.getContext("2d");
+        ctxThumnail=thumbnail.getContext("2d");
         image.onload= function(){
           //clear canvas
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          ctx.drawImage(image, 0, 0, 60, 80 * image.height / image.width);
+          ctx.canvas.width=  image.width; 
+          ctx.canvas.height= image.height;
+          ctx.clearRect(0, 0, image.width, image.height);
+          ctx.drawImage(image, 0, 0,   image.width , image.height);
+          ctxThumnail.clearRect(0, 0, 96, 96);
+          ctxThumnail.drawImage(image, 0, (96-96*image.height/image.width)/2, 96,96*image.height/image.width);
         }
     }
 
