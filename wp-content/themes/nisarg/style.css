@@ -2423,7 +2423,7 @@ label.css-label {
     text-align: center;
 }
 .lost_reset_password input[name=user_login]{
-    width: 100%;
+    max-width: 600px;
     height: 43px;
     -webkit-border-radius: 100px;
     -moz-border-radius: 100px;
@@ -2444,7 +2444,7 @@ label.css-label {
 .lost_reset_password input[type=submit] {
     width: 135px;
     height: 43px;
-    position: absolute;
+   /*  position: absolute; */
     color: white;
     padding: 0 20px 0 50px;
     text-align: center;
