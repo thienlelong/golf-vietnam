@@ -5,13 +5,16 @@
  get_header();
 ?>
 <?php
-if($_GET["orderId"] && $_SESSION["usersId"]) {
+if($_GET["SESSION"] && $_SESSION["usersId"] && ($_GET["SESSION"] == $_SESSION["SESSION"])) {
     $orderId =  $_GET['orderId'];
     $userIDs = $pieces = explode(",", $_SESSION["usersId"]);
     $ehandicap  = new ehandicap();
+    $start_date =  date('Y/m/d');
+    $expire_date = date("Y/m/d", strtotime(date("Y/m/d", strtotime($start_date)) . " + 365 day"));
     for ($i=0; $i < count($userIDs); $i++) {
         update_user_meta( $userIDs[$i], 'orderId', $orderId);
         update_user_meta( $userIDs[$i], 'is_payment', true);
+        update_user_meta( $userIDs[$i], 'expire_date', $expire_date);
         $member = new eHandicapMember();
         $user_info = get_userdata($userIDs[$i]);
         $member->lastname = $user_info->first_name;
@@ -26,6 +29,7 @@ if($_GET["orderId"] && $_SESSION["usersId"]) {
         }
     }
     unset($_SESSION['usersId']);
+    unset($_SESSION["SESSION"]);
 }
 ?>
 <div class="container">

@@ -4,6 +4,12 @@
  **/
     get_header();
 ?>
+<?php
+    if($_GET["uid"]) {
+        $_SESSION['usersId'] = $_GET["uid"];
+    }
+    $_SESSION['SESSION'] = substr(str_shuffle(md5(time())), 0 , 15);
+ ?>
 <div class="container">
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">
@@ -100,8 +106,8 @@
         }
         var usersId = '<?php echo  $_SESSION["usersId"]; ?>';
         var totalUser = usersId.split(",").length;
-        var orderId = Math.random().toString(36).substring(11);
-        $('#orderId').html(orderId);
+        var SESSION = '<?php echo $_SESSION["SESSION"];?>';
+        $('#orderId').html(SESSION);
         $('#number-user').val(totalUser);
         $('#price').html('$40');
         var total = 40 * totalUser;
@@ -110,7 +116,7 @@
 
         $('#easy_paypal_form_div form').attr('target', '');
         $('#easy_paypal_form_div form input[name=amount]').val(total);
-        $('#easy_paypal_form_div form input[name=return]').val(url_return + '?orderId=' + orderId);
+        $('#easy_paypal_form_div form input[name=return]').val(url_return + '?SESSION=' + SESSION);
         $('#btn-process-transaction').click(function() {
             if($("input[name=auto-renew]").is(":checked") && $("input[name=remind-expire]").is(":checked")) {
                 $('#easy_paypal_form_div input[type=image]').trigger('click');
