@@ -237,8 +237,8 @@ function showThumbnail(file,canvas,thumbnail){
           //clear canvas
           ctx.canvas.width=  image.width; 
           ctx.canvas.height= image.height;
-          ctx.clearRect(0, 0, image.width, image.height);
-          ctx.drawImage(image, 0, 0,   image.width , image.height);
+          ctx.clearRect(0, 0, 500, 500);
+          ctx.drawImage(image, 0, 500*(1-*image.height/image.width)/2, 500,500*image.height/image.width);
           ctxThumnail.clearRect(0, 0, 96, 96);
           ctxThumnail.drawImage(image, 0, (96-96*image.height/image.width)/2, 96,96*image.height/image.width);
         }
