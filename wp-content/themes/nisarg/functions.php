@@ -525,7 +525,7 @@ add_action('wp_ajax_nopriv_waiver_forms', 'vb_reg_waiver_forms');
 function new_modify_user_table( $column ) {
     $column['MID'] = 'MID';
     $column['is_active'] = 'Active VietCap';
-    $column['avatar'] = 'Avatar';
+    $column['expire_date'] = 'Expire Date';
     $column['is_payment'] = 'Payment';
     return $column;
 }
@@ -540,8 +540,8 @@ function new_modify_user_table_row( $val, $column_name, $user_id ) {
         case 'is_active' :
             return !get_the_author_meta( 'is_active', $user_id ) ? 'false' : 'true';
             break;
-        case 'avatar' :
-            return '';
+        case 'expire_date' :
+            return get_the_author_meta( 'expire_date', $user_id );
             break;
         case 'is_payment' :
             return !get_the_author_meta( 'is_payment', $user_id ) ? 'false' : 'true';
@@ -583,7 +583,7 @@ function extra_user_profile_fields( $user ) { ?>
         </th>
         <td>
             <?php //echo get_the_author_meta( 'avatar', $user->ID ); ?>
-            <img src="<?php echo get_the_author_meta( 'avatar', $user->ID ); ?>">  
+            <img src="<?php echo get_the_author_meta( 'avatar', $user->ID ); ?>">
         </td>
     </tr>
 
@@ -739,6 +739,4 @@ function user_profile_fields_disable_js() {
     </script>
 <?php
 }
-
-
 

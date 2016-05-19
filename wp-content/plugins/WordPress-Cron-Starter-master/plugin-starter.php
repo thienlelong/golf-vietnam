@@ -28,32 +28,32 @@
 // Add a new submenu under DASHBOARD
 function wpguru_plugin_starter_menu() {
 
-	// using a wrapper function (easy, but not good for adding JS later - hence not used)
-	// add_dashboard_page('Plugin Starter', 'Plugin Starter', 'administrator', 'pluginStarter', 'pluginStarter');
+    // using a wrapper function (easy, but not good for adding JS later - hence not used)
+    // add_dashboard_page('Plugin Starter', 'Plugin Starter', 'administrator', 'pluginStarter', 'pluginStarter');
 
-	// using array - same outcome, and can call JS with it
-	// explained here: http://codex.wordpress.org/Function_Reference/wp_enqueue_script
-	// and here: http://pippinsplugins.com/loading-scripts-correctly-in-the-wordpress-admin/
-	global $starter_plugin_admin_page;
-	$starter_plugin_admin_page = add_submenu_page ('index.php', __('Plugin Starter', 'plugin-starter'), __('Plugin Starter', 'plugin-starter'), 'manage_options', 'pluginStarter', 'pluginStarter');
+    // using array - same outcome, and can call JS with it
+    // explained here: http://codex.wordpress.org/Function_Reference/wp_enqueue_script
+    // and here: http://pippinsplugins.com/loading-scripts-correctly-in-the-wordpress-admin/
+    global $starter_plugin_admin_page;
+    $starter_plugin_admin_page = add_submenu_page ('index.php', __('Plugin Starter', 'plugin-starter'), __('Plugin Starter', 'plugin-starter'), 'manage_options', 'pluginStarter', 'pluginStarter');
 }
 add_action('admin_menu', 'wpguru_plugin_starter_menu');
 
 // register our JS file
 function starter_plugin_admin_init () {
-	wp_register_script ('custom-starter-script', plugins_url( '/starter-script.js', __FILE__ ));
+    wp_register_script ('custom-starter-script', plugins_url( '/starter-script.js', __FILE__ ));
 }
 add_action ('admin_init', 'starter_plugin_admin_init');
 
 // now load the scripts we need
 function starter_plugin_admin_scripts ($hook) {
 
-	global $starter_plugin_admin_page;
-	if ($hook != $starter_plugin_admin_page) {
-		return;
-	}
-	wp_enqueue_script ('jquery-ui-tabs');
-	wp_enqueue_script ('custom-starter-script');
+    global $starter_plugin_admin_page;
+    if ($hook != $starter_plugin_admin_page) {
+        return;
+    }
+    wp_enqueue_script ('jquery-ui-tabs');
+    wp_enqueue_script ('custom-starter-script');
 }
 // and make sure it loads with our custom script
 add_action('admin_enqueue_scripts', 'starter_plugin_admin_scripts');
@@ -68,18 +68,18 @@ wp_enqueue_style ('starterstyles', $starterstyles );
 
 // unschedule event upon plugin deactivation
 function cronstarter_deactivate() {
-	// find out when the last event was scheduled
-	$timestamp = wp_next_scheduled ('mycronjob');
-	// unschedule previous event if any
-	wp_unschedule_event ($timestamp, 'mycronjob');
+    // find out when the last event was scheduled
+    $timestamp = wp_next_scheduled ('mycronjob');
+    // unschedule previous event if any
+    wp_unschedule_event ($timestamp, 'mycronjob');
 }
 register_deactivation_hook (__FILE__, 'cronstarter_deactivate');
 
 // create a scheduled event (if it does not exist already)
 function cronstarter_activation() {
-	if( !wp_next_scheduled( 'mycronjob' ) ) {
-	   wp_schedule_event( time(), 'everyminute', 'mycronjob' );
-	}
+    if( !wp_next_scheduled( 'mycronjob' ) ) {
+       wp_schedule_event( time(), 'everyminute', 'mycronjob' );
+    }
 }
 // and make sure it's called whenever WordPress loads
 add_action('wp', 'cronstarter_activation');
@@ -87,23 +87,45 @@ add_action('wp', 'cronstarter_activation');
 // here's the function we'd like to call with our cron job
 function my_repeat_function() {
 
-	// do here what needs to be done automatically as per your schedule
-	// in this example we're sending an email
+    // do here what needs to be done automatically as per your schedule
+    // in this example we're sending an email
 
-	// components for our email
+    // components for our email
 
     global $wpdb;
     $today = date('Y/m/d');
     $expire_date = date("Y/m/d", strtotime(date("Y/m/d", strtotime($today)) . " +30 day"));
-    $sqlQuery = "SELECT user_id, meta_value  FROM wp_usermeta  WHERE wp_usermeta.meta_key='expire_date' and Date(wp_usermeta.meta_value) <= '" . $expire_date . "' and Date(wp_usermeta.meta_value) >= '" . $today . "'";
+    $sqlQuery = "SELECT user_id, meta_value  FROM wp_usermeta  WHERE wp_usermeta.meta_key='expire_date' and Date(wp_usermeta.meta_value) = '" . $expire_date ."'";
     $expiring_soon = $wpdb->get_results($sqlQuery);
     foreach($expiring_soon as $e)
-    {   $user = get_userdata( $userid );
-    	$recepients = 'thien.lelong.it@gmail.com';
-    	$subject = 'Hello from the user' .  $user->first_name . $user->last_name;
-    	$message = 'This is a test mail sent by WordPress automatically.'.$e->id.$e->expire_date;
-
-    	$success = mail($recepients, $subject, $message);
+    {   $user = get_userdata( $e->user_id );
+        $recepients = $user->user_email;
+        $subject = 'Hi '. $user->first_name.', Here\'s a little Reminder your Membership is expiring soon...';
+        $headers = "From: Vietcap.com.vn <golfvn@gmail.com>\r\n";
+        $headers .= "Reply-To: golfvn@gmail.com\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $message = '<!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title></title>
+                    </head>
+                    <body>
+                        <div>
+                            <h4>
+                                Greetings '. $user->first_name.':
+                            </h4>
+                            <p>Your membership with Vietcap.com.vn will expire in 30 days</p>
+                            <p>To renew your membership go to <a href="'.site_url("payment").'?uid='.$e->user_id.'">here</a> </p>
+                            <p>To view the details of your membership go to <a href="http://vietcap.ehandicap.net">http://vietcap.ehandicap.net</a></p>
+                            <p>Membership Renewal Reminder from: Vietcap.com.vn</p>
+                            <p>Thanks!</p>
+                            <p>VietCap Team</p>
+                        </div>
+                    </body>
+                    </html>';
+     $success = mail($recepients, $subject, $message, $headers);
     }
 
 }
@@ -117,10 +139,10 @@ add_action ('mycronjob', 'my_repeat_function');
 // http://codex.wordpress.org/Function_Reference/wp_get_schedules
 
 function cron_add_weekly( $schedules ) {
-	// Adds once weekly to the existing schedules.
+    // Adds once weekly to the existing schedules.
     $schedules['weekly'] = array(
-	    'interval' => 604800,
-	    'display' => __( 'Once Weekly' )
+        'interval' => 604800,
+        'display' => __( 'Once Weekly' )
     );
     return $schedules;
 }
@@ -128,10 +150,10 @@ add_filter( 'cron_schedules', 'cron_add_minute' );
 
 // add another interval
 function cron_add_minute( $schedules ) {
-	// Adds once every minute to the existing schedules.
+    // Adds once every minute to the existing schedules.
     $schedules['everyminute'] = array(
-	    'interval' => 60,
-	    'display' => __( 'Once Every Minute' )
+        'interval' => 86400,
+        'display' => __( 'Once Every Minute' )
     );
     return $schedules;
 }
@@ -157,23 +179,23 @@ function pluginStarter () {
       wp_die( __('You do not have sufficient privileges to access this page. Sorry!') );
     }
 
-	///////////////////////////////////////
-	// MAIN AMDIN CONTENT SECTION
-	///////////////////////////////////////
+    ///////////////////////////////////////
+    // MAIN AMDIN CONTENT SECTION
+    ///////////////////////////////////////
 
-	// display heading with icon WP style
-	?>
+    // display heading with icon WP style
+    ?>
     <div class="wrap">
     <div id="icon-index" class="icon32"><br></div>
     <h2>Plugin Starter Options</h2>
     <?php
 
-	// let's create jQuery UI Tabs, as demonstrated in the standalone version
-	// or at http://jqueryui.com/tabs/#default
+    // let's create jQuery UI Tabs, as demonstrated in the standalone version
+    // or at http://jqueryui.com/tabs/#default
 
-	echo '<p>Here are some tabs</p>';
+    echo '<p>Here are some tabs</p>';
 
-	?>
+    ?>
 
       <div id="tabs">
     <ul>
