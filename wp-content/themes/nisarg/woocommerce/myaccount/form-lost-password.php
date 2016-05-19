@@ -26,13 +26,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 <form method="post" class="lost_reset_password">
 
 	<?php if( 'lost_password' === $args['form'] ) : ?>
+		<h2 class="page-title">Password Reset</h2>
+		<?php if(pll_current_language('locale') =='vi'): ?>
+			<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Nếu bạn quên mật khẩu hoặc tên đăng nhập của bạn, nhập địa chỉ email của bạn dưới đây và bạn sẽ nhận được một email mà sẽ cung cấp cho bạn với tên truy cập của bạn và liên kết để đặt lại mật khẩu của bạn.', 'woocommerce' ) ); ?></p>
+		<?php else: ?>
+			<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'If you have forgotten your password or username, enter your email address below and you will receive an email that will provide you with your username and a link to reset your password.', 'woocommerce' ) ); ?></p>
+		<?php endif; ?>
 
-		<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Lost your password? Please enter your username or email address. You will receive a link to create a new password via email.', 'woocommerce' ) ); ?></p>
-
-		<p class="form-row form-row-first"><label for="user_login"><?php _e( 'Username or email', 'woocommerce' ); ?></label> <input class="input-text" type="text" name="user_login" id="user_login" /></p>
-
-	<?php else : ?>
-
+		<div class="form-row reset_password"><input class="btn-radius" type="text" name="user_login" id="user_login" placeholder="<?php _e( 'Your Email', 'woocommerce' ); ?>" />
+		<?php do_action( 'woocommerce_lostpassword_form' ); ?>
+		<input type="hidden" name="wc_reset_password" value="true" />
+		<input type="submit" class=" btn btn-radius btn-lg" value="<?php echo 'lost_password' === $args['form'] ? __( 'Submit', 'woocommerce' ) : __( 'Save', 'woocommerce' ); ?>" />
+		</div>
+		<?php else : ?>
 		<p><?php echo apply_filters( 'woocommerce_reset_password_message', __( 'Enter a new password below.', 'woocommerce') ); ?></p>
 
 		<p class="form-row form-row-first">
@@ -46,18 +52,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<input type="hidden" name="reset_key" value="<?php echo isset( $args['key'] ) ? $args['key'] : ''; ?>" />
 		<input type="hidden" name="reset_login" value="<?php echo isset( $args['login'] ) ? $args['login'] : ''; ?>" />
+		<div class="clear"></div>
 
-	<?php endif; ?>
+		<?php do_action( 'woocommerce_lostpassword_form' ); ?>
 
-	<div class="clear"></div>
+		<p class="form-row">
+			<input type="hidden" name="wc_reset_password" value="true" />
+			<input type="submit" class="btn btn-radius btn-lg" value="<?php echo 'lost_password' === $args['form'] ? __( 'Reset Password', 'woocommerce' ) : __( 'Save', 'woocommerce' ); ?>" />
+		</p>
 
-	<?php do_action( 'woocommerce_lostpassword_form' ); ?>
-
-	<p class="form-row">
-		<input type="hidden" name="wc_reset_password" value="true" />
-		<input type="submit" class="btn btn-radius btn-lg" value="<?php echo 'lost_password' === $args['form'] ? __( 'Reset Password', 'woocommerce' ) : __( 'Save', 'woocommerce' ); ?>" />
-	</p>
-
-	<?php wp_nonce_field( $args['form'] ); ?>
-
+		<?php wp_nonce_field( $args['form'] ); ?>
+		<?php endif; ?>
 </form>
