@@ -27,6 +27,35 @@ if($_GET["SESSION"] && $_SESSION["usersId"] && ($_GET["SESSION"] == $_SESSION["S
         if (strpos($result, 'OK') !== false) {
             update_user_meta( $userIDs[$i], 'is_active', true);
         }
+
+        $recepients = $user_info->user_email;
+        $subject = 'Membership Application for '. $user_info->first_name . ' ' . $user_info->last_name;
+        $headers = "From: Vietcap.com.vn <golfvn@gmail.com>\r\n";
+        $headers .= "Reply-To: golfvn@gmail.com\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+        $message = '<!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <title></title>
+                    </head>
+                    <body>
+                        <div>
+                            <h4>
+                                Thank you for applying for membership with Vietcap.com.vn. The details of your membership follow:
+                            </h4>
+                            <p>Name:' . $user_info->first_name . ' '. $user_info->last_name .'</p>
+                            <p>Email: '. $user_info->user_email.'</p>
+                            <p>To renew your membership go to <a href="'.site_url("payment").'?uid='.$e->user_id.'">here</a> </p>
+                            <p>To view the details of your membership go to <a href="http://vietcap.ehandicap.net">http://vietcap.ehandicap.net</a></p>
+                            <p>Membership Renewal Reminder from: Vietcap.com.vn</p>
+                            <p>Thanks!</p>
+                            <p>VietCap Team</p>
+                        </div>
+                    </body>
+                    </html>';
+                    $success = mail($recepients, $subject, $message, $headers);
     }
     unset($_SESSION['usersId']);
     unset($_SESSION["SESSION"]);
