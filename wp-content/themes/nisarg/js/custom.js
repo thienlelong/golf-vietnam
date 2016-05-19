@@ -235,8 +235,10 @@ function showThumbnail(file,canvas,thumbnail){
         ctxThumnail=thumbnail.getContext("2d");
         image.onload= function(){
           //clear canvas
-          ctx.canvas.width=  image.width; 
-          ctx.canvas.height= image.height;
+          //ctx.canvas.width=  image.width; 
+          //ctx.canvas.height= image.height;
+          ctx.canvas.width=  500; 
+          ctx.canvas.height= 500*image.height/image.width;
           ctx.clearRect(0, 0, 500, 500);
           ctx.drawImage(image, 0, 500*(1-image.height/image.width)/2, 500,500*image.height/image.width);
           ctxThumnail.clearRect(0, 0, 96, 96);
