@@ -112,7 +112,19 @@
             </div>
             <div class="count-login">
                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-online.png">
-                <span>65K</span>
+                <?php if (function_exists('users_online')): ?>
+                    <?php $users_online = 0;
+                    $units = '';
+                    if($users_online >= 1000) {
+                        $units = 'K';
+                        $users_online =$users_online/1000;
+                    } elseif ($users_online >= 1000000) {
+                        $units = 'M';
+                        $users_online =$users_online/1000000;
+                    }
+                    ?>
+                    <span><?php users_online() ?></span>
+                <?php endif; ?>
             </div>
             <div class="site-watch">
                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-watch.png">
