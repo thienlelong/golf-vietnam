@@ -242,7 +242,7 @@
 </div><!--.container-->
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
-        $('#registerUserForm0 input[name="golf_club"').click(function() {
+        $('#registerUserForm0 input[name="golf_club"]').click(function() {
             $('#registerUserForm0 .checkbox-golf-club').removeClass("active");
             $('#registerUserForm0 .golf-club-list').css("display", "none");
             $('#associationMember + label').html('Association Member');

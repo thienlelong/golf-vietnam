@@ -7,6 +7,7 @@
 <?php
     if($_GET["uid"]) {
         $_SESSION['usersId'] = $_GET["uid"];
+        $_SESSION['is_renew'] = true;
     }
     $_SESSION['SESSION'] = substr(str_shuffle(md5(time())), 0 , 15);
  ?>

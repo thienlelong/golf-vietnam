@@ -174,7 +174,7 @@ function clearForm(form, formID) {
               jQuery(this).next().prop('for', id);
               jQuery('#' + formID + ' .checkbox-golf-club').removeClass("active");
 
-              jQuery('#' + formID + ' input[name="golf_club"').click(function() {
+              jQuery('#' + formID + ' input[name="golf_club"]').click(function() {
                 jQuery('#' + formID + ' .checkbox-golf-club').removeClass("active");
                 jQuery('#' + formID + ' .golf-club-list').css("display", "none");
                 jQuery('#'+ id +' + label').html('Association Member');
@@ -235,9 +235,9 @@ function showThumbnail(file,canvas,thumbnail){
         ctxThumnail=thumbnail.getContext("2d");
         image.onload= function(){
           //clear canvas
-          //ctx.canvas.width=  image.width; 
+          //ctx.canvas.width=  image.width;
           //ctx.canvas.height= image.height;
-          ctx.canvas.width=  500; 
+          ctx.canvas.width=  500;
           ctx.canvas.height= 500*image.height/image.width;
           ctx.clearRect(0, 0, 500, 500);
           ctx.drawImage(image, 0, 500*(1-image.height/image.width)/2, 500,500*image.height/image.width);

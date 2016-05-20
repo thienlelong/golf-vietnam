@@ -98,7 +98,7 @@ function my_repeat_function() {
     $sqlQuery = "SELECT user_id, meta_value  FROM wp_usermeta  WHERE wp_usermeta.meta_key='expire_date' and Date(wp_usermeta.meta_value) = '" . $expire_date ."'";
     $expiring_soon = $wpdb->get_results($sqlQuery);
     foreach($expiring_soon as $e)
-    {   $user = get_userdata( $e->user_id );
+    {   $user = get_user_by('id', $userIDs[$i]);
         $recepients = $user->user_email;
         $subject = 'Hi '. $user->first_name.', Here\'s a little Reminder your Membership is expiring soon...';
         $headers = "From: Vietcap.com.vn <golfvn@gmail.com>\r\n";
@@ -127,7 +127,6 @@ function my_repeat_function() {
                     </html>';
      $success = mail($recepients, $subject, $message, $headers);
     }
-
 }
 
 // hook that function onto our scheduled event:
