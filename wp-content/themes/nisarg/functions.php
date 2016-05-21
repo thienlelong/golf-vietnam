@@ -740,3 +740,107 @@ function user_profile_fields_disable_js() {
 <?php
 }
 
+/**
+ * Add a widget to the dashboard.
+ *
+ * This function is hooked into the 'wp_dashboard_setup' action below.
+ */
+function example_add_dashboard_widgets() {
+
+    wp_add_dashboard_widget(
+        'example_dashboard_widget',         // Widget slug.
+        'Satistics',         // Title.
+        'example_dashboard_widget_function' // Display function.
+    );
+     wp_add_dashboard_widget(
+        'partners_dashboard_widget',         // Widget slug.
+        'Satistics',         // Title.
+        'partners_dashboard_widget_function' // Display function.
+    );
+}
+add_action( 'wp_dashboard_setup', 'example_add_dashboard_widgets' );
+
+/**
+ * Create the function to output the contents of our Dashboard Widget.
+ */
+function example_dashboard_widget_function() {
+    $result = count_users();
+    $count_users = $result['total_users'];
+    $count_posts = wp_count_posts( 'golf_events' )->publish;
+
+    echo '<div class="widget_totals">';
+    echo '<div class="total total-user">
+            <h2>'.$count_users.'</h2>
+            <p>New Users</p>
+          </div>';
+    echo '<div class="total total-events">
+        <h2>'.$count_posts.'</h2>
+        <p>Golf Events</p>
+        </div>';
+    echo '<div class="clear"></div>';
+    echo '</div>';
+}
+
+function partners_dashboard_widget_function() {
+    $count_clubs = wp_count_posts( 'golf_clubs' )->publish;
+    $count_partners = wp_count_posts( 'proud_partners' )->publish;
+
+    echo '<div class="widget_totals">';
+    echo '<div class="total total-clubs">
+            <h2>'.$count_clubs.'</h2>
+            <p>Golf Clubs</p>
+          </div>';
+    echo '<div class="total total-partner">
+        <h2>'.$count_partners.'</h2>
+        <p>Proud Partners</p>
+        </div>';
+    echo '<div class="clear"></div>';
+    echo '</div>';
+}
+
+add_action('admin_head', 'my_custom_fonts');
+
+function my_custom_fonts() {
+  echo '<style>
+    .widget_totals .total {
+        width: 42%;
+        float:left;
+        border: 1px solid #ddd;
+        color: #fff;
+        padding: 15px 3%;
+
+    }
+    .total-user {
+        margin-right: 2%;
+        background: #e84c3d url('.get_template_directory_uri().'/images/dashboard/bg-total-users.png) no-repeat right bottom;
+    }
+    .total-events {
+        float: right;
+        background: #1abc9c url('.get_template_directory_uri().'/images/dashboard/bg-total-events.png) no-repeat right bottom;
+    }
+    .total-clubs {
+        margin-right: 2%;
+        background: #3598db url('.get_template_directory_uri().'/images/dashboard/bg-total-club.png) no-repeat right bottom;
+    }
+    .total-partner {
+        float: right;
+        background: #9a59b5 url('.get_template_directory_uri().'/images/dashboard/bg-total-partner.png) no-repeat right bottom;
+    }
+
+    .widget_totals .total p ,
+    .widget_totals .total h2 {
+        color: #fff !important;
+        margin-top: 0px !important;
+    }
+    .widget_totals .total h2 {
+        font-size: 32px;
+        margin-bottom: 10px;
+    }
+    .widget_totals {
+        position: relative:
+    }
+    .clear {
+        clear: both;
+    }
+  </style>';
+}
