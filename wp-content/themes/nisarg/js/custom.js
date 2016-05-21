@@ -237,13 +237,22 @@ function showThumbnail(file,canvas,thumbnail){
           //clear canvas
           //ctx.canvas.width=  image.width;
           //ctx.canvas.height= image.height;
-          ctx.canvas.width=  500;
-          ctx.canvas.height= 500*image.height/image.width;
+           
           ctx.clearRect(0, 0, 500, 500);
-          if(image.height<image.width){
-                ctx.drawImage(image, 0, 500*(1-image.height/image.width)/2, 500,500*image.height/image.width);
-            }else {
-                ctx.drawImage(image,500*(1-image.width/image.height), 0, 500*image.width/image.height,500);
+          if(image.width<500 && image.height<500)
+          {
+            ctx.canvas.width=  image.width;
+            ctx.canvas.height=  image.height ;
+            ctx.drawImage(image, 0, 0, image.width, image.height );
+          }
+          else if(image.height<image.width){
+               ctx.canvas.width=  500;
+               ctx.canvas.height= 500*image.height/image.width;
+               ctx.drawImage(image, 0, 0, 500,500*image.height/image.width);
+            } else {
+                ctx.canvas.width=  500;
+                ctx.canvas.height= 500*image.width/image.height;
+                ctx.drawImage(image,0, 0, 500*image.width/image.height,500);
             }
           ctxThumnail.clearRect(0, 0, 96, 96);
           ctxThumnail.drawImage(image, 0, (96-96*image.height/image.width)/2, 96,96*image.height/image.width);
