@@ -80,7 +80,7 @@
                                     <label for="remind-expire" class="css-label"><?php _e('Remind me 1 month in advance next year.', 'nisarg') ?></label>
                                     </label>
                                 </div>
-                                <p class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"><?php _e('By payment an account you agree to our', 'nisarg') ?> <a href="<?php echo site_url('terms-and-conditions')?>"><?php _e('Terms and Conditions', 'nisarg') ?></a> <?php _e('and our', 'nisarg') ?>  <a href="<?php echo site_url('privacy-policy')?>"><?php _e('Privacy Policy', 'nisarg') ?></a>.</p>
+                                <p class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"><?php _e('By payment an account you agree to our', 'nisarg') ?> <a href="<?php if(pll_current_language('locale') =='vi') { echo site_url('dieu-khoan-va-dieu-kien') ;} else { echo site_url('terms-and-conditions'); }?>" target="_blank"><?php _e('Terms and Conditions', 'nisarg') ?></a> <?php _e('and our', 'nisarg') ?>  <a href="<?php if(pll_current_language('locale') =='vi') { echo site_url('chinh-sach-bao-mat') ;} else { echo  site_url('privacy-policy'); }?>" target="_blank"><?php _e('Privacy Policy', 'nisarg') ?></a>.</p>
                                 <div class="col-sm-5 col-sm-offset-1 col-md-4 col-md-offset-2">
                                     <button  id="btn-process-transaction" class="btn btn-radius btn-lg-13"><?php _e('process transaction', 'nisarg') ?></button>
                                     <?php echo do_shortcode('[easy_payment amount="9"]'); ?>
