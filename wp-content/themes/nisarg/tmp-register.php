@@ -201,16 +201,14 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-xs-12">
+                                    <div class="col-xs-12 clearfix">
                                         <div class="avatarUpload btn btn-radius btn-lg-13">
                                             <span><?php _e('ADD ACTUAL FACE PHOTO', 'nisarg') ?></span>
                                             <input  type="file" class="file_avatar upload" name="actual_img"> </input>
                                         </div>
-                                          <canvas width="96" height="96" class="canvas_avatar_thumnail"></canvas>
+                                        <canvas width="96" height="96" class="canvas_avatar_thumnail"></canvas>
                                         <canvas style="display: none;" class="canvas_avatar"  ></canvas>
                                         <span class="used-for"><?php _e('Used For Membership Card', 'nisarg');?></span>
-                                        <div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
