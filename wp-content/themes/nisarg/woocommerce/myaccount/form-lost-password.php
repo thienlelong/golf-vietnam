@@ -26,10 +26,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 <form method="post" class="lost_reset_password">
 
 	<?php if( 'lost_password' === $args['form'] ) : ?>
+		<?php if(pll_current_language('locale') !='vi'): ?>
+			<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'If you have forgotten your password or username, enter your email address below and you will receive an email that will provide you with your username and a link to reset your password.', 'woocommerce' ) ); ?></p>
 
-		<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'If you have forgotten your password or username, enter your email address below and you will receive an email that will provide you with your username and a link to reset your password.', 'woocommerce' ) ); ?></p>
+			<p class="form-row"><label for="user_login"><?php _e( 'Username or email', 'woocommerce' ); ?></label> <input class="input-text" type="text" name="user_login" id="user_login" /></p>
+		<?php else: ?>
+			<p><?php echo apply_filters( 'woocommerce_lost_password_message', __( 'Nếu bạn quên mật khẩu hoặc tên đăng nhập của bạn, nhập địa chỉ email của bạn dưới đây và bạn sẽ nhận được một email mà sẽ cung cấp cho bạn với tên truy cập của bạn và liên kết để đặt lại mật khẩu của bạn.', 'woocommerce' ) ); ?></p>
 
-		<p class="form-row"><label for="user_login"><?php _e( 'Username or email', 'woocommerce' ); ?></label> <input class="input-text" type="text" name="user_login" id="user_login" /></p>
+			<p class="form-row"><label for="user_login"><?php _e( 'Tên Đăng Nhập Hoặc Email', 'woocommerce' ); ?></label> <input class="input-text" type="text" name="user_login" id="user_login" /></p>
+		<?php endif; ?>
 
 	<?php else : ?>
 
@@ -55,7 +60,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<p class="form-row">
 		<input type="hidden" name="wc_reset_password" value="true" />
-		<input type="submit" class="btn btn-redius btn-lg" value="<?php echo 'lost_password' === $args['form'] ? __( 'Submit', 'woocommerce' ) : __( 'Save', 'woocommerce' ); ?>" />
+		<?php if(pll_current_language('locale') =='vi'): ?>
+			<input type="submit" class="btn btn-redius btn-lg" value="<?php echo 'lost_password' === $args['form'] ? __( 'Gửi', 'woocommerce' ) : __( 'Lưu Lại', 'woocommerce' ); ?>" />
+		<?php else: ?>
+			<input type="submit" class="btn btn-redius btn-lg" value="<?php echo 'lost_password' === $args['form'] ? __( 'Submit', 'woocommerce' ) : __( 'Save', 'woocommerce' ); ?>" />
+		<?php endif; ?>
 	</p>
 
 	<?php wp_nonce_field( $args['form'] ); ?>

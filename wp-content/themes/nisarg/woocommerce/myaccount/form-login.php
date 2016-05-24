@@ -72,7 +72,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php if(pll_current_language('locale') !='vi'): ?>
 						<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Forgot your password or username?', 'woocommerce' ); ?></a>
 					<?php else: ?>
-						<a href="<?php echo esc_url( wp_lostpassword_url() ); ?>"><?php _e( 'Quên mật khẩu hoặc tài khoản đăng nhập?', 'woocommerce' ); ?></a>
+						<a href="<?php echo site_url( 'dang-nhap/lost-password' ); ?>"><?php _e( 'Quên mật khẩu hoặc tài khoản đăng nhập?', 'woocommerce' ); ?></a>
 					<?php endif; ?>
 					</p>
 
