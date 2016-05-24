@@ -177,14 +177,183 @@ function nisarg_scripts() {
     wp_register_script('vb_reg_script', get_template_directory_uri() . '/js/custom.js', array('jquery'), null, false);
     wp_enqueue_script('vb_reg_script');
 
-  wp_localize_script( 'vb_reg_script', 'vb_reg_vars', array(
+    wp_localize_script( 'vb_reg_script', 'vb_reg_vars', array(
         'vb_ajax_url' => admin_url( 'admin-ajax.php' ),
-      )
-  );
+        )
+    );
+    if(is_home() ||is_front_page()){
+
+        $styleSlugs = array('membermouse-jquery-css',
+            'yith-wcwl-main',
+            'membermouse-jquery-css',
+            'yith-wcwl-main',
+            'yith-woocompare-widget',
+            'woocommerce-layout',
+            'woocommerce-smallscreen',
+            'woocommerce-general',
+            'wp-pagenavi',
+            'colorbox',
+            'wpsimplegallery-style',
+            'ubermenu-black-white-2-css',
+            'CMDM-css',
+            'membermouse-main',
+            'membermouse-buttons',
+            'membermouse-font-awesome',
+            'prtfl_stylesheet',
+            'prtfl_lightbox_stylesheet',
+            'pac-styles',
+            'pac-layout-styles ',
+            'pdc-layout-styles',
+            'wp-job-manager-applications-frontend',
+            'wp-job-manager-frontend',
+            'dlm-frontend',
+            'jquery-colorbox',
+            'ajax-load-more',
+            'searchwp-live-search',
+            'ubermenu',
+            'ubermenu-deepsky',
+            'wpsimplegallery-style',
+            'contact-form-7',
+            'responsive-lightbox-fancybox-front',
+            'scrollup-css',
+            'videojs-plugin',
+            'videojs',
+            'pac-layout-styles',
+            'chosen',
+            'new-style',
+            'tristatedj-media',
+            'ajax-load-more',
+            'searchwp-live-search',
+            'tablepress-default',
+            'ubermenu',
+            'ubermenu-deepsky',
+            'ubermenu-black-white-2',
+            'ubermenu-font-awesome',
+            'wpsimplegallery-style',
+            'colorbox',
+            'contact-form-7',
+            'responsive-lightbox-fancybox-front',
+            'scrollup-css',
+            'videojs-plugin',
+            'videojs',
+            'pac-layout-styles',
+            'chosen',
+            'ajax-load-more',
+            'tablepress-default',
+            'ubermenu',
+            'ubermenu-deepsky',
+            'ubermenu-black-white-2',
+            'ubermenu-font-awesome',
+            'wpsimplegallery-style',
+            'colorbox');
+
+        foreach ($styleSlugs as $value) {
+            wp_dequeue_style($value);
+        }
+
+        $scriptSlugs =  array('membermouse-socialLogin',
+                'membermouse-blockUI',
+                'admin-bar',
+                'codenegar-ajax-search-migrate',
+                'codenegar-ajax-search-script-core',
+                'codenegar-ajax-search-script',
+                'contact-form-7',
+                'membermouse-global',
+                'mm-common-core.js',
+                'mm-preview.js',
+                'page-scroll-to-id-plugin-script',
+                'page-scroll-to-id-plugin-init-script',
+                'prtfl_fancybox_mousewheelJs',
+                'prtfl_fancyboxJs',
+                'responsive-lightbox-fancybox',
+                'responsive-lightbox-front',
+                'scrollup-js',
+                'videojs',
+                'videojs-youtube',
+                'wc-add-to-cart',
+                'woocommerce',
+                'wc-cart-fragments',
+                'yith-woocompare-main',
+                'jquery-colorbox',
+                'jquery-yith-wcwl',
+                'comment-reply',
+                'ajax-load-more',
+                'swp-live-search-client',
+                'google-maps',
+                'ubermenu',
+                'jquery-easing',
+                'wpsimplegallery-scripts',
+                'membermouse-socialLogin',
+                'membermouse-blockUI',
+                'admin-bar',
+                'codenegar-ajax-search-migrate',
+                'codenegar-ajax-search-script-core',
+                'codenegar-ajax-search-script',
+                'contact-form-7',
+                'membermouse-global',
+                'mm-common-core.js',
+                'mm-preview.js',
+                'jquery-ui-accordion',
+                'jquery-ui-button',
+                'jquery-ui-datepicker',
+                'jquery-ui-dialog',
+                'jquery-ui-draggable',
+                'jquery-ui-droppable',
+                'jquery-ui-mouse',
+                'jquery-ui-position',
+                'jquery-ui-progressbar',
+                'jquery-ui-resizable',
+                'jquery-ui-selectable',
+                'jquery-ui-sortable',
+                'jquery-ui-widget',
+                'page-scroll-to-id-plugin-script',
+                'page-scroll-to-id-plugin-init-script',
+                'prtfl_fancybox_mousewheelJs',
+                'prtfl_fancyboxJs',
+                'responsive-lightbox-fancybox',
+                'responsive-lightbox-front',
+                'scrollup-js',
+                'videojs',
+                'videojs-youtube',
+                'wc-add-to-cart',
+                'woocommerce',
+                'wc-cart-fragments',
+                'yith-woocompare-main',
+                'jquery-colorbox',
+                'jquery-yith-wcwl',
+                'comment-reply',
+                'ajax-load-more',
+                'swp-live-search-client',
+                'google-maps',
+                'ubermenu',
+                'jquery-easing',
+                'wpsimplegallery-scripts');
+
+        foreach ($scriptSlugs as $value) {
+             wp_dequeue_script($value);
+        }
+    }
 }
+
+
 add_action( 'wp_enqueue_scripts', 'nisarg_scripts' );
 
+function crunchify_print_scripts_styles() {
+    // Print all loaded Scripts
+    global $wp_scripts;
+    foreach( $wp_scripts->queue as $script ) :
+        echo $script ."' , '";
+    endforeach;
 
+    // Print all loaded Styles (CSS)
+    global $wp_styles;
+    foreach( $wp_styles->queue as $style ) :
+        echo $style . "','";
+    endforeach;
+}
+
+
+/*add_action( 'wp_print_scripts', 'crunchify_print_scripts_styles' );*/
 /**
  * Implement the Custom Header feature.
  */
