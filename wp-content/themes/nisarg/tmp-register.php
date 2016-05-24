@@ -55,7 +55,7 @@
                                         <div class="golf_club">
                                             <label class="club-member btn-radius checkbox-golf-club" >
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                                <input type="radio" name="golf_club" value="" id="clubMember" class="css-checkbox" />
+                                                <input type="radio" name="golf_club" value="" id="clubMember" class="css-checkbox club-member" />
                                                 <label for="clubMember" class="css-label"><?php _e('CLUB MEMBER', 'nisarg') ?></label>
                                             </label>
                                             <ul class="club-member golf-club-list">
@@ -87,7 +87,7 @@
                                         <div class="golf_club">
                                             <label class="public-member btn-radius checkbox-golf-club">
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                                <input type="radio" name="golf_club" value="" id="publicMember" class="css-checkbox" />
+                                                <input type="radio" name="golf_club" value="" id="publicMember" class="css-checkbox public-member" />
                                                 <label for="publicMember" class="css-label"><?php _e('PUBLIC MEMBER', 'nisarg') ?></label>
                                             </label>
                                             <ul class="public-member golf-club-list">
@@ -119,7 +119,7 @@
                                         <div class="golf_club">
                                             <label class="association-member btn-radius checkbox-golf-club">
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                                <input type="radio" name="golf_club" value="" id="associationMember" class="css-checkbox" />
+                                                <input type="radio" name="golf_club" value="" id="associationMember" class="css-checkbox association-member" />
                                                 <label for="associationMember" class="css-label"><?php _e('ASSOCIATION MEMBER', 'nisarg') ?></label>
                                             </label>
                                             <ul class="association-member golf-club-list">
@@ -175,7 +175,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-8">
-                                      <input type="text" name="date_of_birth" class="date-of-birth form-control"  placeholder="<?php _e(' Date Of Birth', 'nisarg') ?>"  >
+                                      <input type="date" name="date_of_birth" class="date-of-birth form-control"  placeholder="<?php _e(' Date Of Birth', 'nisarg') ?>"  >
                                     </div>
                                     <div class="col-md-4 col-sm-6">
                                         <div class="label-checkbox" ><?php _e('Preferred Language', 'nisarg'); ?></div>

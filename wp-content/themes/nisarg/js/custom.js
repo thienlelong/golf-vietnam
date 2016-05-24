@@ -8,13 +8,15 @@ jQuery(document).ready(function($) {
         var $modal = $('.js-loading-bar');
         $modal.modal('hide');
     });
-    jQuery('.date-of-birth').datepicker();
+    /*jQuery('.date-of-birth').datepicker();*/
     var count = 0;
     $('#btn-addmore').click(function(e) {
         count++;
         var formID = 'registerUserForm' + count;
         var formHtml = $("#registerUserForm0").clone().prop('id', formID).insertBefore($(".wrapper-btn-signin"));
         clearForm(formHtml, formID);
+
+        /*jQuery('#registerUserForm1 .date-of-birth').datepicker();*/
         jQuery(formHtml).find("input[name='form_id']").each(function(){
           jQuery(this).val(formID);
         });
@@ -157,8 +159,7 @@ function clearForm(form, formID) {
         var tag = this.tagName.toLowerCase(); // normalize case
         // it's ok to reset the value attr of text inputs,
         // password inputs, and textareas
-        jQuery('#' + formID + ' .date-of-birth').datepicker();
-        if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'email')
+        if (type == 'text' || type == 'password' || tag == 'textarea' || type == 'email' || type=='date')
             this.value = "";
         // checkboxes and radios need to have their checked state cleared
         // but should *not* have their 'value' changed
@@ -177,9 +178,9 @@ function clearForm(form, formID) {
               jQuery('#' + formID + ' input[name="golf_club"]').click(function() {
                 jQuery('#' + formID + ' .checkbox-golf-club').removeClass("active");
                 jQuery('#' + formID + ' .golf-club-list').css("display", "none");
-                jQuery('#'+ id +' + label').html('Association Member');
-                jQuery('#'+ id +' + label').html('Public Member');
-                jQuery('#'+ id +' + label').html('Club Member');
+                jQuery('#'+ formID + ' .association-member' +' + label').html('Association Member');
+                jQuery('#'+ formID + ' .public-member'+' + label').html('Public Member');
+                jQuery('#'+ formID + ' .club-member'+' + label').html('Club Member');
 
                     if(this.checked) {
                         jQuery(this).parent().addClass("active");
@@ -237,7 +238,7 @@ function showThumbnail(file,canvas,thumbnail){
           //clear canvas
           //ctx.canvas.width=  image.width;
           //ctx.canvas.height= image.height;
-           
+
           ctx.clearRect(0, 0, 500, 500);
           if(image.width<500 && image.height<500)
           {

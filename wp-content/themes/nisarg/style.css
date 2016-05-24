@@ -308,6 +308,9 @@ textarea,
     box-shadow: none;
 
 }
+input[type="date"].form-control{
+    line-height: 14px;
+}
 
 .wpcf7 input[type="date"] {
     line-height: 21px;
