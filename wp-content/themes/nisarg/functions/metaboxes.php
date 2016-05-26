@@ -243,4 +243,34 @@ $metaBoxesMembers[] = array(
 if($metaBoxesMembers) { foreach ($metaBoxesMembers as $metaBoxesMember){
     $box = new Meta_Box($metaBoxesMember);
 }}
+
+$prefix = 'advertisements_';
+$metaBoxesAdvertisements[] = array(
+    'id' => 'advertisements_custom',
+    'title' => __('Advertisement Info', 'moonation'),
+    'pages' => array('advertisements'),
+    'context' => 'normal',
+    'priority' => 'low',
+    'fields' => array(
+        array(
+            'name' => __('Url', 'moonation'),
+            'id' => $prefix . 'url',
+            'type' => 'text',
+            'desc' => ''
+        ),
+        array(
+            'name' => __('Banner', 'moonation'),
+            'id' => $prefix . 'banner',
+            'type' => 'image',
+            'desc' => ''
+        ),
+    )
+);
+
+// print options company add/edit
+if($metaBoxesAdvertisements) {
+    foreach ($metaBoxesAdvertisements as $metaBoxesAdvertisement){
+        $box = new Meta_Box($metaBoxesAdvertisement);
+    }
+}
 ?>
