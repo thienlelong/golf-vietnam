@@ -144,6 +144,10 @@
         </div>
     </div>
 </div>
+<form ACTION="http://vietcap.eHandicap.net" METHOD="POST" id="verify-handicap">
+  <input type="hidden" name="SysLogin"  value="1">
+</form>
+
 <div id="content" class="site-content">
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
@@ -168,6 +172,9 @@
               window.location.href = '<?php echo site_url("login") ?>';
             }
           }
+        });
+        $( '.navbar-nav > li.verify-handicap > a' ).click( function(e){
+          $('#verify-handicap').submit();
         });
     });
 </script>
