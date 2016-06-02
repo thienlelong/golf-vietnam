@@ -443,8 +443,23 @@ function wc_custom_user_redirect( $redirect, $user ) {
         //Redirect authors to the dashboard
         $redirect = $dashboard;
     } elseif ( $role == 'customer' || $role == 'subscriber' ) {
+        $is_payment = get_the_author_meta( 'is_payment', $user->ID );
+        $expire_date = get_the_author_meta( 'expire_date', $user->ID );
+        $now =  date('Y/m/d');
+        if ($is_payment && ($expire_date > $now)) {
+            $redirect = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME='. $user->user_firstname . $user->user_lastname .'&MID='. get_the_author_meta( 'MID', $user->id ).'&CID=vietcap';
+        } else {
+            $uId = $user->ID;
+            wp_logout();
+            if(pll_current_language('locale')!='vi') {
+                $redirect  =  site_url("payment").'?uid='. $uId;
+            }
+            else{
+                $redirect  =  site_url('thanh-toan').'?uid='. $uId;
+            }
+        }
+
         //Redirect customers and subscribers to the "My Account" page
-        $redirect = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME='. $user->user_firstname . $user->user_lastname .'&MID='. get_the_author_meta( 'MID', $user->id ).'&CID=vietcap';
     } else {
         //Redirect any other role to the previous visited page or, if not available, to the home
         $redirect = wp_get_referer() ? wp_get_referer() : home_url();
