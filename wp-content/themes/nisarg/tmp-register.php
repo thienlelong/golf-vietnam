@@ -175,7 +175,17 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-8">
-                                      <input type="date" name="date_of_birth" class="date-of-birth form-control"  placeholder="<?php _e(' Date Of Birth', 'nisarg') ?>"  >
+                                    <!-- <input type="date" name="date_of_birth" 
+                                      class="date-of-birth form-control"  
+                                      data-placeholder="Date"
+                                      aria-required="true"
+                                      required>  -->
+                                    <input placeholder="<?php _e(' Date Of Birth', 'nisarg') ?>"
+                                        class="date-of-birth form-control"
+                                        name="date_of_birth"
+                                        type="text" 
+                                        onfocus="(this.type='date')"
+                                        onblur="(this.type='text')" id="date">
                                     </div>
                                     <div class="col-md-4 col-sm-6">
                                         <div class="label-checkbox" ><?php _e('Preferred Language', 'nisarg'); ?></div>

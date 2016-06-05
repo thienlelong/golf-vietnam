@@ -312,6 +312,15 @@ input[type="date"].form-control{
     line-height: 14px;
 }
 
+input[type="date"].date-of-birth::before { 
+    content: attr(data-placeholder);
+    width: 100%;
+}
+
+input[type="date"].date-of-birth:valid::before,
+input[type="date"].date-of-birth:focus::before {
+    display: none;
+}
 .wpcf7 input[type="date"] {
     line-height: 21px;
     padding: 7px 15px;
