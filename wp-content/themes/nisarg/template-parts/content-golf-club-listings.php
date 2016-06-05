@@ -17,7 +17,7 @@
     <div class="entry-content page-content">
         <div class="inner-70">
             <h2 class="page-title text-center"><?php _e('Authorized Golf Club', 'nisarg'); ?></h2>
-            <p class="text-center"> <?php _e('Welcome to the Golf Vietnam eHandicap Network. To view your current handicap information complete with information about your most recent rounds of golf, select your home club and click on the Member Lookup button.', 'nisarg'); ?></p>
+            <!-- <p class="text-center"> <?php _e('Welcome to the Golf Vietnam eHandicap Network. To view your current handicap information complete with information about your most recent rounds of golf, select your home club and click on the Member Lookup button.', 'nisarg'); ?></p> -->
             <form class="list-search">
                 <div class="canhxn">
                 <input type="text" placeholder="<?php _e('Search...', 'nisarg'); ?>" name="search" />
@@ -38,7 +38,7 @@
                         'posts_per_page' => 14,
                         'paged' => $paged,
                         'order' => 'ASC',
-                        'orderby' => 'menu_order',
+                        'orderby' => 'title',
                         'caller_get_posts' => 1,
                         'meta_query' => array(
                             array(

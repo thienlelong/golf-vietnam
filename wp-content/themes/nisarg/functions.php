@@ -608,7 +608,7 @@ function add_member($user)
         if($year == date('y')) {
             $MID = $MID_lastest + 1;
         } else {
-            $MID = date('y')*100000 + 1;
+            $MID = date('y')*10000 + 1;
         }
     }
     $user_login = $MID;
