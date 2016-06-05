@@ -32,7 +32,7 @@
                                   <div class="pmorder row">
                                       <div class="col-md-6">
                                         <h4 class="pmitem-header"><?php _e('Description', 'nisarg') ?></h4>
-                                        <p class="pmitem-value text-left"><?php _e('Buy account of golfvn.', 'nisarg') ?></p>
+                                        <p class="pmitem-value text-left"><?php _e('Buy account of Golf Viet Nam.', 'nisarg') ?></p>
                                       </div>
                                       <div class="col-xs-4 col-md-2" >
                                         <h6 class="pmitem-header"><?php _e('QUANTITY', 'nisarg') ?></h6>
@@ -119,7 +119,7 @@
         $('#easy_paypal_form_div form input[name=amount]').val(total);
         $('#easy_paypal_form_div form input[name=return]').val(url_return + '?SESSION=' + SESSION);
         $('#btn-process-transaction').click(function() {
-            if($("input[name=auto-renew]").is(":checked") && $("input[name=remind-expire]").is(":checked")) {
+            if($("input[name=auto-renew]").is(":checked") || $("input[name=remind-expire]").is(":checked")) {
                 $('#easy_paypal_form_div input[type=image]').trigger('click');
             } else {
                 $('#confirm-checkbox').css('display', 'block');
