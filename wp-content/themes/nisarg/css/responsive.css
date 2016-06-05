@@ -327,7 +327,11 @@
         padding: 15px;
     }
     .home-action .btn-download, .home-action .btn-associal {
-        margin: 10px 0px;
+       /*  margin: 10px 0px; */
+    }
+    .home-bank {
+        background-size: cover;
+        min-height: 120px;
     }
     .join-now-content .join-now-banner{
         margin-top: 15px;

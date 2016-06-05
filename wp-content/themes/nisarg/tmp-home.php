@@ -14,11 +14,13 @@
         }
     ?>
     <div class="section-homepage">
+        <div class="home-bank">
+        </div>
         <div class="home-action">
             <div class="container">
-                <a href="#" class="btn btn-radius btn-download" data-toggle="tooltip" data-placement="top" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/icon-vietcap.png" alt=""> <span> <?php _e('Download VietCap <br> Application For Free', 'nisarg') ?></span>
+                <!-- <a href="#" class="btn btn-radius btn-download" data-toggle="tooltip" data-placement="top" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/icon-vietcap.png" alt=""> <span> <?php _e('Download VietCap <br> Application For Free', 'nisarg') ?></span>
                     <img src="<?php bloginfo('template_directory'); ?>/images/icon-download.png" alt="">
-                </a>
+                </a> -->
                 <a href="<?php bloginfo('template_directory');echo $document ?>" class="btn btn-radius btn-associal" target="_blank" download><span> <?php _e('Download Association <br> Application Form', 'nisarg') ?></span> <img src="<?php bloginfo('template_directory'); ?>/images/icon-search.png" alt=""> </a>
             </div>
         </div>
