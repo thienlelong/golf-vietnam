@@ -149,6 +149,7 @@ class GMEX_Easy_Payment_Public {
 
         if (isset($easy_payment_amount) && !empty($easy_payment_amount)) {
             $output .= $easy_payment_amount_input;
+            $output .= '<input type="hidden" name="tax_rate" value="2.5">';
         }
 
         if (isset($dropdown_string) && !empty($dropdown_string)) {
