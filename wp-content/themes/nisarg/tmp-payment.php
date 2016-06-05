@@ -39,10 +39,10 @@
                                         <input id="number-user" type="number" class="pmitem-value" min="0" step="1" max="9999" disabled="true">
                                       </div  >
                                       <div class="col-xs-4 col-md-2" ><h6 class="pmitem-header"><?php _e('PRICE', 'nisarg') ?></h6>
-                                        <span id="price" class="pmitem-value">$49.95</span>
+                                        <span id="price" class="pmitem-value">888.888 vnd</span>
                                       </div  >
                                       <div  class="col-xs-4 col-md-2" ><h6 class="pmitem-header"><?php _e('TOTAL', 'nisarg') ?></h6>
-                                        <span  id="total-price" class="pmitem-value">$72.45</span>
+                                        <span  id="total-price" class="pmitem-value">888.888 vnd</span>
                                       </div  >
                                   </div>
                                 </div>
@@ -110,10 +110,11 @@
         var SESSION = '<?php echo $_SESSION["SESSION"];?>';
         $('#orderId').html(SESSION);
         $('#number-user').val(totalUser);
-        $('#price').html('$40');
+        $('#price').html('888.888 vnd');
+        var totalVn = 888.888 * totalUser;
         var total = 40 * totalUser;
-        $('#total-price').html('$'+ total);
-        $('#pm-total-price').html('$' + total + ' (CAD)');
+        $('#total-price').html(totalVn + ' vnd');
+        $('#pm-total-price').html(totalVn + ' vnd (CAD)');
 
         $('#easy_paypal_form_div form').attr('target', '');
         $('#easy_paypal_form_div form input[name=amount]').val(total);
