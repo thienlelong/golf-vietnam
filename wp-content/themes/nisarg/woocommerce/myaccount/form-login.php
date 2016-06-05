@@ -41,9 +41,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<p class="form-row form-row-wide">
 
 						<?php if(pll_current_language('locale') =='vi'): ?>
-							<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Tài Khoản', 'woocommerce' ); ?>" />
+							<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Địa Chỉ Email hoặc User ID', 'woocommerce' ); ?>" />
 						<?php else: ?>
-							<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Username', 'woocommerce' ); ?>" />
+							<input type="text" class="input-text" name="username" id="username" value="<?php if ( ! empty( $_POST['username'] ) ) echo esc_attr( $_POST['username'] ); ?>" placeholder="<?php _e( 'Email Address or User ID', 'woocommerce' ); ?>" />
 						<?php endif; ?>
 					</p>
 					<p class="form-row form-row-wide">

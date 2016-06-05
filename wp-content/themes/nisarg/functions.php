@@ -584,7 +584,6 @@ function add_member($user)
 {
     $first_name = $user['first_name'];
     $middle_name = $user['middle_name'];
-    $user_login = $user['user_email'];
     $last_name = $user['last_name'];
     $user_email = $user['user_email'];
     $password = $user['password'];
@@ -611,7 +610,8 @@ function add_member($user)
         } else {
             $MID = date('y')*100000 + 1;
         }
-   }
+    }
+    $user_login = $MID;
     /**
      * IMPORTANT: You should make server side validation here!
      *
