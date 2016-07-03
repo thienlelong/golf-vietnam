@@ -25,7 +25,7 @@ Database name: sql5114853
 Database user: sql5114853
 Database password: ITlc3gFkMy
 Port number: 3306*/
-/*define('DB_NAME', 'u512183349_golf');
+/*define('DB_NAME', 'u348105989_golf');
 
 define('DB_USER', 'root');
 
@@ -34,11 +34,11 @@ define('DB_PASSWORD', '');
 define('DB_HOST', 'localhost');*/
 //u512183349_golf	u512183349_nham/OPTQB8DVGU	mysql.hostinger.vn
 
-define('DB_NAME', 'u449267025_golf');
+define('DB_NAME', 'u342137954_golf');
 
-define('DB_USER', 'u449267025_nham');
+define('DB_USER', 'u342137954_nham');
 
-define('DB_PASSWORD', 'arV9oR6EyL');
+define('DB_PASSWORD', 'fP8AKs2mIR');
 
 
 define('DB_HOST', 'mysql.hostinger.vn');
