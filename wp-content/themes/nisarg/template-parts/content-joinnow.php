@@ -44,12 +44,15 @@
             <div class="col-sm-6 membership-info">
                 <p><?php _e('Annual Membership Fees Are :', 'nisarg'); ?></p>
                 <p><?php _e('Memberships are valid for <span class="cl-blue">365 days</span> from date of purchase.', 'nisarg'); ?></p>
+                <p><span><?php _e(' If you loss card member, please type id:', 'nisarg'); ?></span> <input type="text" name="user_id" class="form-control user-id"  placeholder="<?php _e('User ID', 'nisarg') ?>" required></p>
             </div>
             <div class="col-sm-6 text-right">
                 <span class="price">888,888 <span class="units">VND</span></span>
-                <a href="<?php if(pll_current_language('locale')=='vi'){
-                    echo site_url('dang-ky');
-                }else {echo site_url('register');}?>" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a>
+               <!--  <a href="<?php if(pll_current_language('locale')=='vi'){
+                   echo site_url('dang-ky');
+               }else {echo site_url('register');}?>" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a> -->
+               <a href="#" class="btn btn-radius bg-red btn-lg btn-large" id="btn-join-now"><?php _e('Join Now Click Here', 'nisarg') ?></a>
+
             </div>
         </div>
         <div class="alert alert-danger" role="alert"><?php _e('<strong>Note:</strong>  When making payment click the “Automatically Renew” function which will keep your existing account active yearly.', 'nisarg'); ?></div>
@@ -83,4 +86,23 @@
         </div>
     </div><!-- .entry-content -->
 </article><!-- #post-## -->
+
+<script type="text/javascript">
+    jQuery( document ).ready(function($) {
+        $('#btn-join-now').click(function() {
+            var user_id = $('input[name=user_id]').val();
+            var lagguage = '<?php echo pll_current_language("locale"); ?>';
+            var url_return = '<?php echo site_url("register");?>';
+            if(lagguage == 'vi') {
+              url_return = '<?php echo site_url("dang-ky");?>';
+            }
+            if(user_id) {
+                window.location.href =  url_return + '?MID=' + user_id;
+            } else {
+                window.location.href =  url_return;
+            }
+        });
+        
+    });
+</script>
 

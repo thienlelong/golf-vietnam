@@ -4,7 +4,26 @@
  **/
  get_header();
 ?>
+<?php 
+  if($_GET["MID"]) {
+    $MID = $_GET["MID"];
+    $user = get_userdatabylogin($MID);
+    if($user) {
+        if(pll_current_language('locale')!='vi') {
+            $redirect  =  site_url("payment").'?uid='. $user->ID;
+        }
+        else{
+            $redirect  =  site_url('thanh-toan').'?uid='. $user->ID;
+        }
+        ?>
+        <script type="text/javascript">
+            window.location.href =  '<?php echo $redirect;?>';
+        </script>
+        <?php
+    }
+  }
 
+?>
 <div class="container">
     <div id="primary" class="content-area">
         <main id="main" class="site-main" role="main">

@@ -1343,15 +1343,20 @@ color: #000000;
     font-size: 30px;
 }
 
-.membership-info p {
+.membership-info p:first-child {
     font-size: 30px;
     font-weight: bold;
    /*  margin-bottom: 0px; */
 }
 
-.membership-info p:last-child {
+.membership-info p {
     font-size: 15px;
+    font-weight: bold;
 
+}
+.membership-info .user-id {
+    width: auto;
+    display: inline;
 }
 .section-membership .alert-danger {
     margin-top: 25px;
@@ -1365,6 +1370,7 @@ color: #000000;
     -moz-box-shadow: 2px 4px 5px 0px rgba(200,202,204,1);
     box-shadow: 2px 4px 5px 0px rgba(200,202,204,1);
 }
+
 
 .join-now-membership .memba{
     font-size: 20px;
