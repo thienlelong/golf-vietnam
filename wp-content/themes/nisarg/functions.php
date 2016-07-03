@@ -710,27 +710,30 @@ add_action('wp_ajax_nopriv_waiver_forms', 'vb_reg_waiver_forms');
 
 function new_modify_user_table( $column ) {
     $column['MID'] = 'MID';
-    $column['is_active'] = 'Active VietCap';
-    $column['expire_date'] = 'Expire Date';
-    $column['is_payment'] = 'Payment';
+    $column['address'] = 'Address';
+    $column['user_phone'] = 'Phone';
+   /* $column['is_payment'] = 'Payment';*/
     return $column;
 }
 add_filter( 'manage_users_columns', 'new_modify_user_table' );
 
 function new_modify_user_table_row( $val, $column_name, $user_id ) {
-    $user = get_userdata( $user_id );
+    /*$user = get_userdata( $user_id );*/
     switch ($column_name) {
         case 'MID' :
             return get_the_author_meta( 'MID', $user_id );
             break;
-        case 'is_active' :
+        /*case 'is_active' :
             return !get_the_author_meta( 'is_active', $user_id ) ? 'false' : 'true';
-            break;
-        case 'expire_date' :
+            break;*/
+        /*case 'expire_date' :
             return get_the_author_meta( 'expire_date', $user_id );
+            break;*/
+        case 'address' :
+            return get_the_author_meta( 'address', $user_id ) . ' ' . get_the_author_meta( 'district', $user_id ). ' ' . get_the_author_meta( 'province', $user_id );
             break;
-        case 'is_payment' :
-            return !get_the_author_meta( 'is_payment', $user_id ) ? 'false' : 'true';
+        case 'user_phone' :
+            return get_the_author_meta( 'user_phone', $user_id );
             break;
         default:
     }
@@ -868,6 +871,49 @@ function extra_user_profile_fields( $user ) { ?>
         </td>
     </tr>
 </table>
+<h3><?php _e("Additional Detail", "blank"); ?></h3>
+<table class="form-table">
+    <tr>
+        <th>
+            <label for="is_active">
+                <?php _e( "Active Viet Cap"); ?>
+            </label>
+        </th>
+        <td>
+            <?php echo  get_the_author_meta( 'is_active', $user->ID ) ? 'true' : 'false'; ?>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="is_payment">
+                <?php _e( "Payment"); ?>
+            </label>
+        </th>
+        <td>
+            <?php echo  get_the_author_meta( 'is_payment', $user->ID ) ? 'true' : 'false'; ?>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="Register Date">
+                <?php _e( "Register Date"); ?>
+            </label>
+        </th>
+        <td>
+            <?php echo esc_attr( get_the_author_meta( 'start_date', $user->ID ) ); ?>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="">
+                <?php _e( "Expire Date"); ?>
+            </label>
+        </th>
+        <td>
+            <?php echo esc_attr( get_the_author_meta( 'expire_date', $user->ID ) ); ?>
+        </td>
+    </tr>
+</table>
 <?php }
 
 add_action( 'personal_options_update', 'save_extra_user_profile_fields' );
@@ -923,13 +969,13 @@ function user_profile_fields_disable_js() {
                 }
             }
 
-            if($("#profile-page h3:eq(1)").html() == "Customer Billing Address") {
-                $("#profile-page h3:eq(1)").css('display', 'none');
-                $("#profile-page h3:eq(1) + .form-table").css('display', 'none');
-            }
-            if($("#profile-page h3:eq(2)").html() == "Customer Shipping Address") {
+            if($("#profile-page h3:eq(2)").html() == "Customer Billing Address") {
                 $("#profile-page h3:eq(2)").css('display', 'none');
                 $("#profile-page h3:eq(2) + .form-table").css('display', 'none');
+            }
+            if($("#profile-page h3:eq(3)").html() == "Customer Shipping Address") {
+                $("#profile-page h3:eq(3)").css('display', 'none');
+                $("#profile-page h3:eq(3) + .form-table").css('display', 'none');
             }
         });
     </script>
