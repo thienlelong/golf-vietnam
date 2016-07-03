@@ -55,10 +55,13 @@
                     $slug = $page_url . $category->slug;
                     $name = $category->name;
                     $i++;
+                    $image = get_bloginfo('template_directory') . '/images/event-'. $i .'.png';
+                    if (function_exists('z_taxonomy_image_url')) $image = z_taxonomy_image_url($category->term_id);          
                     ?>
                     <div class="col-sm-4">
                     <div class="box">
-                        <a href="<?php echo site_url($slug)?>"><img src="<?php bloginfo('template_directory'); ?>/images/event-<?php echo $i; ?>.png" alt=""></a>
+
+                        <a href="<?php echo site_url($slug)?>"><img src="<?php echo $image;?>" alt=""></a>
                         <div class="box-title">
                             <h3><a href="<?php echo site_url($slug)?>"><?php _e($name, 'nisarg') ?></a></h3>
                         </div>
@@ -90,10 +93,10 @@
                         </ul>
                         <div class="box-title">
                             <?php
-                                $result = count_users();
-                                $user_counts = $result['total_users'];
+                               /* $result = count_users();
+                                $user_counts = $result['total_users'];*/
                             ?>
-                            <h3><?php echo $user_counts;_e('th Member', 'nisarg') ?></h3>
+                            <h3><?php echo _e('Members', 'nisarg') ?></h3>
                         </div>
                     </div>
                 </div>
