@@ -35,8 +35,11 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-6">
                                       <input type="email" name="user_email" class="form-control"  placeholder="<?php _e('Email', 'nisarg') ?>" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <input type="tel" name="user_phone" class="form-control"  placeholder="<?php _e('Phone', 'nisarg') ?>">
                                     </div>
                                 </div>
                                 <div class="form-group">

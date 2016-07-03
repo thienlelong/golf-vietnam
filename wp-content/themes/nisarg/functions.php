@@ -586,6 +586,7 @@ function add_member($user)
     $middle_name = $user['middle_name'];
     $last_name = $user['last_name'];
     $user_email = $user['user_email'];
+    $user_phone = $user['user_phone'];
     $password = $user['password'];
     $golf_club = isset($user['golf_club']) ? $user['golf_club'] : '';
     $address = $user['address'];
@@ -620,8 +621,8 @@ function add_member($user)
     //Add metatdata for user
     if($uId!=0){
          //add user metadata
-             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth');
-             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password, $address, $date_of_birth);
+             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth', 'user_phone');
+             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password, $address, $date_of_birth, $user_phone);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
     return $uId;
@@ -749,6 +750,16 @@ add_action( 'edit_user_profile', 'extra_user_profile_fields' );
 
 function extra_user_profile_fields( $user ) { ?>
 <table class="form-table">
+    <tr>
+        <th>
+            <label for="address">
+                <?php _e( "Phone"); ?>
+            </label>
+        </th>
+        <td>
+            <input type="tel" name="user_phone" id="user_phone" value="<?php echo esc_attr( get_the_author_meta( 'user_phone', $user->ID ) ); ?>" class="regular-text" />
+        </td>
+    </tr>
     <tr>
         <th>
             <label for="address">
