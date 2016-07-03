@@ -621,8 +621,8 @@ function add_member($user)
     //Add metatdata for user
     if($uId!=0){
          //add user metadata
-             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth', 'user_phone');
-             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password, $address, $date_of_birth, $user_phone);
+             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth', 'user_phone', 'is_status');
+             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password, $address, $date_of_birth, $user_phone, false);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
     return $uId;
@@ -913,6 +913,35 @@ function extra_user_profile_fields( $user ) { ?>
             <?php echo esc_attr( get_the_author_meta( 'expire_date', $user->ID ) ); ?>
         </td>
     </tr>
+    <tr>
+        <th>
+            <label for="">
+                <?php _e( "User Status"); ?>
+            </label>
+        </th>
+        <td>
+            <?php 
+                $start_date = get_the_author_meta( 'start_date', $user->ID );
+                $today =  date('Y/m/d');
+               // $tomorrow = date("Y/m/d", strtotime(date("Y/m/d", strtotime($today)) . " -1 day"));
+                if($start_date == $today && (get_the_author_meta('is_status', $user->ID ) != 1)) {
+                    ?>
+                    <div class="alert" style="padding:8px 20px; background-color: #2196F3; color: white; margin-bottom: 15px; width: 80px;">
+                        <span class="closebtn" style="margin-left: 15px;
+                            color: white;
+                            font-weight: bold;
+                            float: right;
+                            font-size: 22px;
+                            line-height: 16px;
+                            cursor: pointer;
+                            transition: 0.3s;" onclick="this.parentElement.style.display='none'; updateUsserStatus();">&times;</span> 
+                        New
+                    </div>   
+                <?php
+                }
+            ?>
+        </td>
+    </tr>
 </table>
 <?php }
 
@@ -978,6 +1007,9 @@ function user_profile_fields_disable_js() {
                 $("#profile-page h3:eq(3) + .form-table").css('display', 'none');
             }
         });
+    function updateUsserStatus() {
+        <?php update_user_meta( $_GET['user_id'], 'is_status', true ); ?>
+    }
     </script>
 <?php
 }
