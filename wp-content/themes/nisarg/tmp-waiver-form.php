@@ -16,7 +16,7 @@
                         </div>
                     </div>
                 </div>
-                <article id="post-<?php the_ID(); ?>" <?php post_class('post-content'); ?>>
+                <article id="post-waiver-form" <?php post_class('post-content'); ?>>
                     <div class="entry-content page-content">
                     <div class="inner-70">
                     <?php the_content(); ?>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 text-center">
-                                <input type="button" id="submit_waiver_form" class="btn btn-radius btn-lg-13" value="<?php _e('submit WAIVER form', 'nisarg'); ?>">
+                                <input type="button" onclick="printWaiverForm('post-waiver-form')" id="print_waiver_form" class="btn btn-radius btn-lg-13" value="<?php _e('Print WAIVER form', 'nisarg'); ?>">
 
                             </div>
                         </div>
@@ -86,11 +86,11 @@
                                 <div class="results-message alert alert-warning" style="display: none;"><?php _e('You Are Submitted Successfully', 'nisarg'); ?></div>
                             </div>
                         </div>
-
                     </form>
                     </div>
                     </div><!-- .entry-content -->
                 </article><!-- #post-## -->
+
             <?php endwhile; // End of the loop. ?>
         </main><!-- #main -->
     </div><!-- #primary -->
@@ -102,7 +102,7 @@
         jQuery('input[name=dates]').datepicker();
 
 
-        jQuery('#submit_waiver_form').click(function() {
+        /*jQuery('#submit_waiver_form').click(function() {
             var ajax_url = vb_reg_vars.vb_ajax_url;
             var data = {
                 action: 'waiver_forms',
@@ -126,7 +126,20 @@
                 }
             });
 
-        });
+        });*/
+
     });
+   function printWaiverForm(divName) {
+        //var printContents = document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+        var printContents = jQuery("#post-waiver-form").clone();
+        jQuery(document.body).html(printContents)
+        window.print();
+        document.body.innerHTML = originalContents;
+        jQuery('input[name=receipt_dates]').datepicker();
+        jQuery('input[name=competitor_dates]').datepicker();
+        jQuery('input[name=dates]').datepicker();
+    }
+
 </script>
 <?php get_footer(); ?>
