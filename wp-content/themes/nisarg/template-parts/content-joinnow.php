@@ -44,14 +44,32 @@
             <div class="col-sm-6 membership-info">
                 <p><?php _e('Annual Membership Fees Are :', 'nisarg'); ?></p>
                 <p><?php _e('Memberships are valid for <span class="cl-blue">365 days</span> from date of purchase.', 'nisarg'); ?></p>
-                <p><span><?php _e(' If you loss card member, please type id:', 'nisarg'); ?></span> <input type="text" name="user_id" class="form-control user-id"  placeholder="<?php _e('User ID', 'nisarg') ?>" required></p>
             </div>
             <div class="col-sm-6 text-right">
-                <span class="price">888,888 <span class="units">VND</span></span>
-               <!--  <a href="<?php if(pll_current_language('locale')=='vi'){
-                   echo site_url('dang-ky');
-               }else {echo site_url('register');}?>" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a> -->
-               <a href="#" class="btn btn-radius bg-red btn-lg btn-large" id="btn-join-now"><?php _e('Join Now Click Here', 'nisarg') ?></a>
+                <p>
+                    <span class="price">888,888 <span class="units">VND</span></span>
+                    <a href="<?php if(pll_current_language('locale')=='vi'){
+                       echo site_url('dang-ky');
+                    } else {echo site_url('register');}?>" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a>
+                    
+                </p>
+            </div>
+        </div>
+        <hr style="border-color:#dadada;">
+        <div class="row">
+            <div class="col-sm-6 membership-info">
+                <p></p>
+                <p><span><?php _e('(Lost Card?) Replacement Card:', 'nisarg'); ?></span> <input type="text" name="user_id" class="form-control user-id"  placeholder="<?php _e('Member ID', 'nisarg') ?>" required></p>
+            </div>
+            <div class="col-sm-6 text-right">
+                <p>
+                    <span class="price">300,000 <span class="units">VND</span></span>
+                    <!-- <a href="<?php if(pll_current_language('locale')=='vi'){
+                       echo site_url('dang-ky');
+                    } else {echo site_url('register');}?>" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a> -->
+                    <a href="#" class="btn btn-radius bg-red btn-lg btn-large" id="btn-join-now"><?php _e('Join Now Click Here', 'nisarg') ?></a>
+                </p>
+              
 
             </div>
         </div>
@@ -89,7 +107,8 @@
 
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
-        $('#btn-join-now').click(function() {
+        $('#btn-join-now').click(function(e) {
+            e.preventDefault()
             var user_id = $('input[name=user_id]').val();
             var lagguage = '<?php echo pll_current_language("locale"); ?>';
             var url_return = '<?php echo site_url("register");?>';

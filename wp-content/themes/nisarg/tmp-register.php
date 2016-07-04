@@ -10,10 +10,10 @@
     $user = get_userdatabylogin($MID);
     if($user) {
         if(pll_current_language('locale')!='vi') {
-            $redirect  =  site_url("payment").'?uid='. $user->ID;
+            $redirect  =  site_url("payment").'?uid='. $user->ID . '&lost_card=true';
         }
         else{
-            $redirect  =  site_url('thanh-toan').'?uid='. $user->ID;
+            $redirect  =  site_url('thanh-toan').'?uid='. $user->ID . '&lost_card=true';
         }
         ?>
         <script type="text/javascript">

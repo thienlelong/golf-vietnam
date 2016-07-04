@@ -8,6 +8,7 @@
     if($_GET["uid"]) {
         $_SESSION['usersId'] = $_GET["uid"];
         $_SESSION['is_renew'] = true;
+        $_SESSION['lost_card'] = $_GET["lost_card"] ? true : false;
     }
     $_SESSION['SESSION'] = substr(str_shuffle(md5(time())), 0 , 15);
  ?>
@@ -109,10 +110,17 @@
         var totalUser = usersId.split(",").length;
         var SESSION = '<?php echo $_SESSION["SESSION"];?>';
         $('#orderId').html(SESSION);
+
+        var lost_card =  '<?php echo $_SESSION["lost_card"];?>';
         $('#number-user').val(totalUser);
         $('#price').html('888.888 vnd');
         var totalVn = 888.888 * totalUser;
         var total = 40 * totalUser;
+        if(lost_card) {
+            $('#price').html('300.000 vnd');
+            totalVn = 300.000 * totalUser + '.000';
+            total = 14 * totalUser;
+        }
         $('#total-price').html(totalVn + ' vnd');
         $('#pm-total-price').html(totalVn + ' vnd (CAD)');
 
