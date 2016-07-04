@@ -1129,4 +1129,14 @@ function my_custom_fonts() {
         clear: both;
     }
   </style>';
+
+}
+
+add_filter( 'parse_query', 'exclude_pages_from_admin' );
+function exclude_pages_from_admin($query) {
+    global $pagenow,$post_type;
+    if (is_admin() && $pagenow=='edit.php' && $post_type =='page') {
+        $query->query_vars['post__not_in'] = array('110','219','47', '270', '272', '157', 
+            '242', '39', '132', '105', '260' , '264', '290', '268', '276', '41', '283', '253');
+    }
 }
