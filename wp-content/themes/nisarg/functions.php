@@ -622,7 +622,7 @@ function add_member($user)
     if($uId!=0){
          //add user metadata
              $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth', 'user_phone', 'is_status');
-             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password, $address, $date_of_birth, $user_phone, false);
+             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password, $address, $date_of_birth, $user_phone, true);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
     return $uId;
@@ -924,22 +924,27 @@ function extra_user_profile_fields( $user ) { ?>
                 $start_date = get_the_author_meta( 'start_date', $user->ID );
                 $today =  date('Y/m/d');
                // $tomorrow = date("Y/m/d", strtotime(date("Y/m/d", strtotime($today)) . " -1 day"));
-                if($start_date == $today && (get_the_author_meta('is_status', $user->ID ) != 1)) {
+                if($start_date == $today && (get_the_author_meta('is_status', $user->ID ) == 1)) {
                     ?>
-                    <div class="alert" style="padding:8px 20px; background-color: #2196F3; color: white; margin-bottom: 15px; width: 80px;">
-                        <span class="closebtn" style="margin-left: 15px;
-                            color: white;
-                            font-weight: bold;
-                            float: right;
-                            font-size: 22px;
-                            line-height: 16px;
-                            cursor: pointer;
-                            transition: 0.3s;" onclick="this.parentElement.style.display='none'; updateUsserStatus();">&times;</span> 
-                        New
-                    </div>   
+                <label class="checkbox-inline">
+                    <input type="checkbox" id="inlineCheckbox2" name="is_status" <?php if (esc_attr( get_the_author_meta( "is_status", $user->ID )) == "1") echo "checked"; ?> value="1"> 
+                    New User
+                </label>
                 <?php
                 }
             ?>
+        </td>
+    </tr>
+    <tr>
+        <th>
+            <label for="">
+                <?php _e( "Lost Card"); ?>
+            </label>
+        </th>
+        <td>
+            <label class="checkbox-inline">
+                <input type="checkbox" id="inlineCheckbox2" name="is_lost_card" <?php if (esc_attr( get_the_author_meta( "is_lost_card", $user->ID )) == "1") echo "checked"; ?> value="1"> Replacement Card
+            </label>
         </td>
     </tr>
 </table>
@@ -960,6 +965,8 @@ if ( !current_user_can( 'edit_user', $user_id ) ) { return false; }
     update_user_meta( $user_id, 'langguage', $_POST['langguage'] );
     update_user_meta( $user_id, 'gender', $_POST['gender'] );
     update_user_meta( $user_id, 'golf_club', $_POST['golf_club'] );
+    update_user_meta( $user_id, 'is_lost_card', $_POST['is_lost_card'] );
+    update_user_meta( $user_id, 'is_status', $_POST['is_status'] );
 }
 
 
@@ -989,7 +996,7 @@ function user_profile_fields_disable() {
  */
 function user_profile_fields_disable_js() {
 ?>
-    <script>
+    <script type="text/javascript">
         jQuery(document).ready( function($) {
             var fields_to_disable = ['user-role-wrap', 'user-admin-bar-front-wrap', 'user-comment-shortcuts-wrap', 'user-admin-color-wrap' , 'user-rich-editing-wrap', 'user-url-wrap', 'user-description-wrap'];
             for(i=0; i<fields_to_disable.length; i++) {
@@ -1007,8 +1014,13 @@ function user_profile_fields_disable_js() {
                 $("#profile-page h3:eq(3) + .form-table").css('display', 'none');
             }
         });
+
     function updateUsserStatus() {
-        <?php update_user_meta( $_GET['user_id'], 'is_status', true ); ?>
+        <?php /*update_user_meta( $_GET["user_id"], "is_status", true ); */?>
+    }
+
+    function replacementCard() {
+        <?php /*update_user_meta( $_GET['user_id'], 'is_lost_card', false );*/ ?>
     }
     </script>
 <?php
