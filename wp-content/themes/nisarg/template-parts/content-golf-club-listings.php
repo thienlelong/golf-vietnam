@@ -46,6 +46,13 @@
                                 'value' => sanitize_text_field($_REQUEST['search']),
                                 'compare' => 'like'
                             )
+                        ),
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'clubs-category',
+                                'field' => 'slug',
+                                'terms' => array('club-member')
+                            )
                         )
                     ));
                     if($wp_query->have_posts()) :
