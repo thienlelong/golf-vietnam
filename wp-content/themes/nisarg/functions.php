@@ -712,7 +712,8 @@ function new_modify_user_table( $column ) {
     $column['MID'] = 'MID';
     $column['address'] = 'Address';
     $column['user_phone'] = 'Phone';
-   /* $column['is_payment'] = 'Payment';*/
+    $column['is_status'] = 'New User';
+    $column['is_lost_card'] = 'Lost Card';
     return $column;
 }
 add_filter( 'manage_users_columns', 'new_modify_user_table' );
@@ -734,6 +735,12 @@ function new_modify_user_table_row( $val, $column_name, $user_id ) {
             break;
         case 'user_phone' :
             return get_the_author_meta( 'user_phone', $user_id );
+            break;
+        case 'is_status' :
+            return get_the_author_meta( 'is_status', $user_id ) ? 'true' : 'false';
+            break;
+        case 'is_lost_card' :
+            return get_the_author_meta( 'is_lost_card', $user_id ) ? 'true' : 'false';
             break;
         default:
     }
