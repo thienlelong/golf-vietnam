@@ -1005,6 +1005,9 @@ function user_profile_fields_disable_js() {
                 }
             }
 
+            $('#your-profile .form-table:eq(0)').css('display', 'none');
+            $('#your-profile h2:eq(0)').css('display', 'none');
+
             if($("#profile-page h3:eq(2)").html() == "Customer Billing Address") {
                 $("#profile-page h3:eq(2)").css('display', 'none');
                 $("#profile-page h3:eq(2) + .form-table").css('display', 'none');
