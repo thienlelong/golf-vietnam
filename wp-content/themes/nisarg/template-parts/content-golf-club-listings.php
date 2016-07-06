@@ -40,13 +40,14 @@
                         'order' => 'ASC',
                         'orderby' => 'title',
                         'caller_get_posts' => 1,
-                        'meta_query' => array(
+                        's' => sanitize_text_field($_REQUEST['search']),
+                      /*  'meta_query' => array(
                             array(
-                                /*'key' => '_title',*/
+                                'key' => '_title',
                                 'value' => sanitize_text_field($_REQUEST['search']),
                                 'compare' => 'like'
                             )
-                        ),
+                        ),*/
                         'tax_query' => array(
                             array(
                                 'taxonomy' => 'clubs-category',

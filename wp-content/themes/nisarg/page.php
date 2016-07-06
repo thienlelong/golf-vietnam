@@ -1,4 +1,4 @@
-<?php
+	<?php
 /**
  * The template for displaying all pages.
  *
@@ -27,7 +27,22 @@ get_header(); ?>
 						?>
 						</div>
 						<div class="col-md-8 text-right">
-							<img src="<?php bloginfo('template_directory'); ?>/images/page-banner.png" alt="">
+						<?php
+			                $wp_query = new WP_Query(array(
+			                    'post_type' => 'advertisements',
+			                    'posts_per_page' => 1,
+			                    'order' => 'ASC',
+			                    'orderby' => 'menu_order',
+			                    'caller_get_posts' => 1,
+			                    's' => 'Top Banner',
+			                ));
+			                if($wp_query->have_posts()) :
+			                ?>
+			                    <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++; ?>
+			                        <a href="<?php echo get_post_meta($post->ID, 'advertisements_url', true); ?>" target="_blank"><img src="<?php echo get_field('advertisements_banner', $post->ID); ?>" alt=""></a>
+			                    <?php endwhile; ?>
+			                <?php endif; wp_reset_query(); ?>
+							<!-- <img src="<?php bloginfo('template_directory'); ?>/images/page-banner.png" alt=""> -->
 						</div>
 					</div>
 				</div>
