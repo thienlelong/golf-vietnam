@@ -1800,9 +1800,16 @@ input.btn-border {
     box-shadow: 0px 3px 4px 0px rgba(207,210,212,1);
     margin: 0 0 15px 0px;
 }
-.home-box .box #portfolio {
+
+.home-box .box #lightgallery {
     list-style: none;
     padding-left: 0px;
+}
+.home-box .box #lightgallery li {
+    display: none;
+}
+.home-box .box #lightgallery li:first-child {
+    display: block;
 }
 .home-box .box .box-title h3{
     font-size: 22px;
