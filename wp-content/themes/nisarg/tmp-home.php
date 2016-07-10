@@ -72,6 +72,11 @@
                 <div class="col-sm-4">
                     <div class="box">
                         <ul id="lightgallery" class="clearfix list-unstyled">
+                        <li  data-src="<?php bloginfo('template_directory'); ?>/images/members-zoom.png" >
+                            <a href="">
+                                <img class="img-responsive" src="<?php bloginfo('template_directory'); ?>/images/members.png">
+                            </a>
+                        </li>
                             <?php
                             $wp_query = new WP_Query(array(
                                 'post_type' => 'members',
