@@ -86,7 +86,7 @@
                                                 'post_type' => 'golf_clubs',
                                                 'posts_per_page' => -1,
                                                 'order' => 'ASC',
-                                                'orderby' => 'menu_order',
+                                                'orderby' => 'title',
                                                 'tax_query' => array(
                                                     array(
                                                         'taxonomy' => 'clubs-category',
@@ -118,7 +118,7 @@
                                                 'post_type' => 'golf_clubs',
                                                 'posts_per_page' => -1,
                                                 'order' => 'ASC',
-                                                'orderby' => 'menu_order',
+                                                'orderby' => 'title',
                                                 'tax_query' => array(
                                                     array(
                                                         'taxonomy' => 'clubs-category',
@@ -150,7 +150,7 @@
                                                 'post_type' => 'golf_clubs',
                                                 'posts_per_page' => -1,
                                                 'order' => 'ASC',
-                                                'orderby' => 'menu_order',
+                                                'orderby' => 'title',
                                                 'tax_query' => array(
                                                     array(
                                                         'taxonomy' => 'clubs-category',

@@ -67,7 +67,7 @@
                     <!-- <a href="<?php if(pll_current_language('locale')=='vi'){
                        echo site_url('dang-ky');
                     } else {echo site_url('register');}?>" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a> -->
-                    <a href="#" class="btn btn-radius bg-red btn-lg btn-large" id="btn-join-now"><?php _e('Join Now Click Here', 'nisarg') ?></a>
+                    <a href="#" class="btn btn-radius bg-red btn-lg btn-large" id="btn-join-now"><?php _e('Replace Now Click Here', 'nisarg') ?></a>
                 </p>
               
 
