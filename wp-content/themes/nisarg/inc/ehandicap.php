@@ -6,6 +6,8 @@
 	class eHandicap
 	{
 		private $registerLink = 'http://vietcap.ehandicap.net/cgi-bin/admin_mem.exe?vietcapnew=1&CID=vietcap&MID=%s&firstname=%s&lastname=%s&gender=%s&email=%s&pass=%s';
+		private $golfClubsLink = 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?ADD=1&ID=%s&NAME=%s&PASSWORD=%s&STATUS=%s';
+
 		function __construct()
 		{
 			# code...
@@ -16,6 +18,14 @@
 			//echo $url;
 			return self::testSubmit($url);
 		}
+
+		public function RegisterGolf($golf)
+		{
+			$url=self::getRegisterGolf($golf);
+			//echo $url;
+			return self::testSubmit($url);
+		}
+
 		public function RenewMember()
 		{
 
@@ -27,6 +37,11 @@
 		private function getRegisterLink($member)
 		{
 			return sprintf($this->registerLink,$member->MID,$member->firstname,$member->lastname,$member->gender,$member->email,$member->pass);
+		}
+
+		private function getRegisterGolf($golf)
+		{
+			return sprintf($this->golfClubsLink,$golf->ID,$golf->NAME,$golf->PASSWORD,$golf->STATUS);
 		}
 		private function testSubmit($url) {
 			$ch = curl_init();
@@ -43,7 +58,7 @@
 			return $response;
 		}
 	}
-	  class eHandicapMember {
+	class eHandicapMember {
 		public 	$vietcapnew='';
 		public	$CID='';
 		public	$MID='';
@@ -54,5 +69,12 @@
 		public	$pass='';
 		public  $CURRCID='';
 		public  $CURRMID='';
+	}
+
+	class eHandicapGolf{
+		public 	$ID='';
+		public	$NAME='';
+		public	$PASSWORD='';
+		public  $STATUS = 'A';
 	}
 ?>
