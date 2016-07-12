@@ -1166,30 +1166,31 @@ function exclude_pages_from_admin($query) {
 
 
 function save_func($ID, $post,$update) {
-    $url = 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?REMOVE=1&ID='.$ID;
-    $ch = curl_init();
-    // set URL and other appropriate options
-    curl_setopt($ch, CURLOPT_URL, $url);
-    curl_setopt($ch, CURLOPT_HEADER, 0);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);// returns the result - very important
-    // grab URL and pass it to the browser
-    $response = curl_exec($ch);
-    //$response = curl_multi_getcontent($ch);
-    // close cURL resource, and free up system resources
-    curl_close($ch);
-
-   if($update == true && $post->post_status == 'publish' ) {
+    if($post->post_status != 'publish' ) {
+        $url = 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?REMOVE=1&ID='.$ID;
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);// returns the result - very important
+        $response = curl_exec($ch);
+        curl_close($ch);
+    } elseif($update == true) {
         $ehandicap  = new ehandicap();
         $golf = new eHandicapGolf();
         $golf->ID = $ID;
-        $golf->NAME = $post->post_title;
+        $golf->NAME = str_replace(' ', '+', $post->post_title);
         $golf->PASSWORD = $ID.'pass';
         $golf->STATUS = 'A';
-
         $ehandicap->RegisterGolf($golf);
-   } /*else {
-     // Do something if its update
-   }*/
+
+        $url= 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?CHANGE=1&ID='.$ID.'&NAME='.str_replace(' ', '+', $post->post_title).'&PASSWORD='.$ID.'pass&STATUS=A';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);// returns the result - very important
+        $response = curl_exec($ch);
+        curl_close($ch);
+    } 
 }
 
 add_action( 'save_post_golf_clubs', 'save_func', 10, 3 );
