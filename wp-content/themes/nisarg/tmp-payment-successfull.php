@@ -81,6 +81,7 @@ if($_GET["SESSION"] && $_SESSION["usersId"] && ($_GET["SESSION"] == $_SESSION["S
 
             $member->lastname = $user_info->first_name;
             $member->firstname = $user_info->last_name;
+            $member->CID = get_the_author_meta( 'CID', $userIDs[$i] );
             $member->MID = get_the_author_meta( 'MID', $userIDs[$i] );
             $member->gender = get_the_author_meta( 'gender', $userIDs[$i] );
             $member->email = $user_info->user_email;

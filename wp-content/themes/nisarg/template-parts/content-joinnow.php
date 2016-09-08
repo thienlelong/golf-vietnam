@@ -1,4 +1,4 @@
-<?php
+        <?php
 /**
  * The template used for displaying page content in page.php
  *
@@ -13,27 +13,33 @@
 
     <header class="join-now-header">
         <div class="join-now-title">
-            <?php _e('Join thousands of other golfers getting more out of their game with a Golf Vietnam Membership.','nisarg') ?>
+            <?php _e('Join thousands of other golfers getting more out of their game with a VietCap Membership.','nisarg') ?>
         </div>
         <div class="join-club">
-            <p class="text-center club-title"><?php _e('Golf Vietnam currently offers three categories of membership for new members.  You will be able to choose from:', 'nisarg') ?></p>
+            <p class="text-center club-title"><?php _e('VietCap currently offers four categories of membership for new members.  You will be able to choose from:', 'nisarg') ?></p>
             <div class="clearfix join-now-action">
-                <div class="col-sm-4">
+                <div class="col-sm-6 col-md-3">
                     <button class="btn btn-radius btn-join-club bg-blue">
                         <p><?php _e('Club Membership', 'nisarg') ?></p>
                         <p><?php _e('If you currently belong to an authorized Golf Club', 'nisarg') ?></p>
                     </button>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6 col-md-3">
                     <button class="btn btn-radius btn-join-club bg-blue">
                         <p><?php _e('Association Membership', 'nisarg') ?></p>
                         <p><?php _e('You belong to an authorized Golf Association', 'nisarg') ?></p>
                     </button>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6 col-md-3">
                     <button class="btn btn-radius btn-join-club bg-blue">
                         <p><?php _e('Public Membership', 'nisarg') ?></p>
                         <p><?php _e('You are a public player', 'nisarg') ?></p>
+                    </button>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                    <button class="btn btn-radius btn-join-club bg-blue">
+                        <p><?php _e('Caddy Clubs', 'nisarg') ?></p>
+                        <p><?php _e('You are a Caddy', 'nisarg') ?></p>
                     </button>
                 </div>
             </div>
@@ -51,7 +57,7 @@
                     <a href="<?php if(pll_current_language('locale')=='vi'){
                        echo site_url('dang-ky');
                     } else {echo site_url('register');}?>" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a>
-                    
+
                 </p>
             </div>
         </div>
@@ -69,7 +75,7 @@
                     } else {echo site_url('register');}?>" class="btn btn-radius bg-red btn-lg btn-large"><?php _e('Join Now Click Here', 'nisarg') ?></a> -->
                     <a href="#" class="btn btn-radius bg-red btn-lg btn-large" id="btn-join-now"><?php _e('Replace Now Click Here', 'nisarg') ?></a>
                 </p>
-              
+
 
             </div>
         </div>
@@ -83,7 +89,7 @@
                     <!-- <ul class="list-membership">
                         <?php _e('<li>On-line FREE VietCap application</li><li>Official Golf Vietnam Handicap Factor</li><li>Internationally recognized membership card</li><li>Access to official Handicap Rules</li><li>Access to official Amateur Status rules</li><li>Access to play in Club and National Events</li><li>“Peer Review” allows all players access to each other’s scores and trends</li><li>Record own scores on same day</li><li>Receive daily updated handicaps</li><li>Access to authorized Clubs Handicap charts to adjust handicaps accordingly</li><li>Shop On-line for golf products and high end luxury products</li>', 'nisarg'); ?>
                     </ul> -->
-                    <?php if(pll_current_language('locale')=='vi'){ 
+                    <?php if(pll_current_language('locale')=='vi'){
                             $page = get_page_by_title( 'Quyền lợi hội viên' );
                             echo $page->post_content;
                         } else {
@@ -128,7 +134,7 @@
                 window.location.href =  url_return;
             }
         });
-        
+
     });
 </script>
 

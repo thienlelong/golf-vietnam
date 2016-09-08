@@ -18,11 +18,21 @@ get_header(); ?>
 				<div class="page-header">
 					<div class="row">
 						<div class="col-md-4">
+
 						<?php if($_GET["category"]) {
 						    $category =  $_GET['category'];
 						    echo '<h1 class="entry-title text-capitalize">'. str_replace("-"," ", $category) .'</h1>';
 						} else {
-							the_title( '<h1 class="entry-title">', '</h1>' );
+							if(is_page(105)) {
+								echo '<div class="login-page">';
+									the_title( '<h1 class="entry-title">', '</h1>' );
+								?>
+									<img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vietcap.png" alt="" />
+								</div>
+							<?php
+							} else {
+								the_title( '<h1 class="entry-title">', '</h1>' );
+							}
 						}
 						?>
 						</div>

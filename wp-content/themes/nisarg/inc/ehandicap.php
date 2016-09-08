@@ -5,7 +5,7 @@
 //http://vn.ehandicap.net/cgi-bin/hcapstat.exe?NAME=THEIN&MID=147896325&CID=vietcap
 	class eHandicap
 	{
-		private $registerLink = 'http://vietcap.ehandicap.net/cgi-bin/admin_mem.exe?vietcapnew=1&CID=vietcap&MID=%s&firstname=%s&lastname=%s&gender=%s&email=%s&pass=%s';
+		private $registerLink = 'http://vietcap.ehandicap.net/cgi-bin/admin_mem.exe?vietcapnew=1&CID=%s&MID=%s&firstname=%s&lastname=%s&gender=%s&email=%s&pass=%s';
 		private $golfClubsLink = 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?ADD=1&ID=%s&NAME=%s&PASSWORD=%s&STATUS=%s';
 
 		function __construct()
@@ -36,7 +36,7 @@
 		}
 		private function getRegisterLink($member)
 		{
-			return sprintf($this->registerLink,$member->MID,$member->firstname,$member->lastname,$member->gender,$member->email,$member->pass);
+			return sprintf($this->registerLink,$member->CID,$member->MID,$member->firstname,$member->lastname,$member->gender,$member->email,$member->pass);
 		}
 
 		private function getRegisterGolf($golf)

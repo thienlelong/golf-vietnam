@@ -155,6 +155,7 @@ function clearForm(form, formID) {
         jQuery(this).removeClass('error');
 
         jQuery('#' +formID + ' label.error').remove();
+        jQuery('#' + formID + ' input[name=golf_club_id]').val('vietcap');
         var type = this.type;
         var tag = this.tagName.toLowerCase(); // normalize case
         // it's ok to reset the value attr of text inputs,
@@ -168,12 +169,18 @@ function clearForm(form, formID) {
             if(this.id === 'male') {
               this.checked = true;
             }
+
             var id = Math.random().toString(36).substring(5);
 
-            if(this.id == 'clubMember' || this.id == 'publicMember' ||  this.id == 'associationMember') {
-              jQuery(this).prop('id', id);
-              jQuery(this).next().prop('for', id);
-              jQuery('#' + formID + ' .checkbox-golf-club').removeClass("active");
+            if(this.id == 'clubMember' || this.id == 'publicMember' ||  this.id == 'associationMember' ||  this.id == 'caddyMember') {
+                jQuery(this).prop('id', id);
+                jQuery(this).next().prop('for', id);
+                jQuery('#' + formID + ' .checkbox-golf-club').removeClass("active");
+                this.value = '';
+                jQuery('#'+ formID + ' .association-member' +' + label').html('Association Member');
+                jQuery('#'+ formID + ' .public-member'+' + label').html('Public Member');
+                jQuery('#'+ formID + ' .club-member'+' + label').html('Club Member');
+                jQuery('#'+ formID + ' .caddy-member'+' + label').html('CADDY CLUBS');
 
               jQuery('#' + formID + ' input[name="golf_club"]').click(function() {
                 jQuery('#' + formID + ' .checkbox-golf-club').removeClass("active");
@@ -181,6 +188,7 @@ function clearForm(form, formID) {
                 jQuery('#'+ formID + ' .association-member' +' + label').html('Association Member');
                 jQuery('#'+ formID + ' .public-member'+' + label').html('Public Member');
                 jQuery('#'+ formID + ' .club-member'+' + label').html('Club Member');
+                jQuery('#'+ formID + ' .caddy-member'+' + label').html('CADDY CLUBS');
 
                     if(this.checked) {
                         jQuery(this).parent().addClass("active");
@@ -190,6 +198,7 @@ function clearForm(form, formID) {
 
               jQuery('#' + formID + ' .golf-club-list li').on('click', function(event){
                   var clubId = jQuery(this).attr("data-clubId");
+                  jQuery('#' + formID + ' input[name=golf_club_id]').val(clubId);
                   jQuery('#' + formID + ' .golf-club-list').css("display", "none");
                   jQuery('#' + formID + ' input[name=golf_club]:checked').val(jQuery(this).html());
                   jQuery('#' + formID + ' input[name=golf_club]:checked + label').html(jQuery(this).html());

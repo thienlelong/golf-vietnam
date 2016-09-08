@@ -460,7 +460,7 @@ function wc_custom_user_redirect( $redirect, $user ) {
         $expire_date = get_the_author_meta( 'expire_date', $user->ID );
         $now =  date('Y/m/d');
         if ($is_payment && ($expire_date > $now)) {
-            $redirect = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME='. $user->user_firstname . $user->user_lastname .'&MID='. get_the_author_meta( 'MID', $user->id ).'&CID=vietcap';
+            $redirect = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME='. $user->user_firstname . $user->user_lastname .'&MID='. get_the_author_meta( 'MID', $user->id ).'&CID='.get_the_author_meta( 'CID', $user->id );
         } else {
             $uId = $user->ID;
             wp_logout();
@@ -626,6 +626,7 @@ function add_member($user)
         }
     }
     $user_login = $MID;
+    $CID = $user['golf_club_id'];
     /**
      * IMPORTANT: You should make server side validation here!
      *
@@ -634,8 +635,8 @@ function add_member($user)
     //Add metatdata for user
     if($uId!=0){
          //add user metadata
-             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth', 'user_phone', 'is_status');
-             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password, $address, $date_of_birth, $user_phone, true);
+             $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth', 'user_phone', 'is_status', 'CID');
+             $meta_values = array( $first_name,$last_name,$middle_name, $golf_club, $district, $province, $city, $langguage, $gender, $avatar,$start_date, $expire_date,  $is_active, $MID, $password, $address, $date_of_birth, $user_phone, true, $CID);
              add_user_metas($uId, $meta_keys, $meta_values);
     }
     return $uId;
@@ -940,14 +941,14 @@ function extra_user_profile_fields( $user ) { ?>
             </label>
         </th>
         <td>
-            <?php 
+            <?php
                 $start_date = get_the_author_meta( 'start_date', $user->ID );
                 $today =  date('Y/m/d');
                // $tomorrow = date("Y/m/d", strtotime(date("Y/m/d", strtotime($today)) . " -1 day"));
                 if($start_date == $today && (get_the_author_meta('is_status', $user->ID ) == 1)) {
                     ?>
                 <label class="checkbox-inline">
-                    <input type="checkbox" id="inlineCheckbox2" name="is_status" <?php if (esc_attr( get_the_author_meta( "is_status", $user->ID )) == "1") echo "checked"; ?> value="1"> 
+                    <input type="checkbox" id="inlineCheckbox2" name="is_status" <?php if (esc_attr( get_the_author_meta( "is_status", $user->ID )) == "1") echo "checked"; ?> value="1">
                     New User
                 </label>
                 <?php
@@ -1159,7 +1160,7 @@ add_filter( 'parse_query', 'exclude_pages_from_admin' );
 function exclude_pages_from_admin($query) {
     global $pagenow,$post_type;
     if (is_admin() && $pagenow=='edit.php' && $post_type =='page') {
-        $query->query_vars['post__not_in'] = array('110','219','47', '270', '272', '157', 
+        $query->query_vars['post__not_in'] = array('110','219','47', '270', '272', '157',
             '242', '39', '132', '105', '260' , '264', '290', '268', '276', '41', '283', '253');
     }
 }
@@ -1175,6 +1176,26 @@ function save_func($ID, $post,$update) {
         $response = curl_exec($ch);
         curl_close($ch);
     } elseif($update == true) {
+/*        global $wpdb;
+        $sqlQuery = "SELECT *  FROM wp_posts WHERE wp_posts.post_type='golf_clubs'";
+        $clubs = $wpdb->get_results($sqlQuery);
+        foreach($clubs as $c) {
+            $ehandicap  = new ehandicap();
+            $golf = new eHandicapGolf();
+            $golf->ID = $c->ID;
+            $golf->NAME = str_replace(' ', '+', $c->post_title);
+            $golf->PASSWORD = $ID.'pass';
+            $golf->STATUS = 'A';
+            $ehandicap->RegisterGolf($golf);
+
+            $url= 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?CHANGE=1&ID='.$c->ID.'&NAME='.str_replace(' ', '+', $c->post_title).'&PASSWORD='.$c->ID.'pass&STATUS=A';
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);// returns the result - very important
+            $response = curl_exec($ch);
+            curl_close($ch);
+        }*/
         $ehandicap  = new ehandicap();
         $golf = new eHandicapGolf();
         $golf->ID = $ID;
@@ -1190,7 +1211,7 @@ function save_func($ID, $post,$update) {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);// returns the result - very important
         $response = curl_exec($ch);
         curl_close($ch);
-    } 
+    }
 }
 
 add_action( 'save_post_golf_clubs', 'save_func', 10, 3 );

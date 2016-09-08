@@ -14,7 +14,8 @@
         }
     ?>
     <div class="section-homepage">
-        <div class="home-bank">
+        <div class="home-banner">
+            <h2><?php _e('Love the Game. Grow the Game.', 'nisarg') ?></</h2>
         </div>
         <div class="home-action">
             <div class="container">
@@ -33,7 +34,7 @@
                         'parent'                   => '',
                         'orderby'                  => 'id',
                         'order'                    => 'DESC',
-                        'hide_empty'               => 1,
+                        'hide_empty'               => 0,
                         'hierarchical'             => 1,
                         'exclude'                  => '',
                         'include'                  => '',
@@ -56,7 +57,7 @@
                     $name = $category->name;
                     $i++;
                     $image = get_bloginfo('template_directory') . '/images/event-'. $i .'.png';
-                    if (function_exists('z_taxonomy_image_url')) $image = z_taxonomy_image_url($category->term_id);          
+                    if (function_exists('z_taxonomy_image_url')) $image = z_taxonomy_image_url($category->term_id);
                     ?>
                     <div class="col-sm-4">
                     <div class="box">
@@ -106,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
         <div class="site-info-box">
             <div class="logo-rolex">
@@ -115,8 +116,8 @@
             <div class="count-member">
                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-member.png">
                 <?php
-                    $result = count_users();
-                    $user_counts = $result['total_users'];
+
+                    $user_counts = vcp_get_visit_count('T');
                     $units = '';
                     if($user_counts >= 1000) {
                         $units = 'K';

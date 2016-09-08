@@ -4,7 +4,7 @@
  **/
  get_header();
 ?>
-<?php 
+<?php
   if($_GET["MID"]) {
     $MID = $_GET["MID"];
     $user = get_userdatabylogin($MID);
@@ -47,7 +47,7 @@
                                       <input type="text" name="first_name" class="form-control"  placeholder="<?php _e('First Name', 'nisarg') ?>" required>
                                     </div>
                                     <div class="col-sm-4">
-                                      <input type="text" name="middle_name" class="form-control"  placeholder="<?php _e('Middle Name', 'nisarg') ?> " required>
+                                      <input type="text" name="middle_name" class="form-control"  placeholder="<?php _e('Middle Name', 'nisarg') ?> ">
                                     </div>
                                     <div class="col-sm-4">
                                       <input type="text" name="last_name" class="form-control"  placeholder="<?php _e('Last Name', 'nisarg') ?>" required>
@@ -58,7 +58,7 @@
                                       <input type="email" name="user_email" class="form-control"  placeholder="<?php _e('Email', 'nisarg') ?>" required>
                                     </div>
                                     <div class="col-sm-6">
-                                      <input type="tel" name="user_phone" class="form-control"  placeholder="<?php _e('Phone', 'nisarg') ?>">
+                                      <input type="tel" name="user_phone" class="form-control"  placeholder="<?php _e('Phone', 'nisarg') ?>" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -73,7 +73,7 @@
                                     <span class="col-sm-6 col-md-6 labelicon"><?php _e('Choose one of following:', 'nisarg')?></span>
                                  </div>
                                 <div class="form-group">
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="golf_club">
                                             <label class="club-member btn-radius checkbox-golf-club" >
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
@@ -105,7 +105,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="golf_club">
                                             <label class="public-member btn-radius checkbox-golf-club">
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
@@ -137,7 +137,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
                                         <div class="golf_club">
                                             <label class="association-member btn-radius checkbox-golf-club">
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
@@ -169,6 +169,40 @@
                                             </ul>
                                         </div>
                                     </div>
+
+                                    <div class="col-sm-3">
+                                        <div class="golf_club">
+                                            <label class="caddy-member btn-radius checkbox-golf-club">
+                                                <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
+                                                <input type="radio" name="golf_club" value="" id="caddyMember" class="css-checkbox caddy-member" />
+                                                <label for="caddyMember" class="css-label"><?php _e('CADDY CLUBS', 'nisarg') ?></label>
+                                            </label>
+                                            <ul class="caddy-member golf-club-list">
+                                            <?php
+                                            $wp_query = new WP_Query(array(
+                                                'post_type' => 'golf_clubs',
+                                                'posts_per_page' => -1,
+                                                'order' => 'ASC',
+                                                'orderby' => 'title',
+                                                'tax_query' => array(
+                                                    array(
+                                                        'taxonomy' => 'clubs-category',
+                                                        'field' => 'slug',
+                                                        'terms' => array('caddy-member')
+                                                    )
+                                                )
+                                            ));
+                                            if($wp_query->have_posts()) :
+                                            ?>
+                                                <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++;
+                                                ?>
+                                                <li data-clubId="<?php echo $post->ID; ?>"><?php the_title(); ?></li>
+                                                <?php endwhile; ?>
+                                            <?php endif; wp_reset_query(); ?>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="golf_club_id" value="vietcap"/>
                                 </div>
                                 </div>
                             </div>
@@ -197,15 +231,15 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4 col-sm-8">
-                                    <!-- <input type="date" name="date_of_birth" 
-                                      class="date-of-birth form-control"  
+                                    <!-- <input type="date" name="date_of_birth"
+                                      class="date-of-birth form-control"
                                       data-placeholder="Date"
                                       aria-required="true"
                                       required>  -->
                                     <input placeholder="<?php _e(' Date Of Birth', 'nisarg') ?>"
                                         class="date-of-birth form-control"
                                         name="date_of_birth"
-                                        type="text" 
+                                        type="text"
                                         onfocus="(this.type='date')"
                                         onblur="(this.type='text')" id="date">
                                     </div>
@@ -278,6 +312,7 @@
             $('#associationMember + label').html('Association Member');
             $('#publicMember + label').html('Public Member');
             $('#clubMember + label').html('Club Member');
+            $('#caddyMember + label').html('CADDY CLUBS');
 
             if(this.checked) {
                 $(this).parent().addClass("active");
@@ -286,6 +321,7 @@
         });
         $("#registerUserForm0 .golf-club-list li").on('click', function(event){
             var clubId = $(this).attr("data-clubId");
+            $('#registerUserForm0 input[name=golf_club_id]').val(clubId);
             $('#registerUserForm0 .golf-club-list').css("display", "none");
             $('#registerUserForm0 input[name=golf_club]:checked').val($(this).html());
             $('#registerUserForm0 input[name=golf_club]:checked + label').html($(this).html());

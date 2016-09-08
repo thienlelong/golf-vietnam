@@ -383,8 +383,16 @@ msgid "Log out"
 msgstr "Đăng xuất"
 
 #: header.php:13
-msgid "VietNam National Handicap System"
-msgstr "Hệ thống Handicap Quốc gia Việt Nam"
+msgid "The Handicap System DESIGNED for Vietnam"
+msgstr "Hệ thống Handicap THIẾT KẾ cho Việt Nam"
+
+#: header.php:14
+msgid "Love the Game. Grow the Game."
+msgstr "Yêu trò chơi. Phát triển các trò chơi"
+
+#: header.php:11
+msgid "MENU"
+msgstr "Bảng chọn"
 
 #: header.php:15
 msgid "Making Vietnam"
@@ -415,12 +423,12 @@ msgid "Download Association <br> Application Form"
 msgstr "Tải về Mẫu đơn <br> Đăng ký Hiệp hội"
 
 #: template-parts/content-joinnow.php:1
-msgid "Join thousands of other golfers getting more out of their game with a Golf Vietnam Membership."
-msgstr "Trở thành hội viên của Golf Vietnam và cùng tham gia vào cuộc chơi với hàng nghìn golf thủ khác"
+msgid "Join thousands of other golfers getting more out of their game with a VietCap Membership."
+msgstr "Trở thành hội viên của VietCap và cùng tham gia vào cuộc chơi với hàng nghìn golf thủ khác"
 
 #: template-parts/content-joinnow.php:2
-msgid "Golf Vietnam currently offers three categories of membership for new members.  You will be able to choose from:"
-msgstr "Golf Vietnam hiện có 3 hạng mục hội viên cho bạn lựa chọn:"
+msgid "VietCap currently offers four categories of membership for new members.  You will be able to choose from:"
+msgstr "Golf Vietnam hiện có 4 hạng mục hội viên cho bạn lựa chọn:"
 
 #: template-parts/content-joinnow.php:3
 msgid "Club Membership"
@@ -445,6 +453,22 @@ msgstr "Thành viên chung"
 #: template-parts/content-joinnow.php:20
 msgid "You are a public player"
 msgstr "Bạn là tay chơi tự do"
+
+#: template-parts/content-joinnow.php:7
+msgid "Câu lạc bộ caddy"
+msgstr "Thành viên chung"
+
+#: template-parts/content-joinnow.php:20
+msgid "You are a Caddy"
+msgstr "Bạn là một Caddy"
+
+#: template-parts/content-joinnow.php:20
+msgid "(Lost Card?) Replacement Card:"
+msgstr "(Bị mất thẻ?) Thay thế thẻ:"
+
+#: template-parts/content-joinnow.php:20
+msgid "Replace Now Click Here"
+msgstr "Nhấn vào để thay "
 
 #: template-parts/content-joinnow.php:8
 msgid "Annual Membership Fees Are :"

@@ -64,7 +64,7 @@
             </button>
             <?php } ?>
             <a type="button" class="menu-toggle menu-left" data-toggle="modal" data-target="#myModal">
-              MENU <span class="caret"></span>
+              <?php _e( 'MENU', 'nisarg' ); ?><span class="caret"></span>
             </a>
            <a id="logo" class="navbar-brand" href="<?php echo esc_url( home_url('/'));?>"><img src="<?php echo get_bloginfo('template_directory')?>/images/headers/logo.png" alt="Logo"></a>
           </div>
@@ -98,24 +98,25 @@
       </div>
     </div>
   </div> <!-- end .container-fluid -->
- <!--  <div id="cc_spacer"></div> --><!-- used to clear fixed navigation by the themes js -->
 
     <?php if(is_front_page()): ?>
     <div class="site-header">
         <div class="container">
             <div class="row site-header-info">
-              <div class="col-md-6 text-right"><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vietcap.png" alt="" />
+              <div class="col-md-5 text-right header-baner">
                 <span class="btn btn-vietcap">
                   <h3><?php _e( 'VietCap', 'nisarg' ); ?></h3>
-                  <h4><?php _e( 'VietNam National Handicap System', 'nisarg' ); ?></h4>
+                  <h4><?php _e( 'The Handicap System DESIGNED for Vietnam', 'nisarg' ); ?></h4>
                 </span>
               </div>
-              <div class="col-md-6">
+              <div class="col-md-2 text-center">
+                <img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vietcap-large.png" alt="" />
+              </div>
+              <div class="col-md-5 header-baner">
                 <span class="btn btn-golf-better">
                   <h3><?php _e( 'Making Vietnam', 'nisarg' ); ?></h3>
                   <h3><?php _e( 'Golf Better', 'nisarg' ); ?></h3>
                 </span>
-                <span href=""><img src="<?php bloginfo('template_directory'); ?>/images/headers/logo-vga.png" alt="" /></span>
               </div>
             </div>
         </div>
@@ -126,7 +127,7 @@
             <div class="site-join-now text-center">
               <a href="<?php echo site_url(); ?>" title="<?php echo bloginfo( 'name' ); ?>">
                 <?php
-                if(function_exists( 'ot_get_option' )) : echo '<img src="'. ot_get_option('logo', get_bloginfo('template_directory') . '/images/headers/logo.png') .'" alt="" />'; endif;
+                if(function_exists( 'ot_get_option' )) : echo '<img src="'. ot_get_option('logo', get_bloginfo('template_directory') . '/images/headers/logo-vietcap.png') .'" alt="" />'; endif;
                 ?>
               </a>
               <h2 class="display-inline"><?php _e('HELP GROW THE GAME IN VIETNAM', 'nisarg'); ?></h2>
@@ -163,7 +164,8 @@
             var user_lastname = '<?php echo wp_get_current_user()->user_lastname;?>';
             var user_firstname  = '<?php echo wp_get_current_user()->user_firstname ;?>';
             var MID = '<?php echo get_user_meta(get_current_user_id() , "MID", true); ?>';
-            window.location.href = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME=' + user_lastname + user_firstname +'&MID='+ MID +'&CID=vietcap'
+            var CID = '<?php echo get_user_meta(get_current_user_id() , "CID", true); ?>';
+            window.location.href = 'http://vietcap.ehandicap.net/cgi-bin/hcapstat.exe?NAME=' + user_lastname + user_firstname +'&MID='+ MID +'&CID='+CID;
           } else {
             var lagguage = '<?php echo pll_current_language("locale"); ?>';
             if(lagguage == 'vi') {
