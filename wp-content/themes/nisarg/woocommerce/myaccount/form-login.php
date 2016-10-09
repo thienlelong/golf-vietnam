@@ -80,7 +80,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 				</form>
 				<div class="member-card">
-					<img src="<?php bloginfo('template_directory'); ?>/images/member-card.png" alt="">
+					 <?php
+            if(function_exists( 'ot_get_option' )) : echo '<img src="'. ot_get_option('member_card', get_bloginfo('template_directory') . '/images/headers/member-card.png') .'" alt="" />'; endif;
+          ?>
 				</div>
 			</div>
 			<div class="col-md-1"></div>

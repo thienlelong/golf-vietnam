@@ -60,7 +60,7 @@
 			itemsMobile : [768,2],
 			navigation: true,
 			pagination: false,
-
+			navigationText: false
 		});
 
 	});

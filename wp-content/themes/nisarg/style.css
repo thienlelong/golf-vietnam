@@ -964,9 +964,9 @@ color: #000000;
 /*.site-header .btn-vietcap {
     margin-left: 30px;
 }*/
-/*.site-header .btn-golf-better {
-    margin-right: 30px;
-}*/
+.site-header .btn-golf-better h3{
+    line-height: 30px;
+}
 .site-header .btn-vietcap h3{
     text-transform: none;
 }
@@ -1322,6 +1322,7 @@ color: #000000;
     padding: 10px 20px;
     margin-bottom: 30px;
     min-height: 80px;
+    pointer-events: none;
 }
 .btn-join-club p {
     margin-bottom: 0px;
@@ -1539,7 +1540,12 @@ color: #000000;
     border: 1px solid #ebebeb;
     margin-right: 5%;
     text-align: center;
+    min-height: 90px;
 }
+.list-clubs .club-logo img {
+    /*height: 100%;*/
+}
+
 .list-clubs .club-detail {
     width: 65%;
     float: left;
@@ -2110,6 +2116,20 @@ hr.line-title {
     right: -35px;
     background: url(images/arrow-slider-right.png) no-repeat;
 
+}
+
+#owl-members.owl-theme .owl-controls .owl-buttons .owl-prev {
+    left: 10px;
+    background: url(images/arrow-slider-left.png) no-repeat;
+}
+#owl-members.owl-theme .owl-controls .owl-buttons .owl-next {
+    right: 10px;
+    background: url(images/arrow-slider-right.png) no-repeat;
+
+}
+
+#owl-members.owl-theme .owl-controls .owl-buttons div {
+    top: 45%;
 }
 .site-footer{
     letter-spacing: 1px;

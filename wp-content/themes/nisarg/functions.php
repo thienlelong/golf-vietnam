@@ -183,20 +183,6 @@ function nisarg_scripts() {
         )
     );
     if(is_home() ||is_front_page()){
-        wp_enqueue_style( 'lightgallery', get_template_directory_uri().'/js/gallery/dist/css/lightgallery.css' );
-        wp_enqueue_script( 'picturefill', get_template_directory_uri() . '/js/gallery/lib/picturefill.min.js', array(),'',true);
-        wp_enqueue_script( 'lightgallery', get_template_directory_uri() . '/js/gallery/dist/js/lightgallery.js', array(),'',true);
-        wp_enqueue_script( 'fullscreen', get_template_directory_uri() . '/js/gallery/dist/js/lg-fullscreen.js', array(),'',true);
-
-        wp_enqueue_script( 'lg-thumbnail', get_template_directory_uri() . '/js/gallery/dist/js/lg-thumbnail.js', array(),'',true);
-        wp_enqueue_script( 'lg-video', get_template_directory_uri() . '/js/gallery/dist/js/lg-video.js', array(),'',true);
-        wp_enqueue_script( 'lg-autoplay', get_template_directory_uri() . '/js/gallery/dist/js/lg-autoplay.js', array(),'',true);
-        wp_enqueue_script( 'lg-zoom', get_template_directory_uri() . '/js/gallery/dist/js/lg-zoom.js', array(),'',true);
-        wp_enqueue_script( 'lg-hash', get_template_directory_uri() . '/js/gallery/dist/js/lg-hash.js', array(),'',true);
-        wp_enqueue_script( 'lg-pager', get_template_directory_uri() . '/js/gallery/dist/js/lg-pager.js', array(),'',true);
-        wp_enqueue_script( 'mousewheel', get_template_directory_uri() . '/js/gallery/lib/jquery.mousewheel.min.js', array(),'',true);
-
-
         $styleSlugs = array('membermouse-jquery-css',
             'yith-wcwl-main',
             'membermouse-jquery-css',
@@ -580,7 +566,7 @@ function validate_user($user){
         $err['user_email']='email_exists';
         $err['is_error']=true;
     }
-    $validate_fields = array("first_name", "middle_name", "last_name", "password","user_email");
+    $validate_fields = array("first_name", "last_name", "password","user_email");
     foreach ($user as $key => $value) {
         if(in_array($key, $validate_fields))
         {
@@ -626,7 +612,7 @@ function add_member($user)
         }
     }
     $user_login = $MID;
-    $CID = $user['golf_club_id'];
+    $CID = isset($user['golf_club_id']) ? $user['golf_club_id'] : 'vietcap';
     /**
      * IMPORTANT: You should make server side validation here!
      *
@@ -723,9 +709,12 @@ add_action('wp_ajax_nopriv_waiver_forms', 'vb_reg_waiver_forms');
 
 
 function new_modify_user_table( $column ) {
-    $column['MID'] = 'MID';
+    /*$column['MID'] = 'MID';*/
+    $column['expire_date'] = 'Expire Date';
     $column['address'] = 'Address';
+    $column['golf_club'] = 'Golf Club';
     $column['user_phone'] = 'Phone';
+    $column['is_payment'] = 'Payment';
     $column['is_status'] = 'New User';
     $column['is_lost_card'] = 'Lost Card';
     return $column;
@@ -734,27 +723,38 @@ add_filter( 'manage_users_columns', 'new_modify_user_table' );
 
 function new_modify_user_table_row( $val, $column_name, $user_id ) {
     /*$user = get_userdata( $user_id );*/
+    if(!get_the_author_meta('is_active', $user_id )
+        && !get_the_author_meta('is_payment', $user_id )) {
+        $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth', 'user_phone', 'is_status', 'CID');
+        /*delete_user($user_id,$meta_keys);*/
+    }
     switch ($column_name) {
-        case 'MID' :
+       /* case 'MID' :
             return get_the_author_meta( 'MID', $user_id );
-            break;
-        /*case 'is_active' :
-            return !get_the_author_meta( 'is_active', $user_id ) ? 'false' : 'true';
             break;*/
-        /*case 'expire_date' :
+        case 'expire_date' :
             return get_the_author_meta( 'expire_date', $user_id );
-            break;*/
+            break;
         case 'address' :
-            return get_the_author_meta( 'address', $user_id ) . ' ' . get_the_author_meta( 'district', $user_id ). ' ' . get_the_author_meta( 'province', $user_id );
+            return get_the_author_meta( 'address', $user_id ) .
+                ' ' . get_the_author_meta( 'district', $user_id ).
+                ' ' . get_the_author_meta( 'province', $user_id ).
+                ' ' . get_the_author_meta( 'city', $user_id );
             break;
         case 'user_phone' :
             return get_the_author_meta( 'user_phone', $user_id );
             break;
+        case 'is_payment' :
+            return get_the_author_meta( 'is_payment', $user_id ) ? 'True' : 'False';
+            break;
+        case 'golf_club' :
+            return get_the_author_meta( 'golf_club', $user_id );
+            break;
         case 'is_status' :
-            return get_the_author_meta( 'is_status', $user_id ) ? 'true' : 'false';
+            return get_the_author_meta( 'is_status', $user_id ) ? 'True' : 'False';
             break;
         case 'is_lost_card' :
-            return get_the_author_meta( 'is_lost_card', $user_id ) ? 'true' : 'false';
+            return get_the_author_meta( 'is_lost_card', $user_id ) ? 'True' : 'False';
             break;
         default:
     }
@@ -1160,8 +1160,7 @@ add_filter( 'parse_query', 'exclude_pages_from_admin' );
 function exclude_pages_from_admin($query) {
     global $pagenow,$post_type;
     if (is_admin() && $pagenow=='edit.php' && $post_type =='page') {
-        $query->query_vars['post__not_in'] = array('110','219','47', '270', '272', '157',
-            '242', '39', '132', '105', '260' , '264', '290', '268', '276', '41', '283', '253');
+        $query->query_vars['post__not_in'] = array('110','219','47', '270', '272', '157', '242', '132', '105', '260' , '264', '290', '268', '276', '283', '253');
     }
 }
 
@@ -1175,20 +1174,13 @@ function save_func($ID, $post,$update) {
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);// returns the result - very important
         $response = curl_exec($ch);
         curl_close($ch);
-    } elseif($update == true) {
+    } else {
 /*        global $wpdb;
         $sqlQuery = "SELECT *  FROM wp_posts WHERE wp_posts.post_type='golf_clubs'";
         $clubs = $wpdb->get_results($sqlQuery);
         foreach($clubs as $c) {
-            $ehandicap  = new ehandicap();
-            $golf = new eHandicapGolf();
-            $golf->ID = $c->ID;
-            $golf->NAME = str_replace(' ', '+', $c->post_title);
-            $golf->PASSWORD = $ID.'pass';
-            $golf->STATUS = 'A';
-            $ehandicap->RegisterGolf($golf);
-
-            $url= 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?CHANGE=1&ID='.$c->ID.'&NAME='.str_replace(' ', '+', $c->post_title).'&PASSWORD='.$c->ID.'pass&STATUS=A';
+            $url= 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?add=1&ID='.$c->ID.'&NAME='.str_replace(' ', '+', $c->post_title).'&PASSWORD='.$c->ID.'pass&STATUS=A';
+            print_r($url);
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -1196,22 +1188,77 @@ function save_func($ID, $post,$update) {
             $response = curl_exec($ch);
             curl_close($ch);
         }*/
-        $ehandicap  = new ehandicap();
-        $golf = new eHandicapGolf();
-        $golf->ID = $ID;
-        $golf->NAME = str_replace(' ', '+', $post->post_title);
-        $golf->PASSWORD = $ID.'pass';
-        $golf->STATUS = 'A';
-        $ehandicap->RegisterGolf($golf);
 
-        $url= 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?CHANGE=1&ID='.$ID.'&NAME='.str_replace(' ', '+', $post->post_title).'&PASSWORD='.$ID.'pass&STATUS=A';
+        $password = sanitize_text_field($_POST['golf_clubs_club_password']);
+        if ( empty( $password ) ) {
+            $password = $ID+'pass';
+        }
+
+        $url= 'http://vietcap.ehandicap.net/cgi-bin/admin_group.exe?ADD=1&ID='.$ID
+            .'&NAME='.str_replace(' ', '+', $post->post_title)
+            .'&PASSWORD='.$password.'&STATUS=A';
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_HEADER, 0);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);// returns the result - very important
         $response = curl_exec($ch);
         curl_close($ch);
+        if (strpos($response, 'ERR01') !== false) {
+            $url= 'http://vietcap.ehandicap.net/cgi-bin/admin_group.exe?Change=1&ID='.$ID
+                .'&NAME='.str_replace(' ', '+', $post->post_title)
+                .'&PASSWORD='.$password.'&STATUS=A';
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);// returns the result - very important
+            $response = curl_exec($ch);
+            curl_close($ch);
+        }
     }
 }
 
 add_action( 'save_post_golf_clubs', 'save_func', 10, 3 );
+
+function random_str($length, $keyspace = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
+{
+    $str = '';
+    $max = mb_strlen($keyspace, '8bit') - 1;
+    for ($i = 0; $i < $length; ++$i) {
+        $str .= $keyspace[random_int(0, $max)];
+    }
+    return $str;
+}
+
+add_filter( 'manage_edit-golf_clubs_columns', 'my_edit_golf_clubs_columns' ) ;
+
+function my_edit_golf_clubs_columns( $columns ) {
+    $columns = array(
+        'title' => __( 'Title' ),
+        'id' => __( 'ID Group' ),
+        'password' => __( 'Password' ),
+        'date' => __( 'Date' )
+    );
+
+    return $columns;
+}
+
+add_action( 'manage_golf_clubs_posts_custom_column', 'my_manage_golf_clubs_columns', 10, 2 );
+
+function my_manage_golf_clubs_columns( $column, $post_id ) {
+    global $post;
+    switch( $column ) {
+        case 'id' :
+            echo $post_id;
+            break;
+        case 'password' :
+            $password = get_post_meta($post_id, 'golf_clubs_club_password', true);
+            if ( !empty( $password ) ) {
+                echo $password;
+            } else {
+                echo $post_id.'pass';
+            }
+            break;
+        default :
+            break;
+    }
+}

@@ -186,6 +186,13 @@ $metaBoxes[] = array(
             'type' => 'image',
             'desc' => ''
         ),
+        array(
+            'name' => __('Password', 'moonation'),
+            'id' => $prefix . 'club_password',
+            'type' => 'text',
+            'desc' => ''
+        ),
+
 	)
 );
 

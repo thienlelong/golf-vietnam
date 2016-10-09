@@ -50,12 +50,27 @@
                             <span><?php _e('DATES', 'nisarg'); ?></span>
                             <p><?php echo mysql2date('F j', get_post_meta($post->ID, 'date_start', true)); ?> - <?php echo  mysql2date('F j Y',get_post_meta($post->ID, 'date_finish', true)); ?></p>
                         </div>
-                        <?php $file = get_field('information_doc');
-                            $view_link =  get_post_meta($post->ID, 'link_information', true);
+                        <?php
+                            $file = get_field('information_doc');
+                            $view_link =  get_field('link_required');
+                            $url_link =  get_field('link_url');
+                            if($view_link) {
+                                //mailto:
+                                if(!filter_var($url_link, FILTER_VALIDATE_EMAIL)) {
+                                    echo '<a href="'.$url_link.'" target="_blank" class="btn-border btn-radius">'
+                                    . __('View  Information', 'nisarg').'
+                                    </a>';
+                                } else {
+                                    echo '<a href="mailto:'.$url_link.'" class="btn-border btn-radius">'
+                                    . __('View  Information', 'nisarg').'
+                                    </a>';
+                                }
+                            } else {
+                                echo '<a href="'.$file['url'].'" download class="btn-border btn-radius">'
+                                    . __('View  Information', 'nisarg').'
+                                    </a>';
+                            }
                         ?>
-                        <a href="<?php echo $file['url']; ?>" target="_blank" <?php if (!$view_link): echo 'download';  endif;?> class="btn-border btn-radius">
-                            <?php _e('View  Information', 'nisarg'); ?>
-                        </a>
                     </div>
                 </div>
                 <hr class="line-dot">

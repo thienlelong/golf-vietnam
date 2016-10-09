@@ -6,23 +6,15 @@
 ?>
 
 <?php if(have_posts()) : the_post(); ?>
-     <?php
-        if(pll_current_language('locale') =='vi') {
-            $document = '/document/Golf_Vietnam_Association_Application_Form.docx';
-        } else {
-            $document = '/document/En_Golf_Vietnam_Association_Application_Form.docx';
-        }
-    ?>
     <div class="section-homepage">
         <div class="home-banner">
-            <h2><?php _e('Love the Game. Grow the Game.', 'nisarg') ?></</h2>
+            <h2><?php echo get_field('banner_center'); ?></</h2>
         </div>
         <div class="home-action">
             <div class="container">
-                <!-- <a href="#" class="btn btn-radius btn-download" data-toggle="tooltip" data-placement="top" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/icon-vietcap.png" alt=""> <span> <?php _e('Download VietCap <br> Application For Free', 'nisarg') ?></span>
-                    <img src="<?php bloginfo('template_directory'); ?>/images/icon-download.png" alt="">
-                </a> -->
-                <a href="<?php bloginfo('template_directory');echo $document ?>" class="btn btn-radius btn-associal" target="_blank" download><span> <?php _e('Download Association <br> Application Form', 'nisarg') ?></span> <img src="<?php bloginfo('template_directory'); ?>/images/icon-search.png" alt=""> </a>
+                <?php $file = get_field('application_form');
+                ?>
+                <a href="<?php echo $file['url'];?>" class="btn btn-radius btn-associal" target="_blank" download><span> <?php _e('Download Association <br> Application Form', 'nisarg') ?></span> <img src="<?php bloginfo('template_directory'); ?>/images/icon-search.png" alt=""> </a>
             </div>
         </div>
         <div class="container">
@@ -61,7 +53,6 @@
                     ?>
                     <div class="col-sm-4">
                     <div class="box">
-
                         <a href="<?php echo site_url($slug)?>"><img src="<?php echo $image;?>" alt=""></a>
                         <div class="box-title">
                             <h3><a href="<?php echo site_url($slug)?>"><?php _e($name, 'nisarg') ?></a></h3>
@@ -72,13 +63,8 @@
                 } ?>
                 <div class="col-sm-4">
                     <div class="box">
-                        <ul id="lightgallery" class="clearfix list-unstyled">
-                        <li  data-src="<?php bloginfo('template_directory'); ?>/images/members-zoom.png" >
-                            <a href="">
-                                <img class="img-responsive" src="<?php bloginfo('template_directory'); ?>/images/members.png">
-                            </a>
-                        </li>
-                            <?php
+                        <div class="owl-carousel" id="owl-members">
+                        <?php
                             $wp_query = new WP_Query(array(
                                 'post_type' => 'members',
                                 'posts_per_page' => 20,
@@ -89,19 +75,13 @@
                             if($wp_query->have_posts()) :
                             ?>
                                 <?php while($wp_query->have_posts()) : $wp_query->the_post(); $key++; ?>
-                                    <li  data-src="<?php echo get_field('members_image', $post->ID); ?>" >
-                                        <a href="">
-                                            <img class="img-responsive" src="<?php echo get_field('members_image', $post->ID); ?>">
-                                        </a>
-                                    </li>
+                                    <div class="item">
+                                        <img src="<?php echo get_field('members_image', $post->ID); ?>" alt="">
+                                    </div>
                                 <?php endwhile; ?>
                             <?php endif; wp_reset_query(); ?>
-                        </ul>
+                        </div>
                         <div class="box-title">
-                            <?php
-                               /* $result = count_users();
-                                $user_counts = $result['total_users'];*/
-                            ?>
                             <h3><?php echo _e('Members', 'nisarg') ?></h3>
                         </div>
                     </div>
@@ -142,7 +122,7 @@
                         $users_online =$users_online/1000000;
                     }
                     ?>
-                    <span><?php users_online() ?></span>
+                    <span><?php users_online(); ?></span>
                 <?php endif; ?>
             </div>
             <div class="site-watch">
@@ -156,10 +136,15 @@
 <script type="text/javascript">
     jQuery( document ).ready(function($) {
 
-        $('#lightgallery').lightGallery({
-            autoplay: true,
-            speed: 400,
-            loop: true
+        jQuery("#owl-members").owlCarousel({
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+            items : 1,
+            itemsDesktop : [1200,1],
+            itemsDesktopSmall : [979,1],
+            itemsMobile : [768,1],
+            navigation: true,
+            pagination: false,
+            navigationText: false
         });
 
         function display_watch() {

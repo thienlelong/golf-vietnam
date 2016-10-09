@@ -23,7 +23,7 @@
 
 <link rel="profile" href="http://gmpg.org/xfn/11" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-
+<link rel="shortcut icon" href="<?php echo ot_get_option('favicon')?>" />
 <?php wp_head(); ?>
 </head>
 
@@ -66,7 +66,11 @@
             <a type="button" class="menu-toggle menu-left" data-toggle="modal" data-target="#myModal">
               <?php _e( 'MENU', 'nisarg' ); ?><span class="caret"></span>
             </a>
-           <a id="logo" class="navbar-brand" href="<?php echo esc_url( home_url('/'));?>"><img src="<?php echo get_bloginfo('template_directory')?>/images/headers/logo.png" alt="Logo"></a>
+           <a id="logo" class="navbar-brand" href="<?php echo esc_url( home_url('/'));?>">
+              <?php
+                if(function_exists( 'ot_get_option' )) : echo '<img src="'. ot_get_option('logo', get_bloginfo('template_directory') . '/images/headers/logo-vietcap.png') .'" alt="" />'; endif;
+              ?>
+            </a>
           </div>
             <?php if ( has_nav_menu( 'primary' ) ) {
                 nisarg_header_menu(); // main navigation
@@ -105,8 +109,7 @@
             <div class="row site-header-info">
               <div class="col-md-5 text-right header-baner">
                 <span class="btn btn-vietcap">
-                  <h3><?php _e( 'VietCap', 'nisarg' ); ?></h3>
-                  <h4><?php _e( 'The Handicap System DESIGNED for Vietnam', 'nisarg' ); ?></h4>
+                  <?php echo get_field('banner_left'); ?>
                 </span>
               </div>
               <div class="col-md-2 text-center">
@@ -114,8 +117,7 @@
               </div>
               <div class="col-md-5 header-baner">
                 <span class="btn btn-golf-better">
-                  <h3><?php _e( 'Making Vietnam', 'nisarg' ); ?></h3>
-                  <h3><?php _e( 'Golf Better', 'nisarg' ); ?></h3>
+                  <h3><?php echo get_field('banner_right'); ?></h3>
                 </span>
               </div>
             </div>

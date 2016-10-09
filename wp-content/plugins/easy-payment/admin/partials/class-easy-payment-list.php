@@ -100,7 +100,7 @@ class GMEX_Easy_Payment_List {
     public static function easy_payment_add_easy_payment_list_columns($existing_columns) {
         $columns = array();
         $columns['cb'] = '<input type="checkbox" />';
-		$columns['custom'] = _x('Post ID', 'column name');
+		/*$columns['custom'] = _x('Post ID', 'column name');*/
         $columns['title'] = _x('Transaction ID', 'column name');
         $columns['first_name'] = _x('Name / Company', 'column name');
         $columns['mc_gross'] = __('Amount', 'column name');
@@ -135,11 +135,11 @@ class GMEX_Easy_Payment_List {
 
             case 'payment_status' :
                 echo esc_attr(get_post_meta($post->ID, 'payment_status', true));
-                break;	
-		
-	    case 'custom' :				
-                echo '<a target="_blank" href="'.get_permalink(get_post_meta($post->ID, 'custom', true)).'">'.get_post_meta($post->ID, 'custom', true).'</a>';
                 break;
+
+	       /* case 'custom' :
+                echo '<a target="_blank" href="'.get_permalink(get_post_meta($post->ID, 'custom', true)).'">'.get_post_meta($post->ID, 'custom', true).'</a>';
+                break;*/
         }
     }
 
@@ -173,7 +173,7 @@ class GMEX_Easy_Payment_List {
             'mc_gross' => 'mc_gross',
             'txn_type' => 'txn_type',
             'payment_status' => 'payment_status',
-            'custom' => 'custom',
+            /*'custom' => 'custom',*/
 
         );
 

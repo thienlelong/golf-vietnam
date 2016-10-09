@@ -68,20 +68,20 @@ class GMEX_Easy_Payment_Public {
             #easy_paypal_form_div td{
                 border-top: <?php echo $easy_payment_table_border;?>px solid #ddd;
             }
-            #easy_paypal_form_div table{               
+            #easy_paypal_form_div table{
                 border-bottom: <?php echo $easy_payment_table_border;?>px solid #ddd;
                  margin: auto;
                  width: auto;
             }
         </style>
-        <?php        
-        
-        if (isset($atts['currency']) && !empty($atts['currency'])) {            
+        <?php
+
+        if (isset($atts['currency']) && !empty($atts['currency'])) {
             $easy_payment_currency = $atts['currency'];
         } else {
             $easy_payment_currency = get_option('easy_payment_currency');
         }
-        
+
         if (isset($atts['item_name']) && !empty($atts['item_name'])) {
             $easy_payment_item_name = ($atts['item_name']) ? $atts['item_name'] : '';
         }
@@ -90,7 +90,7 @@ class GMEX_Easy_Payment_Public {
             $form_alignment = ($atts['align']) ? $atts['align'] : '';
         }
 
-        if (isset($atts['quantity']) && !empty($atts['quantity'])) {            
+        if (isset($atts['quantity']) && !empty($atts['quantity'])) {
             $easy_quantity ='<tr><td><input type="text" name="quantity" value="" placeholder="Quantity"></td></tr>';
         }
 
@@ -104,7 +104,7 @@ class GMEX_Easy_Payment_Public {
             $easy_payment_amount = ($atts['amount']) ? $atts['amount'] : '';
             $easy_payment_amount_input = '<input type="hidden" name="amount" value="' . esc_attr($easy_payment_amount) . '">';
         } elseif (isset($atts['lable_0']) && !empty($atts['lable_0'])) {
-            $output_tr_amount = $this->create_dropdown_option_button_option_code($atts['lable_0'],$atts, $easy_payment_currency);           
+            $output_tr_amount = $this->create_dropdown_option_button_option_code($atts['lable_0'],$atts, $easy_payment_currency);
         } else {
             $easy_payment_amount = (get_option('easy_payment_amount')) ? get_option('easy_payment_amount') : '';
             $easy_payment_amount_input = '<input type="hidden" name="amount" value="' . esc_attr($easy_payment_amount) . '">';
@@ -113,7 +113,7 @@ class GMEX_Easy_Payment_Public {
         $easy_payment_custom_button = get_option('easy_payment_custom_button');
         $easy_payment_button_image = get_option('easy_payment_button_image');
         $easy_payment_notify_url = site_url('?GMEX_Easy_Payment&action=ipn_handler');
-        $easy_payment_return_page = get_option('easy_payment_return_page');        
+        $easy_payment_return_page = get_option('easy_payment_return_page');
         $easy_payment_bussiness_email = get_option('easy_payment_bussiness_email');
         $easy_payment_PayPal_sandbox = get_option('easy_payment_PayPal_sandbox');
         $easy_payment_button_label = get_option('easy_payment_button_label');
@@ -127,10 +127,10 @@ class GMEX_Easy_Payment_Public {
         $output = '<div id="easy_paypal_form_div" class="page-sidebar widget" align="' . $form_alignment . '">';
 
         $output .= '<form action="' . esc_url($paypal_url) . '" method="post" target="_blank">';
-        
+
         if (isset($easy_payment_button_label) && !empty($easy_payment_button_label)) {
             $output_lable = '<tr><td><p><label for=' . esc_attr($easy_payment_button_label) . '>' . esc_attr($easy_payment_button_label) . '</label></p></td></tr>';
-                
+
         }
 
         $output .= '<input type="hidden" name="business" value="' . esc_attr($easy_payment_bussiness_email) . '">';
@@ -149,7 +149,7 @@ class GMEX_Easy_Payment_Public {
 
         if (isset($easy_payment_amount) && !empty($easy_payment_amount)) {
             $output .= $easy_payment_amount_input;
-            $output .= '<input type="hidden" name="tax_rate" value="2.5">';
+            $output .= '<input type="hidden" name="tax_rate" value="5">';
         }
 
         if (isset($dropdown_string) && !empty($dropdown_string)) {
@@ -177,7 +177,7 @@ class GMEX_Easy_Payment_Public {
     }
 
     public function create_dropdown_option_button($atts) {
-        $result = "";        
+        $result = "";
         $loop_count = 0;
         $lable_name = $this->Get_Lable_name($atts['lable_name']);
         if( isset($atts['lable_0']) && !empty($atts['lable_0'])){
@@ -185,23 +185,23 @@ class GMEX_Easy_Payment_Public {
             $lable_name = array_values($lable_name);
         }
         foreach ($atts as $key => $value) {
-            if ( "currency" != $key && "amount" != $key && "align" != $key && "border" != $key && "lable_name" != $key && "item_name" != $key && "lable_0" != $key && "quantity" != $key ) {                
+            if ( "currency" != $key && "amount" != $key && "align" != $key && "border" != $key && "lable_name" != $key && "item_name" != $key && "lable_0" != $key && "quantity" != $key ) {
                 $result .= $this->array_value_replace_hear($lable_name[$loop_count], $value, $loop_count);
                 $loop_count++;
             }
-        }        
+        }
         return $result;
     }
     public function create_dropdown_option_button_option_code($atts, $lable_name, $easy_payment_currency) {
-        $result = "";        
+        $result = "";
         $currency_selected = $easy_payment_currency;
         $currency_symbol = self::easy_payment_get_currency_payment_symbol($currency_selected);
         $lable_name = $this->Get_Lable_name($lable_name['lable_name']);
 
         $result .= self::array_value_replace_hear_price($lable_name[0], $atts, $currency_symbol, $currency_selected);
         unset($lable_name[0]);
-        $lable_name = array_values($lable_name);           
-        
+        $lable_name = array_values($lable_name);
+
         return $result;
     }
 
@@ -213,7 +213,7 @@ class GMEX_Easy_Payment_Public {
         $sub_option = explode(' | ', $data);
         foreach ($sub_option as $key => $value) {
             $array_export_data = array();
-            $array_export_data = $this->value_expload_with_regex($value);            
+            $array_export_data = $this->value_expload_with_regex($value);
             $string .= "<option value=\"" . $array_export_data['key'] . "\">" . $array_export_data['value'] . ' - ' . $currency_symbol . $array_export_data['key'] . ' ' . $currency_selected . "</option>";
         }
         $result .= $string . "</select></td></tr>";
@@ -233,13 +233,13 @@ class GMEX_Easy_Payment_Public {
         $result .= $string . "</select></td></tr>";
         return $result;
     }
-    
+
     public function Get_Lable_name($atts){
-        $result = "";        
-        $result = explode(', ', $atts); 
+        $result = "";
+        $result = explode(', ', $atts);
         return $result;
     }
-    
+
     public function get_button_url($easy_payment_button_image, $easy_payment_custom_button, $easy_payment_PayPal_sandbox) {
         $result_array = array();
         $button_url = "";
@@ -275,12 +275,12 @@ class GMEX_Easy_Payment_Public {
     }
 
     public function value_expload_with_regex($value) {
-        $result_array = array();        
+        $result_array = array();
         $value_regex = "/value=('|\")+[^*]+(price=)/";
         $price_regex = "/price=('|\")+[^*]+/";
         $value_name = preg_match($value_regex, $value, $matches_out_value);
         $price_name = preg_match($price_regex, $value, $matches_out_price);
-        $matches_out_value[0] = str_replace(" price=", "", $matches_out_value[0]);       
+        $matches_out_value[0] = str_replace(" price=", "", $matches_out_value[0]);
         $result_array['value'] = trim(str_replace("value='", "", $matches_out_value[0]), "'");
         $result_array['key'] = trim(str_replace("price='", "", $matches_out_price[0]), "'");
         return $result_array;
