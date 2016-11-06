@@ -593,6 +593,10 @@ input[type="submit"]{
     color: #0b9347 !important;
 }
 
+.cl-red {
+    color: #eb3d37 !important;
+}
+
 .cl-blue {
     color: #367aad !important;
 }
@@ -2143,13 +2147,19 @@ hr.line-title {
     padding: 20px 15px;
 }
 
+.site-info address{
+    margin-bottom: 0px;
+}
+.site-info address strong {
+  text-transform: uppercase;
+}
 .site-footer a{
     color: 333333;
 }
 
 .app-store{
     text-align: right;
-
+    padding-top: 20px;
 }
 .site-footer{
     background: #cad3d7;
@@ -2410,6 +2420,24 @@ input[type=radio].css-checkbox:checked + label.css-label {
     user-select: none;
 }
 
+.payment-onepay label.css-label {
+    background-image: url(images/icon-checkbox-payment.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.payment-onepay input[type=radio].css-checkbox:checked + label.css-label {
+    background-position: 0 -20px;
+}
+
+.payment-onepay input[type=radio].css-checkbox + label.css-label {
+    height: 20px;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
 input[type=checkbox].css-checkbox {
     position: absolute;
     z-index: -1000;
@@ -2582,7 +2610,6 @@ p.pmitem-value {
 
 .pm-order label {
     display: inline-block;
-    width: 175px;
 }
 .pm-paypal img {
     margin-top: -40px;
@@ -2648,6 +2675,17 @@ p.pmitem-value {
     -ms-user-select: none;
     user-select: none;
 
+}
+
+.inner-70.terms-and-condition {
+    padding: 15px 85px !important;
+    margin-top: -50px;
+}
+.terms-and-condition .inner-100{
+    padding: 15px !important;
+    border: 1px solid #ccc;
+    height: 300px;
+    overflow-y: scroll;
 }
 
 @media print {

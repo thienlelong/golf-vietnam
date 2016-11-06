@@ -674,6 +674,22 @@ msgstr "Cảm ơn bạn đã thanh toán  trực tuyến với chúng tôi!"
 msgid "Back to home"
 msgstr "Trở Về Trang Chủ"
 
+#: tmp-payment.php:15
+msgid "TOTAL"
+msgstr "Tổng Cộng"
+
+#: tmp-payment.php:15
+msgid "International Credit or Debit Card"
+msgstr "Tín Dụng Hoặc Thẻ Ghi Nợ Quốc Tế"
+
+#: tmp-payment.php:15
+msgid "Viet Name Local Debit Card"
+msgstr "Thẻ Ghi Nợ Việt Nam"
+
+#: tmp-payment.php:15
+msgid "Payment Methods"
+msgstr "Phương Thức Thanh "
+
 #: woocommerce/myaccount/form-login.php:1
 msgid "Username"
 msgstr "Tài Khoản"

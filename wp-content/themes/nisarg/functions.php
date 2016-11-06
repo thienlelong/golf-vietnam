@@ -1164,8 +1164,28 @@ function exclude_pages_from_admin($query) {
     }
 }
 
+function my_admin_notices(){
+  if(!empty($_SESSION['my_admin_notices'])) print  $_SESSION['my_admin_notices'];
+  unset ($_SESSION['my_admin_notices']);
+}
+add_action( 'admin_notices', 'my_admin_notices' );
 
 function save_func($ID, $post,$update) {
+    /*if(empty($_POST['golf_clubs_club_password'])) {
+        $_SESSION['my_admin_notices'] .= '<div class="error"><p>The ID Clubs must Unique</p></div>';
+        $prevent_publish = true;
+        if ($prevent_publish) {
+            remove_action( 'save_post_golf_clubs', 'save_func', 10, 3 );
+
+            // update the post to change post status
+            wp_update_post(array('ID' => $ID, 'post_status' => 'draft'));
+
+            // re-hook this function again
+            add_action( 'save_post_golf_clubs', 'save_func', 10, 3 );
+        }
+        return false;
+    }*/
+
     if($post->post_status != 'publish' ) {
         $url = 'http://vn.ehandicap.net/cgi-bin/admin_group.exe?REMOVE=1&ID='.$ID;
         $ch = curl_init();
@@ -1219,6 +1239,7 @@ function save_func($ID, $post,$update) {
 
 add_action( 'save_post_golf_clubs', 'save_func', 10, 3 );
 
+
 function random_str($length, $keyspace = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')
 {
     $str = '';
@@ -1261,4 +1282,43 @@ function my_manage_golf_clubs_columns( $column, $post_id ) {
         default :
             break;
     }
+}
+add_action('pre_get_posts', 'golf_clubs_default_order', 99);
+
+function golf_clubs_default_order($query) {
+  if ($query->get('post_type') == 'golf_clubs') {
+    if ($query->get('orderby') == '') {
+        $query->set( 'orderby', 'title' );
+    }
+    if ($query->get('order') == '') {
+        $query->set('order', 'ASC');
+    }
+  }
+}
+
+
+function remove_wc_password_meter() {
+    wp_dequeue_script( 'wc-password-strength-meter' );
+}
+add_action( 'wp_print_scripts', 'remove_wc_password_meter', 100 );
+
+
+add_action( 'password_reset', 'my_password_reset', 10, 2 );
+
+function my_password_reset( $user, $new_pass ) {
+    // Do something before password reset.
+    $CID = get_user_meta($user->ID, 'CID', true);
+
+    $url = 'http://vn.ehandicap.net/cgi-bin/admin_mem.exe?passupd=1&CID='.$CID.'&MID='.$user->user_login.'&mempass='.$new_pass;
+    submitURL($url);
+}
+
+function submitURL($url) {
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);// returns the result - very important
+    $response = curl_exec($ch);
+    curl_close($ch);
+    return $response;
 }

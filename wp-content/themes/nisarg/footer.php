@@ -36,13 +36,37 @@
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="container">
 			<div class="row">
-				<div class="site-info col-sm-6">
-					<?php echo '&copy; '.date("Y"); ?>
-					<span class="sep"> | </span>
-					<?php printf( esc_html__( 'VietCap. Designed with ','nisargf')); ?>
-					<a href="http://ydcvn.com" target="_blank" class="cl-green">YDCVN</a>
+				<div class="site-info col-sm-7">
+					<?php
+            if(pll_current_language('locale') =='vi') {
+            ?>
+	          <address>
+						  <strong class="cl-green">Công Ty TNHH Đầu Tư Và Thương Mại Golf Việt Nam</strong><br>
+						  Trụ Sở Chính: Số 125 Nguyễn Sơn, Phường Gia Thuỵ, Quận Long Biên, Hà Nội<br>
+						  Văn Phòng Hiện Tại: Số 108 Từ Hoa, Phường Quảng An, Quận Tây Hồ, Hà Nội<br>
+						  <?php echo '&copy; '.date("Y"); ?>
+							<span class="sep"> | </span>
+							<?php printf( esc_html__( 'VietCap. Thiết Kế  ','nisargf')); ?>
+							<a href="http://ydcvn.com" target="_blank" class="cl-green">YDCVN</a>
+						</address>
+            <?php
+            } else {
+            ?>
+            <address>
+						  <strong class="cl-green">Golf Vietnam Investment And Trading Company Limited</strong><br>
+						  Headquarters: No. 125 Nguyen Son Street, Gia Thuy Ward, Long Bien District, Ha Noi <br>
+						  Current Office: No. 108 Tu Hoa Street, Quang An Ward, Tay Ho District, Ha Noi <br>
+						  <?php echo '&copy; '.date("Y"); ?>
+							<span class="sep"> | </span>
+							<?php printf( esc_html__( 'VietCap. Designed with ','nisargf')); ?>
+							<a href="http://ydcvn.com" target="_blank" class="cl-green">YDCVN</a>
+						</address>
+           	<?php
+          	}
+	        ?>
+
 				</div><!-- .site-info -->
-				<div  class="col-sm-6 app-store">
+				<div  class="col-sm-5 app-store">
 					<a href="#" data-toggle="tooltip" data-placement="left" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/footers/logo-google-play.png" alt="" /></a>
 					<a href="#" data-toggle="tooltip" data-placement="right" title="Coming Soon"><img src="<?php bloginfo('template_directory'); ?>/images/footers/logo-app-store.png" alt="" /></a>
 				</div>

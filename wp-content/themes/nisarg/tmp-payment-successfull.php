@@ -5,31 +5,79 @@
  get_header();
 ?>
 <?php
-include(TEMPLATEPATH.'/baokim/baokim_payment.php');
+include(TEMPLATEPATH.'/onepay/onepay-payment.php');
+include(TEMPLATEPATH.'/onepay-quocte/onepay-payment-qt.php');
+require_once(ABSPATH.'wp-admin/includes/user.php' );
 function wpse27856_set_content_type(){
     return "text/html";
 }
 add_filter( 'wp_mail_content_type','wpse27856_set_content_type' );
+
+$onePayPayment = new OnePayPayment();
+
+if (strpos($_GET ["vpc_MerchTxnRef"], 'VN') !== false) {
+    $SECURE_SECRET = "DA88C2C62BDAAC2F65B65D1933FF822B";
+    $vpc_Txn_Secure_Hash = $_GET ["vpc_SecureHash"];
+    unset ( $_GET ["vpc_SecureHash"] );
+    $errorExists = false;
+
+    ksort ($_GET);
+
+    if (strlen ( $SECURE_SECRET ) > 0 && $_GET ["vpc_TxnResponseCode"] != "7" && $_GET ["vpc_TxnResponseCode"] != "No Value Returned") {
+        $stringHashData = "";
+        foreach ( $_GET as $key => $value ) {
+            if ($key != "vpc_SecureHash" && (strlen($value) > 0) && ((substr($key, 0,4)=="vpc_") || (substr($key,0,5) =="user_"))) {
+                $stringHashData .= $key . "=" . $value . "&";
+            }
+        }
+        $stringHashData = rtrim($stringHashData, "&");
+        if (strtoupper ( $vpc_Txn_Secure_Hash ) == strtoupper(hash_hmac('SHA256', $stringHashData, pack('H*',$SECURE_SECRET)))) {
+            $hashValidated = "CORRECT";
+        } else {
+            $hashValidated = "INVALID HASH";
+        }
+    } else {
+        $hashValidated = "INVALID HASH";
+    }
+} else {
+    $SECURE_SECRET = "B6D9923D8E93A946F05EF3A5328097D6";
+    $vpc_Txn_Secure_Hash = $_GET["vpc_SecureHash"];
+    $vpc_MerchTxnRef = $_GET["vpc_MerchTxnRef"];
+    $vpc_AcqResponseCode = $_GET["vpc_AcqResponseCode"];
+    unset($_GET["vpc_SecureHash"]);
+    $errorExists = false;
+
+    if (strlen($SECURE_SECRET) > 0 && $_GET["vpc_TxnResponseCode"] != "7" && $_GET["vpc_TxnResponseCode"] != "No Value Returned") {
+
+        ksort($_GET);
+        $md5HashData = "";
+        foreach ($_GET as $key => $value) {
+            if ($key != "vpc_SecureHash" && (strlen($value) > 0) && ((substr($key, 0,4)=="vpc_") || (substr($key,0,5) =="user_"))) {
+                $md5HashData .= $key . "=" . $value . "&";
+            }
+        }
+        $md5HashData = rtrim($md5HashData, "&");
+        if (strtoupper ( $vpc_Txn_Secure_Hash ) == strtoupper(hash_hmac('SHA256', $md5HashData, pack('H*',$SECURE_SECRET)))) {
+            $hashValidated = "CORRECT";
+        } else {
+            $hashValidated = "INVALID HASH";
+        }
+    } else {
+        $hashValidated = "INVALID HASH";
+    }
+    $onePayPayment = new OnePayPaymentQt();
+}
+
 $url_params = array(
-    'transaction_id'    =>  strval($_GET["transaction_id"]),
-    'checksum'          =>  strval($_GET["checksum"]),
-    'created_on'    =>  strval($_GET["created_on"]),
-    'customer_email'          =>  strval($_GET["customer_email"]),
-    'fee_amount'    =>  strval($_GET["fee_amount"]),
-    'merchant_id'          =>  strval($_GET["merchant_id"]),
-    'merchant_name'          =>  strval($_GET["merchant_name"]),
-    'merchant_phone'          =>  strval($_GET["merchant_phone"]),
-    'order_id'          =>  strval($_GET["order_id"]),
-    'payment_type'          =>  strval($_GET["payment_type"]),
-    'transaction_status'          =>  strval($_GET["transaction_status"]),
-    'merchant_email'          =>  strval($_GET["merchant_email"])
+    'vpc_TxnResponseCode' =>  strval($_GET["vpc_TxnResponseCode"]),
+    'vpc_SecureHash'      =>  strval($_GET["vpc_SecureHash"]),
+    'vpc_OrderInfo'       =>  strval($_GET["vpc_OrderInfo"]),
 );
 
-if($_GET["order_id"] && $_SESSION["usersId"]
-    && ($url_params['transaction_status'] == 13
-    || $url_params['transaction_status'] == 4
-    || $url_params['transaction_status'] == 2)
-    && ($_GET["order_id"] == $_SESSION["SESSION"])) {
+if($url_params['vpc_SecureHash'] && $_SESSION["usersId"]
+    && $url_params['vpc_TxnResponseCode'] == "0"
+    && ($url_params["vpc_OrderInfo"] == $_SESSION["SESSION"])
+    && $hashValidated == "CORRECT") {
     $orderId =  $url_params['transaction_id'];
     $userIDs = explode(",", $_SESSION["usersId"]);
     $ehandicap  = new ehandicap();
@@ -38,6 +86,7 @@ if($_GET["order_id"] && $_SESSION["usersId"]
     for ($i=0; $i < count($userIDs); $i++) {
         if($_SESSION["lost_card"]) {
             update_user_meta( $userIDs[$i], 'is_lost_card', true);
+            update_user_meta( $userIDs[$i], 'is_status', false);
         } else {
 
             update_user_meta( $userIDs[$i], 'orderId', $orderId);
@@ -117,6 +166,14 @@ if($_GET["order_id"] && $_SESSION["usersId"]
     unset($_SESSION["SESSION"]);
     unset($_SESSION["is_renew"]);
     unset($_SESSION["lost_card"]);
+} else {
+    $userIDs = explode(",", $_SESSION["usersId"]);
+    for ($i=0; $i < count($userIDs); $i++) {
+        if (!$_SESSION["lost_card"]) {
+            $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth', 'user_phone', 'is_status', 'CID');
+            delete_user($userIDs[$i], $meta_keys);
+        }
+    }
 }
 
 ?>
@@ -126,7 +183,13 @@ if($_GET["order_id"] && $_SESSION["usersId"]
             <?php while ( have_posts() ) : the_post(); ?>
                 <div class="page-header">
                     <div class="row">
-                        <div class="col-md-4"><?php the_title( '<h1 class="entry-title">', '</h1>' ); ?></div>
+                        <div class="col-md-4">
+                        <?php
+                            if($url_params['vpc_TxnResponseCode'] == '0' && $hashValidated = "CORRECT") {
+                                the_title( '<h1 class="entry-title">', '</h1>' );
+                            } else {
+                                echo '<h1 class="entry-title">Payment Failured</h1>';
+                            }?></div>
                         <div class="col-md-8 text-right">
                             <img src="<?php bloginfo('template_directory'); ?>/images/page-banner.png" alt="">
                         </div>
@@ -137,6 +200,7 @@ if($_GET["order_id"] && $_SESSION["usersId"]
                         <div class="page-payment-success text-center">
                             <img src="<?php bloginfo('template_directory'); ?>/images/icon-payment-uccessful.png" alt="">
                             <h1 class=""><?php _e('Your Order Has Been Processed!', 'nisarg') ?></h1>
+                            <h2 class="<?php if($url_params['vpc_TxnResponseCode'] == '0') {echo 'cl-green';} else { echo 'cl-red';}?>"><?php _e($onePayPayment->getResponseDescription($url_params['vpc_TxnResponseCode']), 'nisarg');?></h2>
                             <h3><?php _e('Thank you for payment with us online!', 'nisarg') ?> </h3>
                             <a href="<?php echo get_home_url(); ?>" class="btn btn-radius btn-lg-13"><?php _e('Back to home', 'nisarg') ?> </a>
                         </div>
