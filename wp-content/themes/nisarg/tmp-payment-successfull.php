@@ -70,13 +70,11 @@ if (strpos($_GET ["vpc_MerchTxnRef"], 'VN') !== false) {
 
 $url_params = array(
     'vpc_TxnResponseCode' =>  strval($_GET["vpc_TxnResponseCode"]),
-    'vpc_SecureHash'      =>  strval($_GET["vpc_SecureHash"]),
-    'vpc_OrderInfo'       =>  strval($_GET["vpc_OrderInfo"]),
+    'vpc_OrderInfo'       =>  strval($_GET["vpc_OrderInfo"])
 );
 
-if($url_params['vpc_SecureHash'] && $_SESSION["usersId"]
-    && $url_params['vpc_TxnResponseCode'] == "0"
-    && ($url_params["vpc_OrderInfo"] == $_SESSION["SESSION"])
+if($_SESSION["usersId"] && $url_params['vpc_TxnResponseCode'] == '0'
+    && $url_params["vpc_OrderInfo"] == $_SESSION["SESSION"]
     && $hashValidated == "CORRECT") {
     $orderId =  $url_params['transaction_id'];
     $userIDs = explode(",", $_SESSION["usersId"]);

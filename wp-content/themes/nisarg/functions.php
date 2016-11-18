@@ -183,151 +183,17 @@ function nisarg_scripts() {
         )
     );
     if(is_home() ||is_front_page()){
-        $styleSlugs = array('membermouse-jquery-css',
-            'yith-wcwl-main',
-            'membermouse-jquery-css',
-            'yith-wcwl-main',
-            'yith-woocompare-widget',
+        $styleSlugs = array(
             'woocommerce-layout',
             'woocommerce-smallscreen',
-            'woocommerce-general',
-            'wp-pagenavi',
-            'colorbox',
-            'wpsimplegallery-style',
-            'ubermenu-black-white-2-css',
-            'CMDM-css',
-            'membermouse-main',
-            'membermouse-buttons',
-            'membermouse-font-awesome',
-            'prtfl_stylesheet',
-            'prtfl_lightbox_stylesheet',
-            'pac-styles',
-            'pac-layout-styles ',
-            'pdc-layout-styles',
-            'wp-job-manager-applications-frontend',
-            'wp-job-manager-frontend',
-            'dlm-frontend',
-            'jquery-colorbox',
-            'ajax-load-more',
-            'searchwp-live-search',
-            'ubermenu',
-            'ubermenu-deepsky',
-            'wpsimplegallery-style',
-            'contact-form-7',
-            'responsive-lightbox-fancybox-front',
-            'scrollup-css',
-            'videojs-plugin',
-            'videojs',
-            'pac-layout-styles',
-            'chosen',
-            'new-style',
-            'tristatedj-media',
-            'ajax-load-more',
-            'searchwp-live-search',
-            'tablepress-default',
-            'ubermenu',
-            'ubermenu-deepsky',
-            'ubermenu-black-white-2',
-            'ubermenu-font-awesome',
-            'wpsimplegallery-style',
-            'colorbox',
-            'contact-form-7',
-            'responsive-lightbox-fancybox-front',
-            'scrollup-css',
-            'videojs-plugin',
-            'videojs',
-            'pac-layout-styles',
-            'chosen',
-            'ajax-load-more',
-            'tablepress-default',
-            'ubermenu',
-            'ubermenu-deepsky',
-            'ubermenu-black-white-2',
-            'ubermenu-font-awesome',
-            'wpsimplegallery-style',
-            'colorbox');
+            'woocommerce-general'
+            );
 
         foreach ($styleSlugs as $value) {
             wp_dequeue_style($value);
         }
 
-        $scriptSlugs =  array('membermouse-socialLogin',
-                'membermouse-blockUI',
-                'admin-bar',
-                'codenegar-ajax-search-migrate',
-                'codenegar-ajax-search-script-core',
-                'codenegar-ajax-search-script',
-                'contact-form-7',
-                'membermouse-global',
-                'mm-common-core.js',
-                'mm-preview.js',
-                'page-scroll-to-id-plugin-script',
-                'page-scroll-to-id-plugin-init-script',
-                'prtfl_fancybox_mousewheelJs',
-                'prtfl_fancyboxJs',
-                'responsive-lightbox-fancybox',
-                'responsive-lightbox-front',
-                'scrollup-js',
-                'videojs',
-                'videojs-youtube',
-                'wc-add-to-cart',
-                'woocommerce',
-                'wc-cart-fragments',
-                'yith-woocompare-main',
-                'jquery-colorbox',
-                'jquery-yith-wcwl',
-                'comment-reply',
-                'ajax-load-more',
-                'swp-live-search-client',
-                'google-maps',
-                'ubermenu',
-                'jquery-easing',
-                'wpsimplegallery-scripts',
-                'membermouse-socialLogin',
-                'membermouse-blockUI',
-                'admin-bar',
-                'codenegar-ajax-search-migrate',
-                'codenegar-ajax-search-script-core',
-                'codenegar-ajax-search-script',
-                'contact-form-7',
-                'membermouse-global',
-                'mm-common-core.js',
-                'mm-preview.js',
-                'jquery-ui-accordion',
-                'jquery-ui-button',
-                'jquery-ui-datepicker',
-                'jquery-ui-dialog',
-                'jquery-ui-draggable',
-                'jquery-ui-droppable',
-                'jquery-ui-mouse',
-                'jquery-ui-position',
-                'jquery-ui-progressbar',
-                'jquery-ui-resizable',
-                'jquery-ui-selectable',
-                'jquery-ui-sortable',
-                'jquery-ui-widget',
-                'page-scroll-to-id-plugin-script',
-                'page-scroll-to-id-plugin-init-script',
-                'prtfl_fancybox_mousewheelJs',
-                'prtfl_fancyboxJs',
-                'responsive-lightbox-fancybox',
-                'responsive-lightbox-front',
-                'scrollup-js',
-                'videojs',
-                'videojs-youtube',
-                'wc-add-to-cart',
-                'woocommerce',
-                'wc-cart-fragments',
-                'yith-woocompare-main',
-                'jquery-colorbox',
-                'jquery-yith-wcwl',
-                'comment-reply',
-                'ajax-load-more',
-                'swp-live-search-client',
-                'google-maps',
-                'ubermenu',
-                'jquery-easing',
-                'wpsimplegallery-scripts');
+        $scriptSlugs =  array('woocommerce');
 
         foreach ($scriptSlugs as $value) {
              wp_dequeue_script($value);
@@ -722,12 +588,6 @@ function new_modify_user_table( $column ) {
 add_filter( 'manage_users_columns', 'new_modify_user_table' );
 
 function new_modify_user_table_row( $val, $column_name, $user_id ) {
-    /*$user = get_userdata( $user_id );*/
-    if(!get_the_author_meta('is_active', $user_id )
-        && !get_the_author_meta('is_payment', $user_id )) {
-        $meta_keys = array("first_name","last_name","middle_name", "golf_club", "district", "province", "city", "langguage", "gender","avatar", "start_date", "expire_date", "is_active", "MID", 'passbackup', 'address', 'date_of_birth', 'user_phone', 'is_status', 'CID');
-        /*delete_user($user_id,$meta_keys);*/
-    }
     switch ($column_name) {
        /* case 'MID' :
             return get_the_author_meta( 'MID', $user_id );
@@ -751,6 +611,14 @@ function new_modify_user_table_row( $val, $column_name, $user_id ) {
             return get_the_author_meta( 'golf_club', $user_id );
             break;
         case 'is_status' :
+            $start_date = get_the_author_meta( 'start_date', $user_id );
+            $today =  date('Y/m/d');
+            $yesterday = date("Y/m/d", strtotime(date("Y/m/d", strtotime($today)) . " -1 day"));
+            if($start_date == $today || $start_date == $yesterday ) {
+               return get_the_author_meta( 'is_status', $user_id ) ? '<span class="user-highlight">True</span>' : '<span class="user-highlight">False</span>';
+            } else {
+               return get_the_author_meta( 'is_status', $user_id ) ? 'True' : 'False';
+            }
             return get_the_author_meta( 'is_status', $user_id ) ? 'True' : 'False';
             break;
         case 'is_lost_card' :
@@ -761,6 +629,12 @@ function new_modify_user_table_row( $val, $column_name, $user_id ) {
     return $return;
 }
 add_filter( 'manage_users_custom_column', 'new_modify_user_table_row', 10, 3 );
+
+// Update CSS within in Admin
+function admin_style() {
+  wp_enqueue_style('admin-styles', get_template_directory_uri().'/admin.css');
+}
+add_action('admin_enqueue_scripts', 'admin_style');
 
 add_filter('manage_users_columns','remove_users_columns');
 function remove_users_columns($column_headers) {

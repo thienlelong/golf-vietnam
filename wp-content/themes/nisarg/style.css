@@ -2170,7 +2170,11 @@ hr.line-title {
     max-width: 150px;
 }
 
-
+#golf_club-error {
+    position: absolute;
+    left: 0;
+    bottom: -23px;
+}
 
 /*dungdh*/
 /* .form-user-address .error,.form-user-info .error{
@@ -2302,7 +2306,8 @@ hr.line-title {
 
 
 
-.checkbox-golf-club input[type=radio].css-checkbox + label.css-label{
+.checkbox-golf-club input[type=radio].css-checkbox + label.css-label,
+.checkbox-golf-club label.css-label{
     line-height: 15px;
     padding-left: 0px;
     margin-bottom: 0px;
@@ -2366,9 +2371,14 @@ hr.line-title {
 
 .avatarUpload {
     position: relative;
-    overflow: hidden;
     margin: 10px;
     margin-left: 0px;
+}
+
+#actual_img-error {
+    position: absolute;
+    left: 0;
+    bottom: -25px;
 }
 
 .avatarUpload input.upload {

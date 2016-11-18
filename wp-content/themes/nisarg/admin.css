@@ -1,0 +1,11 @@
+.users #the-list tr .user-highlight{
+  background: #73cd54;
+  color: #fff;
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  min-height: 25px;
+  text-align: center;
+  padding-top: 5px;
+}
+

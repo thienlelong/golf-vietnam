@@ -77,7 +77,7 @@
                                         <div class="golf_club">
                                             <label class="club-member btn-radius checkbox-golf-club" >
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                                <input type="radio" name="golf_club" value="" id="clubMember" class="css-checkbox club-member" />
+                                                <input type="radio" name="golf_club" value="" id="clubMember" class="css-checkbox club-member" required/>
                                                 <label for="clubMember" class="css-label"><?php _e('CLUB MEMBER', 'nisarg') ?></label>
                                             </label>
                                             <ul class="club-member golf-club-list">
@@ -109,7 +109,7 @@
                                         <div class="golf_club">
                                             <label class="public-member btn-radius checkbox-golf-club">
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                                <input type="radio" name="golf_club" value="" id="publicMember" class="css-checkbox public-member" />
+                                                <input type="radio" name="golf_club" value="" id="publicMember" class="css-checkbox public-member" required />
                                                 <label for="publicMember" class="css-label"><?php _e('PUBLIC MEMBER', 'nisarg') ?></label>
                                             </label>
                                             <ul class="public-member golf-club-list">
@@ -141,7 +141,7 @@
                                         <div class="golf_club">
                                             <label class="association-member btn-radius checkbox-golf-club">
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                                <input type="radio" name="golf_club" value="" id="associationMember" class="css-checkbox association-member" />
+                                                <input type="radio" name="golf_club" value="" id="associationMember" class="css-checkbox association-member" required/>
                                                 <label for="associationMember" class="css-label"><?php _e('ASSOCIATION MEMBER', 'nisarg') ?></label>
                                             </label>
                                             <ul class="association-member golf-club-list">
@@ -174,7 +174,7 @@
                                         <div class="golf_club">
                                             <label class="caddy-member btn-radius checkbox-golf-club">
                                                 <img src="<?php bloginfo('template_directory'); ?>/images/icon-checkgreen.png" alt="">
-                                                <input type="radio" name="golf_club" value="" id="caddyMember" class="css-checkbox caddy-member" />
+                                                <input type="radio" name="golf_club" value="" id="caddyMember" class="css-checkbox caddy-member" required />
                                                 <label for="caddyMember" class="css-label"><?php _e('CADDY CLUBS', 'nisarg') ?></label>
                                             </label>
                                             <ul class="caddy-member golf-club-list">
@@ -270,7 +270,7 @@
                                     <div class="col-xs-12 clearfix">
                                         <div class="avatarUpload btn btn-radius btn-lg-13">
                                             <span><?php _e('ADD ACTUAL FACE PHOTO', 'nisarg') ?></span>
-                                            <input  type="file" class="file_avatar upload" name="actual_img"> </input>
+                                            <input  type="file" class="file_avatar upload" name="actual_img" required> </input>
                                         </div>
                                         <canvas width="96" height="96" class="canvas_avatar_thumnail"></canvas>
                                         <canvas style="display: none;" class="canvas_avatar"  ></canvas>
